@@ -5,39 +5,46 @@
     justify-content: center;
     width: 100%;
 }
-
-.element .asideleft {
-    height: 595px;
+.menu {
+    background-color: beige;
+    height: 407px;
     left: 0;
     position: absolute;
     top: 165px;
-    width: 180px;
+    width: 1353px;
+}
+
+.asideleft {
+    height: 1000px;
+    left: 0;
+    position: absolute;
+    top: 165px;
+    width: 250px;
     border-top: 1px solid #FF8000;
     border-bottom: 3px solid #FF8000;
 }
 
-.element .sesection {
-    height: 595px;
+.sesection {
+    height: 1000px;
     left: 180px;
     position: absolute;
     top: 165px;
     width: 922px;
-    background-color: #d9d9d9;
     border-top: 1px solid #FF8000;
     border-bottom: 3px solid #FF8000;
 }
 
-.element .asideright {
-    height: 595px;
+.asideright {
+    height: 1000px;
     left: 1102px;
     position: absolute;
     top: 165px;
-    width: 177px;
+    width: 250px;
     border-top: 1px solid #FF8000;
     border-bottom: 3px solid #FF8000;
 }
 
-.element .logo {
+.logo {
     height: 87px;
     left: 383px;
     object-fit: cover;
@@ -46,42 +53,46 @@
     width: 516px;
 }
 
-.element .logintext {
+.loginButton {
     height: 87px;
     left: 1102px;
     object-fit: cover;
     position: absolute;
     margin-top: 17px;
     width: 177px;
+
+    border: none;
+    background-color: white;
+    cursor: pointer;
 }
 
-.element .petsiter {
+.petsiter {
     left: 294px;
     object-fit: cover;
     position: absolute;
     top: 89px;
 }
 
-.element .community {
+.community {
     left: 552px;
     object-fit: cover;
     position: absolute;
     top: 89px;
 }
 
-.element .mypage {
+.mypage {
     left: 810px;
     object-fit: cover;
     position: absolute;
     top: 89px;
 }
 
-.element .customerService {
+.customerService {
     height: 28px;
     left: 0;
     object-fit: cover;
     position: absolute;
-    top: 770px;
+    top: 1185px;
     width: 60px;
     margin-left: 612px;
 
@@ -95,12 +106,12 @@
     line-height: 19.5px;
 }
 
-.element .copyright {
+.copyright {
     height: 28px;
     left: 1px;
     object-fit: cover;
     position: absolute;
-    top: 801px;
+    top: 1210px;
 
     width: 60px;
     margin-left: 612px;
@@ -166,4 +177,99 @@
     width: 20px;
     height: 20px;
     margin-right: 5px;
+}
+.main-menu {
+    height: 407px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1228px;
+}
+
+.menu-icons {
+    color: #000000;
+    font-size: 30px;
+    font-weight: 700;
+    height: 45px;
+    letter-spacing: -0.66px;
+    line-height: 45px;
+    position: absolute;
+    text-align: center;
+    top: 180px;
+    white-space: nowrap;
+    border: none;
+    background-color: white;
+}
+
+.left-icon {
+    left: 43px;
+    cursor: zoom-in;
+}
+.right-icon {
+    left: 1215px;
+    cursor: pointer;
+}
+
+.menu-title {
+    color: #000000;
+    font-size: 25px;
+    font-weight: 700;
+    height: 38px;
+    left: 264px;
+    letter-spacing: 0;
+    line-height: 37.5px;
+    position: absolute;
+    top: 94px;
+    white-space: nowrap;
+}
+
+.menu-text {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    height: 24px;
+    left: 264px;
+    letter-spacing: 0;
+    line-height: 24px;
+    position: absolute;
+    top: 168px;
+    white-space: nowrap;
+}
+.menu-list {
+    border: 1px solid;
+    border-color: #ff9900;
+    border-radius: 33px;
+    height: 30px;
+    left: 182px;
+    position: absolute;
+    top: 365px;
+    width: 62px;
+}
+
+.list {
+    color: #000000;
+    font-size: 12px;
+    font-weight: 500;
+    height: 18px;
+    left: 19px;
+    letter-spacing: 0;
+    line-height: 18px;
+    position: absolute;
+    text-align: center;
+    top: 6px;
+    white-space: nowrap;
+}
+.list-img {
+    height: 272px;
+    left: 686px;
+    object-fit: cover;
+    position: absolute;
+    top: 68px;
+    width: 376px;
+}
+.MainMenuPetsiter1{
+    left: 246px;
+}
+.MainMenuPetsiter2{
+    left: 670px;
 }
