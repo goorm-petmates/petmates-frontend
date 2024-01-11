@@ -7,7 +7,7 @@ function Basic() {
       <div className="asideleft"/>
       <div className="sesection"/>
       <div className="asideright"/>
-      <img className="logo" alt="Logo" src="/img/Logo.png"/>
+      <img className="logo" alt="Logo" src="/imgs/Logo.png"/>
       <div className="logintext">로그인</div>
       <button className="headerButtons petsiter">펫시터</button>
       <button className="headerButtons community">커뮤니티</button>
