@@ -1,9 +1,9 @@
 import React from "react";
 import {useState} from "react";
-import Button from "../components/Button";
-import MemberFormModal from "../components/MemberFormModal";
+import Button from "/Users/jiyeong/WebstormProjects/pet/petmates_frontend/src/components/Button";
+import MemberFormModal from "/Users/jiyeong/WebstormProjects/pet/petmates_frontend/src/components/MemberFormModal";
 import '../styles/StyleFindInfo.css';
-import MemberFormInput from "../components/MemberFormInput";
+import MemberFormInput from "/Users/jiyeong/WebstormProjects/pet/petmates_frontend/src/components/MemberFormInput";
 
 function FindInfo() {
 

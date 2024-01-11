@@ -1,5 +1,5 @@
 import '../styles/StyleLogin.css';
-import Button from "../components/Button";
+import Button from "/Users/jiyeong/WebstormProjects/pet/petmates_frontend/src/components/Button.js";
 import { useNavigate } from "react-router-dom";
 function Login() {
   const navigate = useNavigate();
