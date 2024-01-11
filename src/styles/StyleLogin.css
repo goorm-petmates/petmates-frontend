@@ -1,0 +1,32 @@
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #d9d9d9;
+    height: 500px;
+    margin: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.MemberLoginInputs {
+    display: flex;
+    flex-direction: column; /* 수정: 세로로 정렬되도록 변경 */
+    margin-bottom: 10px; /* 추가: 각 input 사이의 간격 조절 */
+}
+
+.MemberLoginInputs input {
+    margin-bottom: 10px; /* 추가: 각 input 사이의 간격 조절 */
+}
+
+.MemberLoginButtons {
+    display: flex;
+    flex-direction: row; /* 추가: 가로로 정렬되도록 변경 */
+}
+
+.MemberLoginButtons > button {
+    border: none;
+    background-color: #ffffff;
+    color: black;
+    margin-right: 10px;
+    width: 140px;
+}
