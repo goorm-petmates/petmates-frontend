@@ -1,0 +1,24 @@
+.findcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* 로고와의 간격 조절 */
+}
+
+.findLogo{
+    margin-left: 430px;
+}
+
+.findId {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* 각 섹션 간격 조절 */
+}
+
+.findPw {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* 각 섹션 간격 조절 */
+}

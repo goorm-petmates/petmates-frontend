@@ -1,0 +1,33 @@
+.joincontainer {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.joinLogo {
+    margin-top: 100px;
+    position: absolute;
+}
+
+.MemberInput {
+    margin-left: 250px;
+    position: absolute;
+    border: 1px solid #d9d9d9;
+    padding: 50px;
+}
+
+.MemberInputAline{
+    display: flex;
+    align-items: center; /* 자식 요소들을 세로 중앙으로 정렬 */
+    margin-bottom: 10px; /* 각 아이템 간격 조절 */
+}
+
+.MemberInputAline > button {
+    margin-left: 10px; /* 버튼과 입력 요소 사이의 간격 조절 */
+}
+
+.MemberJoinButtons{
+    display: flex;
+    align-items: center; /* 자식 요소들을 세로 중앙으로 정렬 */
+    margin-left: 100px;
+}
