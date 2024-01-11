@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-import '../../styles/StyleModal.css';
+import '../styles/StyleModal.css';
 
 function MemberFormModal({ title, text, value, path, onClose }) {
   const navigate = useNavigate();
