@@ -1,4 +1,4 @@
-import "../styles/StyleBasic.css";
+import "../../styles/StyleBasic.css";
 import React from 'react';
 
 function Basic() {

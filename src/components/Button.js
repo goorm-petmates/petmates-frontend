@@ -1,6 +1,6 @@
 
 import React from 'react';
-import '../styles/StyleButton.css';
+import '../../styles/StyleButton.css';
 
 function Button({ onClick, value }) {
   return (

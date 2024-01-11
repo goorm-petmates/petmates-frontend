@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/StyleMain.css";
+import "../../styles/StyleMain.css";
 import {useState} from "react";
 function Main() {
   const [showMore, setShowMore] = useState(false);
