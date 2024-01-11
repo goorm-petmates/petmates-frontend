@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import MemberFormInput from "/Users/jiyeong/WebstormProjects/pet/petmates_frontend/src/components/MemberFormInput";
-import MemberFormModal from "/Users/jiyeong/WebstormProjects/pet/petmates_frontend/src/components/MemberFormModal";
-import '../styles/StyleSignUp.css';
-import Button from "/Users/jiyeong/WebstormProjects/pet/petmates_frontend/src/components/Button";
+import MemberFormInput from '../../components/MemberFormInput';
+import MemberFormModal from '../../components/MemberFormModal';
+import Button from '../../components/Button';
+import '../../styles/StyleSignUp.css';
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {

@@ -1,0 +1,40 @@
+.mainMenuPetsitter-container{
+    border: 1px solid;
+    border-color: #4f2700;
+    border-radius: 30px;
+    height: 110px;
+    position: relative;
+    width: 364px;
+    margin-top: 600px;
+}
+.mainMenuPetsitter-text{
+    color: black;
+    font-size: 13px;
+    font-weight: 500;
+    height: 40px;
+    left: 50px;
+    letter-spacing: 0;
+    line-height: 19.5px;
+    position: absolute;
+    top: 51px;
+}
+.mainMenuPetsitter-title{
+    color: #4f2700;
+    font-size: 17px;
+    font-weight: 700;
+    height: 26px;
+    left: 44px;
+    letter-spacing: 0;
+    line-height: 25.5px;
+    position: absolute;
+    top: 20px;
+    white-space: nowrap;
+}
+.mainMenuPetsitter-button{
+    left: 281px;
+    position: absolute;
+    top: 71px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}

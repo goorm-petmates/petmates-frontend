@@ -1,10 +1,9 @@
 import React from "react";
+import MemberFormInput from '../../components/MemberFormInput';
+import MemberFormModal from '../../components/MemberFormModal';
+import Button from '../../components/Button';
 import {useState} from "react";
-import Button from "/Users/jiyeong/WebstormProjects/pet/petmates_frontend/src/components/Button";
-import MemberFormModal from "/Users/jiyeong/WebstormProjects/pet/petmates_frontend/src/components/MemberFormModal";
-import '../styles/StyleFindInfo.css';
-import MemberFormInput from "/Users/jiyeong/WebstormProjects/pet/petmates_frontend/src/components/MemberFormInput";
-
+import '../../styles/StyleFindInfo.css';
 function FindInfo() {
 
   const [showModal, setShowModal] = useState(false); // Modal을 보여주기 위한 상태 추가
