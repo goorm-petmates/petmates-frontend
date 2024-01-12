@@ -1,14 +1,3 @@
-.joincontainer {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-}
-
-.joinLogo {
-    margin-top: 100px;
-    position: absolute;
-}
-
 .MemberInput {
     margin-left: 250px;
     position: absolute;

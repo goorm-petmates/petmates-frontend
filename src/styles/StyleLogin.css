@@ -1,32 +1,51 @@
-.loginContainer {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #d9d9d9;
-    height: 500px;
-    margin: 50px;
-    justify-content: center;
-    align-items: center;
-}
-
-.MemberLoginInputs {
-    display: flex;
-    flex-direction: column; /* 수정: 세로로 정렬되도록 변경 */
-    margin-bottom: 10px; /* 추가: 각 input 사이의 간격 조절 */
-}
-
-.MemberLoginInputs input {
-    margin-bottom: 10px; /* 추가: 각 input 사이의 간격 조절 */
-}
-
-.MemberLoginButtons {
-    display: flex;
-    flex-direction: row; /* 추가: 가로로 정렬되도록 변경 */
-}
-
-.MemberLoginButtons > button {
-    border: none;
+.element {
     background-color: #ffffff;
-    color: black;
-    margin-right: 10px;
-    width: 140px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.login {
+    background-color: white;
+    border: 1px solid;
+    height: 832px;
+    position: relative;
+    width: 1280px;
+}
+
+.kakao-button {
+    height: 40px;
+    left: 540px;
+    object-fit: cover;
+    position: absolute;
+    top: 331px;
+    width: 200px;
+}
+.kakao-button > img {
+    width: 200px;
+    height: 40px;
+    cursor:pointer;
+    margin-left: -8px;
+    margin-top: -3px;
+}
+
+.login-info{
+    font-size: 13px;
+    font-weight: 400;
+    height: 16px;
+    left: 537px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 284px;
+}
+
+.login-logo{
+    left: 560px;
+    position: absolute;
+    top: 205px;
+    width: 160px;
+    height: 30px;
 }

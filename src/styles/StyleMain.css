@@ -13,17 +13,6 @@
     top: 165px;
     width: 1353px;
 }
-
-.asideleft {
-    height: 1000px;
-    left: 0;
-    position: absolute;
-    top: 165px;
-    width: 250px;
-    border-top: 1px solid #FF8000;
-    border-bottom: 3px solid #FF8000;
-}
-
 .sesection {
     height: 1000px;
     left: 180px;
@@ -32,158 +21,6 @@
     width: 922px;
     border-top: 1px solid #FF8000;
     border-bottom: 3px solid #FF8000;
-}
-
-.asideright {
-    height: 1000px;
-    left: 1102px;
-    position: absolute;
-    top: 165px;
-    width: 250px;
-    border-top: 1px solid #FF8000;
-    border-bottom: 3px solid #FF8000;
-}
-
-.logo {
-    height: 87px;
-    left: 383px;
-    object-fit: cover;
-    position: absolute;
-    top: 2px;
-    width: 516px;
-}
-
-.loginButton {
-    height: 87px;
-    left: 1102px;
-    object-fit: cover;
-    position: absolute;
-    margin-top: 17px;
-    width: 177px;
-
-    border: none;
-    background-color: white;
-    cursor: pointer;
-}
-
-.petsiter {
-    left: 294px;
-    object-fit: cover;
-    position: absolute;
-    top: 89px;
-}
-
-.community {
-    left: 552px;
-    object-fit: cover;
-    position: absolute;
-    top: 89px;
-}
-
-.mypage {
-    left: 810px;
-    object-fit: cover;
-    position: absolute;
-    top: 89px;
-}
-
-.customerService {
-    height: 28px;
-    left: 0;
-    object-fit: cover;
-    position: absolute;
-    top: 1185px;
-    width: 60px;
-    margin-left: 612px;
-
-    border: none;
-    background-color: white;
-    color: #000;
-    text-align: center;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 19.5px;
-}
-
-.copyright {
-    height: 28px;
-    left: 1px;
-    object-fit: cover;
-    position: absolute;
-    top: 1210px;
-
-    width: 60px;
-    margin-left: 612px;
-
-    border: none;
-    background-color: white;
-    color: #000;
-    text-align: center;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 19.5px;
-}
-.headerButtons{
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 76px;
-    width: 177px;
-    background-color: #ffffff;
-
-    color: #FF8000;
-    text-align: center;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 37.5px;
-}
-
-
-
-
-
-.element .headerButtons .moreOptions {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    background-color: white;
-    border: 1px solid #FF8000;
-}
-
-.element .headerButtons .moreOptions .option {
-    padding: 10px;
-    color: #000;
-    cursor: pointer;
-}
-
-.element .headerButtons .moreOptions .option:hover {
-    background-color: #FF8000;
-    color: white;
-}
-
-.element .headerButtons .moreOptions .option img {
-    margin-right: 5px;
-}
-
-.element .headerButtons.petsiter .moreOptions .option img {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
-.main-menu {
-    height: 407px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 1228px;
 }
 
 .menu-icons {
@@ -267,9 +104,9 @@
     top: 68px;
     width: 376px;
 }
-.MainMenuPetsiter1{
+.MainMenuPetsitter1{
     left: 246px;
 }
-.MainMenuPetsiter2{
+.MainMenuPetsitter2{
     left: 670px;
 }
