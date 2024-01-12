@@ -1,13 +1,10 @@
 import React from "react";
 import "../../styles/StyleMain.css";
-import {useState} from "react";
 import Header from "../../components/Header";
 import LeftAside from "../../components/LeftAside";
 import RightAside from "../../components/RightAside";
 import MainMenuPetsitter from "./MainMenuPetsitter";
 function Main() {
-  const [showMore, setShowMore] = useState(false);
-
   return (
     <div className="element">
       <Header />
