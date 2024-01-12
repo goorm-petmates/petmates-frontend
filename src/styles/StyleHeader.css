@@ -1,0 +1,41 @@
+.element {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.main-logo {
+    height: 87px;
+    left: 383px;
+    object-fit: cover;
+    position: absolute;
+    top: 2px;
+    width: 516px;
+}
+
+.login-Button {
+    display: flex;
+    height: 20px;
+    left: 1102px;
+    position: absolute;
+    margin-top: 17px;
+    width: 70px;
+
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+.signup-Button {
+    display: flex;
+    height: 20px;
+    left: 1180px;
+    position: absolute;
+    margin-top: 17px;
+    width: 70px;
+
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
