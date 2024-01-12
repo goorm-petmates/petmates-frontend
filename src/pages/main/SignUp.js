@@ -4,6 +4,9 @@ import MemberFormModal from '../../components/MemberFormModal';
 import Button from '../../components/Button';
 import '../../styles/StyleSignUp.css';
 import { useNavigate } from "react-router-dom";
+import Header from "../../components/Header";
+import LeftAside from "../../components/LeftAside";
+import RightAside from "../../components/RightAside";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -97,10 +100,10 @@ function SignUp() {
 
   return (
     <div>
-      <h1>회원가입페이지</h1>
-      <div className={"joinLogo"}>
-        <img src={""} alt={"Logo"} />
-      </div>
+      <Header/>
+      <LeftAside/>
+      <RightAside/>
+
       <div className={"MemberInput"}>
         <MemberFormInput
           type="text"

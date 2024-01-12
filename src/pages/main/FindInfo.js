@@ -4,6 +4,10 @@ import MemberFormModal from '../../components/MemberFormModal';
 import Button from '../../components/Button';
 import {useState} from "react";
 import '../../styles/StyleFindInfo.css';
+import Header from "../../components/Header";
+import LeftAside from "../../components/LeftAside";
+import RightAside from "../../components/RightAside";
+
 function FindInfo() {
 
   const [showModal, setShowModal] = useState(false); // Modal을 보여주기 위한 상태 추가
@@ -82,10 +86,9 @@ function FindInfo() {
 
   return (
     <div>
-      <h1>아이디/비밀번호찾기페이지</h1>
-      <div className={"findLogo"}>
-        <img src={""} alt={"Logo"}/>
-      </div>
+      <Header/>
+      <LeftAside/>
+      <RightAside/>
 
       <div className={"findcontainer"}>
         <div className={"findId"}>

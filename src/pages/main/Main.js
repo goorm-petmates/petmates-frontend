@@ -1,13 +1,19 @@
 import React from "react";
 import "../../styles/StyleMain.css";
 import {useState} from "react";
-
+import Header from "../../components/Header";
+import LeftAside from "../../components/LeftAside";
+import RightAside from "../../components/RightAside";
 import MainMenuPetsitter from "./MainMenuPetsitter";
 function Main() {
   const [showMore, setShowMore] = useState(false);
 
   return (
     <div className="element">
+      <Header />
+      <LeftAside />
+      <RightAside />
+
       <div className="menu">
         <div className="main-menu">
           <button className="menu-icons left-icon">&lt;</button>
@@ -21,26 +27,10 @@ function Main() {
         <img className="list-img" alt="Dog" src="/imgs/dog3.jpeg" />
       </div>
 
-      <div className="asideleft" />
-      <div className="sesection" />
-      <div className="asideright" />
-      <img className="logo" alt="Logo" src="/imgs/Logo.png" />
-      <div className="logintext">로그인</div>
-      <div className="headerButtons" onMouseEnter={() => setShowMore(true)}
-           onMouseLeave={() => setShowMore(false)}>
-        <button className="headerButtons petsiter">펫시터</button>
-        <button className="headerButtons community">커뮤니티</button>
-        <button className="headerButtons mypage">마이페이지</button>
+      <div className="sesection">
+        <MainMenuPetsitter className="MainMenuPetsitter1" />
+        <MainMenuPetsitter className="MainMenuPetsitter2" />
       </div>
-
-      {showMore && (
-        <div style={{marginTop: "165px", backgroundColor: "red", width: "1000px", height: "300px"}}></div>
-      )}
-      <MainMenuPetsitter className="MainMenuPetsiter1"/>
-      <MainMenuPetsitter className="MainMenuPetsiter2"/>
-
-      <button className="customerService">고객센터</button>
-      <div className="copyright">2024</div>
     </div>
   );
 }
