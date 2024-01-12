@@ -1,22 +1,16 @@
 import '../../styles/StyleLogin.css';
-import Button from "../../components/Button"
-import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import LeftAside from "../../components/LeftAside";
 import RightAside from "../../components/RightAside";
 
 function Login() {
-  const navigate = useNavigate();
-  const navigateToPage = (path) => {
-    navigate(path);
-  };
   return (
     <div>
       <Header />
       <LeftAside />
       <RightAside />
 
-      <img className="login-logo" alt="Logo" src="/img/Logo.png" />
+      <img className="login-logo" alt="Logo" src="/imgs/Logo.png" />
       <p className="login-info">
         서비스 이용을 위해 로그인 해주세요 :)
       </p>
