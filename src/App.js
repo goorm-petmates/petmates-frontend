@@ -14,6 +14,7 @@ import CommPost from './pages/community/CommPost.js';
 import CommSearchResults from './pages/community/CommSearchResults.js';
 import CommWritePost from './pages/community/CommWritePost.js';
 import NotFoundPage from './pages/NotFoundPage.js';
+import UserSupport from './pages/UserSupport.js';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path='/commsearchresults' element={<CommSearchResults />}></Route>
         <Route path='/commwritepost' element={<CommWritePost />}></Route>
         <Route path='/notfoundpage' element={<NotFoundPage />}></Route>
+        <Route path='/usersupport' element={<UserSupport />}></Route>
       </Routes>
     </BrowserRouter>
   );
