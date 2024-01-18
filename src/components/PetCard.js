@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/cPetCard.css";
+import "../styles/StylePetCard.css";
 
 function PetCard(props){
   const { petImgSrc, petInfo } = props;
