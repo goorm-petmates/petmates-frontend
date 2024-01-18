@@ -4,7 +4,7 @@ import Main from './pages/main/Main.js';
 import Login from './pages/main/Login.js';
 import SignUp from './pages/main/SignUp.js';
 import FindInfo from './pages/main/FindInfo.js';
-import MyPage from './pages/mypage/MyPage.js';
+import MyInfo from './pages/mypage/MyInfo.js';
 import Sitter from './pages/petsitter/Sitter.js';
 import SitterApp from './pages/petsitter/SitterApp.js';
 import SitterGuide from './pages/petsitter/SitterGuide.js';
@@ -23,7 +23,7 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
         <Route path='/findinfo' element={<FindInfo />}></Route>
-        <Route path='/mypage' element={<MyPage />}></Route>
+        <Route path='/myinfo' element={<MyInfo />}></Route>
         <Route path='/sitter' element={<Sitter />}></Route>
         <Route path='/sitterapp' element={<SitterApp />}></Route>
         <Route path='/sitterguide' element={<SitterGuide />}></Route>
