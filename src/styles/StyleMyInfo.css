@@ -1,0 +1,179 @@
+.mypage-bar{
+    background-color: #ff9900;
+    height: 50px;
+    left: 251px;
+    position: absolute;
+    top: 165px;
+    width: 1512px;
+}
+.mypage-bar-text{
+    font-size: 24px;
+    font-weight: 600;
+    height: 36px;
+    left: 271px;
+    letter-spacing: 0;
+    line-height: 36px;
+    position: absolute;
+    top: 171px;
+}
+.mypage-navunderLine{
+    height: 1px;
+    left: 280px;
+    object-fit: cover;
+    position: absolute;
+    top: 259px;
+    width: 1450px;
+    border-bottom: 1px solid #FF8000;
+}
+.mypage-myinfo-nav1{
+    font-size: 17px;
+    font-weight: 700;
+    height: 26px;
+    left: 279px;
+    line-height: 25.5px;
+    position: absolute;
+    text-decoration: underline;
+    top: 223px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+.mypage-myinfo-nav2{
+    font-size: 17px;
+    font-weight: 400;
+    height: 26px;
+    left: 366px;
+    line-height: 25.5px;
+    position: absolute;
+    top: 223px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+.myinfo-container{
+    display: block;
+    position: relative;
+}
+.myinfo{
+    border: 1px solid #d9d9d9;
+    border-radius: 40px;
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    left: 600px;
+    top: 260px;
+}
+.myinfo-picture{
+    /*background-image: url();*/
+    height: 126px;
+    left: 55px;
+    position: absolute;
+    top: 220px;
+    width: 130px;
+    border: 1px solid black;
+    border-radius: 100%;
+}
+.myinfo-inputs{
+    position: absolute;
+    border: 1px solid #ff9900;
+    width: 550px;
+    height: 500px;
+    left: 250px;
+}
+.myinfo-name{
+    font-size: 15px;
+    font-weight: 400;
+    height: 18px;
+    left:90px;
+    position: absolute;
+    top: 60px;
+}
+.myinfo-nameInput{
+    height: 30px;
+    left: 90px;
+    position: absolute;
+    top: 90px;
+    width: 310px;
+}
+.myinfo-email{
+    font-size: 15px;
+    font-weight: 400;
+    height: 18px;
+    left:90px;
+    position: absolute;
+    top: 140px;
+}
+.myinfo-emailInput{
+    height: 30px;
+    left: 90px;
+    position: absolute;
+    top: 170px;
+    width: 310px;
+}
+.myinfo-phone{
+    font-size: 15px;
+    font-weight: 400;
+    height: 18px;
+    left:90px;
+    position: absolute;
+    top: 220px;
+}
+.myinfo-phoneInput{
+    height: 30px;
+    left: 90px;
+    position: absolute;
+    top: 250px;
+    width: 310px;
+}
+.myinfo-address{
+    font-size: 15px;
+    font-weight: 400;
+    height: 18px;
+    left:90px;
+    position: absolute;
+    top: 300px;
+}
+.myinfo-addressInput{
+    height: 30px;
+    left: 90px;
+    position: absolute;
+    top: 400px;
+    width: 310px;
+}
+.myinfo-buttons{
+    position: absolute;
+    top: 120px;
+    left: 80px;
+}
+.myinfo-edit{
+    height: 30px;
+    left: 422px;
+    position: absolute;
+    top: 410px;
+    width: 145px;
+
+    font-size: 16px;
+    background-color: #FF8000;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.myinfo-quit{
+    border: 1px solid #FF8000;
+    height: 30px;
+    left: 250px;
+    position: absolute;
+    top: 410px;
+    width: 145px;
+
+    font-size: 16px;
+    color: #FF8000;
+    text-align: center;
+    line-height: 30px;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}

@@ -7,20 +7,23 @@
 }
 
 .login {
-    background-color: white;
-    border: 1px solid;
-    height: 832px;
-    position: relative;
-    width: 1280px;
+    border: 1px solid #d9d9d9;
+    height: 500px;
+    position: absolute;
+    width: 1380px;
+    top: 200px;
+    left: 315px;
+    border-radius: 15px;
 }
 
 .kakao-button {
     height: 40px;
-    left: 540px;
+    left: 580px;
     object-fit: cover;
     position: absolute;
-    top: 331px;
+    top: 300px;
     width: 200px;
+    border-radius: 10px;
 }
 .kakao-button > img {
     width: 200px;
@@ -34,18 +37,18 @@
     font-size: 13px;
     font-weight: 400;
     height: 16px;
-    left: 537px;
+    left: 580px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
     text-align: center;
-    top: 284px;
+    top: 220px;
 }
 
 .login-logo{
-    left: 560px;
+    left: 580px;
     position: absolute;
-    top: 205px;
+    top: 120px;
     width: 160px;
     height: 30px;
 }
