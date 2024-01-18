@@ -4,7 +4,6 @@ import Main from './pages/main/Main.js';
 import Login from './pages/main/Login.js';
 import SignUp from './pages/main/SignUp.js';
 import FindInfo from './pages/main/FindInfo.js';
-import MyPage from './pages/mypage/MyPage.js';
 import Sitter from './pages/petsitter/Sitter.js';
 import SitterApp from './pages/petsitter/SitterApp.js';
 import SitterGuide from './pages/petsitter/SitterGuide.js';
@@ -14,7 +13,11 @@ import CommPost from './pages/community/CommPost.js';
 import CommSearchResults from './pages/community/CommSearchResults.js';
 import CommWritePost from './pages/community/CommWritePost.js';
 import NotFoundPage from './pages/NotFoundPage.js';
+import MyInfo from './pages/mypage/MyInfo.js';
+import PetInfo from "./pages/mypage/PetInfo";
+import PetInfoAdd from "./pages/mypage/PetInfoAdd";
 import UserSupport from './pages/UserSupport.js';
+
 
 function App() {
   return (
@@ -24,7 +27,7 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
         <Route path='/findinfo' element={<FindInfo />}></Route>
-        <Route path='/mypage' element={<MyPage />}></Route>
+        <Route path='/myinfo' element={<MyInfo />}></Route>
         <Route path='/sitter' element={<Sitter />}></Route>
         <Route path='/sitterapp' element={<SitterApp />}></Route>
         <Route path='/sitterguide' element={<SitterGuide />}></Route>
@@ -34,7 +37,10 @@ function App() {
         <Route path='/commsearchresults' element={<CommSearchResults />}></Route>
         <Route path='/commwritepost' element={<CommWritePost />}></Route>
         <Route path='/notfoundpage' element={<NotFoundPage />}></Route>
+        <Route path='/petInfo' element={<PetInfo />}></Route>
+        <Route path="/petinfoadd" element={<PetInfoAdd/>} />
         <Route path='/usersupport' element={<UserSupport />}></Route>
+
       </Routes>
     </BrowserRouter>
   );

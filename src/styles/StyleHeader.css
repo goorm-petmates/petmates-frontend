@@ -5,10 +5,16 @@
     justify-content: center;
     width: 100%;
 }
-
+.header{
+    left: 380px;
+    position: absolute;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+}
 .main-logo {
     height: 87px;
-    left: 383px;
+    left: 333px;
     object-fit: cover;
     position: absolute;
     top: 2px;
@@ -18,7 +24,7 @@
 .login-Button {
     display: flex;
     height: 20px;
-    left: 1102px;
+    left: 1702px;
     position: absolute;
     margin-top: 17px;
     width: 70px;
@@ -30,7 +36,7 @@
 .signup-Button {
     display: flex;
     height: 20px;
-    left: 1180px;
+    left: 1780px;
     position: absolute;
     margin-top: 17px;
     width: 70px;
