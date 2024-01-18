@@ -48,7 +48,7 @@ const PetSitter = () => {
       <div className='petsitter-main'>
         <div className='petsitter-right-bar'>
           <button type='button' className='apply-btn'>
-            <Link to='/petsitterapp'>
+            <Link to='/petsitterfoam'>
               <FaRegPenToSquare />
               펫시터 지원하기
             </Link>
