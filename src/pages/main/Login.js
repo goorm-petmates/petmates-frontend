@@ -17,7 +17,7 @@ function Login() {
           서비스 이용을 위해 로그인 해주세요 :)
         </p>
         <button className="kakao-button">
-          <img src="/imgs/Logo.png" alt="kakao icon" />
+          <img src="/imgs/kakaoLogin.png" alt="kakao icon" />
         </button>
       </div>
     </div>
