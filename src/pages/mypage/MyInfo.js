@@ -4,7 +4,7 @@ import LeftAside from '../../components/LeftAside';
 import RightAside from '../../components/RightAside';
 import Nav from '../../components/Nav';
 import {Link} from "react-router-dom";
-import "../../styles/MyInfo.css";
+import "../../styles/StyleMyInfo.css";
 const MyInfo = () => {
   return (
     <div>

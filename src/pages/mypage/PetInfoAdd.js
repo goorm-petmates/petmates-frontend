@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/PetInfoAdd.css";
+import "../../styles/StylePetInfoAdd.css";
 import Header from "../../components/Header";
 import Nav from "../../components/Nav";
 import LeftAside from "../../components/LeftAside";

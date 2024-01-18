@@ -5,7 +5,7 @@ import LeftAside from "../../components/LeftAside";
 import RightAside from "../../components/RightAside";
 import {Link} from "react-router-dom";
 import NoContents from "../../components/NoContents";
-import "../../styles/PetInfo.css";
+import "../../styles/StylePetInfo.css";
 import PetCard from "../../components/PetCard";
 
 function PetInfo() {

@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/NoContents.css";
+import "../styles/StyleNoContents.css";
 function NoContents(props) {
   const {text} = props;
 
