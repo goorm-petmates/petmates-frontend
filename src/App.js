@@ -14,7 +14,11 @@ import CommunityPost from './pages/community/CommunityPost.js';
 import CommunityResult from './pages/community/CommunityResult.js';
 import CommunityWrite from './pages/community/CommunityWrite.js';
 import NotFoundPage from './pages/NotFoundPage.js';
+import MyInfo from './pages/mypage/MyInfo.js';
+import PetInfo from "./pages/mypage/PetInfo";
+import PetInfoAdd from "./pages/mypage/PetInfoAdd";
 import UserSupport from './pages/UserSupport.js';
+
 
 function App() {
   return (
@@ -24,7 +28,6 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
         <Route path='/findinfo' element={<FindInfo />}></Route>
-        <Route path='/mypage' element={<MyPage />}></Route>
         <Route path='/petsitter' element={<PetSitter />}></Route>
         <Route path='/petsitterfoam' element={<PetSitterFoam />}></Route>
         <Route path='/petsitterguide' element={<PetSitterGuide />}></Route>
@@ -33,8 +36,12 @@ function App() {
         <Route path='/communitypost' element={<CommunityPost />}></Route>
         <Route path='/communityresult' element={<CommunityResult />}></Route>
         <Route path='/communitywrite' element={<CommunityWrite />}></Route>
+        <Route path='/myinfo' element={<MyInfo />}></Route>  
         <Route path='/notfoundpage' element={<NotFoundPage />}></Route>
+        <Route path='/petInfo' element={<PetInfo />}></Route>
+        <Route path="/petinfoadd" element={<PetInfoAdd/>} />
         <Route path='/usersupport' element={<UserSupport />}></Route>
+
       </Routes>
     </BrowserRouter>
   );
