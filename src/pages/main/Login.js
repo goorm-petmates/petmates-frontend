@@ -5,7 +5,7 @@ import RightAside from "../../components/RightAside";
 import Nav from "../../components/Nav";
 function Login() {
   return (
-    <div>
+    <div className="element">
       <Header />
       <Nav/>
       <LeftAside />
