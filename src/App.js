@@ -4,7 +4,6 @@ import Main from './pages/main/Main.js';
 import Login from './pages/main/Login.js';
 import SignUp from './pages/main/SignUp.js';
 import FindInfo from './pages/main/FindInfo.js';
-import MyInfo from './pages/mypage/MyInfo.js';
 import Sitter from './pages/petsitter/Sitter.js';
 import SitterApp from './pages/petsitter/SitterApp.js';
 import SitterGuide from './pages/petsitter/SitterGuide.js';
@@ -14,6 +13,9 @@ import CommPost from './pages/community/CommPost.js';
 import CommSearchResults from './pages/community/CommSearchResults.js';
 import CommWritePost from './pages/community/CommWritePost.js';
 import NotFoundPage from './pages/NotFoundPage.js';
+import MyInfo from './pages/mypage/MyInfo.js';
+import PetInfo from "./pages/mypage/PetInfo";
+import PetInfoAdd from "./pages/mypage/PetInfoAdd";
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
         <Route path='/commsearchresults' element={<CommSearchResults />}></Route>
         <Route path='/commwritepost' element={<CommWritePost />}></Route>
         <Route path='/notfoundpage' element={<NotFoundPage />}></Route>
+        <Route path='/petInfo' element={<PetInfo />}></Route>
+        <Route path="/petinfoadd" element={<PetInfoAdd/>} />
       </Routes>
     </BrowserRouter>
   );
