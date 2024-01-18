@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/StyleMainMenuPetsitter.css";
+import "../styles/StyleMainMenuPetsitter.css";
 
 export const MainMenuPetsitter = () => {
   return (
