@@ -74,5 +74,7 @@ const Nav = () => {
         </li>
       </ul>
       <div className='nav-bar' id="header"></div>
-
+    </div>
+  );
+};
 export default Nav;
