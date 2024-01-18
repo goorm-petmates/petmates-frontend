@@ -1,7 +1,8 @@
 import React from "react";
 import "../styles/StyleMainMenuPetsitter.css";
-
-export const MainMenuPetsitter = () => {
+import { Link } from 'react-router-dom';
+export const MainMenuPetsitter = (props) => {
+  const {text} = props;
   return (
     <div className="main-menu-petsitter-container">
       <div className="main-petsitter">
