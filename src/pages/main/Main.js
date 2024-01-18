@@ -3,7 +3,7 @@ import "../../styles/StyleMain.css";
 import Header from "../../components/Header";
 import LeftAside from "../../components/LeftAside";
 import RightAside from "../../components/RightAside";
-import { MainMenuPetsitter } from "./MainMenuPetsitter";
+import { MainMenuPetsitter } from "../../components/MainMenuPetsitter";
 import Nav from "../../components/Nav";
 function Main() {
   return (
