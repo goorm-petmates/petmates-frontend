@@ -14,7 +14,7 @@
     width: 2015px;
     border-bottom: 1px solid #ff8000;
 }
-.sesection {
+.section {
     height: 1000px;
     left: 180px;
     position: absolute;
@@ -56,7 +56,7 @@
     font-size: 25px;
     font-weight: 700;
     height: 38px;
-    left: 264px;
+    left: 200px;
     letter-spacing: 0;
     line-height: 37.5px;
     position: absolute;

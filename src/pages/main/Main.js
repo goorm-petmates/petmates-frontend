@@ -21,14 +21,14 @@ function Main() {
             <div className="menu-title">펫시터</div>
             <div className="menu-text">css check</div>
             <div className="menu-list">
-              <div className="list">1/3</div>
+              <div className="list">1 / 3</div>
             </div>
+            <img className="list-img" alt="Dog" src="/imgs/dog3.jpeg" />
           </div>
-          <img className="list-img" alt="Dog" src="/imgs/dog3.jpeg" />
         </div>
       </div>
 
-      <div className="sesection">
+      <div className="section">
         <div className="main-petsitter-components">
           <MainMenuPetsitter text="PETMATES로 등록하시고 마음을 나누세요!" />
           <MainMenuPetsitter text="펫시터 경력 40년차!" />
