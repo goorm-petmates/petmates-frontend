@@ -26,7 +26,7 @@ const Nav = () => {
           <div className="snb">
             <ul className="nav-list-petsitter">
               <li>
-                <img className="nav-logo" src="/img/Logo.png" alt="Logo"/>
+                <img className="nav-logo" src="/imgs/Logo.png" alt="Logo"/>
               </li>
             </ul>
           </div>

@@ -7,7 +7,7 @@ function Header() {
     <div className="element">
       <button className="header">
         <Link to='/'>
-          <img className="main-logo" alt="Logo" src="/img/Logo.png" />
+          <img className="main-logo" alt="Logo" src="/imgs/Logo.png" />
         </Link>
       </button>
 
