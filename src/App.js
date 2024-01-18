@@ -16,6 +16,8 @@ import NotFoundPage from './pages/NotFoundPage.js';
 import MyInfo from './pages/mypage/MyInfo.js';
 import PetInfo from "./pages/mypage/PetInfo";
 import PetInfoAdd from "./pages/mypage/PetInfoAdd";
+import UserSupport from './pages/UserSupport.js';
+
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
         <Route path='/notfoundpage' element={<NotFoundPage />}></Route>
         <Route path='/petInfo' element={<PetInfo />}></Route>
         <Route path="/petinfoadd" element={<PetInfoAdd/>} />
+        <Route path='/usersupport' element={<UserSupport />}></Route>
+
       </Routes>
     </BrowserRouter>
   );

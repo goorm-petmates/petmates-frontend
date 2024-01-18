@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/StyleNav.css';
+
 import { useState } from 'react';
 
 const Nav = () => {
@@ -73,8 +74,5 @@ const Nav = () => {
         </li>
       </ul>
       <div className='nav-bar' id="header"></div>
-    </div>
-  );
-};
 
 export default Nav;
