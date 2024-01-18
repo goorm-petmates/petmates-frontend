@@ -3,17 +3,21 @@ import "../../styles/StyleMainMenuPetsitter.css";
 
 export const MainMenuPetsitter = () => {
   return (
-    <div className="mainMenuPetsitter-container">
-      <p className="mainMenuPetsitter-text">
-        PETMATES로 등록하시고 <br/>
-        마음을 나누세요!
-      </p>
-      <div className="mainMenuPetsitter-title">
-        펫시터 지원하기
+    <div className="main-menu-petsitter-container">
+      <div className="main-petsitter">
+        <p className="main-petsitter-text">
+          {text}
+        </p>
+        <div className="main-petsitter-title">
+          펫시터 지원하기
+        </div>
+        <button className="main-petsitter-button">
+          <Link to='/petsitter'
+                style={{ textDecoration: 'none', color: '#ffffff' }}>
+            지원하기
+          </Link>
+        </button>
       </div>
-      <button className="mainMenuPetsitter-button">
-        더보기
-      </button>
     </div>
   );
 };
