@@ -4,14 +4,15 @@ import Main from './pages/main/Main.js';
 import Login from './pages/main/Login.js';
 import SignUp from './pages/main/SignUp.js';
 import FindInfo from './pages/main/FindInfo.js';
-import Sitter from './pages/petsitter/Sitter.js';
-import SitterApp from './pages/petsitter/SitterApp.js';
-import SitterGuide from './pages/petsitter/SitterGuide.js';
-import SitterInfo from './pages/petsitter/SitterInfo.js';
-import Comm from './pages/community/Comm.js';
-import CommPost from './pages/community/CommPost.js';
-import CommSearchResults from './pages/community/CommSearchResults.js';
-import CommWritePost from './pages/community/CommWritePost.js';
+import MyPage from './pages/mypage/MyPage.js';
+import PetSitter from './pages/petsitter/PetSitter.js';
+import PetSitterFoam from './pages/petsitter/PetSitterFoam.js';
+import PetSitterGuide from './pages/petsitter/PetSitterGuide.js';
+import PetSitterInfo from './pages/petsitter/PetSitterInfo.js';
+import Community from './pages/community/Community.js';
+import CommunityPost from './pages/community/CommunityPost.js';
+import CommunityResult from './pages/community/CommunityResult.js';
+import CommunityWrite from './pages/community/CommunityWrite.js';
 import NotFoundPage from './pages/NotFoundPage.js';
 import MyInfo from './pages/mypage/MyInfo.js';
 import PetInfo from "./pages/mypage/PetInfo";
@@ -27,15 +28,15 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
         <Route path='/findinfo' element={<FindInfo />}></Route>
-        <Route path='/myinfo' element={<MyInfo />}></Route>
-        <Route path='/sitter' element={<Sitter />}></Route>
-        <Route path='/sitterapp' element={<SitterApp />}></Route>
-        <Route path='/sitterguide' element={<SitterGuide />}></Route>
-        <Route path='/sitterinfo' element={<SitterInfo />}></Route>
-        <Route path='/comm' element={<Comm />}></Route>
-        <Route path='/commpost' element={<CommPost />}></Route>
-        <Route path='/commsearchresults' element={<CommSearchResults />}></Route>
-        <Route path='/commwritepost' element={<CommWritePost />}></Route>
+        <Route path='/petsitter' element={<PetSitter />}></Route>
+        <Route path='/petsitterfoam' element={<PetSitterFoam />}></Route>
+        <Route path='/petsitterguide' element={<PetSitterGuide />}></Route>
+        <Route path='/petsitterinfo' element={<PetSitterInfo />}></Route>
+        <Route path='/community' element={<Community />}></Route>
+        <Route path='/communitypost' element={<CommunityPost />}></Route>
+        <Route path='/communityresult' element={<CommunityResult />}></Route>
+        <Route path='/communitywrite' element={<CommunityWrite />}></Route>
+        <Route path='/myinfo' element={<MyInfo />}></Route>  
         <Route path='/notfoundpage' element={<NotFoundPage />}></Route>
         <Route path='/petInfo' element={<PetInfo />}></Route>
         <Route path="/petinfoadd" element={<PetInfoAdd/>} />
