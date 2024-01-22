@@ -1,15 +1,3 @@
-.petsitter {
-  margin-top: 180px;
-}
-
-.petsitter-main {
-  width: 919px;
-  height: 668px;
-  margin-left: 179px;
-  /* margin-right: 179px; */
-  border: 1px solid black;
-}
-
 .petsitter-right-bar {
   display: flex;
   flex-direction: row;
@@ -25,43 +13,52 @@
   text-decoration: none;
 }
 
+.apply-btn {
+  margin-right: 15px;
+}
+
 .apply-btn,
 .guide-btn {
   border: 1px solid #ff8000;
   color: black;
   border-radius: 10px;
   background-color: white;
-  margin-right: 10px;
   font-size: 15px;
   font-weight: bold;
-  /* transition-duration: 0.4s; */
+  height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+.apply-btn:hover,
+.guide-btn:hover {
+  background-color: #ddd;
 }
 
 svg {
   margin-right: 3px;
+  vertical-align: middle;
 }
 
 /************ petsitter search form ************/
-
 #petsitter-search {
   display: flex;
   flex-direction: column;
   border: 1px solid #ff8000;
   align-items: center;
   justify-content: center;
-  padding: 15px;
-  /* margin-left: 200px; */
+  padding: 5px;
+  margin: 0 auto;
   margin-top: 3px;
-  width: 813px;
+  margin-bottom: 15px;
+  width: 780px;
   height: 140px;
-  position: absolute;
-  /* top: 220px; */
-  left: 230px;
   border-radius: 20px;
 }
 
 .search-header {
-  width: 765px;
+  width: 700px;
   top: 264px;
   left: 257px;
   border-bottom: 1px solid #d9d9d9;
@@ -88,7 +85,6 @@ svg {
   line-height: 23px;
   letter-spacing: 0em;
   text-align: center;
-  /* margin-right: 100px; */
 }
 
 .service-selection {
@@ -96,15 +92,14 @@ svg {
 }
 
 .service-options {
-  width: 170px;
+  width: 108px;
   height: 38px;
   border: 1px solid #ffa500;
   border-radius: 20px;
   margin-left: 5px;
   margin-right: 100px;
   padding: 10px 15px;
-  /* appearance: none; 기본 스타일 제거 */
-  /* position: relative; */
+  /* appearance: none; 기본 스타일 제거*/
   background-color: white;
   cursor: pointer;
 }
@@ -112,12 +107,11 @@ svg {
 .location-options {
   width: 108px;
   height: 38px;
-  border: 1px solid #ffa500; /* 오렌지 테두리 */
+  border: 1px solid #ffa500;
   border-radius: 20px;
   padding: 10px 15px;
   margin-left: 5px;
   /* appearance: none; 기본 스타일 제거 */
-  /* position: relative; */
   background-color: white;
   cursor: pointer;
 }
@@ -135,32 +129,49 @@ svg {
   line-height: 18px;
   letter-spacing: 0em;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
   cursor: pointer;
 }
 
 /************** petsitter user list **********/
-.list {
-  border: 1px solid;
-  border-color: #000000;
+.petsitter-list {
+  display: flex;
+  margin: 0 auto;
+  align-items: center; /* 자식 요소들을 세로 중앙에 정렬 */
+  flex-direction: row; /*자식 요소들을 가로로 정렬*/
+  border: 1px solid black;
   border-radius: 15px;
-  height: 81px;
-  position: absolute;
-  top: 270px;
-  left: 230px;
+  width: 770px;
   height: 100px;
-  width: 843px;
+  padding: 10px;
+}
+
+/* link사용시 레이아웃 변하지않도록 유지 */
+.petsitter-list a {
+  display: flex;
+  align-items: center; /* 자식 요소들을 세로 중앙에 정렬 */
+  flex-direction: row; /* 자식 요소들을 가로로 정렬 */
+  justify-content: space-between;
+  width: 770px;
+  height: 100px;
 }
 
 .profile-pic {
-  height: 65px;
-  left: 18px;
-  object-fit: cover;
-  position: absolute;
-  top: 7px;
   width: 115px;
-  height: 85px;
+  height: 90px;
+  margin-right: 15px;
+  object-fit: cover;
   border-radius: 10px;
+}
+
+.petsitter-list-text {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+}
+
+.petsitter-list-text span {
+  margin: 0;
 }
 
 .nickname {
@@ -170,11 +181,9 @@ svg {
   left: 150px;
   letter-spacing: 0;
   line-height: 24px;
-  position: absolute;
-  top: 10px;
   margin-top: 0;
+  padding-bottom: 2px;
   white-space: nowrap;
-  /* width: 64px; */
 }
 
 .title {
@@ -186,14 +195,22 @@ svg {
   left: 75px;
   letter-spacing: 0;
   line-height: 21px;
-  position: absolute;
-  top: 35px;
   margin-top: 0;
+  padding-bottom: 10px;
   white-space: nowrap;
   width: 438px;
 }
 
 .rating {
+  height: 11px;
+  left: 180px;
+  object-fit: cover;
+  padding-bottom: 5px;
+  margin-top: 0;
+  width: 67px;
+}
+
+.review-count {
   color: #000000;
   font-family: 'Inter-Medium', Helvetica;
   font-size: 12px;
@@ -202,20 +219,8 @@ svg {
   left: 142px;
   letter-spacing: 0;
   line-height: 18px;
-  position: absolute;
-  top: 72px;
   margin-top: 0;
   width: 53px;
-}
-
-.review-count {
-  height: 11px;
-  left: 180px;
-  object-fit: cover;
-  position: absolute;
-  top: 72px;
-  margin-top: 0;
-  width: 67px;
 }
 
 .address {
@@ -227,11 +232,19 @@ svg {
   left: 80px;
   letter-spacing: 0;
   line-height: 21px;
-  position: absolute;
-  top: 70px;
   margin-top: 0;
+  padding-left: 30px;
   white-space: nowrap;
   width: 438px;
+}
+
+.petsitter-price-container {
+  display: flex;
+  flex-direction: column;
+  /* margin-left: auto; */
+  margin-bottom: auto;
+  padding-top: 5px;
+  padding-right: 5px;
 }
 
 .standard-price {
@@ -240,11 +253,7 @@ svg {
   font-size: 12px;
   font-weight: 400;
   height: 15px;
-  left: 710px;
   letter-spacing: 0;
-  line-height: 15px;
-  position: absolute;
-  top: 30px;
   margin-top: 0px;
   text-align: right;
   width: 100px;
@@ -256,28 +265,20 @@ svg {
   font-size: 12px;
   font-weight: 400;
   height: 15px;
-  left: 710px;
   letter-spacing: 0;
-  line-height: 15px;
-  position: absolute;
   text-align: right;
-  top: 15px;
   margin-top: 0;
   width: 100px;
 }
 
 .petsitter-list-nums {
   font-family: Inter;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 500;
-  line-height: 18px;
-  letter-spacing: -0.022em;
-  text-align: center;
-  position: absolute;
-  top: 580px;
-  left: 230px;
-  /* height: 100px; */
-  width: 843px;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
   color: #ff8000;
+  padding: 10px;
   text-decoration: none;
 }
