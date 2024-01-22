@@ -10,8 +10,8 @@ import RightAside from "../../components/RightAside";
 
 function SignUp() {
   const navigate = useNavigate();
-  const navigateToPage = (path) => {
-    navigate(path);
+  const navigateToPage = () => {
+    navigate('/login');
   };
   const [showModal, setShowModal] = useState(false); // Modal을 보여주기 위한 상태 추가
   const openModal = () => {
@@ -20,83 +20,62 @@ function SignUp() {
   const closeModal = () => {
     setShowModal(!showModal);
   };
+  const [userNickName, setUserNickName] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+  const [userAdress, setUserAdress] = useState("");
 
-  // setInputValue와 validateId 함수를 정의해줘야 합니다.
-  const setInputValue = (name, value) => {
-    setInputValue((prevInput) => ({
-      ...prevInput,
-      [name]: value
-    }));
-  };
-  const onChange = (e) => {
-    if (e && e.target) {
-      const { name, value } = e.target;
-      setInputValue(name, value);
+  const [errorNickName, setErrorNickName] = useState("");
+  const [errorPhone, setErrorPhone] = useState("");
+  // 스페이스바 입력 무시
+  const handleKeyDown = (e) => {
+    if (e.key === " ") {
+      e.preventDefault();
     }
-    handlePasswordChange(e);
   };
-  const [passwordValue, setPasswordValue] = useState("");
+  const handleNickName = (e) => {
+    setUserNickName(e.target.value);
 
-  const handlePasswordChange = (e) => {
-    if (e && e.target && e.target.value) {
-      setPasswordValue(e.target.value);
+    // 공백 여부 체크
+    if (e.data === " " || e.data === 0) {
+      setErrorNickName("공백은 입력할 수 없습니다.");
     }
-  };
 
-  const getPasswordValue = () => {
-    return passwordValue;
-  };
+    if (userNickName.length < 2 || userNickName.length > 10) {
+      return setErrorNickName("2~10자 이내로 입력하세요 ");
+    } if (!/^[가-힣a-zA-Z]+$/.test(userNickName)) {
+      return setErrorNickName("한글 또는 영문만 사용 가능합니다");
+    } else {
+      return setErrorNickName("사용 가능한 닉네임입니다");
+    }
+  }
 
-  const validateField = (name, inputValue) => {
-    if (name === "id") {
-      if (!inputValue.includes("@" && ".com")) {
-        return "이메일 형식으로 입혁해 주세요";
+  const handlePhone = (e) => {
+    setUserPhone(e.target.value);
+
+    // 공백 여부 체크
+    if (e.data === " " || e.data === 0) {
+      alert("공백은 입력할 수 없습니다.");
+    }
+
+    if (/^\d+$/.test(userPhone)) {
+      if (userPhone.length === 11) {
+        return setErrorPhone("사용 가능한 휴대전화 번호입니다");
       } else {
-        return "사용 가능한 아이디입니다";
+        return setErrorPhone("휴대전화 11자를 입력하세요");
       }
+    } else {
+      return setErrorPhone("숫자만 입력해주세요");
     }
-    if (name === "nickName") {
-      if (inputValue.length < 2 || inputValue.length > 10) {
-        return "2~10자 이내로 입력하세요 ";
-      } if (!/^[가-힣a-zA-Z]+$/.test(inputValue)) {
-        return "한글 또는 영문만 사용 가능합니다";
-      } else {
-        return "사용 가능한 닉네임입니다";
-      }
+  }
+  const handleAdress = (e) => {
+    setUserAdress(e.target.value);
+
+    // 공백 여부 체크
+    if (e.data === " " || e.data === 0) {
+      alert("공백은 입력할 수 없습니다.");
     }
-    if (name === "pw"){
-      if (inputValue.length < 8 || inputValue.length > 16) {
-        return "2~10자 이내로 입력하세요 ";
-      } if (!/[a-zA-Z]/.test(inputValue) || !/[~!@#$%^&*()_+|<>?:{}]/.test(inputValue) || !/[0-9]/.test(inputValue)) {
-        return "영문, 특수문자, 숫자를 모두 포함해야 합니다";
-      } else if (!/[~!@#$%^&*()_+|<>?:{}]/.test(inputValue)) {
-        return "특수문자가 적어도 1개 이상 포함되어야 합니다";
-      } else if (!/[0-9]/.test(inputValue)) {
-        return "숫자가 적어도 1개 이상 포함되어야 합니다";
-      } else {
-        return "사용 가능한 비밀번호입니다";
-      }
-    }
-    if (name === "pwRe"){
-      const passwordValue = getPasswordValue();
-      if (inputValue !== passwordValue) {
-        return "비밀번호가 일치하지 않습니다";
-      }  else {
-        return "비밀번호가 일치합니다";
-      }
-    }
-    if(name === "phone"){
-      if (/^\d+$/.test(inputValue)) {
-        if (inputValue.length === 11) {
-          return "사용 가능한 휴대전화 번호입니다";
-        } else {
-          return "휴대전화 11자를 입력하세요";
-        }
-      } else {
-        return "숫자만 입력해주세요";
-      }
-    }
-  };
+
+  }
 
   return (
     <div>
@@ -104,82 +83,70 @@ function SignUp() {
       <LeftAside/>
       <RightAside/>
 
-      <div className={"MemberInput"}>
-        <MemberFormInput
-          type="text"
-          imageSrc="/path/to/your/image.jpg"
-          label="닉네임(*)"
-          placeholder="2~10자의 한글, 영문, 숫자 조합"
-          name="nickName"
-          onInput={onChange}
-          validate={(inputValue) => validateField("nickName", inputValue)}
-        />
-
-        <div className={"MemberInputAline"}>
-          <MemberFormInput type="text"
-                           imageSrc="/path/to/your/image.jpg"
-                           label="이메일(*)"
-                           placeholder="ex) example@gmail.com"
-                           name="id"
-                           onInput={onChange}
-                           validate={(inputValue) => validateField("id", inputValue)}
-          />
-          <button>중복 확인</button>
-        </div>
-
-        {/* 비밀번호 type=password로 변경 */}
-        <div className={"MemberInputAline"}>
-          <MemberFormInput type="text"
-                           imageSrc="/path/to/your/image.jpg"
-                           label="비밀번호(*)"
-                           placeholder="8~16자리의 영문, 숫자, 특수문자 필수 포함"
-                           name="pw"
-                           onInput={onChange}
-                           validate={(inputValue) => validateField("pw", inputValue)}
-          />
-          <MemberFormInput type="text"
-                           imageSrc="/path/to/your/image.jpg"
-                           label="비밀번호 확인(*)"
-                           placeholder="비밀번호 재입력"
-                           name="pwRe"
-                           onInput={onChange}
-                           validate={(inputValue) => validateField("pwRe", inputValue)}
-          />
-        </div>
-
-        <div>
-          <MemberFormInput type="text"
-                           imageSrc="/path/to/your/image.jpg"
-                           label="휴대폰번호(*)"
-                           placeholder="ex) 0101234567"
-                           name="phone"
-                           onInput={onChange}
-                           validate={(inputValue) => validateField("phone", inputValue)}
-          />
+      <div className="MemberInput">
+        <div className="Signup-title"> 회 원 가 입</div>
+        <div className="Signup-text">
+          <span className="span" style={{ color: "red" }}>(*)</span>
+          표시는 필수입력 항목입니다.
         </div>
 
         <div className={"MemberInputAline"}>
-          <MemberFormInput type="text"
-                           imageSrc="/path/to/your/image.jpg"
-                           label="주소(*)"
-                           placeholder="api 사용 예정"
-                           name="adress"
-                           onInput={onChange}
-                           validate={(inputValue) => validateField("adress", inputValue)}
-          />
+          <label>닉네임(*)</label>
+          <input id="id" type="text"
+                 className="signup-member-input"
+                 placeholder="2~10자의 한글, 영문, 숫자 조합"
+                 value={userNickName}
+                 onInput={handleNickName}
+                 onKeyDown={handleKeyDown} />
+          <button onClick={openModal}>중복 확인</button>
+          {errorNickName && (
+            <div style={{ color: 'red', marginTop: "22px", fontSize: "10px" }}>
+              {errorNickName}</div>
+          )}
         </div>
 
-        <div className={"MemberJoinButtons"}>
-          <Button onClick={openModal} value="확인" />
-          <Button onClick={() => navigateToPage('/')} value="취소" />
+        <div className="input-email">
+          <label>이메일(*)</label>
+          <input id="email" type="text"
+                 className="signup-member-input"
+                 placeholder="2~10자의 한글, 영문, 숫자 조합"
+                 value="qwer@qwer.com"
+                 onInput={handleNickName}
+                 onKeyDown={handleKeyDown} />
         </div>
+
+        <div className="input-phone">
+          <label>휴대폰번호(*)</label>
+          <input id="phone" type="text"
+                 className="signup-member-input"
+                 placeholder="ex) 0101234567"
+                 value={userPhone}
+                 onInput={handlePhone}
+                 onKeyDown={handleKeyDown} />
+          {errorPhone && (
+            <div style={{ color: 'red', marginTop: "22px", fontSize: "10px" }}>
+              {errorPhone}</div>
+          )}
+        </div>
+
+        <div className="input-adress">
+          <label>주소(*)</label>
+          <input id="adress" type="text"
+                 className="signup-member-input"
+                 placeholder="api 사용 예정"
+                 value={userAdress}
+                 onInput={handleAdress}
+                 onKeyDown={handleKeyDown} />
+        </div>
+
+        <button className="MemberJoinButton" onClick={navigateToPage}>
+          가입하기
+        </button>
 
         {showModal && (
           <MemberFormModal
-            title="회원가입"
-            text="회원가입 성공! 로그인 페이지로 이동"
-            value="로그인 하러 가기"
-            path="/login"
+            title="중복확인"
+            text="이미 등록된 닉네임 입니다. 새로운 닉네임으로 다시 가입해주세요 :)"
             onClose={closeModal}
           />
         )}
