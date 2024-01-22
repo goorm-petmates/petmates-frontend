@@ -25,7 +25,7 @@ function Main() {
               <div className="menu-text">css check</div>
               <div className="menu-list">1 / 3</div>
             </div>
-            <img className="menu-img" alt="Dog" src="/img/dog3.jpeg"/>
+            <img className="menu-img" alt="Dog" src="/imgs/dog3.jpeg"/>
           </div>
         </div>
 
