@@ -92,6 +92,9 @@
     margin-left: 90px;
     margin-top: 263px;
 }
+.input-adress > input {
+    width: 300px;
+}
 .MemberJoinButton{
     position: fixed;
     align-items: center; /* 자식 요소들을 세로 중앙으로 정렬 */

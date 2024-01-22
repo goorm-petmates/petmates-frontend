@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 import LeftAside from "../../components/LeftAside";
 import RightAside from "../../components/RightAside";
 import axios from "axios";
+import Post from '../../components/Post';
 
 function SignUp() {
   const navigate = useNavigate();
@@ -21,7 +22,6 @@ function SignUp() {
   };
   const [userNickName, setUserNickName] = useState("");
   const [userPhone, setUserPhone] = useState("");
-  const [userAdress, setUserAdress] = useState("");
 
   const [errorNickName, setErrorNickName] = useState("");
   const [errorPhone, setErrorPhone] = useState("");
@@ -66,15 +66,6 @@ function SignUp() {
       return setErrorPhone("숫자만 입력해주세요");
     }
   }
-  const handleAdress = (e) => {
-    setUserAdress(e.target.value);
-
-    // 공백 여부 체크
-    if (e.data === " " || e.data === 0) {
-      alert("공백은 입력할 수 없습니다.");
-    }
-
-  }
 
   // 카카오 로그인 api
   const REST_API_KEY='2a0545dc2cd35dfd52e96098d3ef9162'
@@ -113,6 +104,22 @@ function SignUp() {
         }
       }).then(res => console.log("response : {}",res.data));
   }
+  const [enroll_company, setEnroll_company] = useState({
+    address:'',
+  });
+
+  const [popup, setPopup] = useState(false);
+
+  const handleInput = (e) => {
+    setEnroll_company({
+      ...enroll_company,
+      [e.target.name]:e.target.value,
+    })
+  }
+
+  const handleComplete = (data) => {
+    setPopup(!popup);
+  }
 
   return (
     <div>
@@ -123,11 +130,11 @@ function SignUp() {
       <div className="MemberInput">
         <div className="Signup-title"> 회 원 가 입</div>
         <div className="Signup-text">
-          <span className="span" style={{ color: "red" }}>(*)</span>
+          <span className="span" style={{ color: 'red' }}>(*)</span>
           표시는 필수입력 항목입니다.
         </div>
 
-        <div className={"MemberInputAline"}>
+        <div className={'MemberInputAline'}>
           <label>닉네임(*)</label>
           <input id="id" type="text"
                  className="signup-member-input"
@@ -137,7 +144,7 @@ function SignUp() {
                  onKeyDown={handleKeyDown} />
           <button onClick={openModal}>중복 확인</button>
           {errorNickName && (
-            <div style={{ color: 'red', marginTop: "22px", fontSize: "10px" }}>
+            <div style={{ color: 'red', marginTop: '22px', fontSize: '10px' }}>
               {errorNickName}</div>
           )}
         </div>
@@ -161,7 +168,7 @@ function SignUp() {
                  onInput={handlePhone}
                  onKeyDown={handleKeyDown} />
           {errorPhone && (
-            <div style={{ color: 'red', marginTop: "22px", fontSize: "10px" }}>
+            <div style={{ color: 'red', marginTop: '22px', fontSize: '10px' }}>
               {errorPhone}</div>
           )}
         </div>
@@ -170,11 +177,16 @@ function SignUp() {
           <label>주소(*)</label>
           <input id="adress" type="text"
                  className="signup-member-input"
-                 placeholder="api 사용 예정"
-                 value={userAdress}
-                 onInput={handleAdress}
-                 onKeyDown={handleKeyDown} />
+                 placeholder="주소"
+                 onKeyDown={handleKeyDown}
+                 required={true}
+                 name="address"
+                 onChange={handleInput}
+                 value={enroll_company.address}
+          />
         </div>
+        <button onClick={handleComplete}>우편번호 찾기</button>
+        {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
 
         <button className="MemberJoinButton" onClick={navigateToPage}>
           가입하기
