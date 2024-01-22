@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import MemberFormInput from '../../components/MemberFormInput';
 import MemberFormModal from '../../components/MemberFormModal';
-import Button from '../../components/Button';
 import '../../styles/StyleSignUp.css';
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
