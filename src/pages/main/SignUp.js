@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MemberFormModal from '../../components/MemberFormModal';
 import '../../styles/StyleSignUp.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Header from "../../components/Header";
 import LeftAside from "../../components/LeftAside";
 import RightAside from "../../components/RightAside";
+import axios from "axios";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -75,11 +76,49 @@ function SignUp() {
 
   }
 
+  // 카카오 로그인 api
+  const REST_API_KEY='2a0545dc2cd35dfd52e96098d3ef9162'
+  const REDIRECT_URI = 'http://localhost:3000/kakao/callback'
+
+  const [query, setQuery] = useSearchParams();
+  const [code, setCode] = useState("");
+  const [accessToken, setAccessToken] = useState()
+
+  //1.리다이렉트 시에 받은 코드를 통해서 카카오 서버에 인증받을 code를 가져오기
+  useEffect(() => {
+    console.log("code : ", code);
+    setCode(query.get("code"));
+  }, []);
+
+  //2.rest api로 토큰 가져오기
+  const tokenRequest = async () => {
+    await axios.post(`https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${code}`,
+      {}, {
+        headers : "Content-type: application/x-www-form-urlencoded;charset=utf-8"
+      })
+      .then(res => {setAccessToken(res.data.access_token);
+        console.log(res)})
+      .catch(error => console.log(error))
+      .finally(res => console.log(res))
+  }
+
+  //3.rest api로 카카오 서버에서 정보 받아오기
+  const getInfo = () => {
+    console.log(accessToken)
+    axios.post("https://kapi.kakao.com/v2/user/me",{},
+      {
+        headers : {
+          Authorization : `Bearer ${accessToken}`,
+          "Content-type": " application/x-www-form-urlencoded"
+        }
+      }).then(res => console.log("response : {}",res.data));
+  }
+
   return (
     <div>
-      <Header/>
-      <LeftAside/>
-      <RightAside/>
+      <Header />
+      <LeftAside />
+      <RightAside />
 
       <div className="MemberInput">
         <div className="Signup-title"> 회 원 가 입</div>
@@ -151,6 +190,9 @@ function SignUp() {
       </div>
       <div>
       </div>
+
+      <button onClick={tokenRequest}>토큰 발급 받기</button>
+      <button onClick={getInfo}>정보 받아오기</button>
     </div>
   );
 }

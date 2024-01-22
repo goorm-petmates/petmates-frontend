@@ -1,124 +1,99 @@
-.element {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
+.main-container{
     justify-content: center;
-    width: 100%;
+    align-items: center;
+    height: 550px;
 }
-.menu {
-    background-color: #ffffff;
-    height: 407px;
-    left: 0px;
-    position: absolute;
-    top: 167px;
-    width: 2015px;
+.main-banner{
+    display: flex;
+    align-items: center;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
     border-bottom: 1px solid #ff8000;
-}
-.section {
-    height: 1000px;
-    left: 180px;
-    position: absolute;
-    top: 165px;
-    width: 922px;
-    border-top: 1px solid #FF8000;
-    border-bottom: 3px solid #FF8000;
 }
 
 .menu-icons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.left-icon {
     color: #000000;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 400;
     height: 45px;
-    letter-spacing: -0.66px;
     line-height: 45px;
-    position: absolute;
     text-align: center;
-    top: 180px;
-    white-space: nowrap;
     border: none;
     background-color: white;
-}
-
-.left-icon {
-    left: 43px;
     cursor: pointer;
 }
 .right-icon {
-    left: 1950px;
+    color: #000000;
+    font-size: 30px;
+    font-weight: 400;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border: none;
+    background-color: white;
     cursor: pointer;
 }
-.menu-container{
-    position: absolute;
-    left: 400px;
+.menu-contents{
+    width: 1000px;
+    height: 300px;
+    z-index: 1;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
 }
-.menu-title {
+.menu-left{
+    width: 600px;
+    height: 250px;
+    float: left;
+    margin-top: 25px;
+}
+.menu-title{
     color: #000000;
     font-size: 25px;
     font-weight: 700;
     height: 38px;
-    left: 200px;
-    letter-spacing: 0;
-    line-height: 37.5px;
-    position: absolute;
-    top: 94px;
-    white-space: nowrap;
+    margin-left: 100px;
+    margin-top: 20px;
 }
-
-.menu-text {
+.menu-text{
     color: #000000;
-    font-size: 16px;
-    font-weight: 500;
-    height: 24px;
-    left: 264px;
-    letter-spacing: 0;
-    line-height: 24px;
-    position: absolute;
-    top: 168px;
-    white-space: nowrap;
+    font-size: 15px;
+    font-weight: 400;
+    height: 38px;
+    margin-left: 150px;
+    margin-top: 50px;
 }
-.menu-list {
-    border: 1px solid;
-    border-color: #ff9900;
-    border-radius: 33px;
-    height: 30px;
-    left: 182px;
-    position: absolute;
-    top: 340px;
-    width: 62px;
-}
-
-.list {
+.menu-list{
     color: #000000;
-    font-size: 12px;
-    font-weight: 500;
-    height: 18px;
-    left: 19px;
-    letter-spacing: 0;
-    line-height: 18px;
-    position: absolute;
-    text-align: center;
-    top: 6px;
-    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 400;
+    height: 13px;
+    width: 30px;
+    border: 1px solid #ff9900;
+    border-radius: 13px;
+    padding: 5px;
+    margin-left: 100px;
+    margin-top: 50px;
+    text-indent: 3.5px;
 }
-.list-img {
-    height: 272px;
-    left: 730px;
-    object-fit: cover;
-    position: absolute;
-    top: 68px;
-    width: 376px;
+.menu-img{
+    width: 380px;
+    height: 273px;
+    margin-top: 12px;
+    float: right;
 }
 .main-petsitter-components{
-    width: 1200px;
-    height: 400px;
-    position: absolute;
-    top: 450px;
-    left: 225px;
-    display: flex;
+    width: 1000px;
+    height: 130px;
+    margin-top: 20px;
+    margin-left: 250px;
+    background-color: #61dafb;
     flex-direction: row;
     flex-wrap: wrap;
-}
-.main-petsitter-components > div {
-    flex: 0 0 50%; /* 각 아이템이 컨테이너의 너비의 절반을 차지하도록 설정 */
-    box-sizing: border-box; /* border와 padding이 포함된 크기를 설정하기 위해 */
 }
