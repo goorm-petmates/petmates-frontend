@@ -1,50 +1,42 @@
-.main-menu-petsitter-container{
-    background-color: #ffffff;
-    display: block;
-    flex-direction: row;
-    width: 100%;
-    position: relative;
-    height: 100px;
-    margin-top: 10px;
-}
 .main-petsitter{
     border: 1px solid #d9d9d9;
-    border-radius: 40px;
-    width: 550px;
-    height: 130px;
-    position: absolute;
-    margin-left: 20px;
+    border-radius: 20px;
+    width: 500px;
+    height: 90px;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: fixed;
+    display: inline;
+}
+.menu-petsitter-left{
+    float: left;
 }
 .main-petsitter-title{
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 700;
     height: 26px;
-    left: 44px;
-    letter-spacing: 0;
+    margin-left: 44px;
     line-height: 25.5px;
-    position: absolute;
-    top: 20px;
-    white-space: nowrap;
+    margin-top: 10px;
 }
 .main-petsitter-text{
     color: black;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 500;
     height: 40px;
-    left: 100px;
-    letter-spacing: 0;
+    margin-left: 55px;
     line-height: 19.5px;
-    position: absolute;
-    top: 60px;
 }
 .main-petsitter-button{
-    left: 450px;
-    position: absolute;
-    top: 50px;
     background-color: #ff9900;
     border: none;
-    border-radius: 15px;
+    border-radius: 10px;
     cursor: pointer;
     text-align: center;
-    height: 25px;
+    height: 20px;
+    font-size: 11px;
+    float: right;
+    margin-top: 30px;
+    margin-right: 35px;
 }
+
