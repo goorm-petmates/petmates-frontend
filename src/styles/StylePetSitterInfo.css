@@ -1,3 +1,184 @@
+.petsitter-info-post {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+}
+.petsitter-info-detail {
+  width: 50%;
+  padding-left: 30px;
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.petsitter-right-side {
+  width: 40%;
+}
+
+.petsitter-user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /*자식 요소들을 세로 중앙에 정렬 */
+  padding-bottom: 20px;
+  white-space: nowrap;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.petsitter-profile-pic-small {
+  width: 90px;
+  height: 80px;
+  margin-right: 15px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.petsitter-user-info span {
+  margin: 0;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.petsitter-text-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+}
+
+.petsitter-title {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-bottom: 5px;
+}
+
+.petsitter-nicknames-and-address {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 5px;
+}
+
+.petsitter-order-date-and-view {
+  display: flex;
+  flex-direction: row;
+}
+
+.petsitter-profile-pic-large {
+  display: flex;
+  justify-content: center;
+  width: 230px;
+  height: 220px;
+  padding: 30px;
+  border-radius: 40px;
+}
+
+.petsitter-extra-pics {
+  display: flex;
+  flex-direction: row;
+  margin-left: 0;
+  justify-content: center;
+}
+
+.petsitter-extra-pics img {
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  margin-right: 10px;
+  object-fit: cover;
+  width: 100px;
+  height: 70px;
+  /* margin-left: 30px; */
+}
+
+.self-introduction {
+  border: 1px solid black;
+  /* flex-direction: row; */
+  width: 470px;
+  height: 300px;
+  margin-top: 10px;
+}
+
+.self-introduction-head {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding: 10px;
+}
+
+.petsitter-location {
+  /* display: flex;
+  justify-content: flex-start; */
+  border-top: 1px solid #000000;
+  margin-top: 10px;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 10px;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.kakao-map {
+  /* display: flex;
+  align-items: center; */
+  width: 450px;
+  height: 250px;
+  border: 1px solid #d9d9d9;
+  margin: 10px;
+}
+
+.petsitter-review {
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 10px;
+}
+
+.petsitter-review-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.petsitter-review-detail span {
+  margin: 0;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.petowner-profile-pic {
+  width: 45px;
+  height: 45px;
+  border-radius: 15px;
+  border: 1px solid #d9d9d9;
+  margin-right: 10px;
+}
+
+.petowner-review-text span {
+  display: flex;
+  flex-direction: row;
+}
+
+.petsitter-right-side {
+  padding-right: 60px;
+  padding-top: 50px;
+}
+
+.price-table {
+  border: 1px solid #000000;
+  padding: 25px 40px;
+  margin-bottom: 15px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
