@@ -1,31 +1,14 @@
-.nocontents-element{
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    position: relative;
-}
-.nocontents-container {
-    width: 1000px;
-    height: 50px;
-    margin-top: -300px;
-    right: 380px;
-    position: absolute;
-}
 .nocontents-text {
     font-size: 20px;
     line-height: 100px;
-
-    top: 300px;
     border: 1px solid #d9d9d9;
-    width: 1300px;
-    height: 100px;
-    border-radius: 20px;
-    margin-top: 280px;
-    position: absolute;
+    width: 900px;
+    height: 80px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.nocontents-text-span {
-    margin-left: 550px;
+.nocontents-text-span{
+    font-size: 15px;
 }
