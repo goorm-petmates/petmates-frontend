@@ -61,7 +61,7 @@ const HeaderWithNav = () => {
               <div className='flex-container'>
                 <ul>
                   <li>
-                    <img className="nav-list-logo" src="/img/Logo-Icon.png" alt="Logo"/>
+                    <img className="nav-list-logo" src="/imgs/Logo-Icon.png" alt="Logo"/>
                   </li>
                 </ul>
                 <ul>
