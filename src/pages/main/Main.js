@@ -5,14 +5,13 @@ import LeftAside from '../../components/LeftAside';
 import RightAside from '../../components/RightAside';
 import { MainMenuPetsitter } from '../../components/MainMenuPetsitter';
 import Nav from '../../components/Nav';
+import HeaderWithNav from '../../components/HeaderWithNav';
+import Footer from '../../components/Footer';
 
 function Main() {
   return (
-    <div className='element'>
-      <Header />
-      <Nav />
-      <LeftAside />
-      <RightAside />
+    <div className>
+      <HeaderWithNav/>
 
       <div className="main-container">
         <div className="main-banner">
@@ -35,6 +34,7 @@ function Main() {
           <MainMenuPetsitter text="PETMATES로 선택한 환경에서 편안하게 맡겨주세요 !" />
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

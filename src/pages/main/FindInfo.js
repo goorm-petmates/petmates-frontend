@@ -7,6 +7,8 @@ import '../../styles/StyleFindInfo.css';
 import Header from "../../components/Header";
 import LeftAside from "../../components/LeftAside";
 import RightAside from "../../components/RightAside";
+import HeaderWithNav from '../../components/HeaderWithNav';
+import Footer from '../../components/Footer';
 
 function FindInfo() {
 
@@ -86,9 +88,8 @@ function FindInfo() {
 
   return (
     <div>
-      <Header/>
-      <LeftAside/>
-      <RightAside/>
+      <HeaderWithNav/>
+      <Footer/>
 
       <div className={"findcontainer"}>
         <div className={"findId"}>

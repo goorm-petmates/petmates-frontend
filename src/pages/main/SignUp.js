@@ -7,7 +7,8 @@ import LeftAside from "../../components/LeftAside";
 import RightAside from "../../components/RightAside";
 import axios from "axios";
 import Post from '../../components/Post';
-
+import HeaderWithNav from '../../components/HeaderWithNav';
+import Footer from '../../components/Footer';
 function SignUp() {
   const navigate = useNavigate();
   const navigateToPage = () => {
@@ -20,6 +21,8 @@ function SignUp() {
   const closeModal = () => {
     setShowModal(!showModal);
   };
+
+  // 유효성 검사
   const [userNickName, setUserNickName] = useState("");
   const [userPhone, setUserPhone] = useState("");
 
@@ -123,9 +126,7 @@ function SignUp() {
 
   return (
     <div>
-      <Header />
-      <LeftAside />
-      <RightAside />
+      <HeaderWithNav/>
 
       <div className="MemberInput">
         <div className="Signup-title"> 회 원 가 입</div>
@@ -205,6 +206,7 @@ function SignUp() {
 
       <button onClick={tokenRequest}>토큰 발급 받기</button>
       <button onClick={getInfo}>정보 받아오기</button>
+      <Footer/>
     </div>
   );
 }
