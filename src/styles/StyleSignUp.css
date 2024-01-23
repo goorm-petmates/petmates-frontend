@@ -1,23 +1,111 @@
 .MemberInput {
-    margin-left: 500px;
-    top:300px;
-    position: absolute;
+    position: fixed;
     border: 1px solid #d9d9d9;
-    padding: 50px;
+    padding: 30px;
+    height: 440px;
+    width: 400px;
+    margin-left: 490px;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
 }
-
+.Signup-title{
+    position: fixed;
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    margin-left: 150px;
+}
+.Signup-text{
+    position: fixed;
+    text-align: center;
+    font-weight: 400;
+    font-size: 11px;
+    margin-left: 150px;
+    margin-top: 50px;
+}
+.span{
+    position: fixed;
+    text-align: center;
+    font-weight: 400;
+    font-size: 11px;
+    margin-left: 250px;
+    margin-top: 194px;
+}
 .MemberInputAline{
     display: flex;
     align-items: center; /* 자식 요소들을 세로 중앙으로 정렬 */
     margin-bottom: 10px; /* 각 아이템 간격 조절 */
+    margin-left: 90px;
+    margin-top: 100px;
 }
 
 .MemberInputAline > button {
     margin-left: 10px; /* 버튼과 입력 요소 사이의 간격 조절 */
 }
-
+.MemberInputAline > input{
+    width: 150px;
+}
 .MemberJoinButtons{
-    display: flex;
+    background-color: white;
+    border: 1px solid #ff9900;
+    color: #ff9900;
+    border-radius: 7px;
+    cursor: pointer;
+    position: fixed;
+    margin-left: 110px;
+    margin-top: 20px;
+}
+.signup-member-input{
+    background-color:#d9d9d9;
+    border: none;
+    border-radius: 7px;
+    height: 20px;
+    margin-bottom: 10px;
+    display: block;
+    position: fixed;
+    font-size: 11px;
+    width: 230px;
+}
+.input-email{
+    position: fixed;
+    flex-direction: column;
+    width: 200px;
+    height: 45px;
+    margin-left: 90px;
+    margin-top: 155px;
+}
+.input-phone{
+    position: fixed;
+    flex-direction: column;
+    width: 200px;
+    height: 45px;
+    margin-left: 90px;
+    margin-top: 210px;
+}
+.input-adress{
+    position: fixed;
+    flex-direction: column;
+    width: 200px;
+    height: 45px;
+    margin-left: 90px;
+    margin-top: 263px;
+}
+.input-adress > input {
+    width: 300px;
+}
+.MemberJoinButton{
+    position: fixed;
     align-items: center; /* 자식 요소들을 세로 중앙으로 정렬 */
+    border: none;
+    cursor: pointer;
+    background-color: #ff9900;
+    color: white;
+    border-radius: 7px;
+    width: 200px;
+    height: 25px;
+    text-align: center;
     margin-left: 100px;
+    margin-top: 420px;
 }

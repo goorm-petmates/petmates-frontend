@@ -1,21 +1,16 @@
 import React from "react";
-import Header from "../../components/Header";
-import Nav from "../../components/Nav";
-import LeftAside from "../../components/LeftAside";
-import RightAside from "../../components/RightAside";
 import {Link} from "react-router-dom";
 import NoContents from "../../components/NoContents";
 import "../../styles/StylePetInfo.css";
 import PetCard from "../../components/PetCard";
+import HeaderWithNav from '../../components/HeaderWithNav';
+import Footer from '../../components/Footer';
 
 function PetInfo() {
 
   return (
     <div className="element">
-      <Header/>
-      <Nav/>
-      <LeftAside/>
-      <RightAside/>
+      <HeaderWithNav/>
 
       <div>
         <div className="mypage-bar"/>
@@ -45,6 +40,7 @@ function PetInfo() {
         <PetCard petImgSrc="/imgs/dog3.jpeg"
                  petInfo="아지/말티즈/여아/12살/5kg"/>
       </div>
+      <Footer/>
     </div>
   );
 }
