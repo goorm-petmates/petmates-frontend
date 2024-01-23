@@ -1,15 +1,16 @@
-import React from "react";
-import "../../styles/StyleMain.css";
-import Header from "../../components/Header";
-import LeftAside from "../../components/LeftAside";
-import RightAside from "../../components/RightAside";
-import { MainMenuPetsitter } from "../../components/MainMenuPetsitter";
-import Nav from "../../components/Nav";
+import React from 'react';
+import '../../styles/StyleMain.css';
+import Header from '../../components/Header';
+import LeftAside from '../../components/LeftAside';
+import RightAside from '../../components/RightAside';
+import { MainMenuPetsitter } from '../../components/MainMenuPetsitter';
+import Nav from '../../components/Nav';
+
 function Main() {
   return (
-    <div className="element">
+    <div className='element'>
       <Header />
-      <Nav/>
+      <Nav />
       <LeftAside />
       <RightAside />
 

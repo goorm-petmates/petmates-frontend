@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.main-header {
+  display: flex;
+  align-items: center;
+  margin-left: 60px;
+}
+
+.logo-with-icon {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  flex: 1;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 40px;
+  padding-right: 6px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  color: #ff6b00;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 39px;
+  text-align: center;
+}
+
+.right-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.log_out,
+.log_in {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar {
+  padding-bottom: 5px;
+  padding-top: 10px;
+  border-bottom: 1px solid #ff8000;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.nav-link {
+  padding: 10px 15px;
+  margin: 0 5px;
+  text-decoration: none;
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 38px;
+  text-align: center;
+  color: #ff8000;
+}
+
+.nav-link:hover {
+  background-color: #ddd;
+  border-radius: 10px;
+}
