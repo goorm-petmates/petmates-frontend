@@ -38,7 +38,7 @@ function App() {
         <Route path='/petInfo' element={<PetInfo />}></Route>
         <Route path='/petinfoadd' element={<PetInfoAdd />} />
         <Route path='/usersupport' element={<UserSupport />}></Route>
-        <Route path='/ka' element={<KakaoMapExample />}></Route>
+        <Route path='/kakao/callback' element={<SignUp />}></Route>
 
 
       </Routes>
