@@ -17,7 +17,8 @@ import PetInfo from './pages/mypage/PetInfo';
 import PetInfoAdd from './pages/mypage/PetInfoAdd';
 import UserSupport from './pages/UserSupport.js';
 import ReservationPetsitter from './pages/mypage/ReservationPetsitter';
-
+import ReservationCancle from './pages/mypage/ReservationCancle';
+import ReserveReview from './pages/mypage/ReserveReview';
 function App() {
   return (
     <BrowserRouter>
@@ -40,7 +41,8 @@ function App() {
         <Route path='/usersupport' element={<UserSupport />}></Route>
         <Route path='/kakao/callback' element={<SignUp />}></Route>
         <Route path='/reservepetsitter' element={<ReservationPetsitter/>}></Route>
-
+        <Route path='/reservecancle' element={<ReservationCancle/>}></Route>
+        <Route path='/reservereview' element={<ReserveReview/>}></Route>
 
       </Routes>
     </BrowserRouter>
