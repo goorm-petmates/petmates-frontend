@@ -128,19 +128,19 @@ function SignUp() {
       <div className="MemberInput">
         <div className="Signup-title"> 회 원 가 입</div>
         <div className="Signup-text">
-          <span className="span" style={{ color: 'red' }}>(*)</span>
+          <span className="Signup-span" style={{ color: 'red' }}>(*)</span>
           표시는 필수입력 항목입니다.
         </div>
 
         <div className={'MemberInputAline'}>
           <label>닉네임(*)</label>
           <input id="id" type="text"
-                 className="signup-member-input"
+                 className="signup-member-input input-aline-input"
                  placeholder="2~10자의 한글, 영문, 숫자 조합"
                  value={userNickName}
                  onInput={handleNickName}
                  onKeyDown={handleKeyDown} />
-          <button onClick={openModal}>중복 확인</button>
+          <button className="input-aline-button" onClick={openModal}>중복 확인</button>
           {errorNickName && (
             <div style={{ color: 'red', marginTop: '22px', fontSize: '10px' }}>
               {errorNickName}</div>
@@ -174,7 +174,7 @@ function SignUp() {
         <div className="input-adress">
           <label>주소(*)</label>
           <input id="adress" type="text"
-                 className="signup-member-input"
+                 className="signup-member-input signup-adress-input"
                  placeholder="주소"
                  onKeyDown={handleKeyDown}
                  required={true}
