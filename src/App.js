@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/main/Main.js';
 import Login from './pages/main/Login.js';
 import SignUp from './pages/main/SignUp.js';
-import FindInfo from './pages/main/FindInfo.js';
 import MyInfo from './pages/mypage/MyInfo.js';
 import PetSitter from './pages/petsitter/PetSitter.js';
 import PetSitterFoam from './pages/petsitter/PetSitterFoam.js';
@@ -17,6 +16,7 @@ import NotFoundPage from './pages/NotFoundPage.js';
 import PetInfo from './pages/mypage/PetInfo';
 import PetInfoAdd from './pages/mypage/PetInfoAdd';
 import UserSupport from './pages/UserSupport.js';
+import KakaoMapExample from './pages/main/KakaoMapExample';
 
 function App() {
   return (
@@ -25,7 +25,6 @@ function App() {
         <Route path='/' element={<Main />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
-        <Route path='/findinfo' element={<FindInfo />}></Route>
         <Route path='/petsitter' element={<PetSitter />}></Route>
         <Route path='/petsitterfoam' element={<PetSitterFoam />}></Route>
         <Route path='/petsitterguide' element={<PetSitterGuide />}></Route>
@@ -39,6 +38,9 @@ function App() {
         <Route path='/petInfo' element={<PetInfo />}></Route>
         <Route path='/petinfoadd' element={<PetInfoAdd />} />
         <Route path='/usersupport' element={<UserSupport />}></Route>
+        <Route path='/ka' element={<KakaoMapExample />}></Route>
+
+
       </Routes>
     </BrowserRouter>
   );
