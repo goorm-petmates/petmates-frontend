@@ -16,6 +16,7 @@ import NotFoundPage from './pages/NotFoundPage.js';
 import PetInfo from './pages/mypage/PetInfo';
 import PetInfoAdd from './pages/mypage/PetInfoAdd';
 import UserSupport from './pages/UserSupport.js';
+import ReservationPetsitter from './pages/mypage/ReservationPetsitter';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path='/petinfoadd' element={<PetInfoAdd />} />
         <Route path='/usersupport' element={<UserSupport />}></Route>
         <Route path='/kakao/callback' element={<SignUp />}></Route>
+        <Route path='/reservepetsitter' element={<ReservationPetsitter/>}></Route>
 
 
       </Routes>
