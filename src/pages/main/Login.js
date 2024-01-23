@@ -6,7 +6,7 @@ function Login() {
   const REDIRECT_URI = 'http://localhost:3000/kakao/callback'
 
   return (
-    <div className>
+    <div>
       <HeaderWithNav/>
 
       <div className="login">
@@ -17,7 +17,9 @@ function Login() {
         <button className="kakao-button">
           <a
             href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`}>REST
-            <img src="/imgs/kakaoLogin.png" alt="kakao icon" />
+            <img className="kakao-button-img"
+                 src="/imgs/kakaoLogin.png"
+                 alt="kakao icon" />
           </a>
         </button>
       </div>
