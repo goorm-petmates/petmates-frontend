@@ -25,7 +25,7 @@
     margin-left: 150px;
     margin-top: 50px;
 }
-.span{
+.Signup-span{
     position: fixed;
     text-align: center;
     font-weight: 400;
@@ -41,10 +41,10 @@
     margin-top: 100px;
 }
 
-.MemberInputAline > button {
+.input-aline-button {
     margin-left: 10px; /* 버튼과 입력 요소 사이의 간격 조절 */
 }
-.MemberInputAline > input{
+.input-aline-input{
     width: 150px;
 }
 .MemberJoinButtons{
@@ -92,7 +92,7 @@
     margin-left: 90px;
     margin-top: 263px;
 }
-.input-adress > input {
+.signup-adress-input {
     width: 300px;
 }
 .MemberJoinButton{
