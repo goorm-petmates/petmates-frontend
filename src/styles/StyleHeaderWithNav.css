@@ -77,3 +77,43 @@ a {
   background-color: #ddd;
   border-radius: 10px;
 }
+.nav-list-logo{
+  width: 100px;
+  height: 90px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  top:125px;
+  width: 800px;
+  height: 130px;
+}
+
+.navbar:hover .dropdown-content {
+  display: block;
+}
+
+/* 가로로 나란히 위치하는 flex container */
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+/* 각각의 목록 스타일 */
+.flex-container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 10px; /* 각 목록 사이의 간격 조절 */
+  text-align: center;
+}
+
+.flex-container ul li {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
