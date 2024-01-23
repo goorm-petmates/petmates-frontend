@@ -1,18 +1,13 @@
 import React from "react";
 import "../../styles/StylePetInfoAdd.css";
-import Header from "../../components/Header";
-import Nav from "../../components/Nav";
-import LeftAside from "../../components/LeftAside";
-import RightAside from "../../components/RightAside";
 import {Link} from "react-router-dom";
+import HeaderWithNav from '../../components/HeaderWithNav';
+import Footer from '../../components/Footer';
 function PetInfoAdd() {
 
   return (
     <div className="pet-info-add-element">
-      <Header/>
-      <Nav/>
-      <LeftAside/>
-      <RightAside/>
+      <HeaderWithNav/>
 
       <div>
         <div className="mypage-bar"/>
@@ -41,6 +36,7 @@ function PetInfoAdd() {
 
 
       </div>
+      <Footer/>
     </div>
   );
 }

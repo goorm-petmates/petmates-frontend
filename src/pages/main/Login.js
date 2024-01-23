@@ -1,8 +1,4 @@
 import '../../styles/StyleLogin.css';
-import Header from "../../components/Header";
-import LeftAside from "../../components/LeftAside";
-import RightAside from "../../components/RightAside";
-import Nav from "../../components/Nav";
 import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
 function Login() {

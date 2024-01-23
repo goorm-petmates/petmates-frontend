@@ -1,17 +1,12 @@
 import React from 'react';
-import Header from '../../components/Header';
-import LeftAside from '../../components/LeftAside';
-import RightAside from '../../components/RightAside';
-import Nav from '../../components/Nav';
 import {Link} from "react-router-dom";
 import "../../styles/StyleMyInfo.css";
+import HeaderWithNav from '../../components/HeaderWithNav';
+import Footer from '../../components/Footer';
 const MyInfo = () => {
   return (
     <div>
-      <Header />
-      <Nav />
-      <LeftAside />
-      <RightAside />
+     <HeaderWithNav/>
 
       <div>
         <div className="mypage-bar" />
@@ -46,6 +41,7 @@ const MyInfo = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
