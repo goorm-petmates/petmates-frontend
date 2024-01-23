@@ -132,17 +132,17 @@ function SignUp() {
           표시는 필수입력 항목입니다.
         </div>
 
-        <div className={'MemberInputAline'}>
-          <label>닉네임(*)</label>
-          <input id="id" type="text"
-                 className="signup-member-input input-aline-input"
+        <div className='MemberInputAline'>
+          <label className="aline-input-label">닉네임(*)</label>
+          <input id="nickName" type="text"
+                 className="aline-input"
                  placeholder="2~10자의 한글, 영문, 숫자 조합"
                  value={userNickName}
                  onInput={handleNickName}
                  onKeyDown={handleKeyDown} />
           <button className="input-aline-button" onClick={openModal}>중복 확인</button>
           {errorNickName && (
-            <div style={{ color: 'red', marginTop: '22px', fontSize: '10px' }}>
+            <div style={{ color: 'red', position:"fixed", marginTop:"45px", fontSize: '10px' }}>
               {errorNickName}</div>
           )}
         </div>
@@ -166,15 +166,20 @@ function SignUp() {
                  onInput={handlePhone}
                  onKeyDown={handleKeyDown} />
           {errorPhone && (
-            <div style={{ color: 'red', marginTop: '22px', fontSize: '10px' }}>
+            <div style={{ color: 'red', marginTop: '-7px', fontSize: '10px' }}>
               {errorPhone}</div>
           )}
         </div>
 
-        <div className="input-adress">
+        <div className="input-address">
           <label>주소(*)</label>
-          <input id="adress" type="text"
-                 className="signup-member-input signup-adress-input"
+          <button className="address-button"
+                  onClick={handleComplete}>
+            우편번호 찾기</button>
+          {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
+
+          <input id="address" type="text"
+                 className="signup-member-input signup-address-input"
                  placeholder="주소"
                  onKeyDown={handleKeyDown}
                  required={true}
@@ -183,9 +188,6 @@ function SignUp() {
                  value={enroll_company.address}
           />
         </div>
-        <button onClick={handleComplete}>우편번호 찾기</button>
-        {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
-
         <button className="MemberJoinButton" onClick={navigateToPage}>
           가입하기
         </button>
@@ -201,8 +203,10 @@ function SignUp() {
       <div>
       </div>
 
-      <button onClick={tokenRequest}>토큰 발급 받기</button>
-      <button onClick={getInfo}>정보 받아오기</button>
+      <div className="signup-kakao-api">
+        <button onClick={tokenRequest}>토큰 발급 받기</button>
+        <button onClick={getInfo}>정보 받아오기</button>
+      </div>
       <Footer/>
     </div>
   );
