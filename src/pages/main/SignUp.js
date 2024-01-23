@@ -85,7 +85,7 @@ function SignUp() {
   const tokenRequest = async () => {
     await axios.post(`https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${code}`,
       {}, {
-        headers : "Content-type: application/x-www-form-urlencoded;charset=utf-8"
+        headers : "Content-type : application/x-www-form-urlencoded;charset=utf-8"
       })
       .then(res => {setAccessToken(res.data.access_token);
         console.log(res)})
@@ -102,7 +102,7 @@ function SignUp() {
           Authorization : `Bearer ${accessToken}`,
           "Content-type": " application/x-www-form-urlencoded"
         }
-      }).then(res => console.log("response : {}",res.data));
+      }).then(res => console.log("profile_image_url : ",res.data.kakao_account.profile.profile_image_url));
   }
   const [enroll_company, setEnroll_company] = useState({
     address:'',
@@ -142,7 +142,9 @@ function SignUp() {
                  onKeyDown={handleKeyDown} />
           <button className="input-aline-button" onClick={openModal}>중복 확인</button>
           {errorNickName && (
-            <div style={{ color: 'red', position:"fixed", marginTop:"45px", fontSize: '10px' }}>
+            <div style={{ color: 'red',
+              marginTop:"5px",
+              fontSize: '10px' }}>
               {errorNickName}</div>
           )}
         </div>
@@ -204,7 +206,7 @@ function SignUp() {
       </div>
 
       <div className="signup-kakao-api">
-        <button onClick={tokenRequest}>토큰 발급 받기</button>
+        <button onClick={tokenRequest}>토큰 발급</button>
         <button onClick={getInfo}>정보 받아오기</button>
       </div>
       <Footer/>
