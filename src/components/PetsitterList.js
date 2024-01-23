@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/StylePetSitterList.css';
 
-const PetsitterList = () => {
+const PetSitterList = () => {
   return (
     <div>
       {/* 포스트목록에서 특정포스트 클릭시 상세페이지로 라우팅시킴
@@ -43,4 +43,4 @@ const PetsitterList = () => {
   );
 };
 
-export default PetsitterList;
+export default PetSitterList;

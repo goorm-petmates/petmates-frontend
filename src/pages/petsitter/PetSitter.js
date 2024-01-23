@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaRegPenToSquare } from 'react-icons/fa6';
 import HeaderWithNav from '../../components/HeaderWithNav.js';
 import Footer from '../../components/Footer';
-import PetsitterList from '../../components/PetsitterList.js';
+import PetSitterList from '../../components/PetSitterList.js';
 import '../../styles/StylePetSitter.css';
 
 const PetSitter = () => {
@@ -115,10 +115,10 @@ const PetSitter = () => {
         </form>
 
         {/*************** petsitter user list **************/}
-        <PetsitterList></PetsitterList>
-        <PetsitterList></PetsitterList>
-        <PetsitterList></PetsitterList>
-        <PetsitterList></PetsitterList>
+        <PetSitterList></PetSitterList>
+        <PetSitterList></PetSitterList>
+        <PetSitterList></PetSitterList>
+        <PetSitterList></PetSitterList>
 
         {/*************** petsitter page numbers **************/}
         <a href='http://localhost:3004/petsitter' className='petsitter-list-nums'>
