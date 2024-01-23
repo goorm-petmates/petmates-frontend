@@ -1,14 +1,8 @@
 import React from 'react';
-import Button from "./Button";
-import { useNavigate } from "react-router-dom";
 import '../styles/StyleModal.css';
 
-function MemberFormModal({ title, text, value, path, onClose }) {
-  const navigate = useNavigate();
+function MemberFormModal({ title, text, onClose }) {
 
-  const navigateToPage = () => {
-    navigate(path);
-  };
   const handleClose = () => {
     if (onClose) {
       onClose(); // 부모 컴포넌트에서 전달한 onClose 함수 호출
@@ -16,13 +10,13 @@ function MemberFormModal({ title, text, value, path, onClose }) {
   };
 
   return (
-    <div className={"modalContainer"}>
-      <div className={"header"}>
+    <div className="modalContainer">
+      <div className="signup-modal-header">
         <h2>{title}</h2>
         <button onClick={handleClose}>X</button>
       </div>
-      <div>{text}</div>
-      <Button onClick={navigateToPage} value={value} />
+      <div className="signup-modal-text">{text}</div>
+      <button className="signup-modal-button" onClick={handleClose}>확인</button>
     </div>
   );
 }
