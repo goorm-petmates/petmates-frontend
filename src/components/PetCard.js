@@ -5,6 +5,7 @@ function PetCard(props){
   const { petImgSrc, petInfo } = props;
 
   return(
+    <div className="pet-card-container">
       <div className="pet-card">
         <img className="pet-img" src={petImgSrc} alt="pet-img"/>
         <div className="pet-info">
@@ -15,6 +16,7 @@ function PetCard(props){
           <button className="pet-card-button-edit">수정하기</button>
         </div>
       </div>
+    </div>
   );
 }
 

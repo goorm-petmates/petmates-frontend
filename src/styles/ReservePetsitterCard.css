@@ -4,8 +4,8 @@
     width: 800px;
     height: 90px;
     margin-bottom: 20px;
-    left: 100px;
     position: relative;
+    margin-left: 50px;
 }
 .reservepet-checkbox {
     position: absolute;
