@@ -1,73 +1,67 @@
 .mypage-bar{
     background-color: #ff9900;
-    height: 50px;
-    left: 251px;
-    position: absolute;
-    top: 165px;
-    width: 1512px;
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
 }
 .mypage-bar-text{
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     height: 36px;
-    left: 271px;
-    letter-spacing: 0;
-    line-height: 36px;
+    display: flex;
     position: absolute;
-    top: 171px;
+    margin-top: -25px;
+    margin-left: 20px;
+}
+.petinfo-nav1{
+    font-size: 15px;
+    font-weight: 400;
+    height: 26px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 80px;
+    margin-right: 20px;
+}
+.petinfo-nav2{
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: underline;
+    height: 26px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
 }
 .mypage-navunderLine{
     height: 1px;
-    left: 280px;
-    object-fit: cover;
-    position: absolute;
-    top: 259px;
-    width: 1450px;
     border-bottom: 1px solid #FF8000;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center
 }
-.mypage-petinfo-nav1{
-    font-size: 17px;
-    font-weight: 400;
-    height: 26px;
-    left: 279px;
-    line-height: 25.5px;
-    position: absolute;
-    top: 223px;
-
-    background-color: white;
-    border: none;
-    cursor: pointer;
-}
-.mypage-petinfo-nav2{
-    font-size: 17px;
-    font-weight: 700;
-    height: 26px;
-    left: 366px;
-    line-height: 25.5px;
-    text-decoration: underline;
-    position: absolute;
-    top: 223px;
-    background-color: white;
-    border: none;
-    cursor: pointer;
+.petinfo-container{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
 }
 .mypage-petinfo-add{
-    position: absolute;
     background-color: #ff9900;
     color: white;
     border: none;
     cursor: pointer;
     width: 80px;
-    height: 30px;
+    height: 23px;
     border-radius: 7px;
-    left: 1630px;
-    top: 280px;
     z-index: 1;
+    margin-top: 10px;
+    margin-left: 1200px;
 }
 .pet-card-components{
     width: 1200px;
     height: 700px;
-    position: absolute;
     top: 320px;
     left: 500px;
     display: flex;
