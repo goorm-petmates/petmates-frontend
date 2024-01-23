@@ -16,7 +16,6 @@ import NotFoundPage from './pages/NotFoundPage.js';
 import PetInfo from './pages/mypage/PetInfo';
 import PetInfoAdd from './pages/mypage/PetInfoAdd';
 import UserSupport from './pages/UserSupport.js';
-import KakaoMapExample from './pages/main/KakaoMapExample';
 
 function App() {
   return (
