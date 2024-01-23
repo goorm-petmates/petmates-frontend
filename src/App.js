@@ -16,7 +16,7 @@ import NotFoundPage from './pages/NotFoundPage.js';
 import PetInfo from './pages/mypage/PetInfo';
 import PetInfoAdd from './pages/mypage/PetInfoAdd';
 import UserSupport from './pages/UserSupport.js';
-import KakaoMapExample from './pages/main/KakaoMapExample';
+// import KakaoMapExample from './pages/main/KakaoMapExample';
 
 function App() {
   return (
@@ -38,9 +38,7 @@ function App() {
         <Route path='/petInfo' element={<PetInfo />}></Route>
         <Route path='/petinfoadd' element={<PetInfoAdd />} />
         <Route path='/usersupport' element={<UserSupport />}></Route>
-        <Route path='/ka' element={<KakaoMapExample />}></Route>
-
-
+        {/* <Route path='/ka' element={<KakaoMapExample />}></Route> */}
       </Routes>
     </BrowserRouter>
   );
