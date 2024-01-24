@@ -33,6 +33,21 @@ function ReservationPetsitterCard(props) {
                     border: "none",
                     color: "#ffffff",
                     cursor: "auto",
+                  } : state === "취소완료" ? {
+                    backgroundColor: "#D9D9D9",
+                    border: "none",
+                    color: "#ffffff",
+                    cursor: "auto",
+                  } : state === "후기작성" ? {
+                    backgroundColor: "#ff9900",
+                    border: "none",
+                    color: "#ffffff",
+                    cursor: "pointer",
+                  } : state === "작성완료" ? {
+                    backgroundColor: "#D9D9D9",
+                    border: "none",
+                    color: "#ffffff",
+                    cursor: "auto",
                   } : {}
                 }
         >
