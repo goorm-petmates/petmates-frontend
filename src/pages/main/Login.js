@@ -14,15 +14,15 @@ function Login() {
         <p className="login-info">
           서비스 이용을 위해 로그인 해주세요 :)
         </p>
-        <button className="kakao-button">
-          <a
-            href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`}>REST
-            <img className="kakao-button-img"
+        <button className="kakao-button" onClick={() => {
+          window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
+        }}>
+          <img className="kakao-button-img"
                  src="/imgs/kakaoLogin.png"
                  alt="kakao icon" />
-          </a>
         </button>
       </div>
+
       <Footer/>
     </div>
   );

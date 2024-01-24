@@ -1,0 +1,54 @@
+.review-review-container{
+    border: 1px solid #d9d9d9;
+    border-radius: 40px;
+    width: 1000px;
+    height: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.reserve-review-img{
+    height: 78px;
+    width: 80px;
+    margin-left: -20px;
+}
+.reserve-review-info{
+    width: 500px;
+    height: 60px;
+    margin-top: 5px;
+    margin-left: 90px;
+}
+.review-starts{
+
+}
+.star-rating {
+    font-size: 24px;
+}
+
+.star {
+    cursor: pointer;
+}
+
+.filled {
+    color: gold;
+}
+.reserve-review-input{
+    margin-top: 10px;
+    background-color: #F4F5F7;
+    border: none;
+    border-radius: 7px;
+    height: 30px;
+    font-size: 11px;
+    width: 400px;
+    margin-left: 20px;
+}
+.reserve-review-button{
+    cursor: pointer;
+    background-color: #ff9900;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    margin-left: 100px;
+}

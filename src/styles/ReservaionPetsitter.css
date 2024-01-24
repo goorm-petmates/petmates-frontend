@@ -15,9 +15,10 @@
     margin-top: -25px;
     margin-left: 20px;
 }
-.petinfo-nav1{
+.reservation-nav1{
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 700;
+    text-decoration: underline;
     height: 26px;
     background-color: white;
     border: none;
@@ -25,10 +26,18 @@
     margin-left: 80px;
     margin-right: 20px;
 }
-.petinfo-nav2{
+.reservation-nav2{
     font-size: 15px;
-    font-weight: 700;
-    text-decoration: underline;
+    font-weight: 400;
+    height: 26px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.reservation-nav3{
+    font-size: 15px;
+    font-weight: 400;
     height: 26px;
     background-color: white;
     border: none;
@@ -41,36 +50,24 @@
     justify-content: space-evenly;
     align-items: center
 }
-.petinfo-container{
-    flex-direction: column;
-    display: flex;
-    border: 1px solid #d9d9d9;
-    border-radius: 30px;
-    width: 1200px;
-    height: 600px;
-    margin-top: 30px;
-    margin-bottom: 50px;
-    margin-left: 350px;
-}
-.mypage-petinfo-add{
+.mypage-reservation-payment{
     background-color: #ff9900;
     color: white;
     border: none;
     cursor: pointer;
-    width: 80px;
-    height: 23px;
     border-radius: 7px;
     z-index: 1;
-    margin-top: 30px;
-    margin-left: 1000px;
+    margin-left: 1200px;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-.pet-card-components{
-    width: 1200px;
-    height: 700px;
-    top: 320px;
-    left: 500px;
+.reservation-components{
+    width: 950px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 250px;
 }

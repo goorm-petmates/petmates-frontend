@@ -1,11 +1,12 @@
 .login {
     border: 1px solid #d9d9d9;
     height: 350px;
-    position: fixed;
+    /*position: fixed;*/
     width: 500px;
     border-radius: 15px;
     margin-left: 500px;
-    margin-top: 80px;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
 .login-logo{
     width: 160px;
@@ -28,7 +29,6 @@
     height: 40px;
     width: 200px;
     border-radius: 10px;
-    position: fixed;
     margin-left: 150px;
     margin-top: 50px;
     border: none;
@@ -38,5 +38,5 @@
     height: 40px;
     cursor:pointer;
     margin-left: -7px;
-    margin-top: -18px;
+    margin-top: -1px;
 }
