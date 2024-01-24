@@ -36,7 +36,7 @@ function App() {
         <Route path='/communitywrite' element={<CommunityWrite />}></Route>
         <Route path='/myinfo' element={<MyInfo />}></Route>
         <Route path='/notfoundpage' element={<NotFoundPage />}></Route>
-        <Route path='/petInfo' element={<PetInfo />}></Route>
+        <Route path='/petinfo' element={<PetInfo />}></Route>
         <Route path='/petinfoadd' element={<PetInfoAdd />} />
         <Route path='/usersupport' element={<UserSupport />}></Route>
         <Route path='/kakao/callback' element={<SignUp />}></Route>

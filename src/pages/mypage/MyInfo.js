@@ -31,7 +31,7 @@ const MyInfo = () => {
       <Link to='/myinfo'>
         <button className="mypage-myinfo-nav1">내정보</button>
       </Link>
-      <Link to='/petInfo'>
+      <Link to='/petinfo'>
         <button className="mypage-myinfo-nav2">반려동물 정보</button>
       </Link>
 
