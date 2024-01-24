@@ -1,0 +1,196 @@
+.mypage-bar{
+    background-color: #ff9900;
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+}
+.management-bar-text{
+    font-size: 20px;
+    font-weight: 600;
+    height: 36px;
+    display: flex;
+    position: absolute;
+    margin-top: -25px;
+    margin-left: 20px;
+}
+.mymanagement-nav1{
+    font-size: 15px;
+    font-weight: 700;
+    height: 26px;
+    text-decoration: underline;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 80px;
+    margin-right: 20px;
+}
+.mymanagement-nav2{
+    font-size: 15px;
+    font-weight: 400;
+    height: 26px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+.mypage-navunderLine{
+    height: 1px;
+    border-bottom: 1px solid #FF8000;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center
+}
+.management-container{
+    background-color: #ffffff;
+    flex-direction: column;
+    width: 1000px;
+    display: flex;
+    height: 700px;
+    margin-top: 10px;
+}
+.management-add-component{
+    border: 1px solid #d9d9d9;
+    border-radius: 40px;
+    width: 850px;
+    height: 90px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.management-add-text{
+    font-size: 15px;
+    font-weight: 400;
+    height: 12px;
+    line-height: normal;
+    position: absolute;
+    width: 500px;
+}
+.management-add-button{
+    position: absolute;
+    cursor: pointer;
+    color: #ffffff;
+    border: none;
+    border-radius: 7px;
+    background-color: #ff9900;
+    width: 80px;
+    height: 25px;
+    margin-left: 600px;
+}
+.management-bar{
+    height: 1px;
+    border-bottom: 1px solid #FF8000;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.management-edit-component{
+    border: 1px solid #d9d9d9;
+    border-radius: 40px;
+    width: 850px;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.management-edit-img{
+    height: 78px;
+    left: 45px;
+    position: absolute;
+    top: 11px;
+    width: 80px;
+}
+.management-text-row{
+    position: absolute;
+    flex-direction: row;
+    width: 400px;
+    height: 70px;
+}
+.management-edit-nickname{
+    font-size: 15px;
+    font-weight: 400;
+    height: 12px;
+    position: absolute;
+    width: 200px;
+}
+.management-edit-text {
+    font-size: 15px;
+    font-weight: 400;
+    height: 12px;
+    position: absolute;
+    width: 500px;
+    margin-top: 40px;
+}
+.management-buttons{
+    position: absolute;
+    cursor: pointer;
+    margin-left: 600px;
+}
+.management-edit-button{
+    color: #ffffff;
+    border: none;
+    border-radius: 7px;
+    background-color: #ff9900;
+    width: 80px;
+    height: 25px;
+    margin-right: 20px;
+}
+.management-delete-button{
+    color: #ff9900;
+    border: 1px solid #ff9900;
+    border-radius: 7px;
+    width: 80px;
+    height: 25px;
+    background-color: white;
+}
+.management-refuse-container{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    margin-top: 120px;
+}
+.management-refuse-button{
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 7px;
+    margin-left: 1000px;
+    position: absolute;
+    width: 80px;
+    height: 25px;
+    margin-top: -540px;
+}
+.checked-width-1{
+    z-index: 2;
+    width: 850px;
+    height: 100px;
+    display: flex;
+    position: absolute;
+    margin-top: -380px;
+}
+.checked-width-2{
+    z-index: 2;
+    width: 850px;
+    height: 100px;
+    display: flex;
+    margin-top: -170px;
+    position: absolute;
+}
+.refuse-checkbox {
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 50px;
+}
