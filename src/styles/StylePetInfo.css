@@ -42,10 +42,15 @@
     align-items: center
 }
 .petinfo-container{
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
     display: flex;
+    border: 1px solid #d9d9d9;
+    border-radius: 30px;
+    width: 1200px;
+    height: 600px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: 350px;
 }
 .mypage-petinfo-add{
     background-color: #ff9900;
@@ -56,8 +61,8 @@
     height: 23px;
     border-radius: 7px;
     z-index: 1;
-    margin-top: 10px;
-    margin-left: 1200px;
+    margin-top: 30px;
+    margin-left: 1000px;
 }
 .pet-card-components{
     width: 1200px;
@@ -66,5 +71,6 @@
     left: 500px;
     display: flex;
     flex-direction: column;
-
+    justify-content: center;
+    align-items: center;
 }
