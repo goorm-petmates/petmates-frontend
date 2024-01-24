@@ -1,12 +1,12 @@
 import React from "react";
 import "../styles/ReservePetsitterCard.css";
 function ReservationPetsitterCard(props) {
-  const {petInfo, state} = props;
+  const {reservePetImgSrc, petInfo, state} = props;
 
   return (
       <div className="reservepet">
         <img className="reservationpet-img"
-             src="/imgs/dog3.jpeg"
+             src={reservePetImgSrc}
              alt="petsitter-image"/>
         <div className="reservepet-info">
           {petInfo}
