@@ -28,9 +28,11 @@ const ReservationCancle = () => {
     <div className="mypage-navunderLine"></div>
 
     <div className="cancle-container">
-      <ReservePetsitterCard petInfo="똑바로 / 2023.12.23 ~ 2023.12.24 / 50,000원"
+      <ReservePetsitterCard reservePetImgSrc="/imgs/dog3.jpeg"
+                            petInfo="똑바로 / 2023.12.23 ~ 2023.12.24 / 50,000원"
                             state="취소완료" />
-      <ReservePetsitterCard petInfo="뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원"
+      <ReservePetsitterCard reservePetImgSrc="/imgs/dog3.jpeg"
+                            petInfo="뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원"
                             state="취소완료" />
       <NoContents text="취소 내역" />
     </div>
