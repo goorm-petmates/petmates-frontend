@@ -1,20 +1,10 @@
 import React from "react";
 import "../styles/ReservePetsitterCard.css";
-import {useState} from "react";
 function ReservationPetsitterCard(props) {
   const {petInfo, state} = props;
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleCheckboxClick = () => {
-    setIsChecked(!isChecked);
-  };
 
   return (
       <div className="reservepet">
-        <div className={`reservepet-checkbox ${isChecked ? "checked" : ""}`}
-             onClick={handleCheckboxClick}>
-        </div>
-        <label className="checked-width" onClick={handleCheckboxClick}></label>
         <img className="reservationpet-img"
              src="/imgs/dog3.jpeg"
              alt="petsitter-image"/>

@@ -7,28 +7,6 @@
     position: relative;
     margin-left: 50px;
 }
-.reservepet-checkbox {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border: 1px solid black;
-    border-radius: 100%;
-    background-color: white;
-    cursor: pointer;
-    display: inline-block;
-    left: -50px;
-    top: 30px;
-}
-.reservepet-checkbox.checked {
-    border: 1px solid black;
-    background-color: #ff9900;
-}
-.checked-width{
-    z-index: 2;
-    position: absolute;
-    width: 850px;
-    height: 100px;
-}
 .reservationpet-img{
     height: 78px;
     margin-left: 45px;
