@@ -19,6 +19,8 @@ import UserSupport from './pages/UserSupport.js';
 import ReservationPetsitter from './pages/mypage/ReservationPetsitter';
 import ReservationCancle from './pages/mypage/ReservationCancle';
 import ReserveReview from './pages/mypage/ReserveReview';
+import MyManagement from './pages/mypage/MyManagement';
+import MyMamagementCancle from './pages/mypage/MyMamagementCancle';
 function App() {
   return (
     <BrowserRouter>
@@ -43,7 +45,8 @@ function App() {
         <Route path='/reservepetsitter' element={<ReservationPetsitter/>}></Route>
         <Route path='/reservecancle' element={<ReservationCancle/>}></Route>
         <Route path='/reservereview' element={<ReserveReview/>}></Route>
-
+        <Route path='/mymanagement' element={<MyManagement/>}/>
+        <Route path='/mymanagementcancle' element={<MyMamagementCancle/>}/>
       </Routes>
     </BrowserRouter>
   );

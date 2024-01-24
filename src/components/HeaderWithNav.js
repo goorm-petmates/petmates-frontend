@@ -83,7 +83,7 @@ const HeaderWithNav = () => {
                     <Link to='/reservepetsitter'>예약 내역</Link>
                   </li>
                   <li>
-                    <Link to='/petinfo'>펫시터 정보</Link>
+                    <Link to='/mymanagement'>펫시터 관리</Link>
                   </li>
                 </ul>
               </div>
