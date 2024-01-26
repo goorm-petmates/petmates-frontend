@@ -52,7 +52,8 @@ const MyInfo = () => {
           </input>
 
           <label className="myinfo-label">휴대폰번호</label>
-          <input className="myinfo-phoneInput" placeholder="서버에서 받은 사용자 정보">
+          <input className="myinfo-phoneInput"
+                 placeholder="서버에서 받은 사용자 정보" disabled={true}>
           </input>
 
           <div className="myinfo-address-container">
