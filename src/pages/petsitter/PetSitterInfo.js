@@ -8,7 +8,7 @@ import Footer from '../../components/Footer.js';
 import '../../styles/StylePetSitterInfo.css';
 
 const PetSitterInfo = () => {
-  /*datepicker 사용*/
+  /*datepicker 사용 로직*/
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [startTime, setStartTime] = useState('09:00');
@@ -29,7 +29,7 @@ const PetSitterInfo = () => {
     console.log('예약완료 날짜:', { startDate, endDate, startTime, endTime });
   };
 
-  /*반려견 체크박스 사용*/
+  /*반려견 체크박스 관련 로직*/
   const [checkedState, setCheckedState] = useState({
     dog1: false,
     dog2: false,
@@ -145,12 +145,12 @@ const PetSitterInfo = () => {
           <div className='petsitter-booking-box'>
             <div className='booking-box-header'>맡길 반려견 선택</div>
             {/**************반려동물 등록되지않은 유저인경우 활성화************/}
-            {/* <button className='register-pet-btn'>
+            <button className='register-pet-btn'>
               <Link to='/petInfo'>반려동물을 먼저 등록하세요.</Link>
-            </button> */}
+            </button>
 
             {/**************반려동물 등록된 유저인경우 스타일 활성화***********/}
-            <div className='dog-checkbox'>
+            {/* <div className='dog-checkbox'>
               <label htmlFor='dog1'>
                 <img
                   className='registered-dog-pic1'
@@ -196,7 +196,7 @@ const PetSitterInfo = () => {
                 />
                 3번 반려견
               </label>
-            </div>
+            </div> */}
             {/*****************************************/}
 
             <div className='date-picker-header'>예약을 원하는 날짜와 시간을 선택하세요</div>
@@ -247,7 +247,7 @@ const PetSitterInfo = () => {
                 </div>
                 <div className='total-price'>총 이용금액: 0원</div>
                 <button className='booking-btn' type='submit'>
-                  예약 요청
+                  <Link to='/reservepetsitter'> 예약 요청</Link>
                 </button>
               </div>
             </form>
