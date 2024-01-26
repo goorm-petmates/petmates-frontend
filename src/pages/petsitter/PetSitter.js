@@ -54,7 +54,6 @@ const PetSitter = () => {
       <HeaderWithNav></HeaderWithNav>
       <div className='petsitter-main'>
         <PetSitterRightBtns></PetSitterRightBtns>
-
         {/*********** petsitter search form **************/}
         <form id='petsitter-search' onSubmit={handleSubmit}>
           <div className='search-header'>사랑하는 반려견을 맡기세요</div>
@@ -115,12 +114,12 @@ const PetSitter = () => {
             <button type='submit'>검색하기</button>
           </div>
         </form>
-
         {/*/!*************** petsitter user list **************!/*/}
-        {/*<PetSitterList></PetSitterList>*/}
-        {/*<PetSitterList></PetSitterList>*/}
-        {/*<PetSitterList></PetSitterList>*/}
-        {/*<PetSitterList></PetSitterList>*/}
+        <PetSitterList></PetSitterList>
+        <PetSitterList></PetSitterList>
+        <PetSitterList></PetSitterList>
+        <PetSitterList></PetSitterList>
+        <PetSitterList></PetSitterList>
 
         {/*************** petsitter page numbers **************/}
         <a href='http://localhost:3004/petsitter' className='petsitter-list-nums'>
