@@ -1,127 +1,126 @@
 .MemberInput {
-    border: 1px solid #d9d9d9;
-    padding: 30px;
-    height: 420px;
-    width: 400px;
-    margin-left: 490px;
-    margin-top: 30px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+  border: 1px solid #d9d9d9;
+  padding: 30px;
+  height: 420px;
+  width: 400px;
+  margin-left: 490px;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
-.Signup-title{
-    display: flex;
-    text-align: center;
-    font-weight: 700;
-    font-size: 25px;
-    margin-left: 150px;
+.Signup-title {
+  display: flex;
+  text-align: center;
+  font-weight: 700;
+  font-size: 25px;
+  margin-left: 150px;
 }
-.Signup-text{
-    display: flex;
-    text-align: center;
-    font-weight: 400;
-    font-size: 11px;
-    margin-left: 150px;
-    margin-top: 20px;
+.Signup-text {
+  display: flex;
+  text-align: center;
+  font-weight: 400;
+  font-size: 11px;
+  margin-left: 150px;
+  margin-top: 20px;
 }
-.Signup-span{
-    text-align: center;
-    font-weight: 400;
-    font-size: 11px;
-    margin-left: -15px;
+.Signup-span {
+  text-align: center;
+  font-weight: 400;
+  font-size: 11px;
+  margin-left: -15px;
 }
-.MemberInputAline{
-    display: flex;
-    flex-direction: column;
-    margin-left: 50px;
-    height: 80px;
-    margin-top: 25px;
+.MemberInputAline {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  height: 80px;
+  margin-top: 25px;
 }
-.aline-input-label{
-    width: 80px;
-    height: 20px;
+.aline-input-label {
+  width: 80px;
+  height: 20px;
 }
-.aline-input{
-    width: 170px;
-    background-color: #F4F5F7;
-    border: none;
-    border-radius: 7px;
-    height: 20px;
-    margin-bottom: 10px;
-    display: block;
-    font-size: 11px;
+.aline-input {
+  width: 170px;
+  background-color: #f4f5f7;
+  border: none;
+  border-radius: 7px;
+  height: 20px;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 11px;
 }
 .input-aline-button {
-    margin-left: 200px;
-    margin-top: -33px;
-    background-color: #ff9900;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    font-size: 11px;
-    width: 60px;
-    height: 20px;
+  margin-left: 200px;
+  margin-top: -33px;
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 11px;
+  width: 60px;
+  height: 20px;
 }
-.signup-member-input{
-    background-color: #F4F5F7;
-    border: none;
-    border-radius: 7px;
-    height: 20px;
-    margin-bottom: 10px;
-    display: block;
-    font-size: 11px;
-    width: 230px;
+.signup-member-input {
+  background-color: #f4f5f7;
+  border: none;
+  border-radius: 7px;
+  height: 20px;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 11px;
+  width: 230px;
 }
-.input-email{
-    flex-direction: column;
-    width: 200px;
-    height: 45px;
-    margin-left: 50px;
-    margin-top: -20px;
+.input-email {
+  flex-direction: column;
+  width: 200px;
+  height: 45px;
+  margin-left: 50px;
+  margin-top: -20px;
 }
-.input-phone{
-    flex-direction: column;
-    width: 200px;
-    height: 45px;
-    margin-left: 50px;
-    margin-top: 10px;
+.input-phone {
+  flex-direction: column;
+  width: 200px;
+  height: 45px;
+  margin-left: 50px;
+  margin-top: 10px;
 }
-.input-address{
-    flex-direction: column;
-    width: 200px;
-    height: 45px;
-    margin-left: 50px;
-    margin-top: 13px;
-    position: relative;
+.input-address {
+  flex-direction: column;
+  width: 200px;
+  height: 45px;
+  margin-left: 50px;
+  margin-top: 13px;
+  position: relative;
 }
 .signup-address-input {
-    margin-top: 5px;
-    width: 300px;
+  margin-top: 5px;
+  width: 300px;
 }
-.address-button{
-    margin-left: 160px;
-    background-color: #ff9900;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    font-size: 11px;
-    width: 100px;
-    height: 20px;
-    position: absolute;
+.address-button {
+  margin-left: 160px;
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 11px;
+  width: 100px;
+  height: 20px;
+  position: absolute;
 }
-.MemberJoinButton{
-    align-items: center; /* 자식 요소들을 세로 중앙으로 정렬 */
-    border: none;
-    cursor: pointer;
-    background-color: #ff9900;
-    color: white;
-    border-radius: 7px;
-    width: 200px;
-    height: 25px;
-    text-align: center;
-    margin-left: 100px;
-    margin-top: 70px;
+.MemberJoinButton {
+  align-items: center; /* 자식 요소들을 세로 중앙으로 정렬 */
+  border: none;
+  cursor: pointer;
+  background-color: #ff9900;
+  color: white;
+  border-radius: 7px;
+  width: 200px;
+  height: 25px;
+  text-align: center;
+  margin-left: 100px;
+  margin-top: 70px;
 }
-.signup-kakao-api{
-
+.signup-kakao-api {
 }

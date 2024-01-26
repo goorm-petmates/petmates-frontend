@@ -14,9 +14,11 @@
   border: none;
   color: #ff8000;
   background-color: white;
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding-top: 10px;
-  padding-bottom: 7px;
-  font-size: 14px;
+  padding-bottom: 8px;
+  font-size: 17px;
   cursor: pointer;
 }
 
@@ -25,7 +27,12 @@
   text-decoration: none;
 }
 
+.customer-service:hover {
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
 .footer .copyright {
   padding-bottom: 10px;
-  font-size: 13px;
+  font-size: 15px;
 }

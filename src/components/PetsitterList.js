@@ -21,7 +21,7 @@ const PetSitterList = () => {
             alt='petsitter profile pic'
           ></img>
 
-          <div class='petsitter-list-text'>
+          <div className='petsitter-list-text'>
             <span className='petsitter nickname'>닉네임</span>
             <span className='petsitter title'>
               돌봄 경험 2년 있으며 펫시터 자격증 보유하였습니다.

@@ -8,7 +8,7 @@ const Footer = () => {
       <button className='customer-service'>
         <Link to='/usersupport'>고객센터</Link>
       </button>
-      <div className='copyright'>Copyright(c)2024 by</div>
+      <div className='copyright'>© 2024 PetMates. All rights reserved.</div>
     </div>
   );
 };
