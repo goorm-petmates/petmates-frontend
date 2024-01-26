@@ -145,12 +145,12 @@ const PetSitterInfo = () => {
           <div className='petsitter-booking-box'>
             <div className='booking-box-header'>맡길 반려견 선택</div>
             {/**************반려동물 등록되지않은 유저인경우 활성화************/}
-            <button className='register-pet-btn'>
+            {/* <button className='register-pet-btn'>
               <Link to='/petInfo'>반려동물을 먼저 등록하세요.</Link>
-            </button>
+            </button> */}
 
             {/**************반려동물 등록된 유저인경우 스타일 활성화***********/}
-            {/* <div className='dog-checkbox'>
+            <div className='dog-checkbox'>
               <label htmlFor='dog1'>
                 <img
                   className='registered-dog-pic1'
@@ -196,7 +196,7 @@ const PetSitterInfo = () => {
                 />
                 3번 반려견
               </label>
-            </div> */}
+            </div>
             {/*****************************************/}
 
             <div className='date-picker-header'>예약을 원하는 날짜와 시간을 선택하세요</div>
