@@ -1,0 +1,193 @@
+.petsitter-foam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.petsitter-foam-header {
+  width: 690px;
+  height: 60px;
+  background-color: #ff9900;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  font-family: Inter;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.petsitter-foam-container {
+  border: 1px solid #ff8000;
+  width: 654px;
+  height: 590px;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.petsitter-foam-top {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.raise-post-btn {
+  width: 90px;
+  height: 35px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  white-space: nowrap;
+  color: #ff9900;
+  background-color: transparent;
+  border: 1px solid #ff9900;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.raise-post-btn:hover {
+  background-color: #ddd;
+}
+
+.add-imgs-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#user-img1,
+#user-img2,
+#user-img3,
+#user-img4,
+#user-img5 {
+  display: none;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-right: 7px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  width: 65px;
+  height: 60px;
+  border-radius: 10px;
+}
+
+.add-imgs-boxes svg {
+  font-size: 35px;
+}
+
+.add-imgs-text {
+  margin-left: 10px;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ff0000;
+}
+
+.petsitter-foam-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#petsitter-foam-title {
+  border: 1px solid #000000;
+  width: 635px;
+  height: 35px;
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+#petsitter-foam-content {
+  width: 630px;
+  height: 222px;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.petsitter-foam-price-inputs {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.petsitter-foam-price-inputs input {
+  width: 152px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.daycare-price-inputs {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#daycare-price-input {
+  margin-left: 10px;
+  margin-right: 50px;
+}
+#extra-30mins-price-input {
+  margin-left: 10px;
+}
+#overnight-price-input {
+  margin-left: 15px;
+  margin-right: 50px;
+}
+
+.petsitter-form-btns {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.petsitter-form-btns button {
+  width: 80px;
+  height: 30px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  cursor: pointer;
+}
+
+.petsitter-form-btns button:hover {
+  background-color: #ddd;
+}
+
+.cancel-btn {
+  border-radius: 10px;
+  border: 1px solid #ff9900;
+  background-color: white;
+  color: #ff9900;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.save-btn {
+  border-radius: 10px;
+  border: 1px;
+  color: white;
+  background-color: #ff9900;
+  text-align: center;
+}

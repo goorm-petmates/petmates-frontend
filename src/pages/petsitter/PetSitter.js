@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { FaRegPenToSquare } from 'react-icons/fa6';
 import HeaderWithNav from '../../components/HeaderWithNav.js';
 import Footer from '../../components/Footer';
-//import PetSitterList from '../../components/PetSitterList.js';
+import PetSitterList from '../../components/PetSitterList.js';
+import PetSitterRightBtns from '../../components/PetSitterRightBtns.js';
 import '../../styles/StylePetSitter.css';
 
 const PetSitter = () => {
   const [selectedRegion, setSelectedRegion] = useState('');
+  const [selectedService, setSelectedService] = useState('');
   const [districtOptions, setDistrictOptions] = useState([]);
+  const [selectedDistrict, setSelectedDistrict] = useState('');
 
   // 서울시의 구 목록
   // prettier-ignore
@@ -32,47 +33,45 @@ const PetSitter = () => {
   //   '화성시',
   // ];
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("선택된 서비스: ", selectedService);
+    console.log("선택된 지역: ", selectedRegion);
+    console.log("선택된 구/시: ", selectedDistrict);
+  };
+
   useEffect(() => {
     if (selectedRegion === 'seoul') {
       setDistrictOptions(seoulDistricts);
-    } });
-  // else if (selectedRegion === 'gyeonggi') {
-  //   setDistrictOptions(gyeonggiCities);
-  // }
-  // }, [selectedRegion]);
+    }
+    // else if (selectedRegion === 'gyeonggi') {
+    //   setDistrictOptions(gyeonggiCities);
+    // }
+  }, [selectedRegion]);
 
   return (
     <div className='petsitter'>
       <HeaderWithNav></HeaderWithNav>
       <div className='petsitter-main'>
-        <div className='petsitter-right-bar'>
-          <button type='button' className='apply-btn'>
-            <Link to='/petsitterfoam'>
-              <FaRegPenToSquare />
-              펫시터 지원하기
-            </Link>
-          </button>
-          <button type='button' className='guide-btn'>
-            <Link to='/petsitterguide'>
-              <FaRegPenToSquare />
-              이용안내
-            </Link>
-          </button>
-        </div>
-        {/*********** petsitter search form **************/}
+        <PetSitterRightBtns></PetSitterRightBtns>
 
-        <form id='petsitter-search'>
+        {/*********** petsitter search form **************/}
+        <form id='petsitter-search' onSubmit={handleSubmit}>
           <div className='search-header'>사랑하는 반려견을 맡기세요</div>
           <br />
           <div className='search-dropdown'>
             <div className='service-selection'>
               서비스선택
-              <select className='service-options' defaultValue=''>
+              <select
+                className='service-options'
+                value={selectedService}
+                onChange={(e) => setSelectedService(e.target.value)}
+              >
                 <option value='' disabled hidden></option>
-                <option className='option-style' value='daycare'>
+                <option className='option-style' value='데이케어'>
                   데이케어
                 </option>
-                <option className='option-style' value='overnight'>
+                <option className='option-style' value='1박케어'>
                   1박케어
                 </option>
               </select>
@@ -83,7 +82,6 @@ const PetSitter = () => {
               {/*********** 서울 vs 경기선택 ************/}
               <select
                 className='location-options 1'
-                defaultValue=''
                 value={selectedRegion}
                 onChange={(e) => setSelectedRegion(e.target.value)}
               >
@@ -93,7 +91,11 @@ const PetSitter = () => {
                 {/* <option value='gyeonggi'>경기도</option> */}
               </select>
               {/*********** 서울선택시 -> 구 dropdown, 경기선택시 -> 시 dropdown보여줌 ************/}
-              <select className='location-options 2' defaultValue=''>
+              <select
+                className='location-options 2'
+                value={selectedDistrict} // 이 상태를 추가하고 관리해야 합니다.
+                onChange={(e) => setSelectedDistrict(e.target.value)}
+              >
                 <option value='' disabled hidden></option>
                 {districtOptions.map((option, index) => (
                   <option key={index} value={option}>
@@ -122,7 +124,7 @@ const PetSitter = () => {
 
         {/*************** petsitter page numbers **************/}
         <a href='http://localhost:3004/petsitter' className='petsitter-list-nums'>
-          1 2 3 4 5
+          1 2 3
         </a>
       </div>
       <Footer></Footer>

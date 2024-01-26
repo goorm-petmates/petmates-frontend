@@ -1,27 +1,27 @@
 .petsitter-info-post {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-left: 1px solid #000000;
-  border-right: 1px solid #000000;
+  justify-content: space-around;
+  /* border-left: 1px solid #ff8000;
+  border-right: 1px solid #ff8000; */
+  padding: 35px 40px 20px 40px;
 }
-.petsitter-info-detail {
-  width: 50%;
-  padding-left: 30px;
-  padding-top: 50px;
+
+.petsitter-left-side {
+  width: 40%;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
+
 .petsitter-right-side {
-  width: 40%;
+  width: 35%;
 }
 
 .petsitter-user-info {
   display: flex;
   flex-direction: row;
   align-items: center; /*자식 요소들을 세로 중앙에 정렬 */
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   white-space: nowrap;
   border-bottom: 1px solid #d9d9d9;
 }
@@ -36,7 +36,7 @@
 
 .petsitter-user-info span {
   margin: 0;
-  padding-right: 20px;
+  padding-right: 35px;
   display: flex;
   align-items: center;
 }
@@ -45,6 +45,12 @@
   display: flex;
   flex-direction: column;
   margin-right: auto;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .petsitter-title {
@@ -55,6 +61,11 @@
   letter-spacing: 0em;
   text-align: left;
   padding-bottom: 5px;
+}
+
+.petsitter-foam-text-content {
+  display: flex;
+  flex-direction: column;
 }
 
 .petsitter-nicknames-and-address {
@@ -71,9 +82,9 @@
 .petsitter-profile-pic-large {
   display: flex;
   justify-content: center;
-  width: 230px;
-  height: 220px;
-  padding: 30px;
+  width: 200px;
+  height: 180px;
+  padding: 20px;
   border-radius: 40px;
 }
 
@@ -81,43 +92,54 @@
   display: flex;
   flex-direction: row;
   margin-left: 0;
+  margin-bottom: 5px;
   justify-content: center;
 }
 
 .petsitter-extra-pics img {
-  border: 1px solid #d9d9d9;
+  border: 0.5px solid black;
   border-radius: 5px;
   margin-right: 10px;
   object-fit: cover;
-  width: 100px;
-  height: 70px;
-  /* margin-left: 30px; */
+  max-width: 100px;
+  max-height: 70px;
 }
 
 .self-introduction {
-  border: 1px solid black;
+  border: 0.5px solid black;
   /* flex-direction: row; */
-  width: 470px;
+  width: 100%;
   height: 300px;
-  margin-top: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .self-introduction-head {
   font-family: Inter;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 600;
   line-height: 21px;
   letter-spacing: 0em;
   text-align: left;
-  padding: 10px;
 }
 
+.self-introduction p {
+  color: #b3b3b3;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+}
 .petsitter-location {
   /* display: flex;
   justify-content: flex-start; */
   border-top: 1px solid #000000;
   margin-top: 10px;
   border-bottom: 1px solid #d9d9d9;
+  width: 100%;
   padding: 10px;
   font-family: Inter;
   font-size: 14px;
@@ -128,55 +150,53 @@
 }
 
 .kakao-map {
-  /* display: flex;
-  align-items: center; */
-  width: 450px;
+  width: 100%;
   height: 250px;
   border: 1px solid #d9d9d9;
-  margin: 10px;
+  margin: 20px;
 }
 
 .petsitter-review {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   border-top: 1px solid #000000;
   border-bottom: 1px solid #d9d9d9;
   padding: 10px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
-.petsitter-review-detail {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.petsitter-review-detail span {
-  margin: 0;
-  padding-right: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.petowner-profile-pic {
-  width: 45px;
-  height: 45px;
-  border-radius: 15px;
-  border: 1px solid #d9d9d9;
-  margin-right: 10px;
-}
-
-.petowner-review-text span {
-  display: flex;
-  flex-direction: row;
-}
-
-.petsitter-right-side {
-  padding-right: 60px;
-  padding-top: 50px;
-}
-
+/********** right-side ************/
 .price-table {
-  border: 1px solid #000000;
-  padding: 25px 40px;
+  border: 0.5px solid #000000;
+  padding: 20px 40px;
   margin-bottom: 15px;
+}
+
+.price-table-header {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.price-table-min-hrs {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #f52121;
 }
 
 table {
@@ -184,13 +204,189 @@ table {
   border-collapse: collapse;
 }
 
+th {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+td {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
 th,
 td {
   border: 1px solid black;
   text-align: center;
-  padding: 8px;
+  padding: 7px;
 }
 
 thead {
   background-color: #f2f2f2;
+}
+
+.petsitter-booking-box {
+  border: 0.5px solid #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.booking-box-header {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin: 10px;
+  padding-bottom: 10px;
+}
+
+/**************반려동물 등록되지않은 유저인경우 활성화************/
+/* .register-pet-btn {
+  width: 300px;
+  height: 35px;
+  border-radius: 10px;
+  background-color: #ff9900;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  border: transparent;
+  margin-bottom: 20px;
+}
+
+/*버튼안에 Link컴포넌트<a> 기본값 설정 변경*/
+/* .register-pet-btn a {
+  color: white;
+}
+
+.register-pet-btn:hover {
+  background-color: #ddd;
+} */
+
+/* 
+.booking-btn {
+  margin-bottom: 20px;
+  background-color: #b3b3b3;
+  border: transparent;
+  color: white;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  border-radius: 10px;
+  width: 310px;
+  height: 35px;
+  cursor: pointer;
+} */
+
+/**************반려동물 등록된 유저인경우 스타일 활성화***********/
+.dog-checkbox {
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.dog-checkbox img {
+  border: 1px solid black;
+  border-radius: 10px;
+  max-width: 70px;
+  max-height: 70px;
+}
+
+.dog-checkbox label {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-right: 15px;
+}
+
+.booking-btn {
+  margin-bottom: 20px;
+  background-color: #ff9900;
+  border: transparent;
+  color: white;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  border-radius: 10px;
+  width: 310px;
+  height: 35px;
+  cursor: pointer;
+}
+/********************************************************/
+
+.date-picker-header {
+  border-top: 1px solid #d9d9d9;
+  width: 320px;
+  padding-top: 15px;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.date-picker {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+form div {
+  padding-bottom: 5px;
+}
+
+.booking-price-calc {
+  text-align: end;
+}
+
+.booking-item-price {
+  padding-bottom: 5px;
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: right;
+}
+
+.booking-item-price div {
+  margin-bottom: 5px;
+}
+
+.total-price {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid #000000;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: right;
 }
