@@ -104,10 +104,11 @@ function SignUp() {
         }
       }).then(res => console.log("profile_image_url : ",res.data.kakao_account.profile.profile_image_url));
   }
+
+
   const [enroll_company, setEnroll_company] = useState({
     address:'',
   });
-
   const [popup, setPopup] = useState(false);
 
   const handleInput = (e) => {
@@ -116,7 +117,6 @@ function SignUp() {
       [e.target.name]:e.target.value,
     })
   }
-
   const handleComplete = (data) => {
     setPopup(!popup);
   }
