@@ -53,13 +53,20 @@
     margin-bottom: 50px;
 }
 .pet-info-add-picture{
-    height: 126px;
-    width: 130px;
+    height: 150px;
+    width: 150px;
     border: 1px solid black;
     border-radius: 100%;
     position: absolute;
-    margin-top: 230px;
+    margin-top: 200px;
     margin-left: 60px;
+}
+.pet-info-add-img-input{
+    position: absolute;
+    background-color: #282c34;
+    width: 66px;
+    margin-top: 380px;
+    margin-left: 95px;
 }
 .pet-info-add-picture-button{
     background-color: white;
@@ -70,6 +77,9 @@
     margin-top: 380px;
     margin-left: 95px;
     width: 65px;
+    text-align: center;
+    font-size: 17px;
+    padding: 2px;
 }
 .pet-info-add-inputs{
     width: 400px;
@@ -137,15 +147,16 @@
     margin-top: 440px;
     margin-left: 110px;
 }
-.pet-info-add-area > input {
+.pet-info-add-area > textarea {
     background-color: #F4F5F7;
     border: none;
     border-radius: 7px;
     height: 80px;
     margin-bottom: 10px;
     display: block;
-    font-size: 11px;
+    font-size: 15px;
     width: 380px;
+    padding: 5px;
 }
 .pet-info-add-area > span{
     font-size: 11px;
