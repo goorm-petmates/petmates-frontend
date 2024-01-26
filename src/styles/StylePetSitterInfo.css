@@ -253,7 +253,8 @@ thead {
 }
 
 /**************반려동물 등록되지않은 유저인경우 활성화************/
-/* .register-pet-btn {
+
+.register-pet-btn {
   width: 300px;
   height: 35px;
   border-radius: 10px;
@@ -268,16 +269,14 @@ thead {
   margin-bottom: 20px;
 }
 
-/*버튼안에 Link컴포넌트<a> 기본값 설정 변경*/
-/* .register-pet-btn a {
+.register-pet-btn a {
   color: white;
 }
 
 .register-pet-btn:hover {
   background-color: #ddd;
-} */
+}
 
-/* 
 .booking-btn {
   margin-bottom: 20px;
   background-color: #b3b3b3;
@@ -293,10 +292,15 @@ thead {
   width: 310px;
   height: 35px;
   cursor: pointer;
+}
+
+/*버튼안에 Link컴포넌트<a> 기본값 설정 변경*/
+/* .register-pet-btn a {
+  color: white;
 } */
 
 /**************반려동물 등록된 유저인경우 스타일 활성화***********/
-.dog-checkbox {
+/* .dog-checkbox {
   font-size: 15px;
   display: flex;
   justify-content: center;
@@ -332,6 +336,14 @@ thead {
   height: 35px;
   cursor: pointer;
 }
+
+.booking-btn a {
+  color: white;
+}
+
+.booking-btn:hover {
+  background-color: #ddd;
+} */
 /********************************************************/
 
 .date-picker-header {
