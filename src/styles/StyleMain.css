@@ -90,10 +90,11 @@
 }
 .main-petsitter-components{
     width: 1000px;
-    height: 130px;
+    height: 100px;
     margin-top: 20px;
     margin-left: 250px;
-    background-color: #61dafb;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
 }
