@@ -23,13 +23,45 @@ function PetInfoAdd() {
   const uploadFile = (e) => {
     const file = e.target.files[0];
 
+    // 허용된 확장자 배열
+    const allowedExtensions = ["png", "jpg", "jpeg"];
+
+    // 파일의 확장자를 가져와 소문자로 변환합니다.
+    const fileExtension = file.name.split('.').pop()?.toLowerCase();
+
+    // 확장자가 허용된 확장자인지 확인합니다.
+    if (!allowedExtensions.includes(fileExtension)) {
+      // 허용되지 않은 확장자면 알림을 띄우고 파일 선택을 취소합니다.
+      alert("파일은 'png', 'jpg', or 'jpeg'만 업로드 할 수 있습니다.");
+      setPostImg(null);
+      return;
+    }
+
+    // 파일 크기를 가져와 1MB로 제한합니다.
+    const maxSize = 1024 ** 2 * 1; // 1MB
+
+    if (file.size > maxSize) {
+      // 파일 크기가 1MB를 초과하면 알림을 띄우고 파일 선택을 취소합니다.
+      alert(" 파일 크기가 1MB를 초과했습니다.");
+      setPostImg(null);
+      return;
+    }
     // 파일 정보 저장
     setPostImg(file);
 
     // 미리보기 이미지 설정
     const fileReader = new FileReader();
-    fileReader.onload = () => setPreviewImg(fileReader.result);
+    fileReader.onload = () => {
+      setPreviewImg(fileReader.result);
+
+      // const base64Data = fileReader.result.split(',')[1];
+      console.log('Base64 Encoded Data:', fileReader.result);
+    };
     fileReader.readAsDataURL(file);
+
+    fileReader.onerror = (error) => {
+      console.error(error);
+    };
   };
 
   const navigate = useNavigate();
