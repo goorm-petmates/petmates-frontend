@@ -9,7 +9,9 @@ import Footer from '../../components/Footer';
 function SignUp() {
   const navigate = useNavigate();
   const navigateToPage = () => {
-    navigate('/login');
+    if (!userNickName || !userPhone || !enroll_company.address) {
+      alert("모든 필수 입력 항목을 채워주세요.");
+    } else navigate('/login');
   };
   const [showModal, setShowModal] = useState(false); // Modal을 보여주기 위한 상태 추가
   const openModal = () => {

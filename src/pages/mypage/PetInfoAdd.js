@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/StylePetInfoAdd.css";
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
 import axios from 'axios';
@@ -32,6 +32,7 @@ function PetInfoAdd() {
     fileReader.readAsDataURL(file);
   };
 
+  const navigate = useNavigate();
   const handleSubmit = async () => {
     // try {
     //   // 서버에 파일 전송
@@ -48,16 +49,21 @@ function PetInfoAdd() {
     // } catch (error) {
     //   console.error(error);
     // }
+    if (!petName || !breedOfDog || !birth || !weight || !gender || !neutering || !allergy || !trouble || !moreInfo) {
+      alert("모든 필수 입력 항목을 채워주세요.");
+    } else {
+      navigate('/petinfo');
 
-    console.log(petName);
-    console.log(breedOfDog);
-    console.log(birth);
-    console.log(weight);
-    console.log(gender);
-    console.log(neutering);
-    console.log(allergy);
-    console.log(trouble);
-    console.log(moreInfo);
+      console.log(petName);
+      console.log(breedOfDog);
+      console.log(birth);
+      console.log(weight);
+      console.log(gender);
+      console.log(neutering);
+      console.log(allergy);
+      console.log(trouble);
+      console.log(moreInfo);
+    }
   };
 
   const handlePetAdd = (e) => {
@@ -252,11 +258,9 @@ function PetInfoAdd() {
         </div>
 
         <div className="pet-info-add-button-container">
-          <Link to="/petInfo"
-                style={{ textDecoration: 'none', color: 'white' }}>
-            <button className="pet-info-add-button"
-                    onClick={handleSubmit}>등록하기</button>
-          </Link>
+          <button className="pet-info-add-button"
+                  onClick={handleSubmit}>등록하기</button>
+
         </div>
       </div>
 
