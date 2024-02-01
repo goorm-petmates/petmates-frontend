@@ -4,7 +4,7 @@ import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 import ReservePetsitterCard from '../../components/ReservePetsitterCard';
-
+import {useNavigate} from "react-router-dom";
 const MyManagement = () => {
   const [checkedRefuse, setCheckedRefuse] = useState([false, false]);
   const [managementStates, setManagementStates] = useState(["승인대기", "예약완료"]);
@@ -30,6 +30,12 @@ const MyManagement = () => {
       }
     });
   };
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate(`/petsitterfoam`);
+  };
+
   return <>
     <HeaderWithNav />
 
@@ -51,28 +57,29 @@ const MyManagement = () => {
       <div className="management-add-component">
         <span className="management-add-text">
           펫시터 지원 내역이 없습니다. 펫시터로 지원해보세요 :)</span>
-        <button className="management-add-button">
+        <button className="management-add-button"
+                onClick={handleNavigate}>
           등록하기
         </button>
       </div>
 
-      <div className="management-bar"></div>
-
       <div className="management-edit-component">
-        <img className="management-edit-img" src='/imgs/Logo-Icon.png' alt="프로필 사진"/>
+        <img className="management-edit-img" src="/imgs/Logo-Icon.png" alt="프로필 사진" />
         <div className="management-text-row">
           <p className="management-edit-nickname">홍길동</p>
           <p className="management-edit-text">
             돌봄 경험 2년 있으며 펫시터 자격증 보유하였습니다.</p>
         </div>
         <div className="management-buttons">
-          <button className="management-edit-button">
+          <button className="management-edit-button"
+                  onClick={handleNavigate}>
             수정하기
           </button>
           <button className="management-delete-button">
             삭제하기
           </button>
         </div>
+        <div className="management-bar"></div>
       </div>
 
       <div className="management-refuse-container">
@@ -101,6 +108,11 @@ const MyManagement = () => {
                                 state={managementStates[1]} />
         </label>
       </div>
+    </div>
+
+    <div className="page-buttons">
+      <button className="page-button">1</button>
+      <button className="page-button">2</button>
     </div>
     <Footer />
   </>

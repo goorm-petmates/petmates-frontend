@@ -61,6 +61,7 @@
   font-size: 11px;
   width: 60px;
   height: 20px;
+  cursor: pointer;
 }
 .signup-member-input {
   background-color: #f4f5f7;
@@ -108,6 +109,7 @@
   width: 100px;
   height: 20px;
   position: absolute;
+  cursor: pointer;
 }
 .MemberJoinButton {
   align-items: center; /* 자식 요소들을 세로 중앙으로 정렬 */
