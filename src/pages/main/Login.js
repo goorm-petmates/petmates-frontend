@@ -1,10 +1,11 @@
 import '../../styles/StyleLogin.css';
 import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
+//import Storage from "./Storage";
 
 function Login() {
-  const REST_API_KEY = '2a0545dc2cd35dfd52e96098d3ef9162';
-  const REDIRECT_URI = 'http://localhost:3000/kakao/callback';
+  const REST_API_KEY = '06255b2f3a6bd19ffa9bad111b8d01cd';
+  const REDIRECT_URI = 'http://localhost:3000/oauth/redirect/kakao';
 
   return (
     <div>
@@ -17,8 +18,7 @@ function Login() {
           className='kakao-button'
           onClick={() => {
             window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
-          }}
-        >
+          }}>
           <img className='kakao-button-img' src='/imgs/kakaoLogin.png' alt='kakao icon' />
         </button>
       </div>
