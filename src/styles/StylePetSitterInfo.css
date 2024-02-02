@@ -227,7 +227,7 @@ th,
 td {
   border: 1px solid black;
   text-align: center;
-  padding: 7px;
+  padding: 5px;
 }
 
 thead {
@@ -337,9 +337,9 @@ thead {
   color: white;
 }
 
-.booking-btn:hover {
+/* .booking-btn:hover {
   background-color: #ddd;
-}
+} */
 /********************************************************/
 
 .date-picker-header {
@@ -365,26 +365,31 @@ thead {
   text-align: left;
 }
 
-form div {
-  padding-bottom: 5px;
+.date-picker div {
+  padding-bottom: 3px;
 }
 
-.booking-price-calc {
-  text-align: end;
+.start-time select {
+  margin-bottom: 4px;
 }
 
 .booking-item-price {
+  padding-top: 10px;
   padding-bottom: 5px;
   font-family: Inter;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0em;
-  text-align: right;
+  text-align: end;
 }
 
 .booking-item-price div {
   margin-bottom: 5px;
+}
+
+.cost-placeholder {
+  margin-left: 20px;
 }
 
 .total-price {
