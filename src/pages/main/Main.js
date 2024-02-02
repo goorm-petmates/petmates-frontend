@@ -30,6 +30,7 @@ function Main() {
           <MainMenuPetsitter text="PETMATES로 선택한 환경에서 편안하게 맡겨주세요 !" />
         </div>
       </div>
+
       <Footer/>
     </div>
   );
