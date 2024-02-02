@@ -8,7 +8,7 @@ export const PetSitterRightbtns = () => {
     <div>
       <div className='petsitter-right-bar'>
         <button type='button' className='apply-btn'>
-          <Link to='/petsitterfoam'>
+          <Link to='/petsitterform'>
             <FaRegPenToSquare />
             펫시터 지원하기
           </Link>

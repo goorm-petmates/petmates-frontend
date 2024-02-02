@@ -1,32 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import HeaderWithNav from '../../components/HeaderWithNav.js';
 import PetSitterInfoReview from '../../components/PetSitterInfoReview.js';
 import Footer from '../../components/Footer.js';
 import '../../styles/StylePetSitterInfo.css';
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 const PetSitterInfo = () => {
   /*datepicker 사용 로직*/
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [startTime, setStartTime] = useState('09:00');
-  const [endTime, setEndTime] = useState('17:00');
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
+  const [costs, setCosts] = useState({
+    daycare: 0,
+    additional: 0,
+    overnight: 0,
+    total: 0,
+  });
 
   const generateTimeOptions = () => {
     const times = [];
-    for (let i = 0; i < 24; i++) {
+    for (let i = 9; i < 22; i++) {
+      //9시부터 22시까지 dropdown 선택
       times.push(`${i.toString().padStart(2, '0')}:00`);
       times.push(`${i.toString().padStart(2, '0')}:30`);
     }
+    times.push(`22:00`);
     return times;
-  };
-
-  const handleReservationSubmit = (event) => {
-    event.preventDefault();
-    // Process your reservation data here
-    console.log('예약완료 날짜:', { startDate, endDate, startTime, endTime });
   };
 
   /*반려견 체크박스 관련 로직*/
@@ -37,9 +40,101 @@ const PetSitterInfo = () => {
   });
 
   const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
-    setCheckedState({ ...checkedState, [name]: checked });
-    console.log({ name, checked });
+    const { name } = event.target;
+
+    //상태 리셋시켜 클릭된 체크박스만 true가 되게함
+    setCheckedState({
+      dog1: false,
+      dog2: false,
+      dog3: false,
+      [name]: true,
+    });
+  };
+
+  useEffect(() => {
+    calculateCosts();
+  }, [startDate, endDate, startTime, endTime]);
+
+  const calculateCosts = () => {
+    const rates = {
+      daycare: 20000, // 6 hours
+      additional: 3000, // every 30 minutes
+      overnight: 40000, // 24 hours
+    };
+
+    const startDateTime = new Date(startDate);
+    startDateTime.setHours(parseInt(startTime.split(':')[0]), parseInt(startTime.split(':')[1]), 0);
+    const endDateTime = new Date(endDate);
+    endDateTime.setHours(parseInt(endTime.split(':')[0]), parseInt(endTime.split(':')[1]), 0);
+
+    const diffInMs = endDateTime - startDateTime;
+    const diffInHours = diffInMs / (1000 * 60 * 60); //두 시간 사이 차이를 밀리초 단위로 계산후 시간단위로 변환
+
+    let daycareCost = 0,
+      additionalCost = 0,
+      overnightCost = 0;
+
+    if (diffInHours <= 6) {
+      daycareCost = rates.daycare;
+    } else if (diffInHours < 24) {
+      // For less than 24 hours but more than 6 hours
+      daycareCost = rates.daycare; // Apply daycare cost for the first 6 hours
+      const additionalHours = diffInHours - 6;
+      if (additionalHours > 0) {
+        const additionalBlocks = Math.ceil(additionalHours / 0.5);
+        additionalCost = additionalBlocks * rates.additional;
+      }
+    } else {
+      // For 24 hours or more, only apply overnight cost
+      const full24HourBlocks = Math.floor(diffInHours / 24);
+      overnightCost = (full24HourBlocks + 1) * rates.overnight; // Include any part of a day as an additional block
+      // Reset daycare and additional costs as overnight is applied
+      daycareCost = 0;
+      additionalCost = 0;
+    }
+
+    const total = daycareCost + additionalCost + overnightCost;
+    setCosts({
+      daycare: daycareCost,
+      additional: additionalCost,
+      overnight: overnightCost,
+      total,
+    });
+  };
+
+  //금액 숫자 포맷팅
+  const formatNumber = (number) => {
+    return new Intl.NumberFormat('ko-KR').format(number);
+  };
+
+  const navigate = useNavigate();
+
+  // 반려견 선택 여부 확인
+  const isDogSelected = checkedState.dog1 || checkedState.dog2 || checkedState.dog3;
+
+  // 날짜와 시간이 모두 선택되었는지 확인
+  const isDateTimeSelected = startDate && endDate && startTime !== '' && endTime !== '';
+
+  const handleReservationButtonClick = (event) => {
+    event.preventDefault(); // 폼 제출 방지
+
+    // 조건 검사: 반려견 선택, 날짜 및 시간 선택
+    if (!isDogSelected || !isDateTimeSelected) {
+      alert('모든 조건(반려견, 날짜, 시간)을 선택해야 예약이 가능합니다.');
+    } else {
+      // 조건이 충족되면 예약 처리 로직 실행
+      alert('예약이 요청되었습니다. 예약 페이지로 이동합니다.');
+
+      // 선택된 반려견 식별
+      const selectedDogs = Object.entries(checkedState)
+        .filter(([key, value]) => value)
+        .map(([key]) => key);
+
+      // 예약 정보 확인
+      console.log('예약정보:', { startDate, endDate, startTime, endTime, selectedDogs });
+
+      navigate('/reservepetsitter');
+    }
   };
 
   return (
@@ -98,7 +193,15 @@ const PetSitterInfo = () => {
           </div>
 
           <div className='petsitter-location'>펫시터위치</div>
-          <div className='kakao-map'>카카오맵</div>
+          <div className='kakao-map'>
+            <Map
+              center={{ lat: 37.55455089212772, lng: 126.97058659668593 }}
+              style={{ width: '100%', height: '250px' }}
+              level={3}
+            >
+              <MapMarker position={{ lat: 37.55455089212772, lng: 126.97058659668593 }}></MapMarker>
+            </Map>
+          </div>
 
           <div className='petsitter-review'>
             <span>리뷰 (3)</span>
@@ -113,14 +216,14 @@ const PetSitterInfo = () => {
         <div className='petsitter-right-side'>
           <div className='price-table'>
             <div className='price-table-header'>이용 금액</div>
-            <div className='price-table-min-hrs'> *최소 3시간이상부터 예약가능합니다</div>
+            <div className='price-table-min-hrs'> *최소 6시간이상부터 예약가능합니다</div>
             <table>
               <thead>
                 <tr>
                   <th>
                     데이케어
                     <br />
-                    <span style={{ fontWeight: '370' }}>(3시간)</span>
+                    <span style={{ fontWeight: '370' }}>(6시간)</span>
                   </th>
                   <th>
                     추가이용 <br />
@@ -134,8 +237,8 @@ const PetSitterInfo = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td>30,000</td>
-                  <td>5,000</td>
+                  <td>20,000</td>
+                  <td>3,000</td>
                   <td>40,000</td>
                 </tr>
               </tbody>
@@ -200,7 +303,7 @@ const PetSitterInfo = () => {
             {/*****************************************/}
 
             <div className='date-picker-header'>예약을 원하는 날짜와 시간을 선택하세요</div>
-            <form className='date-picker' onSubmit={handleReservationSubmit}>
+            <form className='date-picker'>
               <div className='start-date'>
                 <label htmlFor='start-date'>시작날짜 : </label>
                 <DatePicker
@@ -220,6 +323,7 @@ const PetSitterInfo = () => {
               <div className='start-time'>
                 <label htmlFor='start-time'>맡기는 시간 : </label>
                 <select value={startTime} onChange={(e) => setStartTime(e.target.value)}>
+                  <option value=''>시간 선택</option>
                   {generateTimeOptions().map((time) => (
                     <option key={time} value={time}>
                       {time}
@@ -230,6 +334,7 @@ const PetSitterInfo = () => {
               <div className='end-time'>
                 <label htmlFor='end-time'>데려가는 시간 : </label>
                 <select value={endTime} onChange={(e) => setEndTime(e.target.value)}>
+                  <option value=''>시간 선택</option>
                   {generateTimeOptions().map((time) => (
                     <option key={time} value={time}>
                       {time}
@@ -240,14 +345,45 @@ const PetSitterInfo = () => {
 
               <div className='booking-price-calc'>
                 <div className='booking-item-price'>
-                  <div>데이케어: 0원</div>
-                  <div>추가이용: 0원</div>
-                  <div>1박케어: 0원</div>
-                  <div>부가세: 0원</div>
+                  <div>
+                    데이케어:
+                    <span className='cost-placeholder'>
+                      {isDateTimeSelected ? `${formatNumber(costs.daycare)}원` : '0원'}
+                    </span>
+                  </div>
+                  <div>
+                    추가이용:
+                    <span className='cost-placeholder'>
+                      {isDateTimeSelected ? `${formatNumber(costs.additional)}원` : '0원'}
+                    </span>
+                  </div>
+                  <div>
+                    1박케어:
+                    <span className='cost-placeholder'>
+                      {isDateTimeSelected ? `${formatNumber(costs.overnight)}원` : '0원'}
+                    </span>
+                  </div>
+                  <div>
+                    부가세:
+                    <span className='cost-placeholder'>
+                      {isDateTimeSelected
+                        ? `${formatNumber(Math.round(costs.total * 0.1))}원`
+                        : '0원'}
+                    </span>
+                  </div>
                 </div>
-                <div className='total-price'>총 이용금액: 0원</div>
-                <button className='booking-btn' type='submit'>
-                  <Link to='/reservepetsitter'> 예약 요청</Link>
+                <div className='total-price'>
+                  총 이용금액 :{' '}
+                  {isDateTimeSelected
+                    ? `${formatNumber(costs.total + Math.round(costs.total * 0.1))}원`
+                    : '선택해주세요'}
+                </div>
+                <button
+                  className='booking-btn'
+                  type='submit'
+                  onClick={handleReservationButtonClick}
+                >
+                  예약 요청
                 </button>
               </div>
             </form>
