@@ -6,6 +6,7 @@ import Footer from '../../components/Footer';
 function Login() {
   const REST_API_KEY = '06255b2f3a6bd19ffa9bad111b8d01cd';
   const REDIRECT_URI = 'http://localhost:3000/oauth/redirect/kakao';
+  // const CLIENT_SECRET = 'Pdh0QZ5AjvPo2fncjcfUltkpYiRpLYoN'
 
   return (
     <div>
