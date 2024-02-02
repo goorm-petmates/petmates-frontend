@@ -5,7 +5,7 @@ import Login from './pages/main/Login.js';
 import SignUp from './pages/main/SignUp.js';
 import MyInfo from './pages/mypage/MyInfo.js';
 import PetSitter from './pages/petsitter/PetSitter.js';
-import PetSitterFoam from './pages/petsitter/PetSitterFoam.js';
+import PetSitterForm from './pages/petsitter/PetSitterForm.js';
 import PetSitterGuide from './pages/petsitter/PetSitterGuide.js';
 import PetSitterInfo from './pages/petsitter/PetSitterInfo.js';
 import Community from './pages/community/Community.js';
@@ -21,6 +21,7 @@ import ReservationCancle from './pages/mypage/ReservationCancle';
 import ReserveReview from './pages/mypage/ReserveReview';
 import MyManagement from './pages/mypage/MyManagement';
 import MyMamagementCancle from './pages/mypage/MyMamagementCancle';
+
 function App() {
   return (
     <BrowserRouter>
@@ -29,7 +30,7 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
         <Route path='/petsitter' element={<PetSitter />}></Route>
-        <Route path='/petsitterfoam' element={<PetSitterFoam />}></Route>
+        <Route path='/petsitterform' element={<PetSitterForm />}></Route>
         <Route path='/petsitterguide' element={<PetSitterGuide />}></Route>
         <Route path='/petsitterinfo' element={<PetSitterInfo />}></Route>
         <Route path='/community' element={<Community />}></Route>
@@ -42,11 +43,11 @@ function App() {
         <Route path='/petinfoadd' element={<PetInfoAdd />} />
         <Route path='/usersupport' element={<UserSupport />}></Route>
         <Route path='/kakao/callback' element={<SignUp />}></Route>
-        <Route path='/reservepetsitter' element={<ReservationPetsitter/>}></Route>
-        <Route path='/reservecancle' element={<ReservationCancle/>}></Route>
-        <Route path='/reservereview' element={<ReserveReview/>}></Route>
-        <Route path='/mymanagement' element={<MyManagement/>}/>
-        <Route path='/mymanagementcancle' element={<MyMamagementCancle/>}/>
+        <Route path='/reservepetsitter' element={<ReservationPetsitter />}></Route>
+        <Route path='/reservecancle' element={<ReservationCancle />}></Route>
+        <Route path='/reservereview' element={<ReserveReview />}></Route>
+        <Route path='/mymanagement' element={<MyManagement />} />
+        <Route path='/mymanagementcancle' element={<MyMamagementCancle />} />
       </Routes>
     </BrowserRouter>
   );
