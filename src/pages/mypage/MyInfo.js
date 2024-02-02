@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import "../../styles/StyleMyInfo.css";
 import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
 import Post from '../../components/Post';
+import Modal from 'react-modal';
+import MemberFormModal from '../../components/MemberFormModal';
 const MyInfo = () => {
   const [enroll_company, setEnroll_company] = useState({
     address:'',
@@ -18,6 +20,25 @@ const MyInfo = () => {
   const handleComplete = (data) => {
     setPopup(!popup);
   }
+
+  const [showModal, setShowModal] = useState(false); // Modal을 보여주기 위한 상태 추가
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const [pwRe, setpwRe] = useState("");
+  const handlePasswordChange = (e) => {
+    setpwRe(e.target.value);
+  }
+  const navigate = useNavigate();
+  const navigateToPage = () => {
+    if (!pwRe) {
+      alert("모든 필수 입력 항목을 채워주세요.");
+    } else navigate('/');
+  };
 
   return (
     <div>
@@ -73,11 +94,10 @@ const MyInfo = () => {
         </div>
 
         <div className="myinfo-buttons">
-          <button className="myinfo-quit">탈퇴하기</button>
+          <button className="myinfo-quit" onClick={openModal}>탈퇴하기</button>
           <button className="myinfo-edit">수정하기</button>
         </div>
       </div>
-
 
       <Footer />
     </div>
