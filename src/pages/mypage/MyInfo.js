@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "../../styles/StyleMyInfo.css";
 import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
 import Post from '../../components/Post';
-import Modal from 'react-modal';
-import MemberFormModal from '../../components/MemberFormModal';
+import MemberDeleteModal from '../../components/MemberDeleteModal';
 const MyInfo = () => {
   const [enroll_company, setEnroll_company] = useState({
     address:'',
@@ -26,18 +25,7 @@ const MyInfo = () => {
     setShowModal(true);
   };
   const closeModal = () => {
-    setShowModal(!showModal);
-  };
-
-  const [pwRe, setpwRe] = useState("");
-  const handlePasswordChange = (e) => {
-    setpwRe(e.target.value);
-  }
-  const navigate = useNavigate();
-  const navigateToPage = () => {
-    if (!pwRe) {
-      alert("모든 필수 입력 항목을 채워주세요.");
-    } else navigate('/');
+    setShowModal(false);
   };
 
   return (
@@ -98,6 +86,9 @@ const MyInfo = () => {
           <button className="myinfo-edit">수정하기</button>
         </div>
       </div>
+      {showModal && (
+        <MemberDeleteModal onClose={closeModal} />
+      )}
 
       <Footer />
     </div>
