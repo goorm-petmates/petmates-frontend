@@ -24,6 +24,7 @@ function SignUp() {
   // 유효성 검사
   const [userNickName, setUserNickName] = useState("");
   const [userPhone, setUserPhone] = useState("");
+  const [email, setEmail] = useState('');
 
   const [errorNickName, setErrorNickName] = useState("");
   const [errorPhone, setErrorPhone] = useState("");
@@ -68,45 +69,6 @@ function SignUp() {
       return setErrorPhone("숫자만 입력해주세요");
     }
   }
-
-  // 카카오 로그인 api
-  const REST_API_KEY='2a0545dc2cd35dfd52e96098d3ef9162'
-  const REDIRECT_URI = 'http://localhost:3000/kakao/callback'
-
-  const [query, setQuery] = useSearchParams();
-  const [code, setCode] = useState("");
-  const [accessToken, setAccessToken] = useState()
-
-  //1.리다이렉트 시에 받은 코드를 통해서 카카오 서버에 인증받을 code를 가져오기
-  useEffect(() => {
-    console.log("code : ", code);
-    setCode(query.get("code"));
-  }, []);
-
-  //2.rest api로 토큰 가져오기
-  const tokenRequest = async () => {
-    await axios.post(`https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${code}`,
-      {}, {
-        headers : "Content-type : application/x-www-form-urlencoded;charset=utf-8"
-      })
-      .then(res => {setAccessToken(res.data.access_token);
-        console.log(res)})
-      .catch(error => console.log(error))
-      .finally(res => console.log(res))
-  }
-
-  //3.rest api로 카카오 서버에서 정보 받아오기
-  const getInfo = () => {
-    console.log(accessToken)
-    axios.post("https://kapi.kakao.com/v2/user/me",{},
-      {
-        headers : {
-          Authorization : `Bearer ${accessToken}`,
-          "Content-type": " application/x-www-form-urlencoded"
-        }
-      }).then(res => console.log("profile_image_url : ",res.data.kakao_account.profile.profile_image_url));
-  }
-
 
   const [enroll_company, setEnroll_company] = useState({
     address:'',
@@ -156,7 +118,7 @@ function SignUp() {
           <input id="email" type="text"
                  className="signup-member-input"
                  placeholder="2~10자의 한글, 영문, 숫자 조합"
-                 value="qwer@qwer.com"
+                 value={email}
                  onInput={handleNickName}
                  onKeyDown={handleKeyDown} />
         </div>
@@ -207,11 +169,8 @@ function SignUp() {
       <div>
       </div>
 
-      <div className="signup-kakao-api">
-        <button onClick={tokenRequest}>토큰 발급</button>
-        <button onClick={getInfo}>정보 받아오기</button>
-      </div>
-      <Footer/>
+
+      <Footer />
     </div>
   );
 }
