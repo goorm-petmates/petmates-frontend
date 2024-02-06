@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Post(props) {
+
+
   const handleComplete = (data) => {
     let fullAddress = data.address;
     let extraAddress = '';

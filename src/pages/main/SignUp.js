@@ -81,9 +81,20 @@ function SignUp() {
       [e.target.name]:e.target.value,
     })
   }
-  const handleComplete = (data) => {
+  const handleComplete = (data, zonecode, latitude, longitude) => {
     setPopup(!popup);
   }
+
+  const postJoin = axios.post("url/api/members/join", {
+    phone: userPhone,
+    nickname: userNickName,
+    zipcode: zonecode,
+    roadAddr: enroll_company.address,
+    detailAddr: "",
+    latitude: latitude,
+    longitude: longitude,
+    profile: "",
+  });
 
   return (
     <div>
@@ -140,9 +151,13 @@ function SignUp() {
         <div className="input-address">
           <label>주소(*)</label>
           <button className="address-button"
-                  onClick={handleComplete}>
+                  onClick={(data) => handleComplete(data, zonecode, latitude, longitude)}>
             우편번호 찾기</button>
-          {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
+          {popup && <Post company={enroll_company}
+                          setcompany={setEnroll_company}
+                          zonecode={zonecode}
+                          latitude={latitude}
+                          longitude={longitude}></Post>}
 
           <input id="address" type="text"
                  className="signup-member-input signup-address-input"
