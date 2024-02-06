@@ -3,17 +3,24 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/main/Main.js';
 import Login from './pages/main/Login.js';
 import SignUp from './pages/main/SignUp.js';
-import FindInfo from './pages/main/FindInfo.js';
-import MyPage from './pages/mypage/MyPage.js';
-import Sitter from './pages/petsitter/Sitter.js';
-import SitterApp from './pages/petsitter/SitterApp.js';
-import SitterGuide from './pages/petsitter/SitterGuide.js';
-import SitterInfo from './pages/petsitter/SitterInfo.js';
-import Comm from './pages/community/Comm.js';
-import CommPost from './pages/community/CommPost.js';
-import CommSearchResults from './pages/community/CommSearchResults.js';
-import CommWritePost from './pages/community/CommWritePost.js';
+import MyInfo from './pages/mypage/MyInfo.js';
+import PetSitter from './pages/petsitter/PetSitter.js';
+import PetSitterForm from './pages/petsitter/PetSitterForm.js';
+import PetSitterGuide from './pages/petsitter/PetSitterGuide.js';
+import PetSitterInfo from './pages/petsitter/PetSitterInfo.js';
+import Community from './pages/community/Community.js';
+import CommunityPost from './pages/community/CommunityPost.js';
+import CommunityResult from './pages/community/CommunityResult.js';
+import CommunityWrite from './pages/community/CommunityWrite.js';
 import NotFoundPage from './pages/NotFoundPage.js';
+import PetInfo from './pages/mypage/PetInfo';
+import PetInfoAdd from './pages/mypage/PetInfoAdd';
+import UserSupport from './pages/UserSupport.js';
+import ReservationPetsitter from './pages/mypage/ReservationPetsitter';
+import ReservationCancle from './pages/mypage/ReservationCancle';
+import ReserveReview from './pages/mypage/ReserveReview';
+import MyManagement from './pages/mypage/MyManagement';
+import MyMamagementCancle from './pages/mypage/MyMamagementCancle';
 
 function App() {
   return (
@@ -22,17 +29,25 @@ function App() {
         <Route path='/' element={<Main />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
-        <Route path='/findinfo' element={<FindInfo />}></Route>
-        <Route path='/mypage' element={<MyPage />}></Route>
-        <Route path='/sitter' element={<Sitter />}></Route>
-        <Route path='/sitterapp' element={<SitterApp />}></Route>
-        <Route path='/sitterguide' element={<SitterGuide />}></Route>
-        <Route path='/sitterinfo' element={<SitterInfo />}></Route>
-        <Route path='/comm' element={<Comm />}></Route>
-        <Route path='/commpost' element={<CommPost />}></Route>
-        <Route path='/commsearchresults' element={<CommSearchResults />}></Route>
-        <Route path='/commwritepost' element={<CommWritePost />}></Route>
+        <Route path='/petsitter' element={<PetSitter />}></Route>
+        <Route path='/petsitterform' element={<PetSitterForm />}></Route>
+        <Route path='/petsitterguide' element={<PetSitterGuide />}></Route>
+        <Route path='/petsitterinfo' element={<PetSitterInfo />}></Route>
+        <Route path='/community' element={<Community />}></Route>
+        <Route path='/communitypost' element={<CommunityPost />}></Route>
+        <Route path='/communityresult' element={<CommunityResult />}></Route>
+        <Route path='/communitywrite' element={<CommunityWrite />}></Route>
+        <Route path='/myinfo' element={<MyInfo />}></Route>
         <Route path='/notfoundpage' element={<NotFoundPage />}></Route>
+        <Route path='/petinfo' element={<PetInfo />}></Route>
+        <Route path='/petinfoadd' element={<PetInfoAdd />} />
+        <Route path='/usersupport' element={<UserSupport />}></Route>
+        <Route path='/kakao/callback' element={<SignUp />}></Route>
+        <Route path='/reservepetsitter' element={<ReservationPetsitter />}></Route>
+        <Route path='/reservecancle' element={<ReservationCancle />}></Route>
+        <Route path='/reservereview' element={<ReserveReview />}></Route>
+        <Route path='/mymanagement' element={<MyManagement />} />
+        <Route path='/mymanagementcancle' element={<MyMamagementCancle />} />
       </Routes>
     </BrowserRouter>
   );

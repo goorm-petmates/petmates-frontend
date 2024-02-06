@@ -1,0 +1,138 @@
+.mypage-bar{
+    background-color: #ff9900;
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+}
+.mypage-bar-text{
+    font-size: 20px;
+    font-weight: 600;
+    height: 36px;
+    display: flex;
+    position: absolute;
+    margin-top: -25px;
+    margin-left: 20px;
+}
+.mypage-myinfo-nav1{
+    font-size: 15px;
+    font-weight: 700;
+    height: 26px;
+    text-decoration: underline;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 80px;
+    margin-right: 20px;
+}
+.mypage-myinfo-nav2{
+    font-size: 15px;
+    font-weight: 400;
+    height: 26px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+.mypage-navunderLine{
+    height: 1px;
+    border-bottom: 1px solid #FF8000;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center
+}
+.myinfo{
+    border: 1px solid #d9d9d9;
+    border-radius: 40px;
+    width: 700px;
+    height: 600px;
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 400px;
+}
+.myinfo-picture{
+    height: 126px;
+    width: 130px;
+    border: 1px solid black;
+    border-radius: 100%;
+    margin-top: 200px;
+    margin-left: 90px;
+    margin-right: 30px;
+}
+.myinfo-inputs{
+    width: 300px;
+    height: 300px;
+    margin-top: 100px;
+    margin-left: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.myinfo-inputs > input {
+    background-color: #F4F5F7;
+    border: none;
+    border-radius: 7px;
+    height: 30px;
+    display: block;
+    font-size: 11px;
+    width: 230px;
+    margin-bottom: 30px;
+}
+.myinfo-label{
+    font-size: 15px;
+    font-weight: 400;
+    height: 18px;
+}
+.myinfo-address-container{
+    height: 60px;
+}
+.myinfo-address-container > input{
+    background-color: #F4F5F7;
+    border: none;
+    border-radius: 7px;
+    height: 30px;
+    display: block;
+    font-size: 11px;
+    width: 230px;
+    margin-bottom: 30px;
+    margin-top: 5px;
+}
+.myinfo-address-button{
+    width: 90px;
+    border: none;
+    border-radius: 7px;
+    background-color: #ff9900;
+    color: white;
+    margin-left: 120px;
+}
+.myinfo-buttons{
+    display: flex;
+    margin-top: 480px;
+    margin-left: -430px;
+}
+.myinfo-quit{
+    border: 1px solid #FF8000;
+    height: 30px;
+    width: 145px;
+    font-size: 16px;
+    color: #FF8000;
+    text-align: center;
+    line-height: 30px;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 50px;
+}
+.myinfo-edit{
+    height: 30px;
+    width: 145px;
+    font-size: 16px;
+    background-color: #FF8000;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}

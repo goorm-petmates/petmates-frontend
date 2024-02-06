@@ -1,0 +1,104 @@
+/************ petsitter search form ************/
+#petsitter-search {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ff8000;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin: 0 auto;
+  margin-top: 3px;
+  margin-bottom: 15px;
+  width: 780px;
+  height: 140px;
+  border-radius: 20px;
+}
+
+.search-header {
+  width: 700px;
+  top: 264px;
+  left: 257px;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 5px;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.search-dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.service-selection,
+.location-selection {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.service-selection {
+  margin-right: 10px;
+}
+
+.service-options {
+  width: 108px;
+  height: 38px;
+  border: 1px solid #ffa500;
+  border-radius: 20px;
+  margin-left: 5px;
+  margin-right: 100px;
+  padding: 10px 15px;
+  /* appearance: none; 기본 스타일 제거*/
+  background-color: white;
+  cursor: pointer;
+}
+
+.location-options {
+  width: 108px;
+  height: 38px;
+  border: 1px solid #ffa500;
+  border-radius: 20px;
+  padding: 10px 15px;
+  margin-left: 5px;
+  /* appearance: none; 기본 스타일 제거 */
+  background-color: white;
+  cursor: pointer;
+}
+
+.petsitter-search-btn button {
+  border: transparent;
+  background-color: #ff9900;
+  color: white;
+  width: 100px;
+  height: 27px;
+  border-radius: 10px;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/************** petsitter page numbers **********/
+.petsitter-list-nums {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  color: #ff8000;
+  padding: 10px;
+  text-decoration: none;
+}

@@ -1,0 +1,100 @@
+.main-container{
+    justify-content: center;
+    align-items: center;
+    height: 550px;
+}
+.main-banner{
+    display: flex;
+    align-items: center;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ff8000;
+}
+
+.menu-icons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.left-icon {
+    color: #000000;
+    font-size: 30px;
+    font-weight: 400;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+.right-icon {
+    color: #000000;
+    font-size: 30px;
+    font-weight: 400;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+.menu-contents{
+    width: 1000px;
+    height: 300px;
+    z-index: 1;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+}
+.menu-left{
+    width: 600px;
+    height: 250px;
+    float: left;
+    margin-top: 25px;
+}
+.menu-title{
+    color: #000000;
+    font-size: 25px;
+    font-weight: 700;
+    height: 38px;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+.menu-text{
+    color: #000000;
+    font-size: 15px;
+    font-weight: 400;
+    height: 38px;
+    margin-left: 150px;
+    margin-top: 50px;
+}
+.menu-list{
+    color: #000000;
+    font-size: 11px;
+    font-weight: 400;
+    height: 13px;
+    width: 30px;
+    border: 1px solid #ff9900;
+    border-radius: 13px;
+    padding: 5px;
+    margin-left: 100px;
+    margin-top: 50px;
+    text-indent: 3.5px;
+}
+.menu-img{
+    width: 380px;
+    height: 273px;
+    margin-top: 12px;
+    float: right;
+}
+.main-petsitter-components{
+    width: 1000px;
+    height: 100px;
+    margin-top: 20px;
+    margin-left: 250px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+}

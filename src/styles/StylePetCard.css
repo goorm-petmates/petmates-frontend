@@ -1,0 +1,66 @@
+.pet-card-container{
+    background-color: #ffffff;
+    display: block;
+    flex-direction: row;
+    width: 1000px;
+    position: relative;
+    height: 100px;
+    margin-top: 10px;
+}
+.pet-card{
+    border: 1px solid #d9d9d9;
+    border-radius: 40px;
+    width: 1000px;
+    height: 100px;
+    position: absolute;
+    margin-bottom: 20px;
+    display: flex;
+}
+.pet-img{
+    height: 78px;
+    left: 45px;
+    position: absolute;
+    top: 11px;
+    width: 80px;
+}
+.pet-info{
+    font-size: 15px;
+    font-weight: 400;
+    height: 12px;
+    left: 208px;
+    line-height: normal;
+    position: absolute;
+    top: 37px;
+    width: 202px;
+}
+.pet-card-buttons{
+    width: 400px;
+    height: 100px;
+    position: absolute;
+    left: 750px;
+    top: 30px;
+    cursor: pointer;
+    justify-content: space-between;
+    align-items: center;
+}
+.pet-card-button-delete{
+    color: #ff9900;
+    left: 505px;
+    top: 65px;
+    border: 1px solid #ff9900;
+    border-radius: 7px;
+    width: 80px;
+    height: 30px;
+    background-color: white;
+}
+.pet-card-button-edit{
+    color: #ffffff;
+    left: 435px;
+    top: 65px;
+    border: none;
+    border-radius: 7px;
+    background-color: #ff9900;
+    width: 80px;
+    height: 30px;
+    margin-left: 20px;
+}

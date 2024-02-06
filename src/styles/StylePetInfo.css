@@ -1,0 +1,76 @@
+.mypage-bar{
+    background-color: #ff9900;
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+}
+.mypage-bar-text{
+    font-size: 20px;
+    font-weight: 600;
+    height: 36px;
+    display: flex;
+    position: absolute;
+    margin-top: -25px;
+    margin-left: 20px;
+}
+.petinfo-nav1{
+    font-size: 15px;
+    font-weight: 400;
+    height: 26px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 80px;
+    margin-right: 20px;
+}
+.petinfo-nav2{
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: underline;
+    height: 26px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+.mypage-navunderLine{
+    height: 1px;
+    border-bottom: 1px solid #FF8000;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center
+}
+.petinfo-container{
+    flex-direction: column;
+    display: flex;
+    border: 1px solid #d9d9d9;
+    border-radius: 30px;
+    width: 1200px;
+    height: 600px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: 350px;
+}
+.mypage-petinfo-add{
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 80px;
+    height: 23px;
+    border-radius: 7px;
+    z-index: 1;
+    margin-top: 30px;
+    margin-left: 1000px;
+}
+.pet-card-components{
+    width: 1200px;
+    height: 700px;
+    top: 320px;
+    left: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.main-header {
+  display: flex;
+  align-items: center;
+  margin-left: 60px;
+}
+
+.logo-with-icon {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  flex: 1;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 40px;
+  padding-right: 6px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  color: #ff6b00;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 39px;
+  text-align: center;
+}
+
+.right-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.log_out,
+.log_in {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar {
+  padding-bottom: 5px;
+  padding-top: 10px;
+  border-bottom: 1px solid #ff8000;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.nav-link {
+  padding: 10px 15px;
+  margin: 0 5px;
+  text-decoration: none;
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 38px;
+  text-align: center;
+  color: #ff8000;
+}
+
+.nav-link:hover {
+  background-color: #ddd;
+  border-radius: 10px;
+}
+.nav-list-logo{
+  width: 100px;
+  height: 90px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  top:125px;
+  width: 800px;
+  height: 130px;
+}
+
+.navbar:hover .dropdown-content {
+  display: block;
+}
+
+/* 가로로 나란히 위치하는 flex container */
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+/* 각각의 목록 스타일 */
+.flex-container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 10px; /* 각 목록 사이의 간격 조절 */
+  text-align: center;
+}
+
+.flex-container ul li {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}

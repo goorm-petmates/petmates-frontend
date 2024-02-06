@@ -1,0 +1,64 @@
+.petsitter-review-detail {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 7px;
+  margin-top: 10px;
+}
+
+.petsitter-review-detail span {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.petowner-profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 15px;
+  border: 1px solid #d9d9d9;
+  margin-right: 10px;
+}
+.petowner-review-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.petowner-review-left-side {
+  display: flex;
+}
+
+.petowner-nickname {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: left;
+  white-space: nowrap;
+  padding-right: 20px;
+}
+
+.petowner-order-by-date {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.petowner-rating {
+  font-size: 13px;
+}
+
+.petowner-review {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: left;
+}

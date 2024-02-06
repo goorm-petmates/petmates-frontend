@@ -1,0 +1,38 @@
+.footer {
+  border-top: 3px solid #ff8000;
+  /* position: fixed; */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.customer-service {
+  border: none;
+  color: #ff8000;
+  background-color: white;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.customer-service a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.customer-service:hover {
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
+.footer .copyright {
+  padding-bottom: 10px;
+  font-size: 15px;
+}
