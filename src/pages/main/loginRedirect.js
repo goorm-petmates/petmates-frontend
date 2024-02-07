@@ -40,7 +40,7 @@ const LoginRedirect = () => {
         })
         .catch(error => {
           // 에러 처리
-          console.error('Error during login', error);
+          console.error('로그인 중 에러 발생', error);
         });
     }
   }, []);
