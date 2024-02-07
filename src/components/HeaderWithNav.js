@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/StyleHeaderWithNav.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const HeaderWithNav = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -14,16 +15,30 @@ const HeaderWithNav = () => {
   };
 
   // 로그아웃
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // 로그인 상태를 나타내는 상태 변수
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleLoginClick = () => {
     setIsLoggedIn(true);
     console.log("로그인 되었습니다.");
+
+    localStorage.setItem('isLoggedIn', true);
+    navigate('/login');
   };
   const handleLogoutClick = () => {
     setIsLoggedIn(false);
     console.log("로그아웃 되었습니다.");
+
+    localStorage.setItem('isLoggedIn', false);
   };
+
+  useEffect(() => {
+    const storedIsLoggedIn = localStorage.getItem('isLoggedIn'); // 로컬 스토리지에서 isLoggedIn 값을 가져옴
+    if (storedIsLoggedIn === 'true') {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   return (
     <>
@@ -39,15 +54,13 @@ const HeaderWithNav = () => {
 
           <div className='right-header'>
             {isLoggedIn ? (
-              <button onClick={handleLogoutClick} className='log_out'>
+              <button className="log_out" onClick={handleLogoutClick}>
                 로그아웃
               </button>
             ) : (
-              <Link to='/login'>
-                <a href='' className='log_in' onClick={handleLoginClick}>
-                  로그인
-                </a>
-              </Link>
+              <a href="" className="log_in" onClick={handleLoginClick}>
+            로그인
+          </a>
             )}
           </div>
         </div>
