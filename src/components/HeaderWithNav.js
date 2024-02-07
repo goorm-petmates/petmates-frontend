@@ -31,12 +31,6 @@ const HeaderWithNav = () => {
                 로그인
               </a>
             </Link>
-
-            <Link to='/signup'>
-              <a href='' className='log_out'>
-                회원가입
-              </a>
-            </Link>
           </div>
         </div>
 
