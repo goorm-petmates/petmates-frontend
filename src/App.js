@@ -47,6 +47,8 @@ function App() {
         <Route path='/reservereview' element={<ReserveReview/>}></Route>
         <Route path='/mymanagement' element={<MyManagement/>}/>
         <Route path='/mymanagementcancle' element={<MyMamagementCancle/>}/>
+
+
       </Routes>
     </BrowserRouter>
   );
