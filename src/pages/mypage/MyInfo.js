@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "../../styles/StyleMyInfo.css";
 import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
 import Post from '../../components/Post';
 import MemberDeleteModal from '../../components/MemberDeleteModal';
+import {data1} from '../Data';
+import { useNavigate } from 'react-router-dom';
 const MyInfo = () => {
   const [enroll_company, setEnroll_company] = useState({
     address:'',
@@ -28,9 +30,21 @@ const MyInfo = () => {
     setShowModal(false);
   };
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    if (!isLoggedIn) {
+      alert("로그인이 필요합니다.");
+      navigate('/login');
+    }
+  }, [navigate]);
+
+
   return (
     <div>
-      <HeaderWithNav />
+      <HeaderWithNav/>
 
       <div>
         <div className="mypage-bar" />
@@ -49,20 +63,21 @@ const MyInfo = () => {
       <div className="myinfo">
         <div>
           <img className="myinfo-picture"
-               src="/imgs/Logo-Icon.png" alt="기본 로고"/>
+               src={data1.profile ? data1.profile : "/imgs/Logo-Icon.png"} alt="기본 로고"/>
         </div>
         <div className="myinfo-inputs">
           <label className="myinfo-label">닉네임</label>
-          <input className="myinfo-nameInput" placeholder="서버에서 받은 사용자 정보">
+          <input className="myinfo-nameInput" value={data1.nickname}>
           </input>
 
           <label className="myinfo-label">이메일</label>
-          <input className="myinfo-emailInput" placeholder="서버에서 받은 사용자 정보">
+          <input className="myinfo-emailInput" value={data1.email}>
           </input>
 
           <label className="myinfo-label">휴대폰번호</label>
           <input className="myinfo-phoneInput"
-                 placeholder="서버에서 받은 사용자 정보" disabled={true}>
+                 value={data1.phone}
+                 disabled={true}>
           </input>
 
           <div className="myinfo-address-container">
@@ -73,7 +88,7 @@ const MyInfo = () => {
             {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
 
             <input className="myinfo-addressInput"
-                   placeholder="주소"
+                   placeholder={data1.address}
                    required={true}
                    name="address"
                    onChange={handleInput}
