@@ -13,6 +13,18 @@ const HeaderWithNav = () => {
     setIsDropdownVisible(false);
   };
 
+  // 로그아웃
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // 로그인 상태를 나타내는 상태 변수
+
+  const handleLoginClick = () => {
+    setIsLoggedIn(true);
+    console.log("로그인 되었습니다.");
+  };
+  const handleLogoutClick = () => {
+    setIsLoggedIn(false);
+    console.log("로그아웃 되었습니다.");
+  };
+
   return (
     <>
       {/* Header */}
@@ -26,11 +38,17 @@ const HeaderWithNav = () => {
           </div>
 
           <div className='right-header'>
-            <Link to='/login'>
-              <a href='' className='log_in'>
-                로그인
-              </a>
-            </Link>
+            {isLoggedIn ? (
+              <button onClick={handleLogoutClick} className='log_out'>
+                로그아웃
+              </button>
+            ) : (
+              <Link to='/login'>
+                <a href='' className='log_in' onClick={handleLoginClick}>
+                  로그인
+                </a>
+              </Link>
+            )}
           </div>
         </div>
 
