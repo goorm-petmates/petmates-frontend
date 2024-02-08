@@ -166,7 +166,7 @@ function PetInfoAdd() {
           <div className="pet-info-add-input">
             <label>이름</label>
             <input type="text"
-                   placeholder="똑바로"
+                   placeholder={"똑바로"}
                    className="petName"
                    onInput={handlePetAdd}/>
           </div>
@@ -174,7 +174,7 @@ function PetInfoAdd() {
           <div className="pet-info-add-input">
             <label>견종</label>
             <input type="text"
-                   placeholder="푸들"
+                   placeholder={"푸들"}
                    className="breedOfDog"
                    onInput={handlePetAdd}/>
           </div>
