@@ -11,18 +11,13 @@ function PetInfo() {
   const [petCards, setPetCards] = useState([
     {
       id: 1,
-      petImgSrc: "/imgs/dog3.jpeg",
-      petInfo: "똑바로/토이푸들/여아/12살/5kg",
+      petImgSrc: data1.petImgSrc,
+      petInfo: `${data1.name}/${data1.breed}/${data1.sex === 'M' ? '남아' : '여아'}/${new Date().getFullYear() - data1.birthYear}살/${data1.weight}kg`,
     },
     {
       id: 2,
-      petImgSrc: "/imgs/dog3.jpeg",
-      petInfo: "아지/말티즈/여아/12살/5kg",
-    },
-    {
-      id: 3,
-      petImgSrc: "/imgs/dog3.jpeg",
-      petInfo: "아지/말티즈/여아/12살/5kg",
+      petImgSrc: data2.petImgSrc,
+      petInfo: `${data2.name}/${data2.breed}/${data2.sex === 'M' ? '남아' : '여아'}/${new Date().getFullYear() - data2.birthYear}살/${data2.weight}kg`,
     },
   ]);
 
@@ -34,6 +29,20 @@ function PetInfo() {
       navigate('/petinfoadd');
     }
     setPetCards([...petCards]);
+  }
+
+  const handleEdit = (id) => {
+    const petInfoToEdit = petCards.find(petCard => petCard.id === id);
+    if (petInfoToEdit) {
+      navigate({
+        pathname: '/petinfoadd',
+        state: { petInfoToEdit } // 반려동물 정보를 상태로 전달
+      });
+    }
+  }
+
+  const handleDelete = (idToDelete) => {
+    setPetCards(prevPetCards => prevPetCards.filter(petCard => petCard.id !== idToDelete));
   }
 
   return (
@@ -66,6 +75,8 @@ function PetInfo() {
                   key={petCard.id}
                   petImgSrc={petCard.petImgSrc}
                   petInfo={petCard.petInfo}
+                  onEdit={() => handleEdit(petCard.id)}
+                  onDelete={() => handleDelete(petCard.id)}
                 />
               ))}
             </>
