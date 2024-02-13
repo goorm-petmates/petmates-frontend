@@ -6,8 +6,35 @@ import '../../styles/ReserveReview.css';
 import ReservePetsitterCard from '../../components/ReservePetsitterCard';
 import NoContents from '../../components/NoContents';
 import ReviewCard from '../../components/ReviewCard';
+import { useMutation } from 'react-query';
 
 const ReserveReview = () => {
+  // // 후기작성
+  // const { mutate: writeReview } = useMutation(async () => {
+  //   try {
+  //     const response = await fetch('/api/my-page/review', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       // 필요한 데이터가 있다면 body에 추가할 수 있습니다.
+  //     });
+  //     const data = await response.json();
+  //     // 성공적으로 후기 작성한 경우 리뷰 카드 표시 등의 처리를 할 수 있습니다.
+  //   } catch (error) {
+  //     // 오류 처리
+  //     console.error("Error writing review:", error);
+  //   }
+  // });
+  //
+  // // 후기 가져오기
+  // const { data: completedReviews, isLoading, isError } = useQuery('completedReviews', async () => {
+  //   const response = await fetch('/api/petsitter/reviews');
+  //   if (!response.ok) {
+  //     throw new Error('Failed to fetch completed reviews');
+  //   }
+  //   return response.json();
+  // });
 
   return <>
     <HeaderWithNav />
@@ -24,7 +51,7 @@ const ReserveReview = () => {
       <button className="reservation-review-nav2">취소내역</button>
     </Link>
     <Link to='/reservereview'>
-      <button className="reservation-review-nav3">후기작성</button>
+      <button className="reservation-review-nav3" >후기작성</button>
     </Link>
 
     <div className="mypage-navunderLine"></div>
@@ -32,7 +59,7 @@ const ReserveReview = () => {
     <div className="review-container">
       <ReservePetsitterCard reservePetImgSrc="/imgs/dog3.jpeg"
                             petInfo="똑바로 / 2023.12.23 ~ 2023.12.24 / 50,000원"
-                            state="후기작성" />
+                            state="후기작성"  onClick={() => writeReview()}/>
       <ReservePetsitterCard reservePetImgSrc="/imgs/dog3.jpeg"
                             petInfo="뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원"
                             state="작성완료" />
