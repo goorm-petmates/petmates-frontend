@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
 // import axios from 'axios';
+// import { handlers } from '../../mocks/handlers';
+
 function PetInfoAdd() {
   const [petName, setPetName] = useState("");
   const [breedOfDog, setbreedOfDog] = useState("");
@@ -66,21 +68,6 @@ function PetInfoAdd() {
 
   const navigate = useNavigate();
   const handleSubmit = async () => {
-    // try {
-    //   // 서버에 파일 전송
-    //   const formData = new FormData();
-    //   formData.append('file', postImg);
-    //
-    //   const response = await axios.post('https://your-server-endpoint', formData, {
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data',
-    //     },
-    //   });
-    //
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.error(error);
-    // }
     if (!petName || !breedOfDog || !birth || !weight || !gender || !neutering || !allergy || !trouble || !moreInfo) {
       alert("모든 필수 입력 항목을 채워주세요.");
     } else {
@@ -96,7 +83,68 @@ function PetInfoAdd() {
       console.log(trouble);
       console.log(moreInfo);
     }
-  };
+
+  //   try {
+  //     const response = await fetch('/api/my-page/pet/add', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         storedFileName: "", // 파일 이름이나 경로를 전송합니다.
+  //         name: petName,
+  //         breed: breedOfDog,
+  //         sex: gender,
+  //         birthYear: birth,
+  //         weight: weight,
+  //         isNeutering: neutering,
+  //         isAllergy: allergy,
+  //         isDisease: trouble,
+  //         etc: moreInfo
+  //       }),
+  //     });
+  //
+  //     const data = await response.json();
+  //
+  //     if (response.ok) {
+  //       if (data.result === "success") {
+  //         alert("반려동물 정보 등록에 성공했습니다.");
+  //         navigate('/petinfo');
+  //       } else {
+  //         alert("반려동물 정보 등록에 실패했습니다.");
+  //       }
+  //     } else {
+  //       // 서버에서 에러 응답을 보낸 경우
+  //       alert("서버 오류로 반려동물 정보를 등록할 수 없습니다.");
+  //     }
+  //   } catch (error) {
+  //     // 네트워크 오류 등으로 인한 요청 실패
+  //     console.error("Error while submitting pet info:", error);
+  //     alert("서버 오류로 반려동물 정보를 등록할 수 없습니다.");
+  //   }
+  //
+  //   const formData = new FormData();
+  //   formData.append('photo', postImg); // 사진 파일 첨부
+  //   formData.append('pet_id', '1'); // 반려동물 ID (임시)
+  //
+  //   // MSW 핸들러로 요청 보내기
+  //   const response = await fetch('/api/my-page/pet/1/photo', {
+  //     method: 'POST',
+  //     body: formData,
+  //   });
+  //
+  //   if (response.ok) {
+  //     const data = await response.json();
+  //     if (data.result === "success") {
+  //       alert("반려동물 정보 등록에 성공했습니다.");
+  //       navigate('/petinfo');
+  //     } else {
+  //       alert("반려동물 정보 등록에 실패했습니다.");
+  //     }
+  //   } else {
+  //     alert("서버 오류로 반려동물 정보를 등록할 수 없습니다.");
+  //   }
+  // };
 
   const handlePetAdd = (e) => {
     if(e.target.className === "petName"){

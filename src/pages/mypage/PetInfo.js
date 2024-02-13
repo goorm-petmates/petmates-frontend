@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import NoContents from "../../components/NoContents";
 import "../../styles/StylePetInfo.css";
@@ -44,6 +44,26 @@ function PetInfo() {
   const handleDelete = (idToDelete) => {
     setPetCards(prevPetCards => prevPetCards.filter(petCard => petCard.id !== idToDelete));
   }
+
+  // useEffect(() => {
+  //   // data1의 반려동물 정보 가져오기
+  //   const fetchPetInfo = async () => {
+  //     // API 호출 및 데이터 가져오는 코드 작성...
+  //     const petInfo = await fetch('/api/petsitter/select-pet', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         petId: data1.pet, // data1의 pet ID를 전송
+  //       }),
+  //     });
+  //     const petData = await petInfo.json();
+  //     setPetCards([petData]);
+  //   };
+  //
+  //   fetchPetInfo();
+  // }, []);
 
   return (
     <div>
