@@ -7,6 +7,8 @@ import Post from '../../components/Post';
 import MemberDeleteModal from '../../components/MemberDeleteModal';
 import {data1} from '../Data';
 import { useNavigate } from 'react-router-dom';
+// import { handlers } from '../../mocks/handlers';
+
 const MyInfo = () => {
   const [enroll_company, setEnroll_company] = useState({
     address:'',
@@ -41,6 +43,15 @@ const MyInfo = () => {
     }
   }, [navigate]);
 
+  // // msw
+  // const [userInfo, setUserInfo] = useState({});
+  // useEffect(() => {
+  //   fetch("/api/my-page/edit")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setUserInfo(data);
+  //     });
+  // }, []);
 
   return (
     <div>
@@ -71,12 +82,12 @@ const MyInfo = () => {
           </input>
 
           <label className="myinfo-label">이메일</label>
-          <input className="myinfo-emailInput" value={data1.email}>
+          <input className="myinfo-emailInput" value={data1.email} readOnly>
           </input>
 
           <label className="myinfo-label">휴대폰번호</label>
           <input className="myinfo-phoneInput"
-                 value={data1.phone}
+                 value={data1.phone} readOnly
                  disabled={true}>
           </input>
 
