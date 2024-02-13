@@ -144,7 +144,7 @@ function PetInfoAdd() {
   //   } else {
   //     alert("서버 오류로 반려동물 정보를 등록할 수 없습니다.");
   //   }
-  // };
+  };
 
   const handlePetAdd = (e) => {
     if(e.target.className === "petName"){
