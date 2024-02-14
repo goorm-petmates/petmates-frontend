@@ -51,14 +51,21 @@
     margin-top: 10px;
 }
 .management-add-component{
+    /*border: 1px solid #d9d9d9;*/
+    /*border-radius: 40px;*/
+    /*width: 850px;*/
+    /*height: 90px;*/
+    /*position: relative;*/
+    /*justify-content: space-evenly;*/
+    /*align-items: center;*/
+    /*margin-top: 30px;*/
+    /*margin-bottom: 30px;*/
+    /*margin-left: 800px;*/
     border: 1px solid #d9d9d9;
     border-radius: 40px;
     width: 850px;
-    height: 90px;
-    position: relative;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 30px;
+    height: 100px;
+    margin-top: -100px;
     margin-bottom: 30px;
     margin-left: 800px;
 }
@@ -69,7 +76,7 @@
     line-height: normal;
     position: absolute;
     width: 500px;
-    margin-top: 30px;
+    margin-top: 40px;
     margin-left: 220px;
 }
 .management-add-button{
@@ -82,7 +89,14 @@
     width: 80px;
     height: 25px;
     margin-left: 680px;
-    margin-top: 30px;
+    margin-top: 40px;
+}
+.management-add-bar{
+    height: 1px;
+    border-bottom: 1px solid #FF8000;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 114px;
 }
 .management-bar{
     height: 1px;
