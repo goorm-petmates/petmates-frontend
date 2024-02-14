@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 import { data1 } from '../Data';
 const MyManagement = () => {
   const [checkedRefuse, setCheckedRefuse] = useState([false, false]);
-  const [managementStates, setManagementStates] = useState(["승인대기", "예약완료"]);
+  const [managementStates, setManagementStates] = useState(['승인대기', '예약완료']);
 
   const handleCheckboxClick = (index) => {
     setCheckedRefuse((prevChecked) => {
@@ -25,12 +25,13 @@ const MyManagement = () => {
 
         setManagementStates((prevStates) => {
           const updatedStates = [...prevStates];
-          updatedStates[index] = "취소완료";
+          updatedStates[index] = '취소완료';
           return updatedStates;
         });
       }
     });
   };
+
   const navigate = useNavigate();
 
   const handleNavigate = () => {
