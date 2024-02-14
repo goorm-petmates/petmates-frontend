@@ -74,7 +74,7 @@ function ReservationPet() {
 
       <div className="reservation-container">
         <div className="reservation-components">
-          {data1.reservations_status ? (
+          {data1.reservations_status ==='Y' ? (
             <>
               <label className="checked-width-1">
                 <input
