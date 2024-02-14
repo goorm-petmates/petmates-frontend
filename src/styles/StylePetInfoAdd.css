@@ -80,6 +80,7 @@
     text-align: center;
     font-size: 17px;
     padding: 2px;
+    cursor: pointer;
 }
 .pet-info-add-inputs{
     width: 400px;

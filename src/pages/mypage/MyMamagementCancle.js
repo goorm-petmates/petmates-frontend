@@ -5,8 +5,11 @@ import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 import ReservePetsitterCard from '../../components/ReservePetsitterCard';
 import NoContents from '../../components/NoContents';
+import { data1 } from '../Data';
 
 const MyMamagementCancle = () => {
+  const { reservations_status } = data1;
+
   return <>
     <HeaderWithNav />
 
@@ -25,13 +28,18 @@ const MyMamagementCancle = () => {
     <div className="mypage-navunderLine"></div>
 
     <div className="mymanagement-cancle-container">
+      {reservations_status === 'Y' ? (
+        <>
       <ReservePetsitterCard reservePetImgSrc="/imgs/dog3.jpeg"
                             petInfo="똑바로 / 2023.12.23 ~ 2023.12.24 / 50,000원"
                             state="취소완료" />
       <ReservePetsitterCard reservePetImgSrc="/imgs/dog3.jpeg"
                             petInfo="뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원"
                             state="취소완료" />
-      <NoContents text="취소 내역" />
+    </>
+    ) : (
+    <NoContents text="취소 내역" />
+    )}
     </div>
 
     <Footer />

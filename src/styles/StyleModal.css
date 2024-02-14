@@ -5,6 +5,7 @@
     height: 200px;
     position: fixed;
     background-color: white;
+    margin-top: -400px;
 }
 .signup-modal-header {
     display: flex;

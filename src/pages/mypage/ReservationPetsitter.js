@@ -5,9 +5,11 @@ import {Link} from "react-router-dom";
 import HeaderWithNav from '../../components/HeaderWithNav';
 import ReservePetsitterCard from '../../components/ReservePetsitterCard';
 import Footer from '../../components/Footer';
+import {data1} from '../Data';
+
 function ReservationPet() {
   const [checkedReservations, setCheckedReservations] = useState([false, false]);
-  const [reservationStates, setReservationStates] = useState(["승인대기", "예약완료"]);
+  const [reservationStates, setReservationStates] = useState(["예약확인","승인대기", "예약완료"]);
 
   const handleCheckboxClick = (index) => {
     setCheckedReservations((prevChecked) => {
@@ -30,6 +32,18 @@ function ReservationPet() {
       }
     });
   };
+
+  const handleConfirmReservation = (index) => {
+    setReservationStates((prevStates) => {
+      const updatedStates = [...prevStates];
+      updatedStates[index] = "승인대기";
+      return updatedStates;
+    });
+  };
+
+  if (data1.reservations_status === '') {
+    return <NoContents text="예약 내역이 없습니다." />;
+  }
 
   return (
     <div>
@@ -60,29 +74,47 @@ function ReservationPet() {
 
       <div className="reservation-container">
         <div className="reservation-components">
-          <label className="checked-width-1">
-            <input
+          {data1.reservations_status ==='Y' ? (
+            <>
+              <label className="checked-width-1">
+                <input
               className="reservepet-checkbox"
               type="checkbox"
               checked={checkedReservations[0]}
               onChange={() => handleCheckboxClick(0)}
-            />
-            <ReservePetsitterCard reservePetImgSrc="/imgs/dog3.jpeg"
+                />
+               <ReservePetsitterCard reservePetImgSrc="/imgs/dog3.jpeg"
                                   petInfo="똑바로 / 2023.12.23 ~ 2023.12.24 / 50,000원"
-                                  state={reservationStates[0]} />
-          </label>
-          <label className="checked-width-2">
-            <input
+                                  state={reservationStates[0]}
+                                  onClick={() => handleConfirmReservation(0)} />
+              </label>
+              <label className="checked-width-2">
+               <input
               className="reservepet-checkbox"
               type="checkbox"
               checked={checkedReservations[1]}
               onChange={() => handleCheckboxClick(1)} />
-            <ReservePetsitterCard reservePetImgSrc="/imgs/dog3.jpeg"
+                <ReservePetsitterCard reservePetImgSrc="/imgs/dog3.jpeg"
                                   petInfo="뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원"
-                                  state={reservationStates[1]} />
-          </label>
+                                  state={reservationStates[1]}
+                                  onClick={() => handleConfirmReservation(1)} />
+              </label>
+              <label className="checked-width-3">
+                <input
+              className="reservepet-checkbox"
+              type="checkbox"
+              checked={checkedReservations[3]}
+              onChange={() => handleCheckboxClick(2)} />
+                <ReservePetsitterCard reservePetImgSrc="/imgs/dog3.jpeg"
+                                  petInfo="뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원"
+                                  state={reservationStates[2]}
+                                  onClick={() => handleConfirmReservation(2)} />
+              </label>
 
-          <NoContents text="반려동물 정보" />
+            </>
+          ) : (
+            <NoContents text="예약 내역이 없습니다." />
+          )}
         </div>
       </div>
 

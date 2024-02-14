@@ -52,6 +52,7 @@
     width: 80px;
     height: 30px;
     background-color: white;
+    cursor: pointer;
 }
 .pet-card-button-edit{
     color: #ffffff;
@@ -63,4 +64,5 @@
     width: 80px;
     height: 30px;
     margin-left: 20px;
+    cursor: pointer;
 }

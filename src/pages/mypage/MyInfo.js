@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
-import {Link} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import "../../styles/StyleMyInfo.css";
 import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
 import Post from '../../components/Post';
+import MemberDeleteModal from '../../components/MemberDeleteModal';
+import {data1} from '../Data';
+import { useNavigate } from 'react-router-dom';
+// import { handlers } from '../../mocks/handlers';
+
 const MyInfo = () => {
   const [enroll_company, setEnroll_company] = useState({
     address:'',
@@ -19,9 +24,38 @@ const MyInfo = () => {
     setPopup(!popup);
   }
 
+  const [showModal, setShowModal] = useState(false); // Modal을 보여주기 위한 상태 추가
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    if (!isLoggedIn) {
+      alert("로그인이 필요합니다.");
+      navigate('/login');
+    }
+  }, [navigate]);
+
+  // // msw
+  // const [userInfo, setUserInfo] = useState({});
+  // useEffect(() => {
+  //   fetch("/api/my-page/edit")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setUserInfo(data);
+  //     });
+  // }, []);
+
   return (
     <div>
-      <HeaderWithNav />
+      <HeaderWithNav/>
 
       <div>
         <div className="mypage-bar" />
@@ -40,20 +74,21 @@ const MyInfo = () => {
       <div className="myinfo">
         <div>
           <img className="myinfo-picture"
-               src="/imgs/Logo-Icon.png" alt="기본 로고"/>
+               src={data1.profile ? data1.profile : "/imgs/Logo-Icon.png"} alt="기본 로고"/>
         </div>
         <div className="myinfo-inputs">
           <label className="myinfo-label">닉네임</label>
-          <input className="myinfo-nameInput" placeholder="서버에서 받은 사용자 정보">
+          <input className="myinfo-nameInput" value={data1.nickname}>
           </input>
 
           <label className="myinfo-label">이메일</label>
-          <input className="myinfo-emailInput" placeholder="서버에서 받은 사용자 정보">
+          <input className="myinfo-emailInput" value={data1.email} readOnly>
           </input>
 
           <label className="myinfo-label">휴대폰번호</label>
           <input className="myinfo-phoneInput"
-                 placeholder="서버에서 받은 사용자 정보" disabled={true}>
+                 value={data1.phone} readOnly
+                 disabled={true}>
           </input>
 
           <div className="myinfo-address-container">
@@ -64,7 +99,7 @@ const MyInfo = () => {
             {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
 
             <input className="myinfo-addressInput"
-                   placeholder="주소"
+                   placeholder={data1.address}
                    required={true}
                    name="address"
                    onChange={handleInput}
@@ -73,11 +108,13 @@ const MyInfo = () => {
         </div>
 
         <div className="myinfo-buttons">
-          <button className="myinfo-quit">탈퇴하기</button>
+          <button className="myinfo-quit" onClick={openModal}>탈퇴하기</button>
           <button className="myinfo-edit">수정하기</button>
         </div>
       </div>
-
+      {showModal && (
+        <MemberDeleteModal onClose={closeModal} />
+      )}
 
       <Footer />
     </div>

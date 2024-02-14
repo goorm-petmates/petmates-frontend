@@ -42,12 +42,14 @@ function App() {
         <Route path='/petinfo' element={<PetInfo />}></Route>
         <Route path='/petinfoadd' element={<PetInfoAdd />} />
         <Route path='/usersupport' element={<UserSupport />}></Route>
-        <Route path='/kakao/callback' element={<SignUp />}></Route>
-        <Route path='/reservepetsitter' element={<ReservationPetsitter />}></Route>
-        <Route path='/reservecancle' element={<ReservationCancle />}></Route>
-        <Route path='/reservereview' element={<ReserveReview />}></Route>
-        <Route path='/mymanagement' element={<MyManagement />} />
-        <Route path='/mymanagementcancle' element={<MyMamagementCancle />} />
+        <Route path='/oauth/redirect/kakao' element={<SignUp />}></Route>
+        <Route path='/reservepetsitter' element={<ReservationPetsitter/>}></Route>
+        <Route path='/reservecancle' element={<ReservationCancle/>}></Route>
+        <Route path='/reservereview' element={<ReserveReview/>}></Route>
+        <Route path='/mymanagement' element={<MyManagement/>}/>
+        <Route path='/mymanagementcancle' element={<MyMamagementCancle/>}/>
+
+
       </Routes>
     </BrowserRouter>
   );
