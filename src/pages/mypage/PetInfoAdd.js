@@ -3,9 +3,9 @@ import "../../styles/StylePetInfoAdd.css";
 import { Link, useNavigate } from 'react-router-dom';
 import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
+import { data1 } from '../Data';
 // import axios from 'axios';
 // import { handlers } from '../../mocks/handlers';
-
 function PetInfoAdd() {
   const [petName, setPetName] = useState("");
   const [breedOfDog, setbreedOfDog] = useState("");
@@ -196,7 +196,7 @@ function PetInfoAdd() {
         <div className="pet-info-add-fileupload">
           {/* 사진 미리보기 */}
           {previewImg && (
-            <img className="pet-info-add-picture" src={previewImg} alt="Preview" />
+            <img className="pet-info-add-picture" src={data1.profile ? data1.profile : previewImg} alt="" />
           )}
           <input
             className="pet-info-add-img-input"
