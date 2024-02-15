@@ -128,7 +128,7 @@ const MyInfo = () => {
           <img className="myinfo-picture"
                src={data1.profile ? data1.profile : previewImg} alt="기본 로고" />
           <input
-            className="pet-info-add-img-input"
+            className="myinfo-add-img-input"
             type="file"
             onChange={uploadFile}
             accept="image/*"
