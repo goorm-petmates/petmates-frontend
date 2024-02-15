@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useSearchParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // react-router-dom의 navigate 함수를 사용
 
 const LoginRedirect = () => {
-  const [query, setQuery] = useSearchParams();
-  const [code, setCode] = useState("");
-  // const [accessToken, setAccessToken] = useState()
-
-  //1.리다이렉트 시에 받은 코드를 통해서 카카오 서버에 인증받을 code를 가져오기
-  useEffect(() => {
-    console.log("출력: " + code);
-    setCode(query.get("code"));
-  }, []);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // URL에서 인가 코드 추출
@@ -19,36 +10,33 @@ const LoginRedirect = () => {
     const authorizationCode = url.searchParams.get('code');
 
     if (authorizationCode) {
-      console.log('Authorization Code:', authorizationCode);
-      // 백엔드 서버로 인가 코드 전송
-      axios.post('http://localhost:8080/api/kakao/login', {
-        code: authorizationCode,
+      fetch('https://api.petmates.co.kr/api/members/test/api/kakao/login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code: authorizationCode }),
       })
-        .then(response => {
-          // 성공적으로 토큰을 받았을 경우의 처리
-          console.log('Login successful', response);
+        .then(response => response.json())
+        .then(data => {
+          localStorage.setItem('isNewUser', data.isNewUser);
+          console.log('isNewUser 저장됨:', localStorage.getItem('isNewUser'));
 
-          // 토큰에 따라 리디렉션할 페이지 결정
-          if (response.data.isNewUser) {
-            // 새로운 사용자일 경우 회원가입 페이지로 리디렉션
-            window.location.href = '/signup';
+          // 새 사용자인 경우 '/signup'으로 리다이렉트, 그렇지 않으면 메인 페이지('/')로 리다이렉트
+          if (data.isNewUser) {
+            navigate('/signup'); // 새 사용자의 경우 '/signup'으로 리다이렉트
           } else {
-            // 기존 사용자일 경우 메인 페이지로 리디렉션
-            localStorage.setItem('jwt', response.data.jwtToken);
-            window.location.href = '/main';
+            navigate('/'); // 기존 사용자의 경우 메인 페이지('/')로 리다이렉트
           }
         })
         .catch(error => {
-          // 에러 처리
-          console.error('로그인 중 에러 발생', error);
+          console.error('Error:', error);
         });
     }
-  }, []);
+  }, [navigate]);
 
-  return (
-    <div>
-    </div>
-  );
+  return null;
 };
 
 export default LoginRedirect;
