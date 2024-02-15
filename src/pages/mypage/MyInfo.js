@@ -32,16 +32,16 @@ const MyInfo = () => {
     setShowModal(false);
   };
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
-  useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-
-    if (!isLoggedIn) {
-      alert("로그인이 필요합니다.");
-      navigate('/login');
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  //
+  //   if (!isLoggedIn) {
+  //     alert("로그인이 필요합니다.");
+  //     navigate('/login');
+  //   }
+  // }, [navigate]);
 
   // // msw
   // const [userInfo, setUserInfo] = useState({});
@@ -52,6 +52,58 @@ const MyInfo = () => {
   //       setUserInfo(data);
   //     });
   // }, []);
+
+  const handleEdit = (e) => {
+    alert('수정되었습니다.');
+  }
+
+  const [postImg, setPostImg] = useState(null); // 파일 정보를 담을 state
+  const [previewImg, setPreviewImg] = useState(null); // 미리보기 이미지를 담을 state
+
+
+  const uploadFile = (e) => {
+    const file = e.target.files[0];
+
+    // 허용된 확장자 배열
+    const allowedExtensions = ["png", "jpg", "jpeg"];
+
+    // 파일의 확장자를 가져와 소문자로 변환합니다.
+    const fileExtension = file.name.split('.').pop()?.toLowerCase();
+
+    // 확장자가 허용된 확장자인지 확인합니다.
+    if (!allowedExtensions.includes(fileExtension)) {
+      // 허용되지 않은 확장자면 알림을 띄우고 파일 선택을 취소합니다.
+      alert("파일은 'png', 'jpg', or 'jpeg'만 업로드 할 수 있습니다.");
+      setPostImg(null);
+      return;
+    }
+
+    // 파일 크기를 가져와 1MB로 제한합니다.
+    const maxSize = 1024 ** 2 * 1; // 1MB
+
+    if (file.size > maxSize) {
+      // 파일 크기가 1MB를 초과하면 알림을 띄우고 파일 선택을 취소합니다.
+      alert(" 파일 크기가 1MB를 초과했습니다.");
+      setPostImg(null);
+      return;
+    }
+    // 파일 정보 저장
+    setPostImg(file);
+
+    // 미리보기 이미지 설정
+    const fileReader = new FileReader();
+    fileReader.onload = () => {
+      setPreviewImg(fileReader.result);
+
+      // const base64Data = fileReader.result.split(',')[1];
+      console.log('Base64 Encoded Data:', fileReader.result);
+    };
+    fileReader.readAsDataURL(file);
+
+    fileReader.onerror = (error) => {
+      console.error(error);
+    };
+  };
 
   return (
     <div>
@@ -74,8 +126,19 @@ const MyInfo = () => {
       <div className="myinfo">
         <div>
           <img className="myinfo-picture"
-               src={data1.profile ? data1.profile : "/imgs/Logo-Icon.png"} alt="기본 로고"/>
+               src={data1.profile ? data1.profile : previewImg} alt="기본 로고" />
+          <input
+            className="pet-info-add-img-input"
+            type="file"
+            onChange={uploadFile}
+            accept="image/*"
+            style={{ display: 'none' }}
+            id="fileInput"
+          />
+          <label className="myinfo-add-picture-button"
+                 htmlFor="fileInput">사진 추가</label>
         </div>
+
         <div className="myinfo-inputs">
           <label className="myinfo-label">닉네임</label>
           <input className="myinfo-nameInput" value={data1.nickname}>
@@ -109,7 +172,7 @@ const MyInfo = () => {
 
         <div className="myinfo-buttons">
           <button className="myinfo-quit" onClick={openModal}>탈퇴하기</button>
-          <button className="myinfo-edit">수정하기</button>
+          <button className="myinfo-edit" onClick={handleEdit}>수정하기</button>
         </div>
       </div>
       {showModal && (
