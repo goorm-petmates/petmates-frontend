@@ -49,14 +49,14 @@ function SignUp() {
     if (e.data === " " || e.data === 0) {
       setErrorNickName("공백은 입력할 수 없습니다.");
     }
-
-    if (newNickName.length < 2 || newNickName.length > 10) {
-      return setErrorNickName("2~10자 이내로 입력하세요 ");
-    } if (!/^[가-힣a-zA-Z]+$/.test(newNickName)) {
-      return setErrorNickName("한글 또는 영문만 사용 가능합니다");
-    } else {
-      return setErrorNickName("사용 가능한 닉네임입니다");
-    }
+    // 닉네임 받아옴
+    // if (newNickName.length < 2 || newNickName.length > 10) {
+    //   return setErrorNickName("2~10자 이내로 입력하세요 ");
+    // } if (!/^[가-힣a-zA-Z]+$/.test(newNickName)) {
+    //   return setErrorNickName("한글 또는 영문만 사용 가능합니다");
+    // } else {
+    //   return setErrorNickName("사용 가능한 닉네임입니다");
+    // }
   }
 
   const handlePhone = (e) => {
@@ -127,8 +127,7 @@ function SignUp() {
       // 입력된 닉네임이 data1의 닉네임과 같은 경우 모달창 띄우기
       setShowModal(true);
     } else {
-      // 닉네임이 중복되지 않은 경우 알림창 띄우기
-      alert("사용 가능한 닉네임입니다.");
+      setErrorNickName("사용 가능한 닉네임입니다");
     }
   };
 
@@ -152,7 +151,7 @@ function SignUp() {
                  onKeyDown={handleKeyDown} />
           <button className="input-aline-button" onClick={handleCheckDuplicate}>중복 확인</button>
           {errorNickName && (
-            <div style={{ color: 'red',
+            <div style={{ color: errorNickName === "사용 가능한 닉네임입니다" ? 'green' : 'red',
               marginTop:"5px",
               fontSize: '10px' }}>
               {errorNickName}</div>
@@ -179,7 +178,7 @@ function SignUp() {
                  onInput={handlePhone}
                  onKeyDown={handleKeyDown} />
           {errorPhone && (
-            <div style={{ color: 'red', marginTop: '-7px', fontSize: '10px' }}>
+            <div style={{ color: errorPhone === "사용 가능한 휴대전화 번호입니다" ? 'green' : 'red', marginTop: '-7px', fontSize: '10px' }}>
               {errorPhone}</div>
           )}
         </div>
