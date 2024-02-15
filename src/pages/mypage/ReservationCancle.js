@@ -5,23 +5,35 @@ import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 import ReservePetsitterCard from '../../components/ReservePetsitterCard';
 import NoContents from '../../components/NoContents';
+import { data1, data2 } from '../Data';
 
 const ReservationCancle = () => {
-
-  const cancelData = [
-    {
-      id: 1,
-      reservePetImgSrc: "/imgs/dog3.jpeg",
-      petInfo: "똑바로 / 2023.12.23 ~ 2023.12.24 / 50,000원",
-      state: "취소완료"
-    },
-    {
-      id: 2,
-      reservePetImgSrc: "/imgs/dog3.jpeg",
-      petInfo: "뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원",
-      state: "취소완료"
+  const renderReservationCards = () => {
+    if (data1.reservations_cancle === 'N') {
+      // 취소 내역이 없는 경우 NoContents 컴포넌트 출력
+      return <NoContents text="취소 내역" />;
+    } else {
+      // 취소 내역이 있는 경우 ReservePetsitterCard 컴포넌트 출력
+      return (
+        <>
+          {data1.reservations_cancle === 'Y' && (
+            <>
+              <ReservePetsitterCard
+                reservePetImgSrc={data1.petImgSrc}
+                petInfo={`${data1.name}/${data1.breed}/${data1.sex === 'M' ? '남아' : '여아'}/${new Date().getFullYear() - data1.birthYear}살/${data1.weight}kg`}
+                state="취소완료"
+              />
+              <ReservePetsitterCard
+                reservePetImgSrc={data2.petImgSrc}
+                petInfo={`${data2.name}/${data2.breed}/${data2.sex === 'M' ? '남아' : '여아'}/${new Date().getFullYear() - data2.birthYear}살/${data2.weight}kg`}
+                state="취소완료"
+              />
+            </>
+          )}
+        </>
+      );
     }
-  ];
+  };
 
   return <>
     {/*<HeaderWithNav />*/}
@@ -44,17 +56,7 @@ const ReservationCancle = () => {
     <div className="mypage-navunderLine"></div>
 
     <div className="cancle-container">
-      {cancelData.length > 0 ? (
-          // 취소 내역이 있는 경우 ReservePetsitterCard를 출력합니다.
-          cancelData.map((item) => (
-      <ReservePetsitterCard  key={item.id}
-                             reservePetImgSrc={item.reservePetImgSrc}
-                            petInfo={item.petInfo}
-                            state={item.state} />
-        ))
-        ) : (
-        <NoContents text="취소 내역" />
-        )}
+      {renderReservationCards()}
     </div>
 
     <Footer />
