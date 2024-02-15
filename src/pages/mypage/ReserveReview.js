@@ -7,7 +7,8 @@ import ReservePetsitterCard from '../../components/ReservePetsitterCard';
 import NoContents from '../../components/NoContents';
 import ReviewCard from '../../components/ReviewCard';
 // import { useMutation } from 'react-query';
-import { data1 } from '../Data';
+import Review from '../../components/Review';
+import { data1, data2 } from '../Data';
 
 const ReserveReview = () => {
   // // 후기작성
@@ -41,11 +42,14 @@ const ReserveReview = () => {
   const [isReviewWritten, setIsReviewWritten] = useState(false);
 
   const handleCardClick = (cardState) => {
-    setSelectedCard(cardState);
+    setSelectedCard("작성완료");
+    setIsReviewWritten(false);
   };
 
-  const handleReviewButtonClick = () => {
-    setIsReviewWritten(true);
+  const handleSaveReview = (rating, reviewText) => {
+    // 후기 저장 로직을 구현합니다.
+    console.log('별점:', rating);
+    console.log('후기 내용:', reviewText);
   };
 
   return (
@@ -75,32 +79,23 @@ const ReserveReview = () => {
         <NoContents text="후기 작성 내역" />
       ) : (
         <>
-        {selectedCard === "후기작성" && !isReviewWritten && (
-        <ReservePetsitterCard
-          reservePetImgSrc="/imgs/dog3.jpeg"
-          petInfo="똑바로 / 2023.12.23 ~ 2023.12.24 / 50,000원"
-          state="후기작성"
-          onClick={() => handleCardClick("후기작성")}
-        />
-      )}
-        {selectedCard === "후기작성" && isReviewWritten && (
-          <ReviewCard
-            reviewImgSrc="/imgs/dog3.jpeg"
-            starRating="별점"
-          />
-        )}
+          <Review reviewImgSrc="/imgs/dog3.jpeg"
+                  petInfo={`${data1.name} / ${data1.birthYear} ~ ${data1.weight} / ${data1.price}원`}
+                  onSave={handleSaveReview}
+                  state={data1.review_status}
+                  reviewContent={data1.review_content}
+                  reviewStar={data1.review_star}/>
 
-          {selectedCard === "작성완료" && (
-            <ReservePetsitterCard
-              reservePetImgSrc="/imgs/dog3.jpeg"
-              petInfo="뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원"
-              state="작성완료"
-              onClick={() => handleCardClick("작성완료")}
-            />
-          )}
+        <Review reviewImgSrc="/imgs/dog3.jpeg"
+                petInfo={`${data2.name} / ${data2.birthYear} ~ ${data2.weight} / ${data2.price}원`}
+                state={data2.review_status}
+                reviewContent={data2.review_content}
+                reviewStar={data2.review_star}
+    />
+
         </>
       )}
-        </div>
+    </div>
     <Footer />
   </>
   );

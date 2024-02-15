@@ -29,7 +29,7 @@ function ReviewCard(props){
 
   return(
     <div className="review-review-container">
-        <img className="reserve-review-img" src={reviewImgSrc} alt="pet-img"/>
+      <img className="reserve-review-img" src={reviewImgSrc} alt="pet-img"/>
       <div className="reserve-review-info">
         <div className="review-starts">
           {/* 별점 표시 */}
