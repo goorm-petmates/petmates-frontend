@@ -5,7 +5,7 @@ const Logout = () => {
   const navigate = useNavigate(); // useNavigate 훅 사용
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/kakao/logout', {
+    fetch('http://localhost:3000/api/kakao/logout', {
       method: 'POST',
       credentials: 'include', // 쿠키를 포함하여 요청
       headers: {

@@ -7,7 +7,7 @@ const TokenUpdate = () => {
     const updateToken = async () => {
       // 백엔드 엔드포인트로 POST 요청 보내기
       try {
-        const response = await fetch('http://localhost:8080/api/oauth/jwt/update', {
+        const response = await fetch('http://localhost:3000/api/oauth/jwt/update', {
           method: 'POST',
           credentials: 'include',
           headers: {

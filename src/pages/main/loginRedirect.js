@@ -10,7 +10,7 @@ const LoginRedirect = () => {
     const authorizationCode = url.searchParams.get('code');
 
     if (authorizationCode) {
-      fetch('http://localhost:8080/api/kakao/login', {
+      fetch('http://localhost:3000/api/kakao/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
