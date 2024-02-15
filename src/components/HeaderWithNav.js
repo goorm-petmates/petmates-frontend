@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/StyleHeaderWithNav.css';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext.js';
 
 const HeaderWithNav = () => {
+
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const handleMouseEnter = () => {
@@ -14,31 +15,8 @@ const HeaderWithNav = () => {
     setIsDropdownVisible(false);
   };
 
-  // 로그아웃
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const navigate = useNavigate();
-
-  const handleLoginClick = () => {
-    setIsLoggedIn(true);
-    console.log("로그인 되었습니다.");
-
-    localStorage.setItem('isLoggedIn', true);
-    navigate('/login');
-  };
-  const handleLogoutClick = () => {
-    setIsLoggedIn(false);
-    console.log("로그아웃 되었습니다.");
-
-    localStorage.setItem('isLoggedIn', false);
-  };
-
-  useEffect(() => {
-    const storedIsLoggedIn = localStorage.getItem('isLoggedIn'); // 로컬 스토리지에서 isLoggedIn 값을 가져옴
-    if (storedIsLoggedIn === 'true') {
-      setIsLoggedIn(true);
-    }
-  }, []);
+  const { isLoggedIn } = useAuth(); // 로그인 상태를 가져옵니다.
+  console.log(isLoggedIn);
 
   return (
     <>
@@ -53,15 +31,24 @@ const HeaderWithNav = () => {
           </div>
 
           <div className='right-header'>
-            {isLoggedIn ? (
-              <button className="log_out" onClick={handleLogoutClick}>
-                로그아웃
-              </button>
-            ) : (
-              <a href="" className="log_in" onClick={handleLoginClick}>
-            로그인
-          </a>
-            )}
+            <div>
+              {localStorage.getItem('isNewUser') != null && (
+                <Link to="/tokenupdate" className="log_out">
+                  토큰갱신
+                </Link>
+              )}
+            </div>
+            <div>
+              {isLoggedIn ? (
+                <Link to="/logout" className="log_out">
+                  로그아웃
+                </Link>
+              ) : (
+                <Link to="/login" className="log_in">
+                  로그인
+                </Link>
+              )}
+            </div>
           </div>
         </div>
 
