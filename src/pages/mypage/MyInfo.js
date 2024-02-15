@@ -126,7 +126,7 @@ const MyInfo = () => {
       <div className="myinfo">
         <div>
           <img className="myinfo-picture"
-               src={data1.profile ? data1.profile : previewImg} alt="기본 로고" />
+               src={data1.profile ? data1.profile : previewImg} alt="" />
           <input
             className="myinfo-add-img-input"
             type="file"
