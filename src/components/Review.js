@@ -69,15 +69,15 @@ function Review(props) {
           </button>
         )}
 
-        {isReviewSaved  || state === "작성완료" && (
+        {(isReviewSaved || state === "작성완료") && (
           <>
             <div className="review-pet-info">
               <div className="write-review">
-                후기: {data2.review_content}
+                후기: { reviewText || data2.review_content}
                 <br />
               </div>
               <div className="write-stars">
-                별점: {[...Array(data2.review_star)].map((_, index) => (
+                별점: {[...Array( rating || data2.review_star)].map((_, index) => (
                 <span key={index} className="star filled" style={{ color: "gold" }}>★</span>
               ))}
               </div>
