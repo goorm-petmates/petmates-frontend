@@ -20,7 +20,8 @@ export const data1 = {
 
   price: 50000,
 
-  reservations_status: 'N',
+  reservations_status: 'Y',
+  reservations_cancle: 'Y',
   petsitterForm:'Y',
   review:'Y',
   review_status: '후기작성',
