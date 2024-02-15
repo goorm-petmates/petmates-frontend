@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import MemberFormModal from '../../components/MemberFormModal';
 import '../../styles/StyleSignUp.css';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 import Post from '../../components/Post';
 import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
+import { data1 } from '../Data';
+
 function SignUp() {
   const navigate = useNavigate();
   const navigateToPage = () => {
-    if (!userNickName || !userPhone || !enroll_company.address) {
+    if (!memberInfo || !enroll_company.address) {
       alert("모든 필수 입력 항목을 채워주세요.");
-    } else navigate('/login');
+    } else navigate('/');
   };
   const [showModal, setShowModal] = useState(false); // Modal을 보여주기 위한 상태 추가
   const openModal = () => {
@@ -21,10 +22,11 @@ function SignUp() {
     setShowModal(!showModal);
   };
 
-  // 유효성 검사
-  const [userNickName, setUserNickName] = useState("");
-  const [userPhone, setUserPhone] = useState("");
-  const [email, setEmail] = useState('');
+  const [memberInfo, setMemberInfo] = useState({
+    userNickName: "",
+    userPhone: "",
+    userEmail: "", // 수정: 이메일 상태 추가
+  });
 
   const [errorNickName, setErrorNickName] = useState("");
   const [errorPhone, setErrorPhone] = useState("");
@@ -35,32 +37,42 @@ function SignUp() {
     }
   };
   const handleNickName = (e) => {
-    setUserNickName(e.target.value);
+    const newNickName = e.target.value;
+
+    // 닉네임 상태 업데이트
+    setMemberInfo(prevState => ({
+      ...prevState,
+      userNickName: newNickName,
+    }));
 
     // 공백 여부 체크
     if (e.data === " " || e.data === 0) {
       setErrorNickName("공백은 입력할 수 없습니다.");
     }
-
-    if (userNickName.length < 2 || userNickName.length > 10) {
-      return setErrorNickName("2~10자 이내로 입력하세요 ");
-    } if (!/^[가-힣a-zA-Z]+$/.test(userNickName)) {
-      return setErrorNickName("한글 또는 영문만 사용 가능합니다");
-    } else {
-      return setErrorNickName("사용 가능한 닉네임입니다");
-    }
+    // 닉네임 받아옴
+    // if (newNickName.length < 2 || newNickName.length > 10) {
+    //   return setErrorNickName("2~10자 이내로 입력하세요 ");
+    // } if (!/^[가-힣a-zA-Z]+$/.test(newNickName)) {
+    //   return setErrorNickName("한글 또는 영문만 사용 가능합니다");
+    // } else {
+    //   return setErrorNickName("사용 가능한 닉네임입니다");
+    // }
   }
 
   const handlePhone = (e) => {
-    setUserPhone(e.target.value);
+    const phone = e.target.value;
+    setMemberInfo(prevState => ({
+      ...prevState,
+      userPhone: phone, // 수정: userPhone 상태 업데이트
+    }));
 
     // 공백 여부 체크
     if (e.data === " " || e.data === 0) {
       alert("공백은 입력할 수 없습니다.");
     }
 
-    if (/^\d+$/.test(userPhone)) {
-      if (userPhone.length === 11) {
+    if (/^\d+$/.test(phone)) {
+      if (phone.length === 11) {
         return setErrorPhone("사용 가능한 휴대전화 번호입니다");
       } else {
         return setErrorPhone("휴대전화 11자를 입력하세요");
@@ -85,21 +97,42 @@ function SignUp() {
     setPopup(!popup);
   }
 
-  // const postJoin = axios.post("url/api/members/join", {
-  //   phone: userPhone,
-  //   nickname: userNickName,
-  //   zipcode: zonecode,
-  //   roadAddr: enroll_company.address,
-  //   detailAddr: "",
-  //   latitude: latitude,
-  //   longitude: longitude,
-  //   profile: "",
-  // });
+  // 페이지 렌더링 시 회원 정보 가져오기 // 수정
+  useEffect(() => {
+    fetch('http://localhost:8080/api/members/join', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data.email); // 데이터 확인
+        console.log(data.nickname); // 데이터 확인
+        setMemberInfo(prevState => ({
+          ...prevState,
+          userNickName: data.nickname !== null ? data.nickname : prevState.userNickName,
+          userEmail: data.email, // 이메일 상태 업데이트
+        }));
+      })
+      .catch((error) => console.error('Error:', error));
+  }, []); // 빈 배열을 전달하여 컴포넌트 마운트 시에만 실행되도록 함
+
+  // 중복확인 버튼 클릭 시 실행되는 함수
+  const handleCheckDuplicate = () => {
+    if ( memberInfo.userNickName === data1.nickname) {
+      // 입력된 닉네임이 data1의 닉네임과 같은 경우 모달창 띄우기
+      setShowModal(true);
+    } else {
+      setErrorNickName("사용 가능한 닉네임입니다");
+    }
+  };
 
   return (
     <div>
-      <HeaderWithNav/>
-
       <div className="MemberInput">
         <div className="Signup-title"> 회 원 가 입</div>
         <div className="Signup-text">
@@ -112,12 +145,13 @@ function SignUp() {
           <input id="nickName" type="text"
                  className="aline-input"
                  placeholder="2~10자의 한글, 영문, 숫자 조합"
-                 value={userNickName}
+                 value={memberInfo.userNickName}
                  onInput={handleNickName}
+                 readOnly={memberInfo.userNickName !== ""}
                  onKeyDown={handleKeyDown} />
-          <button className="input-aline-button" onClick={openModal}>중복 확인</button>
+          <button className="input-aline-button" onClick={handleCheckDuplicate}>중복 확인</button>
           {errorNickName && (
-            <div style={{ color: 'red',
+            <div style={{ color: errorNickName === "사용 가능한 닉네임입니다" ? 'green' : 'red',
               marginTop:"5px",
               fontSize: '10px' }}>
               {errorNickName}</div>
@@ -129,8 +163,9 @@ function SignUp() {
           <input id="email" type="text"
                  className="signup-member-input"
                  placeholder="2~10자의 한글, 영문, 숫자 조합"
-                 value={email}
+                 value={memberInfo.userEmail}
                  onInput={handleNickName}
+                 readOnly
                  onKeyDown={handleKeyDown} />
         </div>
 
@@ -139,11 +174,11 @@ function SignUp() {
           <input id="phone" type="text"
                  className="signup-member-input"
                  placeholder="ex) 0101234567"
-                 value={userPhone}
+                 value={memberInfo.userPhone}
                  onInput={handlePhone}
                  onKeyDown={handleKeyDown} />
           {errorPhone && (
-            <div style={{ color: 'red', marginTop: '-7px', fontSize: '10px' }}>
+            <div style={{ color: errorPhone === "사용 가능한 휴대전화 번호입니다" ? 'green' : 'red', marginTop: '-7px', fontSize: '10px' }}>
               {errorPhone}</div>
           )}
         </div>

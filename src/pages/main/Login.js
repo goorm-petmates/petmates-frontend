@@ -1,5 +1,5 @@
 import '../../styles/StyleLogin.css';
-import HeaderWithNav from '../../components/HeaderWithNav';
+// import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
 
 function Login() {
@@ -8,7 +8,7 @@ function Login() {
 
   return (
     <div>
-      <HeaderWithNav />
+      {/*<HeaderWithNav />*/}
 
       <div className='login'>
         <img className='login-logo' alt='Logo' src='/imgs/Logo.png' />
@@ -16,7 +16,8 @@ function Login() {
         <button
           className='kakao-button'
           onClick={() => {
-            window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
+            window.location.href = 'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}';
+            window.location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=06255b2f3a6bd19ffa9bad111b8d01cd&redirect_uri=http://localhost:3000/oauth/redirect/kakao&response_type=code&scope=profile_nickname,profile_image,account_email';
           }}>
           <img className='kakao-button-img' src='/imgs/kakaoLogin.png' alt='kakao icon' />
         </button>

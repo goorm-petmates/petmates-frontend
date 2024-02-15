@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/StyleMain.css';
 import { MainMenuPetsitter } from '../../components/MainMenuPetsitter';
-import HeaderWithNav from '../../components/HeaderWithNav';
+// import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
 import { useState } from 'react';
 
@@ -20,7 +20,7 @@ function Main() {
 
   return (
     <div className>
-      <HeaderWithNav/>
+      {/*<HeaderWithNav/>*/}
 
       <div className="main-container">
         <div className="main-banner">

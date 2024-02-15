@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/MemberDeleteModal.css'
-
+import { data1 } from '../pages/Data';
 function MemberDeleteModal({onClose}) {
   const handleClose = () => {
     if (onClose) {
@@ -18,8 +18,12 @@ function MemberDeleteModal({onClose}) {
     if (!pwRe) {
       alert("모든 필수 입력 항목을 채워주세요.");
     } else {
-      alert("탈퇴되었습니다.");
-      navigate('/');
+      if (pwRe === data1.email) {
+        alert("탈퇴되었습니다.");
+        navigate('/');
+      } else {
+        alert("이메일이 일치하지 않습니다. 다시 입력해주세요.");
+      }
     }
   };
 
@@ -40,11 +44,11 @@ function MemberDeleteModal({onClose}) {
       </div>
 
       <label className="myinfo-modal-label">
-        현재 비밀번호 입력:
+        현재 이메일 입력:
         <br />
         <input
           className="myinfo-pw"
-          type="password"
+          type="text"
           value={pwRe}
           onChange={handlePasswordChange}
         />

@@ -11,7 +11,7 @@ const MyMamagementCancle = () => {
   const { reservations_status } = data1;
 
   return <>
-    <HeaderWithNav />
+    {/*<HeaderWithNav />*/}
 
     <div>
       <div className="mypage-bar" />
