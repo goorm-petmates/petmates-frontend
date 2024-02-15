@@ -47,7 +47,7 @@ const MyManagement = () => {
 
   return (
     <>
-      <HeaderWithNav />
+      {/*<HeaderWithNav />*/}
 
       <div>
         <div className="mypage-bar" />

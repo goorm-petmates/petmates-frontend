@@ -24,7 +24,7 @@ const ReservationCancle = () => {
   ];
 
   return <>
-    <HeaderWithNav />
+    {/*<HeaderWithNav />*/}
 
     <div>
       <div className="mypage-bar" />

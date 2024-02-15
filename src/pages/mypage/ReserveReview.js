@@ -54,7 +54,7 @@ const ReserveReview = () => {
 
   return (
     <>
-    <HeaderWithNav />
+    {/*<HeaderWithNav />*/}
 
     <div>
       <div className="mypage-bar" />

@@ -175,7 +175,7 @@ function PetInfoAdd() {
 
   return (
     <div>
-      <HeaderWithNav />
+      {/*<HeaderWithNav />*/}
 
       <div>
         <div className="mypage-bar" />
