@@ -18,10 +18,14 @@ export const data1 = {
   isDisease: false,
   etc: 'Friendly dog',
 
+  price: 50000,
+
   reservations_status: 'N',
   petsitterForm:'Y',
   review:'Y',
-  review_state:'후기작성',
+  review_status: '후기작성',
+  review_content:'감사합니다.',
+  review_star: 5,
 }
 export const data2 = {
   nickname: "test2",
@@ -43,6 +47,13 @@ export const data2 = {
   isDisease: false,
   etc: 'Friendly dog',
 
-  reservations_status: 'Y',
+  price:100000,
+
+  reservations_status: 'N',
+  petsitterForm:'Y',
+  review:'Y',
+  review_status: '작성완료',
+  review_content:'감사합니다.',
+  review_star: 5,
 }
 
