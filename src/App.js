@@ -21,9 +21,12 @@ import ReservationCancle from './pages/mypage/ReservationCancle';
 import ReserveReview from './pages/mypage/ReserveReview';
 import MyManagement from './pages/mypage/MyManagement';
 import MyMamagementCancle from './pages/mypage/MyMamagementCancle';
+import AuthProvider from './components/AuthContext.js';
+import HeaderWithNav from './components/HeaderWithNav.js';
 
 function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Main />}></Route>
@@ -50,8 +53,9 @@ function App() {
         <Route path='/mymanagementcancle' element={<MyMamagementCancle/>}/>
 
 
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
