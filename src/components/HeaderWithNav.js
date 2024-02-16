@@ -26,31 +26,24 @@ const HeaderWithNav = () => {
           </div>
 
           <div className='right-header'>
-            <Link to='/login'>
-              <a href='' className='log_in'>
-                로그인
-              </a>
+            <Link to='/login' className='log_in'>
+              카카오로그인
             </Link>
 
-            <Link to='/signup'>
-              <a href='' className='log_out'>
-                회원가입
-              </a>
-            </Link>
+            {/* <Link to='/signup' className='log_out'>
+              회원가입
+            </Link> */}
           </div>
         </div>
 
         {/* Navbar */}
-        <nav className='navbar'
-             onMouseEnter={handleMouseEnter}
-             onMouseLeave={handleMouseLeave}>
-
+        <nav className='navbar' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <Link to='/petsitter' className='nav-link'>
             펫시터
           </Link>
-          <Link to='/community' className='nav-link'>
+          {/* <Link to='/community' className='nav-link'>
             커뮤니티
-          </Link>
+          </Link> */}
           <Link to='/myinfo' className='nav-link'>
             마이페이지
           </Link>
@@ -61,17 +54,17 @@ const HeaderWithNav = () => {
               <div className='flex-container'>
                 <ul>
                   <li>
-                    <img className="nav-list-logo" src="/imgs/Logo-Icon.png" alt="Logo"/>
+                    <img className='nav-list-logo' src='/imgs/Logo-Icon.png' alt='Logo' />
                   </li>
                 </ul>
-                <ul>
+                {/* <ul>
                   <li>
                     <Link to='/community/category1'>일상공유</Link>
                   </li>
                   <li>
                     <Link to='/community/category2'>보호자 찾기</Link>
                   </li>
-                </ul>
+                </ul> */}
                 <ul>
                   <li>
                     <Link to='/myinfo'>내정보</Link>
