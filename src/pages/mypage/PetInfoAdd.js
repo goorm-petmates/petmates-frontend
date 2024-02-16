@@ -67,11 +67,22 @@ function PetInfoAdd() {
   };
 
   const navigate = useNavigate();
+  const [petCards, setPetCards] = useState([]);
   const handleSubmit = async () => {
     if (!petName || !breedOfDog || !birth || !weight || !gender || !neutering || !allergy || !trouble || !moreInfo) {
       alert("모든 필수 입력 항목을 채워주세요.");
     } else {
-      navigate('/petinfo');
+      const newPetCard = {
+        id: petCards.length + 1, // 기존 펫 카드의 개수에 1을 더한 값을 새로운 id로 사용
+        petImgSrc: previewImg, // 미리보기 이미지 사용
+        petInfo: `${petName}/${breedOfDog}/${gender === '남' ? '남아' : '여아'}/${new Date().getFullYear() - birth}살/${weight}kg`, // 입력된 정보 사용
+      };
+
+      // 새로운 펫 카드를 기존의 펫 카드 배열에 추가
+      setPetCards([...petCards, newPetCard]);
+
+      navigate('/petinfo', { state: { newPetCard } });
+      alert("반려동물 정보가 등록되었습니다.");
 
       console.log(petName);
       console.log(breedOfDog);
@@ -196,7 +207,7 @@ function PetInfoAdd() {
         <div className="pet-info-add-fileupload">
           {/* 사진 미리보기 */}
           {previewImg && (
-            <img className="pet-info-add-picture" src={data1.profile ? data1.profile : previewImg} alt="" />
+            <img className="pet-info-add-picture" src={previewImg} alt="" />
           )}
           <input
             className="pet-info-add-img-input"
