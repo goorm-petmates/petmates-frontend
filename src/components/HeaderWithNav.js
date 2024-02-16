@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/StyleHeaderWithNav.css';
 import { Link } from 'react-router-dom';
+import { useAuth } from './AuthContext.js';
 
 const HeaderWithNav = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -12,6 +13,9 @@ const HeaderWithNav = () => {
   const handleMouseLeave = () => {
     setIsDropdownVisible(false);
   };
+
+  const { isLoggedIn } = useAuth(); // 로그인 상태를 가져옵니다.
+  console.log(isLoggedIn);
 
   return (
     <>
@@ -26,13 +30,24 @@ const HeaderWithNav = () => {
           </div>
 
           <div className='right-header'>
-            <Link to='/login' className='log_in'>
-              카카오로그인
-            </Link>
-
-            {/* <Link to='/signup' className='log_out'>
-              회원가입
-            </Link> */}
+            <div>
+              {localStorage.getItem('isNewUser') != null && (
+                <Link to='/tokenupdate' className='log_out'>
+                  토큰갱신
+                </Link>
+              )}
+            </div>
+            <div>
+              {isLoggedIn ? (
+                <Link to='/logout' className='log_out'>
+                  로그아웃
+                </Link>
+              ) : (
+                <Link to='/login' className='log_in'>
+                  로그인
+                </Link>
+              )}
+            </div>
           </div>
         </div>
 
