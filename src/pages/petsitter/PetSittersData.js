@@ -7,7 +7,7 @@ const PetSittersData = [
     rating: '⭐️⭐️⭐️⭐️',
     // count: '2',
     reviewCnt: 3,
-    address: '서울시 판교역',
+    address: '서울시 강남구',
     createAt: '2024.01.14',
     viewCnt: 10,
     profilePic1:

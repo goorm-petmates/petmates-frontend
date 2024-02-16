@@ -14,18 +14,32 @@ function MemberDeleteModal({onClose}) {
     setpwRe(e.target.value);
   }
   const navigate = useNavigate();
-  const navigateToPage = () => {
+  const navigateToPage = async () => {
     if (!pwRe) {
-      alert("모든 필수 입력 항목을 채워주세요.");
+      alert("카카오 계정을 입력해주세요.");
     } else {
-      if (pwRe === data1.email) {
-        alert("탈퇴되었습니다.");
-        navigate('/');
-      } else {
-        alert("이메일이 일치하지 않습니다. 다시 입력해주세요.");
+      try {
+        const response = await fetch('http://localhost:8080/api/members/delete', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const data = await response.json(); // 서버로부터의 응답을 JSON 형태로 변환
+        if (data.result === 'success') {
+          console.log('회원탈퇴 완료');
+          alert(data.data);
+          navigate('/'); // 성공 시 홈페이지로 리다이렉션
+        } else {
+          alert(data.data); // 실패 메시지 표시
+        }
+      } catch (error) {
+        console.error('회원탈퇴 처리 중 오류가 발생했습니다.', error);
       }
     }
   };
+
 
   return (
     <div className="modalContainer">
@@ -44,7 +58,7 @@ function MemberDeleteModal({onClose}) {
       </div>
 
       <label className="myinfo-modal-label">
-        현재 이메일 입력:
+        카카오계정 입력:
         <br />
         <input
           className="myinfo-pw"

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { data1 } from '../Data';
 const MyManagement = () => {
   const [checkedRefuse, setCheckedRefuse] = useState([false, false]);
-  const [managementStates, setManagementStates] = useState(['승인대기', '예약완료']);
+  const [managementStates, setManagementStates] = useState(['예약승인', '예약완료']);
 
   const handleCheckboxClick = (index) => {
     setCheckedRefuse((prevChecked) => {
@@ -33,8 +33,8 @@ const MyManagement = () => {
 
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate(`/petsitterfoam`);
+  const handleNavigate = (path) => {
+    navigate(path);
   };
 
   const { petsitterForm } = data1;
@@ -42,6 +42,14 @@ const MyManagement = () => {
   const [isDeleted, setIsDeleted] = useState(false);
   const handleDelete = () => {
     setIsDeleted(true); // 삭제 버튼을 누르면 isDeleted 상태를 true로 변경
+  };
+
+  const handleConfirmReservation = (index) => {
+    setManagementStates((prevStates) => {
+      const updatedStates = [...prevStates];
+      updatedStates[index] = '예약완료';
+      return updatedStates;
+    });
   };
 
   return (
@@ -68,7 +76,10 @@ const MyManagement = () => {
             <span className='management-add-text'>
               펫시터 지원 내역이 없습니다. 펫시터로 지원해보세요 :)
             </span>
-            <button className='management-add-button' onClick={handleNavigate}>
+            <button
+              className='management-add-button'
+              onClick={() => handleNavigate('/petsitterform')}
+            >
               등록하기
             </button>
             <div className='management-add-bar'></div>
@@ -77,11 +88,7 @@ const MyManagement = () => {
 
         {!isDeleted && petsitterForm === 'Y' && (
           <div className='management-edit-component'>
-            <img
-              className='management-edit-img'
-              src='https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXNpYW58ZW58MHx8MHx8fDA%3D'
-              alt='프로필 사진'
-            />
+            <img className='management-edit-img' src='/imgs/Logo-Icon.png' alt='프로필 사진' />
             <div className='management-text-row'>
               <p className='management-edit-nickname'>{data1.nickname}</p>
               <p className='management-edit-text'>
@@ -89,7 +96,10 @@ const MyManagement = () => {
               </p>
             </div>
             <div className='management-buttons'>
-              <button className='management-edit-button' onClick={handleNavigate}>
+              <button
+                className='management-edit-button'
+                onClick={() => handleNavigate('/testpetsitterform')}
+              >
                 수정하기
               </button>
               <button className='management-delete-button' onClick={handleDelete}>
@@ -111,9 +121,10 @@ const MyManagement = () => {
               onChange={() => handleCheckboxClick(0)}
             />
             <ReservePetsitterCard
-              reservePetImgSrc='/imgs/pet_img_1.png'
-              petInfo='똑바로 / 2024.02.16 ~ 2024.02.16 / 16,500원'
+              reservePetImgSrc='/imgs/dog3.jpeg'
+              petInfo='똑바로 / 2023.12.23 ~ 2023.12.24 / 50,000원'
               state={managementStates[0]}
+              onClick={() => handleConfirmReservation(0)}
             />
           </label>
           <label className='checked-width-2'>

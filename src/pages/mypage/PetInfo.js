@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import NoContents from "../../components/NoContents";
 import "../../styles/StylePetInfo.css";
 import PetCard from "../../components/PetCard";
@@ -8,6 +8,9 @@ import Footer from '../../components/Footer';
 import { data1, data2 } from '../Data';
 
 function PetInfo() {
+  const location = useLocation();
+  const { state } = location;
+
   const [petCards, setPetCards] = useState([
     {
       id: 1,
@@ -20,6 +23,13 @@ function PetInfo() {
       petInfo: `${data2.name}/${data2.breed}/${data2.sex === 'M' ? '남아' : '여아'}/${new Date().getFullYear() - data2.birthYear}살/${data2.weight}kg`,
     },
   ]);
+
+  useEffect(() => {
+    if (state && state.newPetCard) {
+      setPetCards([...petCards, state.newPetCard]);
+    }
+  }, [state]);
+
 
   const navigate = useNavigate();
   const handleAddPetCard = () => {
@@ -35,7 +45,7 @@ function PetInfo() {
     const petInfoToEdit = petCards.find(petCard => petCard.id === id);
     if (petInfoToEdit) {
       navigate({
-        pathname: '/petinfoadd',
+        pathname: '/testpetinfoadd',
         state: { petInfoToEdit } // 반려동물 정보를 상태로 전달
       });
     }

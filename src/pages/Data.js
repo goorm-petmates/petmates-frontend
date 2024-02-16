@@ -1,9 +1,9 @@
 export const data1 = {
-  nickname: 'test1',
-  email: 'test1@gmail.com',
+  nickname: 'jh',
+  email: 'rlawogml8210@naver.com',
   phone: '01012345678',
-  address: '서울 중구 세종대로 지하 2 (남대문로5가, 서울역 1호선)',
-  profile: '',
+  address: '판교역로 166',
+  profile: '/imgs/dog7.png',
 
   pet: '2',
 
@@ -16,7 +16,7 @@ export const data1 = {
   isNeutering: true,
   allergy: false,
   isDisease: false,
-  etc: 'Friendly dog',
+  etc: '귀여운 푸들이에요.',
 
   price: 16500,
 
@@ -29,8 +29,8 @@ export const data1 = {
   review_star: 5,
 };
 export const data2 = {
-  nickname: 'test2',
-  email: 'test2@gmail.com',
+  nickname: 'rnfma2',
+  email: 'rnfma2@gmail.com',
   phone: '01045678901',
   address: '서울 중구 세종대로 지하 2 (남대문로5가, 서울역 1호선)',
   profile: '',
