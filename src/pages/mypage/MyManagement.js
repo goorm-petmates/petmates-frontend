@@ -91,7 +91,7 @@ const MyManagement = () => {
             <img
               className='management-edit-img'
               src='https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXNpYW58ZW58MHx8MHx8fDA%3D'
-              alt='프로필 사진'
+              alt='프로필 사진 '
             />
             <div className='management-text-row'>
               <p className='management-edit-nickname'>{data1.nickname}</p>
