@@ -44,6 +44,8 @@
   line-height: 20px;
   padding-right: 10px;
   white-space: nowrap;
+  border: none;
+  background-color: white;
 }
 
 a {

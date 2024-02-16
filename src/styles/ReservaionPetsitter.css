@@ -102,6 +102,14 @@
     margin-top: -170px;
     position: absolute;
 }
+.checked-width-3{
+    z-index: 2;
+    width: 850px;
+    height: 100px;
+    display: flex;
+    margin-top: 30px;
+    position: absolute;
+}
 .reservepet-checkbox {
     width: 15px;
     height: 15px;

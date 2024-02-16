@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import HeaderWithNav from '../../components/HeaderWithNav.js';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer.js';
 import PetSitterRightbtns from '../../components/PetSitterRightBtns.js';
 import { RiImageAddFill } from 'react-icons/ri';
@@ -10,18 +10,31 @@ import '../../styles/StylePetSitterForm.css';
 const PetSitterForm = () => {
   /****************form input 상태 관리 (이미지, 텍스트) *********************/
   const [images, setImages] = useState({}); // 이미지 상태 관리
-
   const [formData, setFormData] = useState({
     title: '',
-    content: '', // 컨텐트 텍스트 기본값 설정
+    content: '',
     daycarePrice: '',
     extraPrice: '',
     overnightPrice: '',
   }); //텍스트, 숫자 인풋 상태 관리
-
   const [isFormValid, setIsFormValid] = useState(false); //form validation 상태관리
-
   const [isContentDefaultSet, setIsContentDefaultSet] = useState(false);
+
+  //jwt토큰 확인
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  //펫시터지원하기 완료후 버튼클릭시 펫시터관리페이지로 이동
+  const navigate = useNavigate();
+
+  //jwt토큰 localstorage에서 확인후 끌어올리기버튼의 렌더링을 조건부로 처리
+  useEffect(() => {
+    const token = localStorage.getItem('jwtToken'); //'jwtToken'부분을 실제 토큰키로 변경해야함
+    if (token) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, []); // 의존성 배열을 빈 배열로 설정하여 컴포넌트가 마운트될 때 한 번만 실행되도록 함
 
   // prettier-ignore
   const handleFocus = () => {
@@ -162,16 +175,6 @@ const PetSitterForm = () => {
     setIsFormValid(isValid);
 
     console.log('checkFormValidity called, isValid:', isValid);
-
-    //인풋에 실시간으로 입력되는 값 콘솔로그로 보여줌
-    // console.log(
-    //   'Form validity status:',
-    //   isValid,
-    //   '| Images count:',
-    //   imageCount,
-    //   '| FormData:',
-    //   formData,
-    // );
   };
 
   useEffect(() => {
@@ -196,6 +199,8 @@ const PetSitterForm = () => {
     //폼 유효성 검사 통과 시 alert 메시지 띄우기
     if (isFormValid) {
       alert('펫시터 지원하기가 완료되었습니다');
+      navigate('/petsitter');
+
       console.log('Form Data: ', formData);
       console.log('Images: ', images);
 
@@ -221,7 +226,6 @@ const PetSitterForm = () => {
 
   return (
     <div>
-      <HeaderWithNav></HeaderWithNav>
       <PetSitterRightbtns></PetSitterRightbtns>
       <div className='petsitter-foam'>
         <div className='petsitter-foam-header'>
@@ -231,9 +235,11 @@ const PetSitterForm = () => {
         <div className='petsitter-foam-container'>
           <form onSubmit={handleSubmit}>
             {/*펫시터 지원하기 글이 이미 저장되있을때 버튼 활성화*/}
-            <div className='raise-post'>
-              <button className='raise-post-btn'>끌어올리기</button>
-            </div>
+            {isAuthenticated && (
+              <div className='raise-post'>
+                <button className='raise-post-btn'>끌어올리기</button>
+              </div>
+            )}
             {/************************************/}
             <div className='petsitter-add-imgs-text'>사진첨부</div>
 

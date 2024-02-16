@@ -90,15 +90,20 @@
   cursor: pointer;
 }
 
-/************** petsitter page numbers **********/
-.petsitter-list-nums {
+/************** petsitter pagination **********/
+.pagination {
   font-family: Inter;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 1px;
   display: flex;
   justify-content: center;
-  color: #ff8000;
   padding: 10px;
   text-decoration: none;
+  list-style: none;
+}
+
+.page-item a {
+  margin-right: 20px;
+  color: #ff8000;
 }

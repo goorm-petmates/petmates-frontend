@@ -42,24 +42,32 @@
     align-items: center
 }
 .management-container{
-    background-color: #ffffff;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 1000px;
     display: flex;
     height: 700px;
     margin-top: 10px;
 }
 .management-add-component{
+    /*border: 1px solid #d9d9d9;*/
+    /*border-radius: 40px;*/
+    /*width: 850px;*/
+    /*height: 90px;*/
+    /*position: relative;*/
+    /*justify-content: space-evenly;*/
+    /*align-items: center;*/
+    /*margin-top: 30px;*/
+    /*margin-bottom: 30px;*/
+    /*margin-left: 800px;*/
     border: 1px solid #d9d9d9;
     border-radius: 40px;
     width: 850px;
-    height: 90px;
-    position: relative;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 30px;
+    height: 100px;
+    margin-top: -100px;
     margin-bottom: 30px;
+    margin-left: 800px;
 }
 .management-add-text{
     font-size: 15px;
@@ -68,6 +76,8 @@
     line-height: normal;
     position: absolute;
     width: 500px;
+    margin-top: 40px;
+    margin-left: 220px;
 }
 .management-add-button{
     position: absolute;
@@ -78,59 +88,62 @@
     background-color: #ff9900;
     width: 80px;
     height: 25px;
-    margin-left: 600px;
+    margin-left: 680px;
+    margin-top: 40px;
+}
+.management-add-bar{
+    height: 1px;
+    border-bottom: 1px solid #FF8000;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 114px;
 }
 .management-bar{
     height: 1px;
     border-bottom: 1px solid #FF8000;
-    display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 50px;
 }
 .management-edit-component{
     border: 1px solid #d9d9d9;
     border-radius: 40px;
     width: 850px;
     height: 100px;
-    position: relative;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 30px;
+    margin-top: -100px;
     margin-bottom: 30px;
+    margin-left: 800px;
 }
 .management-edit-img{
     height: 78px;
-    left: 45px;
-    position: absolute;
-    top: 11px;
+    margin-left: 45px;
+    margin-top: 11px;
     width: 80px;
 }
 .management-text-row{
-    position: absolute;
     flex-direction: row;
     width: 400px;
     height: 70px;
+    margin-left: 180px;
+    margin-top: -90px;
 }
 .management-edit-nickname{
     font-size: 15px;
     font-weight: 400;
     height: 12px;
-    position: absolute;
     width: 200px;
 }
 .management-edit-text {
     font-size: 15px;
     font-weight: 400;
     height: 12px;
-    position: absolute;
     width: 500px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .management-buttons{
-    position: absolute;
     cursor: pointer;
-    margin-left: 600px;
+    margin-left: 620px;
+    margin-top: -50px;
 }
 .management-edit-button{
     color: #ffffff;
@@ -140,6 +153,7 @@
     width: 80px;
     height: 25px;
     margin-right: 20px;
+    cursor: pointer;
 }
 .management-delete-button{
     color: #ff9900;
@@ -148,6 +162,7 @@
     width: 80px;
     height: 25px;
     background-color: white;
+    cursor: pointer;
 }
 .management-refuse-container{
     height: 300px;
@@ -163,11 +178,11 @@
     border: none;
     cursor: pointer;
     border-radius: 7px;
-    margin-left: 1000px;
+    margin-left: 900px;
     position: absolute;
     width: 80px;
     height: 25px;
-    margin-top: -540px;
+    margin-top: -515px;
 }
 .checked-width-1{
     z-index: 2;
@@ -193,4 +208,15 @@
     display: inline-block;
     margin-top: 30px;
     margin-left: 50px;
+}
+.page-buttons{
+    width: 100px;
+    height: 20px;
+    margin-left: 835px;
+}
+.page-button{
+    margin-right: 20px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
 }

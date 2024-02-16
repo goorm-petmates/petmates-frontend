@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/StylePetCard.css";
 
 function PetCard(props){
-  const { petImgSrc, petInfo } = props;
+  const { petImgSrc, petInfo, onDelete, onEdit} = props;
 
   return(
     <div className="pet-card-container">
@@ -12,8 +12,8 @@ function PetCard(props){
           {petInfo}
         </div>
         <div className="pet-card-buttons">
-          <button className="pet-card-button-delete">삭제하기</button>
-          <button className="pet-card-button-edit">수정하기</button>
+          <button className="pet-card-button-delete" onClick={onDelete}>삭제하기</button>
+          <button className="pet-card-button-edit" onClick={onEdit}>수정하기</button>
         </div>
       </div>
     </div>

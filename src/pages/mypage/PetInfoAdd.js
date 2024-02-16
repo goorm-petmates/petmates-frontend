@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../../styles/StylePetInfoAdd.css";
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
-import axios from 'axios';
+import { data1 } from '../Data';
+// import axios from 'axios';
+// import { handlers } from '../../mocks/handlers';
 function PetInfoAdd() {
   const [petName, setPetName] = useState("");
   const [breedOfDog, setbreedOfDog] = useState("");
@@ -23,41 +25,136 @@ function PetInfoAdd() {
   const uploadFile = (e) => {
     const file = e.target.files[0];
 
+    // 허용된 확장자 배열
+    const allowedExtensions = ["png", "jpg", "jpeg"];
+
+    // 파일의 확장자를 가져와 소문자로 변환합니다.
+    const fileExtension = file.name.split('.').pop()?.toLowerCase();
+
+    // 확장자가 허용된 확장자인지 확인합니다.
+    if (!allowedExtensions.includes(fileExtension)) {
+      // 허용되지 않은 확장자면 알림을 띄우고 파일 선택을 취소합니다.
+      alert("파일은 'png', 'jpg', or 'jpeg'만 업로드 할 수 있습니다.");
+      setPostImg(null);
+      return;
+    }
+
+    // 파일 크기를 가져와 1MB로 제한합니다.
+    const maxSize = 1024 ** 2 * 1; // 1MB
+
+    if (file.size > maxSize) {
+      // 파일 크기가 1MB를 초과하면 알림을 띄우고 파일 선택을 취소합니다.
+      alert(" 파일 크기가 1MB를 초과했습니다.");
+      setPostImg(null);
+      return;
+    }
     // 파일 정보 저장
     setPostImg(file);
 
     // 미리보기 이미지 설정
     const fileReader = new FileReader();
-    fileReader.onload = () => setPreviewImg(fileReader.result);
+    fileReader.onload = () => {
+      setPreviewImg(fileReader.result);
+
+      // const base64Data = fileReader.result.split(',')[1];
+      console.log('Base64 Encoded Data:', fileReader.result);
+    };
     fileReader.readAsDataURL(file);
+
+    fileReader.onerror = (error) => {
+      console.error(error);
+    };
   };
 
+  const navigate = useNavigate();
+  const [petCards, setPetCards] = useState([]);
   const handleSubmit = async () => {
-    // try {
-    //   // 서버에 파일 전송
-    //   const formData = new FormData();
-    //   formData.append('file', postImg);
-    //
-    //   const response = await axios.post('https://your-server-endpoint', formData, {
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data',
-    //     },
-    //   });
-    //
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    if (!petName || !breedOfDog || !birth || !weight || !gender || !neutering || !allergy || !trouble || !moreInfo) {
+      alert("모든 필수 입력 항목을 채워주세요.");
+    } else {
+      const newPetCard = {
+        id: petCards.length + 1, // 기존 펫 카드의 개수에 1을 더한 값을 새로운 id로 사용
+        petImgSrc: previewImg, // 미리보기 이미지 사용
+        petInfo: `${petName}/${breedOfDog}/${gender === '남' ? '남아' : '여아'}/${new Date().getFullYear() - birth}살/${weight}kg`, // 입력된 정보 사용
+      };
 
-    console.log(petName);
-    console.log(breedOfDog);
-    console.log(birth);
-    console.log(weight);
-    console.log(gender);
-    console.log(neutering);
-    console.log(allergy);
-    console.log(trouble);
-    console.log(moreInfo);
+      // 새로운 펫 카드를 기존의 펫 카드 배열에 추가
+      setPetCards([...petCards, newPetCard]);
+
+      navigate('/petinfo', { state: { newPetCard } });
+      alert("반려동물 정보가 등록되었습니다.");
+
+      console.log(petName);
+      console.log(breedOfDog);
+      console.log(birth);
+      console.log(weight);
+      console.log(gender);
+      console.log(neutering);
+      console.log(allergy);
+      console.log(trouble);
+      console.log(moreInfo);
+    }
+
+  //   try {
+  //     const response = await fetch('/api/my-page/pet/add', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         storedFileName: "", // 파일 이름이나 경로를 전송합니다.
+  //         name: petName,
+  //         breed: breedOfDog,
+  //         sex: gender,
+  //         birthYear: birth,
+  //         weight: weight,
+  //         isNeutering: neutering,
+  //         isAllergy: allergy,
+  //         isDisease: trouble,
+  //         etc: moreInfo
+  //       }),
+  //     });
+  //
+  //     const data = await response.json();
+  //
+  //     if (response.ok) {
+  //       if (data.result === "success") {
+  //         alert("반려동물 정보 등록에 성공했습니다.");
+  //         navigate('/petinfo');
+  //       } else {
+  //         alert("반려동물 정보 등록에 실패했습니다.");
+  //       }
+  //     } else {
+  //       // 서버에서 에러 응답을 보낸 경우
+  //       alert("서버 오류로 반려동물 정보를 등록할 수 없습니다.");
+  //     }
+  //   } catch (error) {
+  //     // 네트워크 오류 등으로 인한 요청 실패
+  //     console.error("Error while submitting pet info:", error);
+  //     alert("서버 오류로 반려동물 정보를 등록할 수 없습니다.");
+  //   }
+  //
+  //   const formData = new FormData();
+  //   formData.append('photo', postImg); // 사진 파일 첨부
+  //   formData.append('pet_id', '1'); // 반려동물 ID (임시)
+  //
+  //   // MSW 핸들러로 요청 보내기
+  //   const response = await fetch('/api/my-page/pet/1/photo', {
+  //     method: 'POST',
+  //     body: formData,
+  //   });
+  //
+  //   if (response.ok) {
+  //     const data = await response.json();
+  //     if (data.result === "success") {
+  //       alert("반려동물 정보 등록에 성공했습니다.");
+  //       navigate('/petinfo');
+  //     } else {
+  //       alert("반려동물 정보 등록에 실패했습니다.");
+  //     }
+  //   } else {
+  //     alert("서버 오류로 반려동물 정보를 등록할 수 없습니다.");
+  //   }
   };
 
   const handlePetAdd = (e) => {
@@ -89,7 +186,7 @@ function PetInfoAdd() {
 
   return (
     <div>
-      <HeaderWithNav />
+      {/*<HeaderWithNav />*/}
 
       <div>
         <div className="mypage-bar" />
@@ -110,7 +207,7 @@ function PetInfoAdd() {
         <div className="pet-info-add-fileupload">
           {/* 사진 미리보기 */}
           {previewImg && (
-            <img className="pet-info-add-picture" src={previewImg} alt="Preview" />
+            <img className="pet-info-add-picture" src={previewImg} alt="" />
           )}
           <input
             className="pet-info-add-img-input"
@@ -128,7 +225,7 @@ function PetInfoAdd() {
           <div className="pet-info-add-input">
             <label>이름</label>
             <input type="text"
-                   placeholder="똑바로"
+                   placeholder={"똑바로"}
                    className="petName"
                    onInput={handlePetAdd}/>
           </div>
@@ -136,7 +233,7 @@ function PetInfoAdd() {
           <div className="pet-info-add-input">
             <label>견종</label>
             <input type="text"
-                   placeholder="푸들"
+                   placeholder={"푸들"}
                    className="breedOfDog"
                    onInput={handlePetAdd}/>
           </div>
@@ -252,11 +349,9 @@ function PetInfoAdd() {
         </div>
 
         <div className="pet-info-add-button-container">
-          <Link to="/petInfo"
-                style={{ textDecoration: 'none', color: 'white' }}>
-            <button className="pet-info-add-button"
-                    onClick={handleSubmit}>등록하기</button>
-          </Link>
+          <button className="pet-info-add-button"
+                  onClick={handleSubmit}>등록하기</button>
+
         </div>
       </div>
 

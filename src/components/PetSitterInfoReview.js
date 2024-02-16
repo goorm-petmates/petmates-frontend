@@ -1,27 +1,31 @@
 import React from 'react';
 import '../styles/StylePetSitterInfoReview.css';
 
-const PetSitterInfoReview = () => {
+const PetSitterInfoReview = ({
+  reviewPic,
+  reviewNickname,
+  reviewCreateAt,
+  reviewRating,
+  reviewContents,
+}) => {
   return (
-    <div>
+    <div className='petsitter-review-container'>
       <div className='petsitter-review-detail'>
         <img
           className='petowner-profile-pic'
-          src='/imgs/Logo-Icon.png'
+          // src='/imgs/Logo-Icon.png'
+          src={reviewPic}
           alt='petowner profile pic'
         ></img>
-        <div>
+        <div className='petowner-review-right'>
           <div className='petowner-review-text'>
-            <div className='petowner-review-left-side'>
-              <span className='petowner-nickname'>닉네임</span>
-              <span className='petowner-order-by-date'> yy.mm.dd</span>
+            <div className='petowner-review-top'>
+              <span className='petowner-nickname'>{reviewNickname}</span>
+              <span className='petowner-order-by-date'>{reviewCreateAt}</span>
             </div>
-            <span className='petowner-rating'>⭐️⭐️⭐️⭐️</span>
+            <span className='petowner-rating'>{reviewRating}</span>
           </div>
-          <div className='petowner-review'>
-            후기 내용: 최대 입력 가능 글자 수 정해서 간단한 내용만 받기/후기 입력된 내용 출력/내용
-            많으면 이렇게 줄 바꿔서 출력/이정도 공간 자유롭게 또는 고정?
-          </div>
+          <div className='petowner-review'>{reviewContents}</div>
         </div>
       </div>
     </div>

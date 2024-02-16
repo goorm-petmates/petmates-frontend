@@ -75,6 +75,7 @@
   padding-bottom: 5px;
   margin-top: 0;
   width: 67px;
+  padding-right: 6px;
 }
 
 .review-count {
@@ -95,14 +96,9 @@
   font-family: 'Inter-Medium', Helvetica;
   font-size: 14px;
   font-weight: 500;
-  height: 17px;
-  left: 80px;
   letter-spacing: 0;
-  line-height: 21px;
-  margin-top: 0;
   padding-left: 30px;
   white-space: nowrap;
-  width: 438px;
 }
 
 .petsitter-price-container {
@@ -118,10 +114,11 @@
   color: #000000;
   font-family: 'Inter-Regular', Helvetica;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 540;
   height: 15px;
   letter-spacing: 0;
   margin-top: 0px;
+  margin-bottom: 3px;
   text-align: right;
   width: 100px;
 }
@@ -130,7 +127,7 @@
   color: #000000;
   font-family: 'Inter-Regular', Helvetica;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 540;
   height: 15px;
   letter-spacing: 0;
   text-align: right;
