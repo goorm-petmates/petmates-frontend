@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/main/Main.js';
 import Login from './pages/main/Login.js';
-import SignUp from './pages/main/SignUp.js';
+import SignUp2 from './pages/main/SignUp2.js';
 import MyInfo from './pages/mypage/MyInfo.js';
 import PetSitter from './pages/petsitter/PetSitter.js';
 import PetSitterForm from './pages/petsitter/PetSitterForm.js';
@@ -34,7 +34,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Main />}></Route>
           <Route path='/login' element={<Login />}></Route>
-          <Route path='/signup' element={<SignUp />}></Route>
+          <Route path='/signup2' element={<SignUp2 />}></Route>
           <Route path='/petsitter' element={<PetSitter />}></Route>
           <Route path='/petsitterform' element={<PetSitterForm />}></Route>
           <Route path='/testpetsitterform' element={<TestPetSitterForm />}></Route>
@@ -51,7 +51,7 @@ function App() {
           <Route path='/petinfoadd' element={<PetInfoAdd />} />
           <Route path='/testpetinfoadd' element={<TestPetInfoAdd />} />
           <Route path='/usersupport' element={<UserSupport />}></Route>
-          <Route path='/oauth/redirect/kakao' element={<SignUp />}></Route>
+          <Route path='/oauth/redirect/kakao' element={<SignUp2 />}></Route>
           <Route path='/reservepetsitter' element={<ReservationPetsitter />}></Route>
           <Route path='/reservecancle' element={<ReservationCancle />}></Route>
           <Route path='/reservereview' element={<ReserveReview />}></Route>
