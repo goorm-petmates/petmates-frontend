@@ -1,10 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/StylePetSitterList.css';
 
-const PetSitterList = () => {
+const PetSitterList = ({ data }) => {
+  const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수 생성
+
+  const handleNavigate = () => {
+    navigate(`/petsitterinfo/${data.id}`);
+  };
+
   return (
-    <div>
+    <div onClick={handleNavigate} style={{ cursor: 'pointer' }}>
       {/* 포스트목록에서 특정포스트 클릭시 상세페이지로 라우팅시킴
         <ul>
           {posts.map((post) => (
@@ -14,30 +20,26 @@ const PetSitterList = () => {
           ))}
         </ul> */}
       <li className='petsitter-list'>
-        <Link to='/petsitterinfo'>
-          <img
-            className='petsitter profile-pic'
-            src='https://images.unsplash.com/photo-1682687220161-e3e7388e4fad?crop=entropy&cs=srgb&fm=jpg&ixid=M3w0Mzc0NDd8MXwxfGFsbHwxfHx8fHx8Mnx8MTcwNTQxMjE3NHw&ixlib=rb-4.0.3&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450'
-            alt='petsitter profile pic'
-          ></img>
+        <img
+          className='petsitter profile-pic'
+          src={data.profilePic1} // 이미지 URL을 props에서 받아옴
+          alt='petsitter profile pic'
+        ></img>
 
-          <div className='petsitter-list-text'>
-            <span className='petsitter nickname'>닉네임</span>
-            <span className='petsitter title'>
-              돌봄 경험 2년 있으며 펫시터 자격증 보유하였습니다.
-            </span>
-            <div>
-              <span className='petsitter rating'>⭐️⭐️⭐️</span>
-              <span className='petsitter review-count'> 리뷰갯수</span>
-              <span className='petsitter address'>도로명주소</span>
-            </div>
+        <div className='petsitter-list-text'>
+          <span className='petsitter nickname'>{data.nickname}</span>
+          <span className='petsitter title'>{data.title}</span>
+          <div>
+            <span className='petsitter rating'>{data.rating}</span>
+            <span className='petsitter review-count'>(리뷰 {data.reviewCnt}개)</span>
+            <span className='petsitter address'>{data.address}</span>
           </div>
+        </div>
 
-          <div className='petsitter-price-container'>
-            <div className='petsitter standard-price'>1박케어: 35,000원</div>
-            <div className='petsitter night-price'>데이케어: 15,000원</div>
-          </div>
-        </Link>
+        <div className='petsitter-price-container'>
+          <div className='petsitter standard-price'>데이케어: {data.standardPrice}원</div>
+          <div className='petsitter night-price'>1박케어: {data.nightPrice}원</div>
+        </div>
       </li>
     </div>
   );
