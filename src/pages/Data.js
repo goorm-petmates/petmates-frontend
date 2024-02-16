@@ -7,18 +7,18 @@ export const data1 = {
 
   pet: '2',
 
-  petImgSrc: "/imgs/dog3.jpeg",
+  petImgSrc: "/imgs/pet_img_1.png",
   name: '똑바로',
   breed: '푸들',
   sex: 'F',
-  birthYear: 2012,
+  birthYear: 2018,
   weight: 5,
   isNeutering: true,
   allergy: false,
   isDisease: false,
   etc: '귀여운 푸들이에요.',
 
-  price: 50000,
+  price: 18000,
 
   reservations_status: 'Y',
   reservations_cancle: 'Y',
