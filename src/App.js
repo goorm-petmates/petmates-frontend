@@ -21,6 +21,7 @@ import ReservationCancle from './pages/mypage/ReservationCancle';
 import ReserveReview from './pages/mypage/ReserveReview';
 import MyManagement from './pages/mypage/MyManagement';
 import MyMamagementCancle from './pages/mypage/MyMamagementCancle';
+import PetSitterList from './components/PetSitterList';
 
 function App() {
   return (
@@ -32,7 +33,8 @@ function App() {
         <Route path='/petsitter' element={<PetSitter />}></Route>
         <Route path='/petsitterform' element={<PetSitterForm />}></Route>
         <Route path='/petsitterguide' element={<PetSitterGuide />}></Route>
-        <Route path='/petsitterinfo' element={<PetSitterInfo />}></Route>
+        <Route path='/petsitters' element={<PetSitterList />} />
+        <Route path='/petsitterinfo/:id' element={<PetSitterInfo />} />
         <Route path='/community' element={<Community />}></Route>
         <Route path='/communitypost' element={<CommunityPost />}></Route>
         <Route path='/communityresult' element={<CommunityResult />}></Route>
