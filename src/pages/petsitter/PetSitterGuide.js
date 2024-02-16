@@ -7,7 +7,6 @@ import '../../styles/StylePetSitterGuide.css';
 const PetSitterGuide = () => {
   return (
     <div>
-      <HeaderWithNav></HeaderWithNav>
       <PetSitterRightbtns></PetSitterRightbtns>
       <div className='petsitter-guide-container'>
         <div className='left-side'>

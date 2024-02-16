@@ -84,9 +84,9 @@ const HeaderWithNav = () => {
                   <li>
                     <Link to='/myinfo'>내정보</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link to='/community'>작성글</Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to='/reservepetsitter'>예약 내역</Link>
                   </li>

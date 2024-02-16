@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import HeaderWithNav from '../../components/HeaderWithNav.js';
 import Footer from '../../components/Footer';
 import PetSitterList from '../../components/PetSitterList.js';
 import PetSitterRightBtns from '../../components/PetSitterRightBtns.js';
@@ -100,7 +99,6 @@ const PetSitter = () => {
 
   return (
     <div className='petsitter'>
-      <HeaderWithNav></HeaderWithNav>
       <div className='petsitter-main'>
         <PetSitterRightBtns></PetSitterRightBtns>
         {/*********** petsitter search form **************/}
