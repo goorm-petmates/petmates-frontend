@@ -1,3 +1,7 @@
+.petsitter-review-container {
+  width: 100%;
+}
+
 .petsitter-review-detail {
   display: flex;
   flex-direction: row;
@@ -13,12 +17,18 @@
 }
 
 .petowner-profile-pic {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
   border-radius: 15px;
   border: 1px solid #d9d9d9;
   margin-right: 10px;
 }
+
+.petowner-review-right {
+  width: 90%;
+}
+
 .petowner-review-text {
   display: flex;
   flex-direction: row;
@@ -26,7 +36,7 @@
   align-items: center;
 }
 
-.petowner-review-left-side {
+.petowner-review-top {
   display: flex;
 }
 

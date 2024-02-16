@@ -1,15 +1,31 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import HeaderWithNav from '../../components/HeaderWithNav.js';
 import Footer from '../../components/Footer';
 import PetSitterList from '../../components/PetSitterList.js';
 import PetSitterRightBtns from '../../components/PetSitterRightBtns.js';
 import '../../styles/StylePetSitter.css';
+import PetSittersData from './PetSittersData.js';
+
+const useQuery = () => {
+  const { search } = useLocation();
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+};
 
 const PetSitter = () => {
+  const navigate = useNavigate();
+
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedService, setSelectedService] = useState('');
   const [districtOptions, setDistrictOptions] = useState([]);
   const [selectedDistrict, setSelectedDistrict] = useState('');
+  const [filteredPetSitters, setFilteredPetSitters] = useState([]); // 펫시터 검색후 상태관리
+  const [isFiltered, setIsFiltered] = useState(false); // handleSubmit이 호출되었는지 추적하는 상태
+
+  //페이지네이션 상태관리
+  const query = useQuery();
+  const currentPage = parseInt(query.get('page')) || 1;
+  const [itemsPerPage] = useState(4);
 
   // 서울시의 구 목록
   // prettier-ignore
@@ -33,21 +49,54 @@ const PetSitter = () => {
   //   '화성시',
   // ];
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("선택된 서비스: ", selectedService);
-    console.log("선택된 지역: ", selectedRegion);
-    console.log("선택된 구/시: ", selectedDistrict);
-  };
-
   useEffect(() => {
-    if (selectedRegion === 'seoul') {
+    if (selectedRegion === '서울시') {
       setDistrictOptions(seoulDistricts);
     }
     // else if (selectedRegion === 'gyeonggi') {
     //   setDistrictOptions(gyeonggiCities);
     // }
   }, [selectedRegion]);
+
+  // 필터링된 결과인 filteredPetSitters를 사용하여 페이지네이션 계산
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentFilteredItems = filteredPetSitters.slice(indexOfFirstItem, indexOfLastItem);
+  // // 필터링되지 않은 원본 데이터를 기반으로 한 현재 페이지의 아이템 계산
+  const currentItems = isFiltered
+    ? filteredPetSitters.slice(indexOfFirstItem, indexOfLastItem)
+    : PetSittersData.slice(indexOfFirstItem, indexOfLastItem);
+
+  // // 페이지네이션을 위한 페이지 번호 계산
+  const pageNumbers = [];
+  for (
+    let i = 1;
+    i <= Math.ceil((isFiltered ? filteredPetSitters : PetSittersData).length / itemsPerPage);
+    i++
+  ) {
+    pageNumbers.push(i);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('선택된 서비스: ', selectedService);
+    console.log('선택된 지역: ', selectedRegion);
+    console.log('선택된 구/시: ', selectedDistrict);
+
+    // 필터링 로직을 실행하여 전체적으로 일치하는 결과를 찾음
+    const filtered = PetSittersData.filter(
+      (petSitter) =>
+        petSitter.address?.includes(selectedRegion) &&
+        petSitter.address?.includes(selectedDistrict) &&
+        petSitter.services?.includes(selectedService),
+    );
+    // 필터링된 결과를 상태에 저장
+    setFilteredPetSitters(filtered);
+    setIsFiltered(true); // 필터링이 실행되었음을 표시
+
+    // 검색 후 항상 첫 페이지로 이동
+    navigate('/petsitter?page=1');
+  };
 
   return (
     <div className='petsitter'>
@@ -85,7 +134,7 @@ const PetSitter = () => {
                 onChange={(e) => setSelectedRegion(e.target.value)}
               >
                 <option value='' disabled hidden></option>
-                <option value='seoul'>서울시</option>
+                <option value='서울시'>서울시</option>
                 {/*************** 경기도 dropdown 확장기능 ************/}
                 {/* <option value='gyeonggi'>경기도</option> */}
               </select>
@@ -114,17 +163,24 @@ const PetSitter = () => {
             <button type='submit'>검색하기</button>
           </div>
         </form>
-        {/*/!*************** petsitter user list **************!/*/}
-        <PetSitterList></PetSitterList>
-        <PetSitterList></PetSitterList>
-        <PetSitterList></PetSitterList>
-        <PetSitterList></PetSitterList>
-        <PetSitterList></PetSitterList>
 
-        {/*************** petsitter page numbers **************/}
-        <a href='http://localhost:3004/petsitter' className='petsitter-list-nums'>
-          1 2 3
-        </a>
+        {/*/!*************** petsitter user list **************!/*/}
+        {/* 현재 페이지의 아이템들을 렌더링 */}
+        {currentItems.map((item) => (
+          <PetSitterList key={item.id} data={item} />
+        ))}
+
+        <nav>
+          <ul className='pagination'>
+            {pageNumbers.map((number) => (
+              <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
+                <Link to={`/petsitter?page=${number}`} className='page-link'>
+                  {number}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
       <Footer></Footer>
     </div>

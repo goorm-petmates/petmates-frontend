@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useAuth } from './AuthContext.js';
 
 const HeaderWithNav = () => {
-
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const handleMouseEnter = () => {
@@ -33,18 +32,18 @@ const HeaderWithNav = () => {
           <div className='right-header'>
             <div>
               {localStorage.getItem('isNewUser') != null && (
-                <Link to="/tokenupdate" className="log_out">
+                <Link to='/tokenupdate' className='log_out'>
                   토큰갱신
                 </Link>
               )}
             </div>
             <div>
               {isLoggedIn ? (
-                <Link to="/logout" className="log_out">
+                <Link to='/logout' className='log_out'>
                   로그아웃
                 </Link>
               ) : (
-                <Link to="/login" className="log_in">
+                <Link to='/login' className='log_in'>
                   로그인
                 </Link>
               )}
@@ -53,16 +52,13 @@ const HeaderWithNav = () => {
         </div>
 
         {/* Navbar */}
-        <nav className='navbar'
-             onMouseEnter={handleMouseEnter}
-             onMouseLeave={handleMouseLeave}>
-
+        <nav className='navbar' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <Link to='/petsitter' className='nav-link'>
             펫시터
           </Link>
-          <Link to='/community' className='nav-link'>
+          {/* <Link to='/community' className='nav-link'>
             커뮤니티
-          </Link>
+          </Link> */}
           <Link to='/myinfo' className='nav-link'>
             마이페이지
           </Link>
@@ -73,17 +69,17 @@ const HeaderWithNav = () => {
               <div className='flex-container'>
                 <ul>
                   <li>
-                    <img className="nav-list-logo" src="/imgs/Logo-Icon.png" alt="Logo"/>
+                    <img className='nav-list-logo' src='/imgs/Logo-Icon.png' alt='Logo' />
                   </li>
                 </ul>
-                <ul>
+                {/* <ul>
                   <li>
                     <Link to='/community/category1'>일상공유</Link>
                   </li>
                   <li>
                     <Link to='/community/category2'>보호자 찾기</Link>
                   </li>
-                </ul>
+                </ul> */}
                 <ul>
                   <li>
                     <Link to='/myinfo'>내정보</Link>
