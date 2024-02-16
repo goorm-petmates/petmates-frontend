@@ -3,12 +3,14 @@ import '../styles/Post.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function Post(props) {
-
-
-  const handleComplete = (data) => {
-    let fullAddress = data.address;
+function Post({ setCompany }) {
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const handleComplete = async (data) => {
+    let fullAddr = data.address;
     let extraAddress = '';
+    let roadAddr = fullAddr;
+    let detailAddr = '';
 
     if (data.addressType === 'R') {
       if (data.bname !== '') {
@@ -17,43 +19,39 @@ function Post(props) {
       if (data.buildingName !== '') {
         extraAddress += (extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName);
       }
-      fullAddress += (extraAddress !== '' ? ` (${extraAddress})` : '');
+      fullAddr += (extraAddress !== '' ? ` (${extraAddress})` : '');
     }
+
+    // ' (' 기준으로 주소 나누기
+    if (fullAddr.includes(' (')) {
+      const parts = fullAddr.split(' (');
+      roadAddr = parts[0];
+      detailAddr = parts[1].slice(0, -1); // 마지막 ')' 제거
+    }
+
     console.log(data);
-    console.log("fullAddress: " + fullAddress);
+    console.log("fullAddress: " + fullAddr);
     console.log("data.zonecode: " + data.zonecode);
 
-    props.setcompany({
-      ...props.company,
-      address:fullAddress,
-    })
-    getLatLng(data.address);
-  };
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+    // 위도와 경도 가져오기
+    await getLatLng(roadAddr);
 
-  const getLatLng = async (combinedAddress) => {
+    // SignUp2.js로 데이터 전달
+    setCompany(fullAddr, roadAddr, detailAddr, latitude, longitude, data.zonecode);
+  };
+
+  const getLatLng = async (address) => {
     try {
-      // 카카오 맵 API를 사용하여 주소에 대한 위도와 경도를 가져옵니다.
       const response = await axios.get('https://dapi.kakao.com/v2/local/search/address.json', {
-        params: {
-          query: combinedAddress,
-        },
-        headers: {
-          Authorization: "KakaoAK 06255b2f3a6bd19ffa9bad111b8d01cd",
-        },
+        params: { query: address },
+        headers: { Authorization: "KakaoAK 2a0545dc2cd35dfd52e96098d3ef9162" },
       });
 
-      // 가져온 데이터에서 위도와 경도를 추출합니다.
       const location = response.data.documents[0]?.address;
-
       if (location) {
-        const { y: latitude, x: longitude } = location;
-        console.log('위도: ', latitude, '경도: ', longitude);
-
-        // 가져온 위도와 경도를 상태에 업데이트합니다.
-        setLatitude(latitude);
-        setLongitude(longitude);
+        setLatitude(parseFloat(location.y));
+        setLongitude(parseFloat(location.x));
+        console.log('위도: ', parseFloat(location.y), '경도: ', parseFloat(location.x));
       } else {
         console.error('주소에 대한 좌표를 찾을 수 없습니다.');
       }
@@ -61,13 +59,6 @@ function Post(props) {
       console.error('API 요청 중 오류 발생:', error);
     }
   };
-
-  // useEffect를 사용하여 위도와 경도가 변경될 때마다 콘솔에 출력
-  useEffect(() => {
-    if (latitude && longitude) {
-      console.log('현재 위도:', latitude, '경도:', longitude);
-    }
-  }, [latitude, longitude]);
 
   return (
     <div >
