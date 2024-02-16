@@ -25,6 +25,7 @@ import PetSitterList from './components/PetSitterList';
 import AuthProvider from './components/AuthContext.js';
 import HeaderWithNav from './components/HeaderWithNav';
 import TestPetInfoAdd from './pages/mypage/TestPetInfoAdd';
+import TestPetSitterForm from './pages/petsitter/TestPetSitterForm.js';
 function App() {
   return (
     <AuthProvider>
@@ -36,6 +37,7 @@ function App() {
           <Route path='/signup' element={<SignUp />}></Route>
           <Route path='/petsitter' element={<PetSitter />}></Route>
           <Route path='/petsitterform' element={<PetSitterForm />}></Route>
+          <Route path='/testpetsitterform' element={<TestPetSitterForm />}></Route>
           <Route path='/petsitterguide' element={<PetSitterGuide />}></Route>
           <Route path='/petsitters' element={<PetSitterList />} />
           <Route path='/petsitterinfo/:id' element={<PetSitterInfo />} />
