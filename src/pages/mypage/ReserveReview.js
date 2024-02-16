@@ -80,14 +80,14 @@ const ReserveReview = () => {
       ) : (
         <>
           <Review reviewImgSrc="/imgs/dog3.jpeg"
-                  petInfo={`${data1.name} / ${data1.birthYear} ~ ${data1.weight} / ${data1.price}원`}
+                  petInfo={`${data1.name} / 2024.01.11 16시 ~ 19시 / ${data1.price}원`}
                   onSave={handleSaveReview}
                   state={data1.review_status}
                   reviewContent={data1.review_content}
                   reviewStar={data1.review_star}/>
 
         <Review reviewImgSrc="/imgs/dog3.jpeg"
-                petInfo={`${data2.name} / ${data2.birthYear} ~ ${data2.weight} / ${data2.price}원`}
+                petInfo={`${data2.name} / 2024.01.11 16시 ~ 19시 / ${data2.price}원`}
                 state={data2.review_status}
                 reviewContent={data2.review_content}
                 reviewStar={data2.review_star}
