@@ -2,7 +2,7 @@
 const PetSittersData = [
   {
     id: 1,
-    nickname: '김수철',
+    nickname: 'jh',
     title: '쾌적하고 따뜻한 분위기에서 제 반려견처럼 케어합니다.',
     rating: '⭐️⭐️⭐️⭐️',
     // count: '2',

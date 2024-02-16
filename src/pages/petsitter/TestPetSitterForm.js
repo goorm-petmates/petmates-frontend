@@ -247,38 +247,21 @@ const TestPetSitterForm = () => {
             <div className='petsitter-add-imgs-text'>사진첨부</div>
 
             <div className='add-imgs-container'>
-              <div className='add-imgs-boxes'>
-                {[1, 2, 3, 4, 5].map((num) => {
-                  const id = `user-img${num}`;
-                  return (
-                    <div className='imgs-input' key={id}>
-                      <input
-                        type='file'
-                        id={id}
-                        accept='image/*'
-                        onChange={handleImageChange}
-                        style={{ display: 'none' }}
-                      />
-                      <label htmlFor={id} className='custom-file-upload'>
-                        <RiImageAddFill />
-                        {images[id] && <img src={images[id]} alt={`Uploaded ${id}`} />}
-                      </label>
-                      <div>
-                        {images[id] && (
-                          <button
-                            type='button'
-                            className='image-remove-btn'
-                            onClick={() => handleRemoveImage(id)}
-                            aria-label='Remove image'
-                          >
-                            <MdDeleteForever />
-                            <span className='image-remove-text'>삭제</span>
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
+              <div className="add-imgs-boxes">
+                <div className="custom-file-upload">
+                  <img src='/imgs/Photo001.jpeg' />
+                </div>
+                <div className="custom-file-upload">
+                  <img src='/imgs/Photo002.jpeg' />
+                </div>
+                <div className="custom-file-upload">
+                  <img src='/imgs/Photo003.jpeg' />
+                </div>
+                <div className="custom-file-upload">
+                  <img src='/imgs/Photo004.jpeg' />
+                </div>
+                <div className="custom-file-upload">
+                </div>
 
                 {/*위 add-imgs-boxes부분 하드코딩*/}
                 {/* <input type='file' id='user-img1' accept='image/*'></input>
@@ -303,8 +286,8 @@ const TestPetSitterForm = () => {
                 </label> */}
               </div>
 
-              <div className='add-imgs-text'>
-                *얼굴 사진 필수
+              <div className="add-imgs-text">
+              *얼굴 사진 필수
                 <br />
                 *돌볼환경 사진 필수
                 <br />
