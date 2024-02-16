@@ -35,7 +35,7 @@ const MyManagement = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/petsitterfoam`);
+    navigate(`/petsitterform`);
   };
 
   const { petsitterForm } = data1;
