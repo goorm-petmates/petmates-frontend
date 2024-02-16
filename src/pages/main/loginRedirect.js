@@ -25,7 +25,7 @@ const LoginRedirect = () => {
 
           // 새 사용자인 경우 '/signup'으로 리다이렉트, 그렇지 않으면 메인 페이지('/')로 리다이렉트
           if (data.isNewUser) {
-            navigate('/signup'); // 새 사용자의 경우 '/signup'으로 리다이렉트
+            navigate('/signup2'); // 새 사용자의 경우 '/signup'으로 리다이렉트
           } else {
             navigate('/'); // 기존 사용자의 경우 메인 페이지('/')로 리다이렉트
           }
