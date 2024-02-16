@@ -180,7 +180,7 @@ function SignUp2() {
 
   // 페이지 렌더링 시 회원 정보 가져오기 // 수정
   useEffect(() => {
-    fetch('http://localhost:8080/api/members/join', {
+    fetch('https://api.petmates.co.kr/api/members/test/api/members/join', {
       method: 'GET',
       credentials: 'include',
     })
