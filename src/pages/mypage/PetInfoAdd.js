@@ -95,7 +95,7 @@ function PetInfoAdd() {
       console.log(moreInfo);
     }
 
-    // fetch api/my-page/pet/add
+    //// fetch api/my-page/pet/add
     // const url_add = 'https://api.petmates.co.kr/api/members/test/api/my-page/pet/add'; // 요청을 보낼 URL을 지정합니다.
     // const data_add = {
     //   name: petName,
