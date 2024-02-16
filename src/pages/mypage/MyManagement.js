@@ -91,7 +91,7 @@ const MyManagement = () => {
             <img
               className='management-edit-img'
               src='https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXNpYW58ZW58MHx8MHx8fDA%3D'
-              alt='프로필 사진 '
+              alt='프로필 사진'
             />
             <div className='management-text-row'>
               <p className='management-edit-nickname'>{data1.nickname}</p>
@@ -125,8 +125,8 @@ const MyManagement = () => {
               onChange={() => handleCheckboxClick(0)}
             />
             <ReservePetsitterCard
-              reservePetImgSrc='/imgs/dog3.jpeg'
-              petInfo='똑바로 / 2023.12.23 ~ 2023.12.24 / 50,000원'
+              reservePetImgSrc='/imgs/pet_img_1.png'
+              petInfo='똑바로 / 2024.02.16 ~ 2024.02.16 / 16,500원'
               state={managementStates[0]}
               onClick={() => handleConfirmReservation(0)}
             />

@@ -438,15 +438,15 @@ const PetSittersData = [
   },
   {
     id: 9,
-    nickname: '박민호',
-    title: '펫시터 경력 3년, 상주견 없이 견주님 아이들만 집중돌봄 합니다.',
+    nickname: 'jh',
+    title: '돌봄 경험 2년 있으며 펫시터 자격증 보유하였습니다.',
     rating: '⭐️⭐️⭐️',
     // count: '3',
     address: '서울시 용산구',
     createAt: '2024.01.14',
     viewCnt: 10,
     profilePic1:
-      'https://images.unsplash.com/photo-1520528992676-b52756d25c45?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQ0fHxrb3JlYW58ZW58MHx8MHx8fDA%3D',
+      'https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXNpYW58ZW58MHx8MHx8fDA%3',
     profilePic2:
       'https://plus.unsplash.com/premium_photo-1661892088256-0a17130b3d0d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHB1cHB5fGVufDB8fDB8fHww',
     profilePic3:
