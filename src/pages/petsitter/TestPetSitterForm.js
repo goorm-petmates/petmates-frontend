@@ -7,6 +7,7 @@ import { RiImageAddFill } from 'react-icons/ri';
 import { MdDeleteForever } from 'react-icons/md';
 // import axios from 'axios';
 import '../../styles/StylePetSitterForm.css';
+import petSittersData from './PetSittersData';
 
 const TestPetSitterForm = () => {
   /****************form input 상태 관리 (이미지, 텍스트) *********************/
@@ -322,12 +323,12 @@ const TestPetSitterForm = () => {
                 onChange={handleInputChange}
                 minLength={10}
                 maxLength={40}
-                placeholder='* 제목을 입력해 주세요 (최소10자 ~ 최대40자 제한)'
+                value={petSittersData.find(sitter => sitter.id === 1)?.title || ""}
               ></input>
               <textarea
                 id='petsitter-foam-content'
                 name='content'
-                value={formData.content}
+                value={petSittersData.find(sitter => sitter.id === 1)?.contents || ""}
                 onChange={handleInputChange}
                 minLength={30}
                 maxLength={500}
@@ -359,7 +360,7 @@ const TestPetSitterForm = () => {
                     name='daycarePrice'
                     id='daycare-price-input'
                     onChange={handleInputChange}
-                    value={formData.daycarePrice}
+                    value={petSittersData.find(sitter => sitter.id === 1)?.standardPrice || ""}
                     onBlur={handleBlur}
                     placeholder=' 원하는 금액을 입력하세요'
                     onInput={(e) => {
@@ -377,7 +378,7 @@ const TestPetSitterForm = () => {
                     name='extraPrice'
                     id='extra-30mins-price-input'
                     onChange={handleInputChange}
-                    value={formData.extraPrice}
+                    value={petSittersData.find(sitter => sitter.id === 1)?.addPrice || ""}
                     onBlur={handleBlur}
                     placeholder=' 원하는 금액을 입력하세요'
                     onInput={(e) => {
@@ -396,7 +397,7 @@ const TestPetSitterForm = () => {
                   name='overnightPrice'
                   id='overnight-price-input'
                   onChange={handleInputChange}
-                  value={formData.overnightPrice}
+                  value={petSittersData.find(sitter => sitter.id === 1)?.nightPrice || ""}
                   onBlur={handleBlur}
                   placeholder=' 원하는 금액을 입력하세요'
                   onInput={(e) => {
