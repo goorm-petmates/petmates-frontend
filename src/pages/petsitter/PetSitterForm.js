@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import HeaderWithNav from '../../components/HeaderWithNav.js';
 import Footer from '../../components/Footer.js';
 import PetSitterRightbtns from '../../components/PetSitterRightBtns.js';
 import { RiImageAddFill } from 'react-icons/ri';
@@ -200,7 +199,7 @@ const PetSitterForm = () => {
     //폼 유효성 검사 통과 시 alert 메시지 띄우기
     if (isFormValid) {
       alert('펫시터 지원하기가 완료되었습니다');
-      navigate('/mymanagement');
+      navigate('/petsitter');
 
       console.log('Form Data: ', formData);
       console.log('Images: ', images);
@@ -227,7 +226,6 @@ const PetSitterForm = () => {
 
   return (
     <div>
-      <HeaderWithNav></HeaderWithNav>
       <PetSitterRightbtns></PetSitterRightbtns>
       <div className='petsitter-foam'>
         <div className='petsitter-foam-header'>

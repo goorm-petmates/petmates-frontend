@@ -2,7 +2,7 @@
 const PetSittersData = [
   {
     id: 1,
-    nickname: 'jh',
+    nickname: '김세정',
     title: '쾌적하고 따뜻한 분위기에서 제 반려견처럼 케어합니다.',
     rating: '⭐️⭐️⭐️⭐️',
     // count: '2',
@@ -11,7 +11,7 @@ const PetSittersData = [
     createAt: '2024.01.14',
     viewCnt: 10,
     profilePic1:
-      'https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXNpYW58ZW58MHx8MHx8fDA%3D',
+      'https://images.unsplash.com/photo-1606231106463-ed4596c15292?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFzaWFuJTIwZG9nfGVufDB8fDB8fHww',
     profilePic2:
       'https://plus.unsplash.com/premium_photo-1661892088256-0a17130b3d0d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHB1cHB5fGVufDB8fDB8fHww',
     profilePic3:
@@ -69,7 +69,7 @@ const PetSittersData = [
   {
     id: 2,
     nickname: '이슬기',
-    title: '돌봄 경험 2년 있으며 펫시터 자격증 보유하였습니다.',
+    title: '친절, 공감하는 펫시터가 되겠습니다',
     rating: '⭐️⭐️⭐️',
     // count: '2',
     address: '서울시 노원구',
@@ -129,7 +129,7 @@ const PetSittersData = [
   },
   {
     id: 3,
-    nickname: '김세정',
+    nickname: '김수철',
     title: '아파트 마당과 5분거리 뒷산 산책길 집중 돌봄 합니다.',
     rating: '⭐️⭐️⭐️⭐️',
     // count: '3',
@@ -137,7 +137,7 @@ const PetSittersData = [
     createAt: '2024.01.14',
     viewCnt: 10,
     profilePic1:
-      'https://images.unsplash.com/photo-1606231106463-ed4596c15292?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFzaWFuJTIwZG9nfGVufDB8fDB8fHww',
+      'https://images.unsplash.com/photo-1557199582-14cd70bc6d39?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFzaWFuJTIwd2l0aCUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3Dixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     profilePic2:
       'https://plus.unsplash.com/premium_photo-1661892088256-0a17130b3d0d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHB1cHB5fGVufDB8fDB8fHww',
     profilePic3:
@@ -186,7 +186,7 @@ const PetSittersData = [
     createAt: '2024.01.14',
     viewCnt: 10,
     profilePic1:
-      'https://images.unsplash.com/photo-1557199582-14cd70bc6d39?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFzaWFuJTIwd2l0aCUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3Dixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://plus.unsplash.com/premium_photo-1664303671218-4de3a26fb1c1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YXNpYW4lMjBndXklMjBzbWlsZXxlbnwwfHwwfHx8MA%3D%3D',
     profilePic2:
       'https://plus.unsplash.com/premium_photo-1661892088256-0a17130b3d0d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHB1cHB5fGVufDB8fDB8fHww',
     profilePic3:
@@ -446,7 +446,7 @@ const PetSittersData = [
     createAt: '2024.01.14',
     viewCnt: 10,
     profilePic1:
-      'https://plus.unsplash.com/premium_photo-1664303671218-4de3a26fb1c1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YXNpYW4lMjBndXklMjBzbWlsZXxlbnwwfHwwfHx8MA%3D%3D',
+      'https://images.unsplash.com/photo-1520528992676-b52756d25c45?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQ0fHxrb3JlYW58ZW58MHx8MHx8fDA%3D',
     profilePic2:
       'https://plus.unsplash.com/premium_photo-1661892088256-0a17130b3d0d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHB1cHB5fGVufDB8fDB8fHww',
     profilePic3:

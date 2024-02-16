@@ -1,12 +1,10 @@
 import React from 'react';
-import HeaderWithNav from '../components/HeaderWithNav.js';
 import Footer from '../components/Footer.js';
 import '../styles/StyleUserSupport.css';
 
 const UserSupport = () => {
   return (
     <div>
-      <HeaderWithNav></HeaderWithNav>
       <div className='user-support-header'>고객센터</div>
       <div className='user-support-content'>
         문의 및 이용상담

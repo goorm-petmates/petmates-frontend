@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import HeaderWithNav from '../../components/HeaderWithNav.js';
 import PetSitterInfoReview from '../../components/PetSitterInfoReview.js';
 import Footer from '../../components/Footer.js';
 import '../../styles/StylePetSitterInfo.css';
@@ -40,11 +39,6 @@ const PetSitterInfo = () => {
   }, [id]); // id 값이 변경될 때마다 실행
   /////////////////////////////////////////
 
-  useEffect(() => {
-    // petSitterInfo 상태 업데이트 부분...
-    console.log(petSitterInfo); // 상태 확인
-  }, [petSitterInfo]); // petSitterInfo가 변경될 때마다 로그 출력
-
   const generateTimeOptions = () => {
     const times = [];
     for (let i = 9; i < 22; i++) {
@@ -57,20 +51,22 @@ const PetSitterInfo = () => {
   };
 
   //반려동물 정보체크(jwt토큰 여부로 구분)
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  //jwt토큰사용시 주석해제
+  // useEffect(() => {
+  //   // 여기서 JWT 토큰의 유무를 체크하는 로직을 추가하기
+  //   // 예시로 localStorage에서 토큰을 확인하는 방법을 사용
+  //   const token = localStorage.getItem('jwtToken');
+  //   setIsLoggedIn(!!token);
+  // }, []);
+
   //반려견 체크박스 관련 로직//
   const [checkedState, setCheckedState] = useState({
     dog1: false,
     dog2: false,
     dog3: false,
   });
-
-  useEffect(() => {
-    // 여기서 JWT 토큰의 유무를 체크하는 로직을 추가하기
-    // 예시로 localStorage에서 토큰을 확인하는 방법을 사용
-    const token = localStorage.getItem('jwtToken');
-    setIsLoggedIn(!!token);
-  }, []);
 
   const handleCheckboxChange = (event) => {
     const { name } = event.target;
@@ -89,10 +85,23 @@ const PetSitterInfo = () => {
   }, [startDate, endDate, startTime, endTime]);
 
   const calculateCosts = () => {
+    // petSitterInfo 상태에서 가격 정보를 가각 직접 받아와서 계산되도록 실행
+    // 데이터파일에서 문자열로 된 가격 정보에서 쉼표를 제거하고 숫자형으로 변환하고, 값이 없는 경우 기본값을 0으로 설정
+    const standardPrice = parseInt(petSitterInfo.standardPrice?.replace(/,/g, '') || '0', 10);
+    const addPrice = parseInt(petSitterInfo.addPrice?.replace(/,/g, '') || '0', 10);
+    const nightPrice = parseInt(petSitterInfo.nightPrice?.replace(/,/g, '') || '0', 10);
+
+    // 날짜와 시간이 제대로 선택되었는지 확인
+    // replace메서드를 호출하기전에 petSitterInfo 객체의 각 속성이 존재하는지 먼저 확인해서 undefined or null값받지않게하기
+    if (!startDate || !endDate || !startTime || !endTime) {
+      console.log('날짜 또는 시간이 올바르게 설정되지 않았습니다.');
+      return; // 날짜나 시간이 올바르게 설정되지 않았으면 계산 중단
+    }
+
     const rates = {
-      daycare: 20000, // 6 hours
-      additional: 3000, // every 30 minutes
-      overnight: 40000, // 24 hours
+      daycare: standardPrice, // 6 hours
+      additional: addPrice, // every 30 minutes
+      overnight: nightPrice, // 24 hours
     };
 
     const startDateTime = new Date(startDate);
@@ -172,7 +181,6 @@ const PetSitterInfo = () => {
 
   return (
     <>
-      <HeaderWithNav></HeaderWithNav>
       <div className='petsitter-info-post'>
         <div className='petsitter-left-side'>
           {/********** left-side ************/}
@@ -315,46 +323,46 @@ const PetSitterInfo = () => {
           <div className='petsitter-booking-box'>
             <div className='booking-box-header'>맡길 반려견 선택</div>
             {/**************반려동물 등록되지않은 유저인경우 활성화************/}
-            {!isLoggedIn && (
+            {/* {!isLoggedIn && (
               <button className='register-pet-btn'>
                 <Link to='/petInfo'>반려동물을 먼저 등록하세요.</Link>
               </button>
-            )}
+            )} */}
 
             {/**************반려동물 등록된 유저인경우 활성화***********/}
-            {isLoggedIn && (
-              <div className='dog-checkbox'>
-                <label htmlFor='dog1'>
-                  <img
-                    className='registered-dog-pic1'
-                    src='/imgs/pet_img_1.png'
-                    alt='petowner registered dog pic1'
-                  ></img>
-                  <input
-                    type='checkbox'
-                    name='dog1'
-                    id='dog1'
-                    checked={checkedState.dog1}
-                    onChange={handleCheckboxChange}
-                  />
-                  1번 똑바로
-                </label>
-                <label htmlFor='dog2'>
-                  <img
-                    className='registered-dog-pic2'
-                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnPQQJdPQ3F19ICZpY78APxYenUsW9tVn9hdMwrlCWwnxMgQ0HFqE8MP9pODtMCpiaqnw&usqp=CAU'
-                    alt='petowner registered dog pic2'
-                  ></img>
-                  <input
-                    type='checkbox'
-                    name='dog2'
-                    id='dog2'
-                    checked={checkedState.dog2}
-                    onChange={handleCheckboxChange}
-                  />
-                  2번 초키
-                </label>
-                {/* <label htmlFor='dog3'>
+            {/* {isLoggedIn && ( */}
+            <div className='dog-checkbox'>
+              <label htmlFor='dog1'>
+                <img
+                  className='registered-dog-pic1'
+                  src='/imgs/pet_img_1.png'
+                  alt='petowner registered dog pic1'
+                ></img>
+                <input
+                  type='checkbox'
+                  name='dog1'
+                  id='dog1'
+                  checked={checkedState.dog1}
+                  onChange={handleCheckboxChange}
+                />
+                1번 똑바로
+              </label>
+              <label htmlFor='dog2'>
+                <img
+                  className='registered-dog-pic2'
+                  src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnPQQJdPQ3F19ICZpY78APxYenUsW9tVn9hdMwrlCWwnxMgQ0HFqE8MP9pODtMCpiaqnw&usqp=CAU'
+                  alt='petowner registered dog pic2'
+                ></img>
+                <input
+                  type='checkbox'
+                  name='dog2'
+                  id='dog2'
+                  checked={checkedState.dog2}
+                  onChange={handleCheckboxChange}
+                />
+                2번 초키
+              </label>
+              {/* <label htmlFor='dog3'>
                 <img
                   className='registered-dog-pic3'
                   src='/imgs/Logo-Icon.png'
@@ -369,8 +377,8 @@ const PetSitterInfo = () => {
                 />
                 3번 반려견
               </label> */}
-              </div>
-            )}
+            </div>
+            {/* )} */}
 
             <div className='date-picker-header'>예약을 원하는 날짜와 시간을 선택하세요</div>
             <form className='date-picker'>
