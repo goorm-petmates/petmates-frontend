@@ -2,7 +2,7 @@ export const data1 = {
   nickname: 'jh',
   email: 'rlawogml8210@naver.com',
   phone: '01012345678',
-  address: '판교역로 166',
+  address: '서울 강남구 강남대로 298 (역삼동, KB라이프타워)',
   profile: '/imgs/dog7.png',
 
   pet: '2',

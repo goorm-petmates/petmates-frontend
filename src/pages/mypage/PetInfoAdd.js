@@ -95,66 +95,68 @@ function PetInfoAdd() {
       console.log(moreInfo);
     }
 
-  //   try {
-  //     const response = await fetch('/api/my-page/pet/add', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         storedFileName: "", // 파일 이름이나 경로를 전송합니다.
-  //         name: petName,
-  //         breed: breedOfDog,
-  //         sex: gender,
-  //         birthYear: birth,
-  //         weight: weight,
-  //         isNeutering: neutering,
-  //         isAllergy: allergy,
-  //         isDisease: trouble,
-  //         etc: moreInfo
-  //       }),
-  //     });
-  //
-  //     const data = await response.json();
-  //
-  //     if (response.ok) {
-  //       if (data.result === "success") {
-  //         alert("반려동물 정보 등록에 성공했습니다.");
-  //         navigate('/petinfo');
-  //       } else {
-  //         alert("반려동물 정보 등록에 실패했습니다.");
-  //       }
-  //     } else {
-  //       // 서버에서 에러 응답을 보낸 경우
-  //       alert("서버 오류로 반려동물 정보를 등록할 수 없습니다.");
-  //     }
-  //   } catch (error) {
-  //     // 네트워크 오류 등으로 인한 요청 실패
-  //     console.error("Error while submitting pet info:", error);
-  //     alert("서버 오류로 반려동물 정보를 등록할 수 없습니다.");
-  //   }
-  //
-  //   const formData = new FormData();
-  //   formData.append('photo', postImg); // 사진 파일 첨부
-  //   formData.append('pet_id', '1'); // 반려동물 ID (임시)
-  //
-  //   // MSW 핸들러로 요청 보내기
-  //   const response = await fetch('/api/my-page/pet/1/photo', {
-  //     method: 'POST',
-  //     body: formData,
-  //   });
-  //
-  //   if (response.ok) {
-  //     const data = await response.json();
-  //     if (data.result === "success") {
-  //       alert("반려동물 정보 등록에 성공했습니다.");
-  //       navigate('/petinfo');
-  //     } else {
-  //       alert("반려동물 정보 등록에 실패했습니다.");
-  //     }
-  //   } else {
-  //     alert("서버 오류로 반려동물 정보를 등록할 수 없습니다.");
-  //   }
+    // fetch api/my-page/pet/add
+    const url_add = 'https://api.petmates.co.kr/api/members/test/api/my-page/pet/add'; // 요청을 보낼 URL을 지정합니다.
+    const data_add = {
+      name: petName,
+      breed: breedOfDog,
+      sex: gender,
+      birthYear: birth,
+      weight: weight,
+      isNeutering: neutering,
+      isAllergy: allergy,
+      isDisease: trouble,
+      etc: moreInfo
+    };
+
+    try {
+      // 펫 추가 요청 보내기
+      const response_add = await fetch(url_add, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data_add),
+      });
+
+      // 응답 확인
+      if (!response_add.ok) {
+        throw new Error('펫 추가 실패');
+      }
+
+      // 응답 데이터 파싱
+      const responseData = await response_add.json();
+      const petId = responseData.id; // 응답에서 펫 아이디 추출
+
+      // 펫 사진 추가 요청 보내기
+      const url_photo = `https://api.petmates.co.kr/api/members/test/api/my-page/pet/${petId}/photo`;
+      const data_photo = {
+        photo: file,
+        pet_id: petId,
+      };
+
+      const response_photo = await fetch(url_photo, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        body: JSON.stringify(data_photo),
+      });
+
+      // photo 응답 확인
+      if (!response_photo.ok) {
+        throw new Error('펫 사진 추가 실패');
+      }
+      // 응답 성공 시
+      console.log('펫 및 사진 추가 완료');
+
+      navigate('/petinfo');
+      alert('반려동물 정보가 등록되었습니다.');
+    } catch (error) {
+      console.error(error);
+      alert('펫 추가 및 사진 업로드 중 오류가 발생했습니다.');
+    }
+
   };
 
   const handlePetAdd = (e) => {
