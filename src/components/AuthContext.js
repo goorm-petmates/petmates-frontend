@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // 로그인 상태 확인 API 호출
-    fetch('http://localhost:8080/api/kakao/login/status', {
+    fetch('https://api.petmates.co.kr/api/members/test/api/kakao/login/status', {
       method: 'GET',
       credentials: 'include',
     })
