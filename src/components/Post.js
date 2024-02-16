@@ -40,7 +40,7 @@ function Post(props) {
           query: combinedAddress,
         },
         headers: {
-          Authorization: "KakaoAK 2a0545dc2cd35dfd52e96098d3ef9162",
+          Authorization: "KakaoAK 06255b2f3a6bd19ffa9bad111b8d01cd",
         },
       });
 
