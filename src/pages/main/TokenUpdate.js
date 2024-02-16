@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import '../../styles/StyleSignUp.css';
-import HeaderWithNav from '../../components/HeaderWithNav';
+//import HeaderWithNav from '../../components/HeaderWithNav';
 
 const TokenUpdate = () => {
   useEffect(() => {

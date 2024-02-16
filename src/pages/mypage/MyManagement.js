@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 import { data1 } from '../Data';
 const MyManagement = () => {
   const [checkedRefuse, setCheckedRefuse] = useState([false, false]);
-  const [managementStates, setManagementStates] = useState(['승인대기', '예약완료']);
+  const [managementStates, setManagementStates] = useState(['예약승인', '예약완료']);
 
   const handleCheckboxClick = (index) => {
     setCheckedRefuse((prevChecked) => {
@@ -34,8 +34,8 @@ const MyManagement = () => {
 
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate(`/petsitterfoam`);
+  const handleNavigate = (path) => {
+    navigate(path);
   };
 
   const { petsitterForm } = data1;
@@ -43,6 +43,14 @@ const MyManagement = () => {
   const [isDeleted, setIsDeleted] = useState(false);
   const handleDelete = () => {
     setIsDeleted(true); // 삭제 버튼을 누르면 isDeleted 상태를 true로 변경
+  };
+
+  const handleConfirmReservation = (index) => {
+    setManagementStates((prevStates) => {
+      const updatedStates = [...prevStates];
+      updatedStates[index] = '예약완료';
+      return updatedStates;
+    });
   };
 
   return (
@@ -69,7 +77,7 @@ const MyManagement = () => {
             <span className="management-add-text">
               펫시터 지원 내역이 없습니다. 펫시터로 지원해보세요 :)</span>
             <button className="management-add-button"
-                    onClick={handleNavigate}>
+                    onClick={() => handleNavigate('/petsitterform')}>
               등록하기
             </button>
             <div className="management-add-bar"></div>
@@ -86,7 +94,7 @@ const MyManagement = () => {
               </div>
               <div className="management-buttons">
                 <button className="management-edit-button"
-                        onClick={handleNavigate}>
+                        onClick={() => handleNavigate('/testpetsitterform')}>
                   수정하기
                 </button>
                 <button className="management-delete-button"
@@ -111,7 +119,8 @@ const MyManagement = () => {
                 <ReservePetsitterCard
                   reservePetImgSrc="/imgs/dog3.jpeg"
                   petInfo="똑바로 / 2023.12.23 ~ 2023.12.24 / 50,000원"
-                  state={managementStates[0]} />
+                  state={managementStates[0]}
+                  onClick={() => handleConfirmReservation(0)}/>
               </label>
               <label className="checked-width-2">
                 <input

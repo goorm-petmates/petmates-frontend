@@ -85,7 +85,7 @@ function ReservationPet() {
                 />
                <ReservePetsitterCard reservePetImgSrc="/imgs/dog3.jpeg"
                                   petInfo="똑바로 / 2023.12.23 ~ 2023.12.24 / 50,000원"
-                                  state={reservationStates[0]}
+                                  state={reservationStates[1]}
                                   onClick={() => handleConfirmReservation(0)} />
               </label>
               <label className="checked-width-2">
