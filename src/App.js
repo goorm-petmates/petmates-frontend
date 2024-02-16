@@ -24,7 +24,7 @@ import MyMamagementCancle from './pages/mypage/MyMamagementCancle';
 import PetSitterList from './components/PetSitterList';
 import AuthProvider from './components/AuthContext.js';
 import HeaderWithNav from './components/HeaderWithNav';
-
+import TestPetInfoAdd from './pages/mypage/TestPetInfoAdd';
 function App() {
   return (
     <AuthProvider>
@@ -47,6 +47,7 @@ function App() {
           <Route path='/notfoundpage' element={<NotFoundPage />}></Route>
           <Route path='/petinfo' element={<PetInfo />}></Route>
           <Route path='/petinfoadd' element={<PetInfoAdd />} />
+          <Route path='/testpetinfoadd' element={<TestPetInfoAdd />} />
           <Route path='/usersupport' element={<UserSupport />}></Route>
           <Route path='/oauth/redirect/kakao' element={<SignUp />}></Route>
           <Route path='/reservepetsitter' element={<ReservationPetsitter />}></Route>
