@@ -195,9 +195,8 @@ function TestPetInfoAdd() {
       <div className="pet-info-add-container">
         <div className="pet-info-add-fileupload">
           {/* 사진 미리보기 */}
-          {previewImg && (
-            <img className="pet-info-add-picture" src={data1.profile ? data1.profile : previewImg} alt="" />
-          )}
+            <img className="pet-info-add-picture" src={data1.petImgSrc} alt="" />
+
           <input
             className="pet-info-add-img-input"
             type="file"
@@ -216,6 +215,7 @@ function TestPetInfoAdd() {
             <input type="text"
                    placeholder={"똑바로"}
                    className="petName"
+                   value={data1.name}
                    onInput={handlePetAdd}/>
           </div>
 
@@ -224,6 +224,7 @@ function TestPetInfoAdd() {
             <input type="text"
                    placeholder={"푸들"}
                    className="breedOfDog"
+                   value={data1.breed}
                    onInput={handlePetAdd}/>
           </div>
 
@@ -233,6 +234,7 @@ function TestPetInfoAdd() {
               <input type="text"
                      placeholder="2012"
                      className="birth"
+                     value={data1.birthYear}
                      onInput={handlePetAdd}/>
               <span>년도</span>
             </div>
@@ -244,6 +246,7 @@ function TestPetInfoAdd() {
               <input type="text"
                      placeholder="5"
                      className="weight"
+                     value={data1.weight}
                      onInput={handlePetAdd}/>
               <span>Kg</span>
             </div>
@@ -262,7 +265,8 @@ function TestPetInfoAdd() {
               <label>
                 <input type="radio"
                        className="gender"
-                       checked={gender === "여"}
+                       checked={data1.sex === "F"}
+                       value={data1.sex}
                        onChange={()=>setGender("여")}/>
                 여
               </label>
@@ -274,7 +278,7 @@ function TestPetInfoAdd() {
             <div className="pet-info-row">
               <label>
                 <input type="radio" className="neutering"
-                       checked={neutering === "예"}
+                       checked={data1.isNeutering === true}
                        onChange={()=>setNeutering("예")}/>
                 예
               </label>
@@ -292,13 +296,13 @@ function TestPetInfoAdd() {
             <div className="pet-info-row">
               <label>
                 <input type="radio" className="allergy"
-                       checked={allergy === "있음"}
+                       checked={allergy === "없음"}
                        onChange={()=>setAllergy("있음")}/>
                 있음
               </label>
               <label>
                 <input type="radio" className="allergy"
-                       checked={allergy === "없음"}
+                       checked={data1.allergy === false}
                        onChange={()=>setAllergy("없음")}/>
                 없음
               </label>
@@ -316,7 +320,7 @@ function TestPetInfoAdd() {
               </label>
               <label>
                 <input type="radio" className="trouble"
-                       checked={trouble === "없음"}
+                       checked={data1.isDisease === false}
                        onChange={()=>setTrouble("없음")}/>
                 없음
               </label>
@@ -328,7 +332,7 @@ function TestPetInfoAdd() {
           <label>참고사항</label>
           <span>펫시터에게 전달되어야할 내용을 상세히 적어주세요 :)</span>
           <textarea className="moreInfo"
-                    value={moreInfo}
+                    value={data1.etc}
                     onInput={handlePetAdd}
                     placeholder="ex) 식사횟수 및 배급량, 약복용법,
                               산책 시 주의사항 및 기타 특이사항
