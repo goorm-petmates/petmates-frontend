@@ -35,7 +35,7 @@ function PetInfo() {
     const petInfoToEdit = petCards.find(petCard => petCard.id === id);
     if (petInfoToEdit) {
       navigate({
-        pathname: '/petinfoadd',
+        pathname: '/testpetinfoadd',
         state: { petInfoToEdit } // 반려동물 정보를 상태로 전달
       });
     }
