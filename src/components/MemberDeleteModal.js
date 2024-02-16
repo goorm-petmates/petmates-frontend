@@ -19,7 +19,7 @@ function MemberDeleteModal({onClose}) {
       alert("카카오 계정을 입력해주세요.");
     } else {
       try {
-        const response = await fetch('http://localhost:8080/api/members/delete', {
+        const response = await fetch('https://api.petmates.co.kr/api/members/test/api/members/delete', {
           method: 'POST',
           credentials: 'include',
           headers: {
