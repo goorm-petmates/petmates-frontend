@@ -125,8 +125,8 @@ const MyManagement = () => {
               onChange={() => handleCheckboxClick(0)}
             />
             <ReservePetsitterCard
-              reservePetImgSrc='/imgs/dog3.jpeg'
-              petInfo='똑바로 / 2023.12.23 ~ 2023.12.24 / 50,000원'
+              reservePetImgSrc='/imgs/pet_img_1.png'
+              petInfo='똑바로 / 2024.02.16 ~ 2024.02.16 / 16,500원'
               state={managementStates[0]}
               onClick={() => handleConfirmReservation(0)}
             />
