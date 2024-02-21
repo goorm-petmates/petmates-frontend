@@ -21,14 +21,14 @@ export const handlers = [
           endDate: "2024.1.20",
           totalPrice: "30,000",
         },
-        {
-          id: 3,
-          name: "절미",
-          petImgSrc: "/imgs/dog3.jpeg",
-          startDate: "2024.1.11",
-          endDate: "2024.1.12",
-          totalPrice: "50,000",
-        },
+        // {
+        //   id: 3,
+        //   name: "절미",
+        //   petImgSrc: "/imgs/dog3.jpeg",
+        //   startDate: "2024.1.11",
+        //   endDate: "2024.1.12",
+        //   totalPrice: "50,000",
+        // },
       ]
     });
   }),
