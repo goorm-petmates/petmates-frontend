@@ -1,7 +1,9 @@
 import { http, HttpResponse } from "msw";
+import { request } from 'axios';
 
 export const handlers = [
-  http.get("/api/reserve/:memberId", ({params}) => {
+  // 실제로 펫 정보 받아오기 없음. 임시로
+  http.get("/api/petinfo/:memberId", ({params}) => {
     const { memberId } = params
     return HttpResponse.json({
       data: [
@@ -58,6 +60,41 @@ export const handlers = [
         }
       },
       { status: 200 }
+    );
+  }),
+  http.get("/api/reserve/:memberId", ({params}) => {
+    const { memberId } = params;
+    return HttpResponse.json({
+        data: [
+          {
+            id: 1,
+            name: "똑바로",
+            reservationPetImgSrc: "/imgs/dog1.png",
+            startDate: "2024.2.02",
+            endDate: "2024.2.04",
+            totalPrice: "100,000",
+            state: "승인대기",
+          },
+          {
+            id: 2,
+            name: "뭉치",
+            reservationPetImgSrc: "/imgs/dog3.jpeg",
+            startDate: "2024.1.20",
+            endDate: "2024.1.20",
+            totalPrice: "30,000",
+            state: "예약완료",
+          },
+        {
+          id: 3,
+          name: "절미",
+          reservationPetImgSrc: "/imgs/dog3.jpeg",
+          startDate: "2024.1.11",
+          endDate: "2024.1.12",
+          totalPrice: "50,000",
+          state: "예약완료",
+        },
+        ]
+      }
     );
   }),
 ];
