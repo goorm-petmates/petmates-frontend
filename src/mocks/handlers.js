@@ -37,18 +37,27 @@ export const handlers = [
     // if (!authToken)
     //   return HttpResponse.json({ msg: "Unauthorized" }, { status: 401 });
     const requestBody = await request.json();
+    console.log('req body: ', requestBody);
+
     return HttpResponse.json(
       {
         id: 1,
       },
-      { status: 201 }
+      { status: 200 }
     );
   }),
-  // http.get('/favicon.ico', (req, res, ctx) => {
-  //   return res(ctx.status(404));
-  // }),
-  // http.get('https://fonts.gstatic.com/*', (req, res, ctx) => {
-  //   // 해당 요청을 무시하고 404 응답을 반환합니다.
-  //   return res(ctx.status(404));
-  // }),
+  http.post("/api/my-page/pet/add", async ({request}) => {
+    const requestBody = await request.json();
+    console.log('req body: ', requestBody);
+
+    return HttpResponse.json(
+      {
+        result: "success",
+        data: {
+          id: 1,
+        }
+      },
+      { status: 200 }
+    );
+  }),
 ];
