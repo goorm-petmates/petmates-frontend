@@ -40,13 +40,13 @@ function ReservationPet() {
     });
   };
 
-  // const handleConfirmReservation = (index) => {
-  //   setReservationStates((prevStates) => {
-  //     const updatedStates = [...prevStates];
-  //     updatedStates[index] = '승인대기';
-  //     return updatedStates;
-  //   });
-  // };
+  const handleConfirmReservation = (index) => {
+    setReservationStates((prevStates) => {
+      const updatedStates = [...prevStates];
+      updatedStates[index] = '승인대기';
+      return updatedStates;
+    });
+  };
 
   const [reservationCard, setReservationCard] = useState([]);
   const memberId = 1;
