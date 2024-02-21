@@ -9,7 +9,7 @@ import { data1 } from '../Data';
 
 function ReservationPet() {
   const [checkedReservations, setCheckedReservations] = useState([false, false]);
-  const [reservationStates, setReservationStates] = useState(['예약확인', '승인대기', '예약완료']);
+  const [reservationStates, setReservationStates] = useState(['승인대기', '예약완료']);
 
   const handleCheckboxClick = (index) => {
     setCheckedReservations((prevChecked) => {
@@ -115,20 +115,6 @@ function ReservationPet() {
                   petInfo='뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원'
                   state={reservationStates[1]}
                   onClick={() => handleConfirmReservation(1)}
-                />
-              </label>
-              <label className='checked-width-3'>
-                <input
-                  className='reservepet-checkbox'
-                  type='checkbox'
-                  checked={checkedReservations[3]}
-                  onChange={() => handleCheckboxClick(2)}
-                />
-                <ReservePetsitterCard
-                  reservePetImgSrc='/imgs/dog3.jpeg'
-                  petInfo='뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원'
-                  state={reservationStates[2]}
-                  onClick={() => handleConfirmReservation(2)}
                 />
               </label>
             </>
