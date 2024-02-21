@@ -7,7 +7,6 @@ import Footer from '../../components/Footer';
 
 function PetInfo() {
   const location = useLocation();
-  const { state } = location;
 
   const [petCards, setPetCards] = useState([]);
 
@@ -17,14 +16,17 @@ function PetInfo() {
       // memberId를 사용하여 MSW 핸들러에서 반환된 응답을 사용
       fetch(`/api/reserve/${memberId}`)
         .then((res) => res.json())
-        .then((data) => {
-          console.log(data.length);
+        .then((res) => {
+          console.log(res.data);
 
           // API 응답 데이터를 petCards 형태로 가공
-          const formattedData = data.map((pet) => ({
+          const formattedData = res.data.map((pet) => ({
             id: pet.id, // 반려동물의 고유 식별자
             petImgSrc: pet.petImgSrc, // 반려동물 이미지 URL
-            petInfo: pet.name // 반려동물 정보
+            petInfo: pet.name, // 반려동물 정보
+            startDate: pet.startDate,
+            endDate:pet.endDate,
+            price:pet.totalPrice,
           }));
 
           setPetCards(formattedData);
@@ -34,7 +36,6 @@ function PetInfo() {
         });
 
    }, []);
-
 
 
   const navigate = useNavigate();
@@ -82,7 +83,7 @@ function PetInfo() {
               <PetCard
                 key={petCard.id}
                 petImgSrc={petCard.petImgSrc}
-                petInfo={petCard.petInfo}
+                petInfo={petCard.petInfo + " " + petCard.startDate + "~" + petCard.endDate + " " + petCard.price}
                 onEdit={() => handleEdit(petCard.id)}
                 onDelete={() => handleDelete(petCard.id)}
               />
