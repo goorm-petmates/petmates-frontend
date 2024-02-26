@@ -10,9 +10,21 @@ function Review(props) {
   const [isReviewSaved, setIsReviewSaved] = useState(false);
 
   const handleSaveReview = () => {
-    onSave(rating, reviewText);
-    setIsReviewSaved(true);
-    setIsWritingReview(false);
+    fetch('/api/my-page/review/:petsitterId', {
+      method: 'POST',
+      body: JSON.stringify({
+        rating: rating,
+        contents: reviewText,
+      })
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.data);
+
+        onSave(rating, reviewText);
+        setIsReviewSaved(true);
+        setIsWritingReview(false);
+      })
   };
 
   const handleStarClick = (selectedRating) => {
