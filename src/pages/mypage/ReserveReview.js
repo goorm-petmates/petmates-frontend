@@ -11,24 +11,6 @@ import Review from '../../components/Review';
 import { data1, data2 } from '../Data';
 
 const ReserveReview = () => {
-  // // 후기작성
-  // const { mutate: writeReview } = useMutation(async () => {
-  //   try {
-  //     const response = await fetch('/api/my-page/review', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       // 필요한 데이터가 있다면 body에 추가할 수 있습니다.
-  //     });
-  //     const data = await response.json();
-  //     // 성공적으로 후기 작성한 경우 리뷰 카드 표시 등의 처리를 할 수 있습니다.
-  //   } catch (error) {
-  //     // 오류 처리
-  //     console.error("Error writing review:", error);
-  //   }
-  // });
-  //
   // // 후기 가져오기
   // const { data: completedReviews, isLoading, isError } = useQuery('completedReviews', async () => {
   //   const response = await fetch('/api/petsitter/reviews');
@@ -84,7 +66,7 @@ const ReserveReview = () => {
               reviewImgSrc='/imgs/pet_img_1.png'
               petInfo={`${data1.name} / 2024.02.16 ~ 2024.02.16 / ${data1.price}원`}
               onSave={handleSaveReview}
-              state={data1.review_status}
+              state={selectedCard}
               reviewContent={data1.review_content}
               reviewStar={data1.review_star}
             />
