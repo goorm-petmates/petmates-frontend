@@ -108,4 +108,19 @@ export const handlers = [
       { status: 200 }
     );
   }),
+  http.post("/api/my-page/review/:petsitterId", async ({params}) => {
+    // const requestBody = await request.json();
+    // console.log('req body: ', requestBody);
+    const { petsitterId } = params;
+
+    return HttpResponse.json(
+      {
+        result: "success",
+        data: {
+          state: "작성완료"
+        }
+      },
+      { status: 200 }
+    );
+  }),
 ];
