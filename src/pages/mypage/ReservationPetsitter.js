@@ -18,24 +18,43 @@ function ReservationPet() {
   };
 
   const handleCancelReservation = () => {
+    const today = new Date();
+
+    const formettedDate = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
+
     checkedReservations.forEach((isChecked, index) => {
       if (isChecked) {
-        console.log(`예약이 취소되었습니다. Index: ${index}`);
+        fetch(`/api/reserve/cancel`, {
+          method: 'POST',
+          body : JSON.stringify({
+            id: index,
+            bookId : index,
+            code: 1,
+            canceledTime: formettedDate,
+          })
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res.data);
 
-        setReservationCard((prevCards) => {
-          const updatedCards = [...prevCards];
-          updatedCards[index] = {
-            ...updatedCards[index],
-            state:'취소완료'
-          };
-          return updatedCards;
-        });
+            console.log(`예약이 취소되었습니다. Index: ${index}`, formettedDate);
 
-        setCheckedReservations((prevChecked) => {
-          const updatedChecked = [...prevChecked];
-          updatedChecked[index] = false;
-          return updatedChecked;
-        });
+            setReservationCard((prevCards) => {
+              const updatedCards = [...prevCards];
+              updatedCards[index] = {
+                ...updatedCards[index],
+                state:'취소완료'
+              };
+              return updatedCards;
+            });
+
+            setCheckedReservations((prevChecked) => {
+              const updatedChecked = [...prevChecked];
+              updatedChecked[index] = false;
+              return updatedChecked;
+            });
+
+          })
       }
     });
   };
