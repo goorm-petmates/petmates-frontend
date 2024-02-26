@@ -38,8 +38,8 @@ export const handlers = [
     // const authToken = request.headers.get("Authorization");
     // if (!authToken)
     //   return HttpResponse.json({ msg: "Unauthorized" }, { status: 401 });
-    const requestBody = await request.json();
-    console.log('req body: ', requestBody);
+    // const requestBody = await request.json();
+    // console.log('req body: ', requestBody);
 
     return HttpResponse.json(
       {
@@ -49,8 +49,8 @@ export const handlers = [
     );
   }),
   http.post("/api/my-page/pet/add", async ({request}) => {
-    const requestBody = await request.json();
-    console.log('req body: ', requestBody);
+    // const requestBody = await request.json();
+    // console.log('req body: ', requestBody);
 
     return HttpResponse.json(
       {
@@ -95,6 +95,17 @@ export const handlers = [
         },
         ]
       }
+    );
+  }),
+  http.post("/api/reserve/cancel", async ({request}) => {
+    // const requestBody = await request.json();
+    // console.log('req body: ', requestBody);
+
+    return HttpResponse.json(
+      {
+        result: "success",
+      },
+      { status: 200 }
     );
   }),
 ];
