@@ -38,7 +38,7 @@ export const data2 = {
   pet: '2',
 
   petImgSrc: '/imgs/dog3.jpeg',
-  name: '버디',
+  name: '뭉치',
   breed: '골든리트리버',
   sex: 'M',
   birthYear: 2018,

@@ -228,7 +228,7 @@ const TestPetSitterForm = () => {
 
   return (
     <div>
-      <HeaderWithNav></HeaderWithNav>
+
       <PetSitterRightbtns></PetSitterRightbtns>
       <div className='petsitter-foam'>
         <div className='petsitter-foam-header'>
@@ -238,11 +238,11 @@ const TestPetSitterForm = () => {
         <div className='petsitter-foam-container'>
           <form onSubmit={handleSubmit}>
             {/*펫시터 지원하기 글이 이미 저장되있을때 버튼 활성화*/}
-            {isAuthenticated && (
+            {/*{isAuthenticated && (*/}
               <div className='raise-post'>
                 <button className='raise-post-btn'>끌어올리기</button>
               </div>
-            )}
+            {/*)}*/}
             {/************************************/}
             <div className='petsitter-add-imgs-text'>사진첨부</div>
 

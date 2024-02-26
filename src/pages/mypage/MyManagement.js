@@ -148,8 +148,8 @@ const MyManagement = () => {
       </div>
 
       <div className='page-buttons'>
-        <button className='page-button'>1</button>
-        <button className='page-button'>2</button>
+        {/*<button className='page-button'>1</button>*/}
+        {/*<button className='page-button'>2</button>*/}
       </div>
       <Footer />
     </>

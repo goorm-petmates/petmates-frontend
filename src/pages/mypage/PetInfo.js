@@ -3,32 +3,39 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import NoContents from "../../components/NoContents";
 import "../../styles/StylePetInfo.css";
 import PetCard from "../../components/PetCard";
-import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
-import { data1, data2 } from '../Data';
 
 function PetInfo() {
   const location = useLocation();
-  const { state } = location;
 
-  const [petCards, setPetCards] = useState([
-    {
-      id: 1,
-      petImgSrc: data1.petImgSrc,
-      petInfo: `${data1.name}/${data1.breed}/${data1.sex === 'M' ? '남아' : '여아'}/${new Date().getFullYear() - data1.birthYear}살/${data1.weight}kg`,
-    },
-    {
-      id: 2,
-      petImgSrc: data2.petImgSrc,
-      petInfo: `${data2.name}/${data2.breed}/${data2.sex === 'M' ? '남아' : '여아'}/${new Date().getFullYear() - data2.birthYear}살/${data2.weight}kg`,
-    },
-  ]);
+  const [petCards, setPetCards] = useState([]);
 
-  useEffect(() => {
-    if (state && state.newPetCard) {
-      setPetCards([...petCards, state.newPetCard]);
-    }
-  }, [state]);
+  const memberId = 1;
+
+   useEffect(() => {
+      // memberId를 사용하여 MSW 핸들러에서 반환된 응답을 사용
+      fetch(`/api/petinfo/${memberId}`)
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res.data);
+
+          // API 응답 데이터를 petCards 형태로 가공
+          const formattedData = res.data.map((pet) => ({
+            id: pet.id, // 반려동물의 고유 식별자
+            petImgSrc: pet.petImgSrc, // 반려동물 이미지 URL
+            petInfo: pet.name, // 반려동물 정보
+            startDate: pet.startDate,
+            endDate:pet.endDate,
+            price:pet.totalPrice,
+          }));
+
+          setPetCards(formattedData);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+   }, []);
 
 
   const navigate = useNavigate();
@@ -38,42 +45,15 @@ function PetInfo() {
     } else {
       navigate('/petinfoadd');
     }
-    setPetCards([...petCards]);
   }
 
-  const handleEdit = (id) => {
-    const petInfoToEdit = petCards.find(petCard => petCard.id === id);
-    if (petInfoToEdit) {
-      navigate({
-        pathname: '/testpetinfoadd',
-        state: { petInfoToEdit } // 반려동물 정보를 상태로 전달
-      });
-    }
+  const handleEdit = () => {
+
   }
 
-  const handleDelete = (idToDelete) => {
-    setPetCards(prevPetCards => prevPetCards.filter(petCard => petCard.id !== idToDelete));
-  }
+  const handleDelete = () => {
 
-  // useEffect(() => {
-  //   // data1의 반려동물 정보 가져오기
-  //   const fetchPetInfo = async () => {
-  //     // API 호출 및 데이터 가져오는 코드 작성...
-  //     const petInfo = await fetch('/api/petsitter/select-pet', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         petId: data1.pet, // data1의 pet ID를 전송
-  //       }),
-  //     });
-  //     const petData = await petInfo.json();
-  //     setPetCards([petData]);
-  //   };
-  //
-  //   fetchPetInfo();
-  // }, []);
+  }
 
   return (
     <div>
@@ -98,18 +78,16 @@ function PetInfo() {
         </button>
 
         <div className="pet-card-components">
-          {data1.pet ? (
-            <>
-              {petCards.map((petCard) => (
-                <PetCard
-                  key={petCard.id}
-                  petImgSrc={petCard.petImgSrc}
-                  petInfo={petCard.petInfo}
-                  onEdit={() => handleEdit(petCard.id)}
-                  onDelete={() => handleDelete(petCard.id)}
-                />
-              ))}
-            </>
+          {petCards.length > 0 ? (
+            petCards.map((petCard) => (
+              <PetCard
+                key={petCard.id}
+                petImgSrc={petCard.petImgSrc}
+                petInfo={petCard.petInfo + " " + petCard.startDate + "~" + petCard.endDate + " " + petCard.price}
+                onEdit={() => handleEdit(petCard.id)}
+                onDelete={() => handleDelete(petCard.id)}
+              />
+            ))
           ) : (
             <NoContents text="반려동물 정보" />
           )}
