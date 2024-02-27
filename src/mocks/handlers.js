@@ -161,4 +161,47 @@ export const handlers = [
       }
     );
   }),
+  http.get("/api/petsitter/reviews", () => {
+    return HttpResponse.json({
+        data: [
+          {
+            id: 1,
+            reviewRating: "",
+            reviewPic: "/imgs/dog3.jpeg",
+            reviewNickname: "리뷰A",
+            reviewCreateAt: "",
+            reviewContents: "",
+            state: "후기작성",
+            startDate: "2024.2.02",
+            endDate: "2024.2.04",
+            totalPrice: "100,000",
+          },
+          {
+            id: 3,
+            reviewRating: "",
+            reviewPic: "/imgs/dog3.jpeg",
+            reviewNickname: "리뷰B",
+            reviewCreateAt: "",
+            reviewContents: "",
+            state: "후기작성",
+            startDate: "2024.1.20",
+            endDate: "2024.1.20",
+            totalPrice: "30,000",
+          },
+          {
+            id: 1,
+            reviewRating: 2,
+            reviewPic: "/imgs/dog3.jpeg",
+            reviewNickname: "리뷰C",
+            reviewCreateAt: "2024-01-14",
+            reviewContents: "친절해요",
+            state: "작성완료",
+            startDate: "2024.1.11",
+            endDate: "2024.1.12",
+            totalPrice: "50,000",
+          },
+        ]
+      }
+    );
+  }),
 ];
