@@ -6,13 +6,14 @@ import NoContents from '../../components/NoContents';
 import Review from '../../components/Review';
 
 const ReserveReview = () => {
-  // const [selectedCard, setSelectedCard] = useState(data1.review === 'Y' ? '후기작성' : 'N');
-  // const [isReviewWritten, setIsReviewWritten] = useState(false);
-  //
-  // const handleCardClick = (cardState) => {
-  //   setSelectedCard('작성완료');
-  //   setIsReviewWritten(false);
-  // };
+  //const [selectedCard, setSelectedCard] = useState(data1.review === 'Y' ? '후기작성' : 'N');
+  const [selectedCard, setSelectedCard] = useState(true);
+  const [isReviewWritten, setIsReviewWritten] = useState(false);
+
+  const handleCardClick = (cardState) => {
+    setSelectedCard('작성완료');
+    setIsReviewWritten(false);
+  };
 
   const handleSaveReview = (rating, reviewText) => {
     // 후기 저장 로직을 구현합니다.
@@ -60,9 +61,9 @@ const ReserveReview = () => {
         <button className='reservation-review-nav2'>취소내역</button>
       </Link>
       <Link to='/reservereview'>
-        {/*<button className='reservation-review-nav3' onClick={() => handleCardClick('후기작성')}>*/}
-        {/*  후기작성*/}
-        {/*</button>*/}
+        <button className='reservation-review-nav3' onClick={() => handleCardClick('후기작성')}>
+          후기작성
+        </button>
       </Link>
 
       <div className='mypage-navunderLine'></div>
