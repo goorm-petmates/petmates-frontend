@@ -177,7 +177,7 @@ export const handlers = [
             totalPrice: "100,000",
           },
           {
-            id: 3,
+            id: 2,
             reviewRating: "",
             reviewPic: "/imgs/dog3.jpeg",
             reviewNickname: "리뷰B",
@@ -189,7 +189,7 @@ export const handlers = [
             totalPrice: "30,000",
           },
           {
-            id: 1,
+            id: 3,
             reviewRating: 2,
             reviewPic: "/imgs/dog3.jpeg",
             reviewNickname: "리뷰C",
