@@ -204,4 +204,39 @@ export const handlers = [
       }
     );
   }),
+  http.get("/api/my-page/petsitter/cancel/:petsitterId", ({params}) => {
+    const { petsitterId } = params;
+    return HttpResponse.json({
+        data: [
+          {
+            id: 1,
+            name: "똑바로",
+            reservePetImgSrc: "/imgs/dog1.png",
+            startDate: "2024.2.02",
+            endDate: "2024.2.04",
+            totalPrice: "100,000",
+            state: "취소완료",
+          },
+          {
+            id: 2,
+            name: "뭉치",
+            reservePetImgSrc: "/imgs/dog3.jpeg",
+            startDate: "2024.1.20",
+            endDate: "2024.1.20",
+            totalPrice: "30,000",
+            state: "취소완료",
+          },
+          {
+            id: 3,
+            name: "절미",
+            reservePetImgSrc: "/imgs/dog3.jpeg",
+            startDate: "2024.1.11",
+            endDate: "2024.1.12",
+            totalPrice: "50,000",
+            state: "취소완료",
+          },
+        ]
+      }
+    );
+  }),
 ];
