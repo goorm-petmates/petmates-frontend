@@ -298,4 +298,22 @@ export const handlers = [
       { status: 200 }
     );
   }),
+  http.post("/api/my-page/petsitter/refuse/:bookingId", async ({params}) => {
+    // const authToken = request.headers.get("Authorization");
+    // if (!authToken)
+    //   return HttpResponse.json({ msg: "Unauthorized" }, { status: 401 });
+    // const requestBody = await request.json();
+    // console.log('req body: ', requestBody);
+    const { bookingId } = params;
+
+    return HttpResponse.json(
+      {
+        result: "success",
+        data: {
+          state: "취소완료"
+        }
+      },
+      { status: 200 }
+    );
+  }),
 ];
