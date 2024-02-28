@@ -83,14 +83,15 @@ export const handlers = [
       }
     );
   }),
-  http.put("/api/reserve/cancel", async ({request}) => {
+  http.put("/api/reserve/cancel", async () => {
     // const requestBody = await request.json();
     // console.log('req body: ', requestBody);
-
     return HttpResponse.json(
       {
         result: "success",
-
+        data: {
+          state: "취소완료"
+        }
       },
       { status: 200 }
     );
