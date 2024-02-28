@@ -100,7 +100,7 @@
     border-radius: 40px;
     width: 850px;
     height: 100px;
-    margin-top: -100px;
+    margin-top: -560px;
     margin-bottom: 30px;
     margin-left: 800px;
 }
@@ -160,7 +160,8 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
-    margin-top: 120px;
+    margin-top: -430px;
+    margin-left: 400px;
 }
 .management-refuse-button{
     background-color: #ff9900;
