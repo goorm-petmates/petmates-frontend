@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import NoContents from '../../components/NoContents';
 const MyManagement = () => {
   const [checkedRefuse, setCheckedRefuse] = useState([false, false]);
-  const [managementStates, setManagementStates] = useState(['예약승인', '예약완료']);
 
   const handleCheckboxClick = (index) => {
     setCheckedRefuse((prevChecked) => {
@@ -20,13 +19,36 @@ const MyManagement = () => {
   const handleCancelRefuse = () => {
     checkedRefuse.forEach((isChecked, index) => {
       if (isChecked) {
-        console.log(`거절이 완료되었습니다. Index: ${index}`);
+        const bookingId = reservationCard[index].id;
+        fetch(`/api/my-page/petsitter/refuse/${bookingId}`,{
+          method: 'POST',
+          body: JSON.stringify({
+            id: bookingId,
+          })
+        })
+          .then((res)=> res.json())
+          .then((res) =>{
+            console.log(`거절이 완료되었습니다. Index: ${index}`);
 
-        setManagementStates((prevStates) => {
-          const updatedStates = [...prevStates];
-          updatedStates[index] = '취소완료';
-          return updatedStates;
-        });
+            setReservationCard((prevCards) => {
+              const updatedCards = [...prevCards];
+              updatedCards[index] = {
+                ...updatedCards[index],
+                state: res.data.state
+              };
+              return updatedCards;
+            });
+
+            setCheckedRefuse((prevChecked) => {
+              const updatedChecked = [...prevChecked];
+              updatedChecked[index] = false;
+              return updatedChecked;
+            });
+
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       }
     });
   };
@@ -114,8 +136,6 @@ const MyManagement = () => {
         }));
 
         setReservationCard(formData);
-        //setCheckedReservations(Array(formData.length).fill(true));
-        //setReservationStates(Array(formData.length).fill('승인대기'));
       })
       .catch((error) => {
         console.error(error);
