@@ -9,7 +9,7 @@ const TokenUpdate = () => {
     const updateToken = async () => {
       // 백엔드 엔드포인트로 POST 요청 보내기
       try {
-        const response = await fetch('https://api.petmates.co.kr/api/members/test/api/oauth/jwt/update', {
+        const response = await fetch('https://petmates.co.kr/api/oauth/jwt/update', {
           method: 'POST',
           credentials: 'include',
           headers: {
