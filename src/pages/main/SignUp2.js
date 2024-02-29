@@ -84,7 +84,7 @@ function SignUp2() {
 // 닉네임 중복확인
   const handleDoubleCheck = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/members/join/doublecheck', {
+      const response = await fetch('https://petmates.co.kr/api/members/join/doublecheck', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -179,7 +179,7 @@ function SignUp2() {
 
   // 페이지 렌더링 시 회원 정보 가져오기 // 수정
   useEffect(() => {
-    fetch('https://api.petmates.co.kr/api/members/test/api/members/join', {
+    fetch('https://petmates.co.kr/api/members/join', {
       method: 'GET',
       credentials: 'include',
     })
