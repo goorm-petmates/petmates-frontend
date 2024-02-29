@@ -108,7 +108,6 @@ function SignUp2() {
     }
   };
 
-
   // 닉네임 유효성 체크
   const handleNickName = (e) => {
     const newNickName = e.target.value;
@@ -202,7 +201,7 @@ function SignUp2() {
   return (
     <div>
       <div className="MemberInput">
-        <div className="Signup-title"> 회 원 가 입</div>
+        <div className="Signup-title"> 추 가 정 보 입 력</div>
         <div className="Signup-text">
           <span className="Signup-span" style={{ color: 'red' }}>(*)</span>
           표시는 필수입력 항목입니다.
