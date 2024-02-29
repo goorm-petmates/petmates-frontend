@@ -23,12 +23,12 @@ function ReservationPet() {
     const formettedDate = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
 
     checkedReservations.forEach((isChecked, index) => {
+      const bookId = reservationCard[index].id;
       if (isChecked) {
         fetch(`/api/reserve/cancel`, {
-          method: 'POST',
+          method: 'PUT',
           body : JSON.stringify({
-            id: index,
-            bookId : index,
+            id: bookId,
             code: 1,
             canceledTime: formettedDate,
           })
@@ -43,7 +43,7 @@ function ReservationPet() {
               const updatedCards = [...prevCards];
               updatedCards[index] = {
                 ...updatedCards[index],
-                state:'취소완료'
+                state: res.data.state
               };
               return updatedCards;
             });

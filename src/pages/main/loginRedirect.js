@@ -10,7 +10,7 @@ const LoginRedirect = () => {
     const authorizationCode = url.searchParams.get('code');
 
     if (authorizationCode) {
-      fetch('https://api.petmates.co.kr/api/members/test/api/kakao/login', {
+      fetch('https://petmates.co.kr/api/kakao/login', {
         method: 'POST',
         credentials: 'include',
         headers: {

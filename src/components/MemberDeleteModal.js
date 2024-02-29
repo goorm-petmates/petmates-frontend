@@ -15,28 +15,26 @@ function MemberDeleteModal({onClose}) {
   }
   const navigate = useNavigate();
   const navigateToPage = async () => {
-    if (!pwRe) {
-      alert("카카오 계정을 입력해주세요.");
-    } else {
-      try {
-        const response = await fetch('https://api.petmates.co.kr/api/members/test/api/members/delete', {
-          method: 'POST',
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        const data = await response.json(); // 서버로부터의 응답을 JSON 형태로 변환
-        if (data.result === 'success') {
-          console.log('회원탈퇴 완료');
-          alert(data.data);
-          navigate('/'); // 성공 시 홈페이지로 리다이렉션
-        } else {
-          alert(data.data); // 실패 메시지 표시
-        }
-      } catch (error) {
-        console.error('회원탈퇴 처리 중 오류가 발생했습니다.', error);
+    try {
+      const response = await fetch('https://petmates.co.kr/api/members/delete', {
+//        const response = await fetch('http://localhost:8080/api/members/delete', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ kakaoAccount: pwRe }), // 카카오계정 입력값 포함
+      });
+      const data = await response.json(); // 서버로부터의 응답을 JSON 형태로 변환
+      if (data.result === 'success') {
+        console.log('회원탈퇴 완료');
+        alert(data.data);
+        navigate('/'); // 성공 시 홈페이지로 리다이렉션
+      } else {
+        alert(data.data); // 실패 메시지 표시
       }
+    } catch (error) {
+      console.error('회원탈퇴 처리 중 오류가 발생했습니다.', error);
     }
   };
 

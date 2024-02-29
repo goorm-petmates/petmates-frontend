@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/MyManagementCancle.css';
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
 import ReservePetsitterCard from '../../components/ReservePetsitterCard';
 import NoContents from '../../components/NoContents';
-import { data1 } from '../Data';
 
 const MyMamagementCancle = () => {
-  const { reservations_status } = data1;
+  const [cancleInfo, setCancleInfo] = useState([]);
+  const petsitterId = 1;
+
+  useEffect(()=>{
+    fetch(`/api/my-page/petsitter/cancel/${petsitterId}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.data);
+
+        const formData = res.data.map((info) => ({
+          id: info.id,
+          reservePetImgSrc: info.reservePetImgSrc,
+          petInfo: `${info.name}  ${info.startDate}~${info.endDate}  ${info.totalPrice}원`,
+          state: info.state ,
+        }));
+
+        setCancleInfo(formData);
+      })
+  },[])
 
   return (
     <>
@@ -28,19 +45,20 @@ const MyMamagementCancle = () => {
       <div className='mypage-navunderLine'></div>
 
       <div className='mymanagement-cancle-container'>
-        {reservations_status === 'Y' ? (
-          <>
+        {/*<ReservePetsitterCard*/}
+        {/*  reservePetImgSrc='/imgs/dog3.jpeg'*/}
+        {/*  petInfo='뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원'*/}
+        {/*  state='취소완료'*/}
+        {/*/>*/}
+
+        {cancleInfo.length > 0  ? (
+          cancleInfo.map((info) => (
             <ReservePetsitterCard
-              reservePetImgSrc='/imgs/pet_img_1.png'
-              petInfo='똑바로 / 2024.02.16 ~ 2024.02.16 / 16,500원'
-              state='취소완료'
+              reservePetImgSrc={info.reservePetImgSrc}
+              petInfo={info.petInfo}
+              state={info.state}
             />
-            <ReservePetsitterCard
-              reservePetImgSrc='/imgs/dog3.jpeg'
-              petInfo='뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원'
-              state='취소완료'
-            />
-          </>
+          ))
         ) : (
           <NoContents text='취소 내역' />
         )}

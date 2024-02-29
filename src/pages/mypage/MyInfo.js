@@ -10,6 +10,94 @@ import { useNavigate } from 'react-router-dom';
 // import { handlers } from '../../mocks/handlers';
 
 const MyInfo = () => {
+  const [memberInfo, setMemberInfo] = useState({
+    nickname: '',
+    phone: '',
+    email: '',
+    profileImage: '',
+    fullAddr: '',
+    roadAddr: '',
+    detailAddr: '',
+    latitude: '',
+    longitude: '',
+    zipcode: ''
+  });
+// Post2 컴포넌트에서 전달받은 값을 상태에 저장하는 함수
+  const setCompany = (fullAddr, roadAddr, detailAddr, latitude, longitude, zipcode) => {
+    setMemberInfo(prevState => ({
+      ...prevState,
+      fullAddr,
+      roadAddr,
+      detailAddr,
+      latitude,
+      longitude,
+      zipcode
+    }));
+  };
+  const [errorNickName, setErrorNickName] = useState("");
+  const [errorPhone, setErrorPhone] = useState("");
+// 페이지 렌더링 시 내정보 가져오기 // 수정
+  useEffect(() => {
+    fetch('https://petmates.co.kr/api/my-page/check', {
+//      fetch('http://localhost:8080/api/my-page/check', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then(response =>  response.json())
+      .then(data => {
+        console.log(data.email); // 데이터 확인
+        console.log(data.nickname); // 데이터 확인
+        setMemberInfo(prevState => ({
+          ...prevState,
+          nickname: data.nickname,
+          email: data.email, // 이메일 상태 업데이트
+          phone: data.phone,
+          fullAddr: data.roadAddr,
+          profileImage: data.profileImage
+        }));
+      })
+      .catch((error) => console.error('Error:', error));
+  }, []);
+  // 휴대폰번호 유효성 체크
+  const handlePhone = (e) => {
+    const phone = e.target.value;
+    setMemberInfo(prevState => ({
+      ...prevState,
+      userPhone: phone, // 수정: userPhone 상태 업데이트
+    }));
+
+    // 공백 여부 체크
+    if (phone === " " || phone === 0) {
+      alert("공백은 입력할 수 없습니다.");
+    }
+
+    if (/^\d+$/.test(phone)) {
+      if (phone.length === 11) {
+        return setErrorPhone("");
+      } else {
+        return setErrorPhone("휴대전화 11자를 입력하세요");
+      }
+    } else {
+      return setErrorPhone("숫자만 입력해주세요");
+    }
+  }
+
+  // 휴대폰번호와 주소 입력 핸들러
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setMemberInfo(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  // 스페이스바 입력 무시
+  const handleKeyDown = (e) => {
+    if (e.key === " ") {
+      e.preventDefault();
+    }
+  };
+
   const [enroll_company, setEnroll_company] = useState({
     address:'',
   });
@@ -20,10 +108,13 @@ const MyInfo = () => {
       [e.target.name]:e.target.value,
     })
   }
+  // 우편번호 찾기 버튼 클릭 시 팝업 토글
+  const togglePopup = () => {
+    setPopup(!popup);
+  };
   const handleComplete = (data) => {
     setPopup(!popup);
   }
-
   const [showModal, setShowModal] = useState(false); // Modal을 보여주기 위한 상태 추가
   const openModal = () => {
     setShowModal(true);
@@ -32,29 +123,29 @@ const MyInfo = () => {
     setShowModal(false);
   };
 
-  //const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  //
-  //   if (!isLoggedIn) {
-  //     alert("로그인이 필요합니다.");
-  //     navigate('/login');
-  //   }
-  // }, [navigate]);
-
-  // // msw
-  // const [userInfo, setUserInfo] = useState({});
-  // useEffect(() => {
-  //   fetch("/api/my-page/edit")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setUserInfo(data);
-  //     });
-  // }, []);
-
-  const handleEdit = (e) => {
-    alert('수정되었습니다.');
+  const handleEdit = async () => {
+    const payload = {
+      ...memberInfo
+    };
+    try {
+      const response = await fetch('https://petmates.co.kr/api/my-page/edit', {
+//       const response = await fetch('http://localhost:8080/api/my-page/edit', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json(); // 서버로부터의 응답을 JSON 형태로 변환
+      if (data.result === 'success') {
+        alert(data.data);
+      } else {
+        alert(data.data); // 실패 메시지 표시
+      }
+    } catch (error) {
+      console.error('회원가입 중 에러 발생:', error);
+    }
   }
 
   const [postImg, setPostImg] = useState(null); // 파일 정보를 담을 state
@@ -126,7 +217,7 @@ const MyInfo = () => {
       <div className="myinfo">
         <div>
           <img className="myinfo-picture"
-               src={data1.profile ? data1.profile : previewImg} alt="" />
+               src={previewImg || memberInfo.profileImage} alt="" />
           <input
             className="myinfo-add-img-input"
             type="file"
@@ -141,32 +232,33 @@ const MyInfo = () => {
 
         <div className="myinfo-inputs">
           <label className="myinfo-label">닉네임</label>
-          <input className="myinfo-nameInput" value={data1.nickname}>
+          <input className="myinfo-nameInput" value={memberInfo.nickname}>
           </input>
 
           <label className="myinfo-label">이메일</label>
-          <input className="myinfo-emailInput" value={data1.email} readOnly>
+          <input className="myinfo-emailInput" value={memberInfo.email} readOnly required={true}>
           </input>
 
           <label className="myinfo-label">휴대폰번호</label>
           <input className="myinfo-phoneInput"
-                 value={data1.phone} readOnly
-                 disabled={true}>
+                 value={memberInfo.phone}
+                 onChange={handleInputChange}
+                 onInput={handlePhone}
+                 onKeyDown={handleKeyDown}>
           </input>
 
           <div className="myinfo-address-container">
             <label className="myinfo-label">주소</label>
             <button className="myinfo-address-button"
-                    onClick={handleComplete}>
+                    onClick={togglePopup}>
               우편번호 찾기</button>
-            {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
+            {popup && <Post setCompany={setCompany}></Post>}
 
             <input className="myinfo-addressInput"
-                   placeholder={data1.address}
                    required={true}
                    name="address"
                    onChange={handleInput}
-                   value={enroll_company.address}></input>
+                   value={memberInfo.fullAddr}></input>
           </div>
         </div>
 

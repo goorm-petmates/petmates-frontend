@@ -30,13 +30,13 @@ const HeaderWithNav = () => {
           </div>
 
           <div className='right-header'>
-            <div>
-              {localStorage.getItem('isNewUser') != null && (
-                <Link to='/tokenupdate' className='log_out'>
-                  토큰갱신
-                </Link>
-              )}
-            </div>
+            {/*<div>*/}
+            {/*  {localStorage.getItem('isNewUser') != null && (*/}
+            {/*    <Link to='/tokenupdate' className='log_out'>*/}
+            {/*      토큰갱신*/}
+            {/*    </Link>*/}
+            {/*  )}*/}
+            {/*</div>*/}
             <div>
               {isLoggedIn ? (
                 <Link to='/logout' className='log_out'>
