@@ -271,7 +271,7 @@ const MyManagement = () => {
               <div className='management-buttons'>
                 <button
                   className='management-edit-button'
-                  onClick={() => handleNavigate('/testpetsitterform')}>
+                  onClick={() => handleNavigate('/petsitterform')}>
                   수정하기
                 </button>
                 <button className='management-delete-button' onClick={handleDelete}>
