@@ -24,8 +24,6 @@ import MyMamagementCancle from './pages/mypage/MyMamagementCancle';
 import PetSitterList from './components/PetSitterList';
 import AuthProvider from './components/AuthContext.js';
 import HeaderWithNav from './components/HeaderWithNav';
-import TestPetInfoAdd from './pages/mypage/TestPetInfoAdd';
-import TestPetSitterForm from './pages/petsitter/TestPetSitterForm.js';
 function App() {
   return (
     <AuthProvider>
@@ -37,7 +35,6 @@ function App() {
           <Route path='/signup2' element={<SignUp2 />}></Route>
           <Route path='/petsitter' element={<PetSitter />}></Route>
           <Route path='/petsitterform' element={<PetSitterForm />}></Route>
-          <Route path='/testpetsitterform' element={<TestPetSitterForm />}></Route>
           <Route path='/petsitterguide' element={<PetSitterGuide />}></Route>
           <Route path='/petsitters' element={<PetSitterList />} />
           <Route path='/petsitterinfo/:id' element={<PetSitterInfo />} />
@@ -49,7 +46,6 @@ function App() {
           <Route path='/notfoundpage' element={<NotFoundPage />}></Route>
           <Route path='/petinfo' element={<PetInfo />}></Route>
           <Route path='/petinfoadd' element={<PetInfoAdd />} />
-          <Route path='/testpetinfoadd' element={<TestPetInfoAdd />} />
           <Route path='/usersupport' element={<UserSupport />}></Route>
           <Route path='/oauth/redirect/kakao' element={<SignUp2 />}></Route>
           <Route path='/reservepetsitter' element={<ReservationPetsitter />}></Route>
