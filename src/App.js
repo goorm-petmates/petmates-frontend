@@ -8,6 +8,7 @@ import PetSitter from './pages/petsitter/PetSitter.js';
 import PetSitterForm from './pages/petsitter/PetSitterForm.js';
 import PetSitterGuide from './pages/petsitter/PetSitterGuide.js';
 import PetSitterInfo from './pages/petsitter/PetSitterInfo.js';
+import PetSitterList from './components/PetSitterList';
 import Community from './pages/community/Community.js';
 import CommunityPost from './pages/community/CommunityPost.js';
 import CommunityResult from './pages/community/CommunityResult.js';
@@ -21,9 +22,9 @@ import ReservationCancle from './pages/mypage/ReservationCancle';
 import ReserveReview from './pages/mypage/ReserveReview';
 import MyManagement from './pages/mypage/MyManagement';
 import MyMamagementCancle from './pages/mypage/MyMamagementCancle';
-import PetSitterList from './components/PetSitterList';
 import AuthProvider from './components/AuthContext.js';
 import HeaderWithNav from './components/HeaderWithNav';
+
 function App() {
   return (
     <AuthProvider>

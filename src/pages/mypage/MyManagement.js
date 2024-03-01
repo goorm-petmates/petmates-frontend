@@ -20,21 +20,21 @@ const MyManagement = () => {
     checkedRefuse.forEach((isChecked, index) => {
       if (isChecked) {
         const bookingId = reservationCard[index].id;
-        fetch(`/api/my-page/petsitter/refuse/${bookingId}`,{
+        fetch(`/api/my-page/petsitter/refuse/${bookingId}`, {
           method: 'POST',
           body: JSON.stringify({
             id: bookingId,
-          })
+          }),
         })
-          .then((res)=> res.json())
-          .then((res) =>{
+          .then((res) => res.json())
+          .then((res) => {
             console.log(`거절이 완료되었습니다. Index: ${index}`);
 
             setReservationCard((prevCards) => {
               const updatedCards = [...prevCards];
               updatedCards[index] = {
                 ...updatedCards[index],
-                state: res.data.state
+                state: res.data.state,
               };
               return updatedCards;
             });
@@ -44,7 +44,6 @@ const MyManagement = () => {
               updatedChecked[index] = false;
               return updatedChecked;
             });
-
           })
           .catch((error) => {
             console.error(error);
@@ -66,21 +65,21 @@ const MyManagement = () => {
 
   const handleConfirmReservation = (index) => {
     const bookingId = reservationCard[index].id;
-    fetch(`/api/my-page/petsitter/approve/${bookingId}`,{
+    fetch(`/api/my-page/petsitter/approve/${bookingId}`, {
       method: 'POST',
       body: JSON.stringify({
         id: bookingId,
-      })
+      }),
     })
-      .then((res)=> res.json())
-      .then((res) =>{
-        console.log("요청을 승인했습니다.");
+      .then((res) => res.json())
+      .then((res) => {
+        console.log('요청을 승인했습니다.');
 
         setReservationCard((prevCards) => {
           const updatedCards = [...prevCards];
           updatedCards[index] = {
             ...updatedCards[index],
-            state: res.data.state
+            state: res.data.state,
           };
           return updatedCards;
         });
@@ -103,13 +102,13 @@ const MyManagement = () => {
   const [reservationCard, setReservationCard] = useState([]);
   const petsitterId = 1;
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch(`/api/my-page/petsitter/existence/${memberId}`)
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);
 
-        if(res.exist === true){
+        if (res.exist === true) {
           const formData = res.data.map((info) => ({
             id: info.id,
             title: info.title,
@@ -118,10 +117,10 @@ const MyManagement = () => {
           }));
 
           setBoard(formData);
-        }else{
+        } else {
           setIsPetsitterExist(false);
         }
-      })
+      });
 
     fetch(`/api/my-page/petsitter/reserve/${petsitterId}`)
       .then((res) => res.json())
@@ -139,8 +138,7 @@ const MyManagement = () => {
       })
       .catch((error) => {
         console.error(error);
-      })
-
+      });
   }, []);
 
   return (
@@ -148,15 +146,15 @@ const MyManagement = () => {
       {/*<HeaderWithNav />*/}
 
       <div>
-        <div className="mypage-bar" />
-        <div className="management-bar-text">펫시터 관리</div>
+        <div className='mypage-bar' />
+        <div className='management-bar-text'>펫시터 관리</div>
       </div>
 
-      <Link to="/mymanagement">
-        <button className="mymanagement-nav1">예약요청</button>
+      <Link to='/mymanagement'>
+        <button className='mymanagement-nav1'>예약요청</button>
       </Link>
-      <Link to="/mymanagementcancle">
-        <button className="mymanagement-nav2">취소내역</button>
+      <Link to='/mymanagementcancle'>
+        <button className='mymanagement-nav2'>취소내역</button>
       </Link>
 
       <div className='mypage-navunderLine'></div>
@@ -254,24 +252,18 @@ const MyManagement = () => {
           {/*  </div>*/}
           {/*) : null}*/}
 
-
           {board.map((info, index) => (
             <div className='management-edit-component' key={index}>
-              <img
-                className='management-edit-img'
-                src={info.profilePath}
-                alt='프로필 사진'
-              />
+              <img className='management-edit-img' src={info.profilePath} alt='프로필 사진' />
               <div className='management-text-row'>
                 <p className='management-edit-nickname'>{info.nickname}</p>
-                <p className='management-edit-text'>
-                  {info.title}
-                </p>
+                <p className='management-edit-text'>{info.title}</p>
               </div>
               <div className='management-buttons'>
                 <button
                   className='management-edit-button'
-                  onClick={() => handleNavigate('/petsitterform')}>
+                  onClick={() => handleNavigate('/petsitterform')}
+                >
                   수정하기
                 </button>
                 <button className='management-delete-button' onClick={handleDelete}>
@@ -283,16 +275,17 @@ const MyManagement = () => {
           ))}
         </div>
       ) : (
-        <div className="management-add-component">
-              <span className="management-add-text">
-                펫시터 지원 내역이 없습니다. 펫시터로 지원해보세요 :)
-              </span>
+        <div className='management-add-component'>
+          <span className='management-add-text'>
+            펫시터 지원 내역이 없습니다. 펫시터로 지원해보세요 :)
+          </span>
           <button
-            className="management-add-button"
-            onClick={() => handleNavigate('/petsitterform')}>
+            className='management-add-button'
+            onClick={() => handleNavigate('/petsitterform')}
+          >
             등록하기
           </button>
-          <div className="management-add-bar"></div>
+          <div className='management-add-bar'></div>
         </div>
       )}
 

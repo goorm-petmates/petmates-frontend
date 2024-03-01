@@ -4,7 +4,7 @@ import Footer from '../../components/Footer.js';
 import PetSitterRightbtns from '../../components/PetSitterRightBtns.js';
 import { RiImageAddFill } from 'react-icons/ri';
 import { MdDeleteForever } from 'react-icons/md';
-// import axios from 'axios';
+import axios from 'axios';
 import '../../styles/StylePetSitterForm.css';
 
 const PetSitterForm = () => {
@@ -199,26 +199,29 @@ const PetSitterForm = () => {
     //폼 유효성 검사 통과 시 alert 메시지 띄우기
     if (isFormValid) {
       alert('펫시터 지원하기가 완료되었습니다');
-      navigate('/petsitter');
+      navigate('/mymanagement');
 
       console.log('Form Data: ', formData);
       console.log('Images: ', images);
 
-      // 폼 데이터를 서버로 전송하는 코드
-      // const data = new FormData();
-      // for (const key in formData) {
-      //   data.append(key, formData[key]);
-      // }
-      // Object.keys(images).forEach((key) => {
-      //   data.append('images', images[key]);
-      // });
+      // 폼 데이터를 서버로 전송하는 코드 //
+      const data = new FormData();
+      for (const key in formData) {
+        data.append(key, formData[key]);
+      }
+      Object.keys(images).forEach((key) => {
+        data.append('images', images[key]);
+      });
 
-      // try {
-      //   const response = await axios.post('your-backend-endpoint(실제 사용할 backend URL넣기', data);
-      //   console.log(response.data);
-      // } catch (error) {
-      //   console.error('Error submitting form:', error);
-      // }
+      const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+      try {
+        const response = await axios.post(`${BASE_URL}/api/petsitter/apply`, data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+      }
+      // 폼 데이터를 서버로 전송하는 코드 완료 //
     } else {
       console.log('Form is not valid, submission prevented');
     }
