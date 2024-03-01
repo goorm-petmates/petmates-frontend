@@ -90,12 +90,18 @@
   cursor: pointer;
 }
 
+.petsitter-search-btn:hover {
+  transition: transform 0.1s ease, background-color 0.1s ease;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
 /************** petsitter pagination **********/
 .pagination {
   font-family: Inter;
   font-size: 15px;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 5px;
   display: flex;
   justify-content: center;
   padding: 10px;
@@ -106,4 +112,10 @@
 .page-item a {
   margin-right: 20px;
   color: #ff8000;
+}
+
+.page-item:hover {
+  transition: transform 0.05s ease, background-color 0.1s ease;
+  transform: scale(1.15);
+  cursor: pointer;
 }
