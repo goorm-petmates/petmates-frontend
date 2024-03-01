@@ -23,7 +23,13 @@ const PetSitterInfoReview = ({
               <span className='petowner-nickname'>{reviewNickname}</span>
               <span className='petowner-order-by-date'>{reviewCreateAt}</span>
             </div>
-            <span className='petowner-rating'>{reviewRating}</span>
+            <span className='petsitter-rating'>
+              {[...Array(Math.round(reviewRating))].map((_, index) => (
+                <span key={index} className='star filled' style={{ color: 'gold' }}>
+                  ★
+                </span>
+              ))}
+            </span>
           </div>
           <div className='petowner-review'>{reviewContents}</div>
         </div>
