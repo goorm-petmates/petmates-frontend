@@ -1,17 +1,17 @@
-//공동컴포넌트 PetSitterList 더미데이터
+//공동컴포넌트 PetSitterList 더미데이터 (하드코딩)
 const PetSittersData = [
   {
     id: 1,
-    nickname: '김세정',
-    title: '쾌적하고 따뜻한 분위기에서 제 반려견처럼 케어합니다.',
-    rating: '⭐️⭐️⭐️⭐️',
+    // nickname: 'John Doe',
+    title: '펫시터 경력 3년, 상주견 없이 견주님 아이들만 집중돌봄 합니다',
+    rating: '⭐️⭐️⭐️',
     // count: '2',
-    reviewCnt: 3,
+    reviewCnt: 5,
     address: '서울시 강남구',
     createAt: '2024.01.14',
     viewCnt: 10,
     profilePic1:
-      'https://images.unsplash.com/photo-1606231106463-ed4596c15292?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFzaWFuJTIwZG9nfGVufDB8fDB8fHww',
+      'https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXNpYW58ZW58MHx8MHx8fDA%3',
     profilePic2:
       'https://plus.unsplash.com/premium_photo-1661892088256-0a17130b3d0d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHB1cHB5fGVufDB8fDB8fHww',
     profilePic3:
@@ -76,7 +76,7 @@ const PetSittersData = [
     createAt: '2024.01.14',
     viewCnt: 10,
     profilePic1:
-      'https://images.unsplash.com/photo-1554983488-63c80f49078b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGFzaWFuJTIwd2l0aCUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D',
+      'https://images.unsplash.com/photo-1606231106463-ed4596c15292?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGFzaWFuJTIwZG9nfGVufDB8fDB8fHww',
     profilePic2:
       'https://plus.unsplash.com/premium_photo-1661892088256-0a17130b3d0d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHB1cHB5fGVufDB8fDB8fHww',
     profilePic3:
@@ -178,15 +178,15 @@ const PetSittersData = [
   },
   {
     id: 4,
-    nickname: '이광수',
-    title: '펫시터 경력 3년, 상주견 없이 견주님 아이들만 집중돌봄 합니다.',
+    nickname: '이슬기',
+    title: '친절, 공감하는 펫시터가 되겠습니다',
     rating: '⭐️⭐️⭐️',
     // count: '3',
-    address: '서울시 중구',
+    address: '서울시 노원구',
     createAt: '2024.01.14',
     viewCnt: 10,
     profilePic1:
-      'https://plus.unsplash.com/premium_photo-1664303671218-4de3a26fb1c1?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YXNpYW4lMjBndXklMjBzbWlsZXxlbnwwfHwwfHx8MA%3D%3D',
+      'https://images.unsplash.com/photo-1554983488-63c80f49078b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGFzaWFuJTIwd2l0aCUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D',
     profilePic2:
       'https://plus.unsplash.com/premium_photo-1661892088256-0a17130b3d0d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHB1cHB5fGVufDB8fDB8fHww',
     profilePic3:
@@ -254,7 +254,7 @@ const PetSittersData = [
     title: '2년경력과 펫시터 자격증 보유하였습니다',
     rating: '⭐️⭐️',
     // count: '3',
-    address: '서울시 송파구',
+    address: '서울시 관악구',
     createAt: '2024.01.14',
     viewCnt: 10,
     profilePic1:
