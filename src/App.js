@@ -24,8 +24,7 @@ import MyManagement from './pages/mypage/MyManagement';
 import MyMamagementCancle from './pages/mypage/MyMamagementCancle';
 import AuthProvider from './components/AuthContext.js';
 import HeaderWithNav from './components/HeaderWithNav';
-import TestPetInfoAdd from './pages/mypage/TestPetInfoAdd';
-import TestPetSitterForm from './pages/petsitter/TestPetSitterForm.js';
+
 function App() {
   return (
     <AuthProvider>
