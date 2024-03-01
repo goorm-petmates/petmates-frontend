@@ -54,7 +54,7 @@ function SignUp2() {
       userNickName: isNicknameChanged ? memberInfo.userNickName : null,
     };
     try {
-      const response = await fetch('http://localhost:8080/api/members/join/save', {
+      const response = await fetch('https://api.petmates.co.kr/api/members/test/api/members/join/save', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -84,7 +84,7 @@ function SignUp2() {
 // 닉네임 중복확인
   const handleDoubleCheck = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/members/join/doublecheck', {
+      const response = await fetch('https://petmates.co.kr/api/members/join/doublecheck', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -107,7 +107,6 @@ function SignUp2() {
       setNicknameModalMessage('닉네임 중복 확인 중 에러가 발생했습니다.');
     }
   };
-
 
   // 닉네임 유효성 체크
   const handleNickName = (e) => {
@@ -180,7 +179,7 @@ function SignUp2() {
 
   // 페이지 렌더링 시 회원 정보 가져오기 // 수정
   useEffect(() => {
-    fetch('https://api.petmates.co.kr/api/members/test/api/members/join', {
+    fetch('https://petmates.co.kr/api/members/join', {
       method: 'GET',
       credentials: 'include',
     })
@@ -202,7 +201,7 @@ function SignUp2() {
   return (
     <div>
       <div className="MemberInput">
-        <div className="Signup-title"> 회 원 가 입</div>
+        <div className="Signup-title"> 추 가 정 보 입 력</div>
         <div className="Signup-text">
           <span className="Signup-span" style={{ color: 'red' }}>(*)</span>
           표시는 필수입력 항목입니다.
