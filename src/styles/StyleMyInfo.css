@@ -41,38 +41,48 @@
     justify-content: space-evenly;
     align-items: center
 }
+.myinfo-container{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
 .myinfo{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
     border: 1px solid #d9d9d9;
     border-radius: 40px;
     width: 700px;
-    height: 600px;
+    height: 432px;
+}
+.myinfo-row{
     display: flex;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    margin-left: 400px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.myinfo-picture-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-right: 100px;
+    height: 200px;
 }
 .myinfo-picture{
-    /*height: 126px;*/
-    /*width: 130px;*/
-    /*border: 1px solid black;*/
-    /*border-radius: 100%;*/
-    /*margin-top: 200px;*/
-    /*margin-left: 90px;*/
-    /*margin-right: 30px;*/
     height: 150px;
     width: 150px;
     border: 1px solid black;
     border-radius: 100%;
     position: absolute;
-    margin-top: 170px;
-    margin-left: 60px;
 }
 .myinfo-add-img-input{
     position: absolute;
     background-color: #282c34;
     width: 66px;
-    margin-top: 380px;
-    margin-left: 95px;
 }
 .myinfo-add-picture-button{
     background-color: white;
@@ -80,18 +90,15 @@
     color: #ff9900;
     border-radius: 7px;
     display: flex;
-    margin-top: 350px;
-    margin-left: 100px;
     width: 65px;
     text-align: center;
     font-size: 17px;
     cursor: pointer;
+    margin-top: 180px;
 }
 .myinfo-inputs{
     width: 300px;
     height: 300px;
-    margin-top: 100px;
-    margin-left: 140px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -104,12 +111,13 @@
     display: block;
     font-size: 11px;
     width: 230px;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
 }
 .myinfo-label{
     font-size: 15px;
     font-weight: 400;
     height: 18px;
+    margin-bottom: 5px;
 }
 .myinfo-address-container{
     height: 60px;
@@ -122,8 +130,6 @@
     display: block;
     font-size: 11px;
     width: 230px;
-    margin-bottom: 30px;
-    margin-top: 5px;
 }
 .myinfo-address-button{
     width: 90px;
@@ -136,8 +142,8 @@
 }
 .myinfo-buttons{
     display: flex;
-    margin-top: 480px;
-    margin-left: -430px;
+    justify-content: center;
+    align-items: center;
 }
 .myinfo-quit{
     border: 1px solid #FF8000;
@@ -173,7 +179,10 @@
     margin-left: 450px;
     margin-top: -550px;
     margin-bottom: 250px;
-    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .modal{
     background-color: white;
