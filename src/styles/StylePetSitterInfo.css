@@ -7,7 +7,7 @@
 }
 
 .petsitter-left-side {
-  width: 40%;
+  width: 45%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -19,24 +19,31 @@
 
 .petsitter-user-info {
   display: flex;
+  width: 100%;
   flex-direction: row;
   align-items: center; /*자식 요소들을 세로 중앙에 정렬 */
   padding-bottom: 15px;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   border-bottom: 1px solid #d9d9d9;
+  margin: 0 auto;
+}
+
+.petsitter-nickname,
+.petsitter-order-by-date {
+  padding-right: 40px;
 }
 
 .petsitter-profile-pic-small {
   width: 110px;
   height: 90px;
   margin-right: 15px;
+  margin-left: 15px;
   object-fit: cover;
   border-radius: 10px;
 }
 
 .petsitter-user-info span {
   margin: 0;
-  padding-right: 35px;
   display: flex;
   align-items: center;
 }
@@ -276,9 +283,11 @@ thead {
   color: white;
 }
 
-/* .register-pet-btn:hover {
-  background-color: #ddd;
-} */
+.register-pet-btn:hover {
+  transition: transform 0.1s ease, background-color 0.1s ease;
+  transform: scale(1.03);
+  cursor: pointer;
+}
 
 .booking-btn {
   margin-bottom: 20px;
@@ -340,9 +349,12 @@ thead {
   color: white;
 }
 
-/* .booking-btn:hover {
-  background-color: #ddd;
-} */
+.booking-btn:hover {
+  transition: transform 0.1s ease, background-color 0.1s ease;
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
 /********************************************************/
 
 .date-picker-header {
