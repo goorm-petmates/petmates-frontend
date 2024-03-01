@@ -1,5 +1,9 @@
 /************** petsitter user list **********/
 
+.petsitter-lists {
+  padding-left: 0;
+}
+
 .petsitter-list {
   display: flex;
   margin: 0 auto;
@@ -11,6 +15,12 @@
   height: 100px;
   padding: 10px;
   margin-bottom: 15px;
+  transition: transform 0.1s ease, background-color 0.1s ease;
+  cursor: pointer;
+}
+.petsitter-list:hover {
+  transform: scale(1.02);
+  background-color: #f0f0f0;
 }
 
 /* link사용시 레이아웃 변하지않도록 유지 */
