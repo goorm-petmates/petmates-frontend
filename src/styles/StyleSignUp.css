@@ -1,41 +1,50 @@
+.signup-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .MemberInput {
   border: 1px solid #d9d9d9;
   padding: 30px;
   height: 420px;
   width: 400px;
-  margin-left: 650px;
-  margin-top: 30px;
-  justify-content: center;
-  align-items: center;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 55px;
+  margin-bottom: 55px;
 }
 .Signup-title {
   display: flex;
   text-align: center;
   font-weight: 700;
   font-size: 25px;
-  margin-left: 150px;
+  margin-bottom: 10px;
 }
 .Signup-text {
   display: flex;
   text-align: center;
   font-weight: 400;
   font-size: 11px;
-  margin-left: 150px;
-  margin-top: 20px;
+  margin-bottom: 30px;
 }
 .Signup-span {
   text-align: center;
   font-weight: 400;
   font-size: 11px;
-  margin-left: -15px;
 }
 .MemberInputAline {
   display: flex;
-  flex-direction: column;
-  margin-left: 50px;
-  height: 80px;
-  margin-top: 25px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.MemberInputAline-left{
+  margin-right: 20px;
 }
 .aline-input-label {
   width: 80px;
@@ -52,8 +61,6 @@
   font-size: 11px;
 }
 .input-aline-button {
-  margin-left: 200px;
-  margin-top: -33px;
   background-color: #ff9900;
   color: white;
   border: none;
@@ -62,6 +69,11 @@
   width: 60px;
   height: 20px;
   cursor: pointer;
+}
+.signup-input-container{
+  display: flex;
+  flex-direction: column;
+  width: 254px;
 }
 .signup-member-input {
   background-color: #f4f5f7;
@@ -74,33 +86,30 @@
   width: 230px;
 }
 .input-email {
-  flex-direction: column;
   width: 200px;
   height: 45px;
-  margin-left: 50px;
-  margin-top: -20px;
+  margin-bottom: 10px;
 }
 .input-phone {
-  flex-direction: column;
   width: 200px;
   height: 45px;
-  margin-left: 50px;
-  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.input-address-row{
+  flex-direction: row;
 }
 .input-address {
   flex-direction: column;
   width: 200px;
   height: 45px;
-  margin-left: 50px;
-  margin-top: 13px;
   position: relative;
+  margin-bottom: 50px;
 }
 .signup-address-input {
   margin-top: 5px;
   width: 300px;
 }
 .address-button {
-  margin-left: 160px;
   background-color: #ff9900;
   color: white;
   border: none;
@@ -110,6 +119,7 @@
   height: 20px;
   position: absolute;
   cursor: pointer;
+  margin-left: 100px;
 }
 .MemberJoinButton {
   align-items: center; /* 자식 요소들을 세로 중앙으로 정렬 */
@@ -121,8 +131,6 @@
   width: 200px;
   height: 25px;
   text-align: center;
-  margin-left: 100px;
-  margin-top: 70px;
-}
-.signup-kakao-api {
+  display: flex;
+  flex-direction: column;
 }
