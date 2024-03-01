@@ -7,7 +7,7 @@ function Login() {
   // const REDIRECT_URI = 'https://api.petmates.co.kr/api/members/test/oauth/redirect/kakao';
 
   return (
-    <div>
+    <div className='login-container'>
       {/*<HeaderWithNav />*/}
 
       <div className='login'>
