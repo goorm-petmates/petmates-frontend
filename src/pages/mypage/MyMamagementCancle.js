@@ -44,26 +44,27 @@ const MyMamagementCancle = () => {
 
       <div className='mypage-navunderLine'></div>
 
-      <div className='mymanagement-cancle-container'>
-        {/*<ReservePetsitterCard*/}
-        {/*  reservePetImgSrc='/imgs/dog3.jpeg'*/}
-        {/*  petInfo='뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원'*/}
-        {/*  state='취소완료'*/}
-        {/*/>*/}
+      <div className="management-cancle">
+        <div className='mymanagement-cancle-container'>
+          {/*<ReservePetsitterCard*/}
+          {/*  reservePetImgSrc='/imgs/dog3.jpeg'*/}
+          {/*  petInfo='뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원'*/}
+          {/*  state='취소완료'*/}
+          {/*/>*/}
 
-        {cancleInfo.length > 0  ? (
-          cancleInfo.map((info) => (
-            <ReservePetsitterCard
-              reservePetImgSrc={info.reservePetImgSrc}
-              petInfo={info.petInfo}
-              state={info.state}
-            />
-          ))
-        ) : (
-          <NoContents text='취소 내역' />
-        )}
+          {cancleInfo.length > 0 ? (
+            cancleInfo.map((info) => (
+              <ReservePetsitterCard
+                reservePetImgSrc={info.reservePetImgSrc}
+                petInfo={info.petInfo}
+                state={info.state}
+              />
+            ))
+          ) : (
+            <NoContents text='취소 내역' />
+          )}
+        </div>
       </div>
-
       <Footer />
     </>
   );
