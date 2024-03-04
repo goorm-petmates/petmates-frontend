@@ -73,11 +73,10 @@ function PetInfo() {
       <div className="mypage-navunderLine"></div>
 
       <div className="petinfo-container">
+        <button className="mypage-petinfo-add" onClick={handleAddPetCard}>
+          등록하기
+        </button>
         <div className="petinfo-in">
-          <button className="mypage-petinfo-add" onClick={handleAddPetCard}>
-            등록하기
-          </button>
-
           <div className="pet-card-components">
             {petCards.length > 0 ? (
               petCards.map((petCard) => (
