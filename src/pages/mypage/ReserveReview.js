@@ -68,32 +68,33 @@ const ReserveReview = () => {
 
       <div className='mypage-navunderLine'></div>
 
-      <div className='review-container'>
-        {/*{data1.review === 'N' ? (*/}
-        {/*  <NoContents text='후기 작성 내역' />*/}
-        {/*) : (*/}
-        {/*  <>*/}
-        {/*    <Review*/}
-        {/*      reviewImgSrc='/imgs/pet_img_1.png'*/}
-        {/*      petInfo={`${data1.name} / 2024.02.16 ~ 2024.02.16 / ${data1.price}원`}*/}
-        {/*      onSave={handleSaveReview}*/}
-        {/*      state={selectedCard}*/}
-        {/*      reviewContent={data1.review_content}*/}
-        {/*      reviewStar={data1.review_star}*/}
-        {/*    />*/}
+      <div className="mypage-review-container">
+        <div className='review-container'>
+          {/*{data1.review === 'N' ? (*/}
+          {/*  <NoContents text='후기 작성 내역' />*/}
+          {/*) : (*/}
+          {/*  <>*/}
+          {/*    <Review*/}
+          {/*      reviewImgSrc='/imgs/pet_img_1.png'*/}
+          {/*      petInfo={`${data1.name} / 2024.02.16 ~ 2024.02.16 / ${data1.price}원`}*/}
+          {/*      onSave={handleSaveReview}*/}
+          {/*      state={selectedCard}*/}
+          {/*      reviewContent={data1.review_content}*/}
+          {/*      reviewStar={data1.review_star}*/}
+          {/*    />*/}
 
-        {/*    <Review*/}
-        {/*      reviewImgSrc='/imgs/dog3.jpeg'*/}
-        {/*      petInfo={`${data2.name} / 2024.01.11 16시 ~ 19시 / ${data2.price}원`}*/}
-        {/*      state={data2.review_status}*/}
-        {/*      reviewContent={data2.review_content}*/}
-        {/*      reviewStar={data2.review_star}*/}
-        {/*    />*/}
-        {/*  </>*/}
-        {/*)}*/}
+          {/*    <Review*/}
+          {/*      reviewImgSrc='/imgs/dog3.jpeg'*/}
+          {/*      petInfo={`${data2.name} / 2024.01.11 16시 ~ 19시 / ${data2.price}원`}*/}
+          {/*      state={data2.review_status}*/}
+          {/*      reviewContent={data2.review_content}*/}
+          {/*      reviewStar={data2.review_star}*/}
+          {/*    />*/}
+          {/*  </>*/}
+          {/*)}*/}
 
-        {reviewCard.length > 0 ? (
-          reviewCard.map((card) => (
+          {reviewCard.length > 0 ? (
+            reviewCard.map((card) => (
               <Review
                 reviewImgSrc={card.reviewPic}
                 petInfo={card.petInfo}
@@ -101,10 +102,11 @@ const ReserveReview = () => {
                 reviewContent={card.reviewContents}
                 reviewStar={card.reviewRating}
                 onSave={handleSaveReview} />
-          ))
-        ) : (
-          <NoContents text='후기 내역이 없습니다.' />
-        )}
+            ))
+          ) : (
+            <NoContents text='후기 내역이 없습니다.' />
+          )}
+        </div>
       </div>
       <Footer />
     </>
