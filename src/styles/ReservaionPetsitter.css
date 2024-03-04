@@ -50,19 +50,24 @@
     justify-content: space-evenly;
     align-items: center
 }
+.mypage-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
 .reservation-container{
-    width: 950px;
-    height: 500px;
+    width: 900px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 250px;
-    margin-top: 30px;
-    margin-bottom: 50px;
     border: 1px solid #d9d9d9;
     border-radius: 30px;
     position: relative;
+    margin-bottom: 42px;
 }
 .mypage-reservation-payment{
     background-color: #ff9900;
@@ -71,18 +76,18 @@
     cursor: pointer;
     border-radius: 7px;
     z-index: 1;
-    margin-left: 1200px;
+    margin-top: 40px;
+    margin-left: 1000px;
+    margin-bottom: 40px;
     display: flex;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: 60px;
 }
 .reservation-components{
-    width: 950px;
-    height: 500px;
+    width: 700px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 250px;
     position: relative;
     padding-right: 210px;
 }
@@ -92,14 +97,12 @@
     height: 100px;
     display: flex;
     position: absolute;
-    margin-top: -380px;
 }
 .checked-width-2{
     z-index: 2;
     width: 850px;
     height: 100px;
     display: flex;
-    margin-top: -170px;
     position: absolute;
 }
 .checked-width-3{
