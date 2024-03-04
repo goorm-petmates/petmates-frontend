@@ -200,6 +200,13 @@ function SignUp2() {
 
   return (
     <div className="signup-container">
+      {showModal && (
+        <MemberFormModal
+          title="중복확인"
+          text={nicknameModalMessage}
+          onClose={closeModal}
+        />
+      )}
       <div className="MemberInput">
         <div className="Signup-title"> 추 가 정 보 입 력</div>
         <div className="Signup-text">
@@ -284,15 +291,6 @@ function SignUp2() {
         <button className="MemberJoinButton" onClick={handleSubmit}>
           가입하기
         </button>
-
-        {showModal && (
-          <MemberFormModal
-            title="중복확인"
-            text={nicknameModalMessage}
-            onClose={closeModal}
-          />
-        )}
-
       </div>
       <div>
       </div>
