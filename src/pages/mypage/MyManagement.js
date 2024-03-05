@@ -65,7 +65,7 @@ const MyManagement = () => {
 
   const handleConfirmReservation = (index) => {
     const bookingId = reservationCard[index].id;
-    fetch(`/api/my-page/petsitter/approve/${bookingId}`, {
+    fetch(`https://petmates.co.kr/api/my-page/petsitter/approve/${bookingId}`, {
       method: 'POST',
       body: JSON.stringify({
         id: bookingId,
