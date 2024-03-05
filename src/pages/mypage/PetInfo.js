@@ -14,7 +14,7 @@ function PetInfo() {
 
    useEffect(() => {
       // memberId를 사용하여 MSW 핸들러에서 반환된 응답을 사용
-      fetch(`/api/petinfo/${memberId}`)
+      fetch(`https://petmates.co.kr/api/petinfo/${memberId}`)
         .then((res) => res.json())
         .then((res) => {
           console.log(res.data);
@@ -76,21 +76,22 @@ function PetInfo() {
         <button className="mypage-petinfo-add" onClick={handleAddPetCard}>
           등록하기
         </button>
-
-        <div className="pet-card-components">
-          {petCards.length > 0 ? (
-            petCards.map((petCard) => (
-              <PetCard
-                key={petCard.id}
-                petImgSrc={petCard.petImgSrc}
-                petInfo={petCard.petInfo + " " + petCard.startDate + "~" + petCard.endDate + " " + petCard.price}
-                onEdit={() => handleEdit(petCard.id)}
-                onDelete={() => handleDelete(petCard.id)}
-              />
-            ))
-          ) : (
-            <NoContents text="반려동물 정보" />
-          )}
+        <div className="petinfo-in">
+          <div className="pet-card-components">
+            {petCards.length > 0 ? (
+              petCards.map((petCard) => (
+                <PetCard
+                  key={petCard.id}
+                  petImgSrc={petCard.petImgSrc}
+                  petInfo={petCard.petInfo + " " + petCard.startDate + "~" + petCard.endDate + " " + petCard.price}
+                  onEdit={() => handleEdit(petCard.id)}
+                  onDelete={() => handleDelete(petCard.id)}
+                />
+              ))
+            ) : (
+              <NoContents text="반려동물 정보" />
+            )}
+          </div>
         </div>
       </div>
 

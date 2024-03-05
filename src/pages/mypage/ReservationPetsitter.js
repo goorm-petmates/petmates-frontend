@@ -25,7 +25,7 @@ function ReservationPet() {
     checkedReservations.forEach((isChecked, index) => {
       const bookId = reservationCard[index].id;
       if (isChecked) {
-        fetch(`/api/reserve/cancel`, {
+        fetch(`https://petmates.co.kr/api/reserve/cancel`, {
           method: 'PUT',
           body : JSON.stringify({
             id: bookId,
@@ -71,7 +71,7 @@ function ReservationPet() {
   const memberId = 1;
 
   useEffect(() => {
-    fetch(`/api/reserve/${memberId}`)
+    fetch(`https://petmates.co.kr/api/reserve/${memberId}`)
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);
@@ -113,69 +113,71 @@ function ReservationPet() {
 
       <div className='mypage-navunderLine'></div>
 
-      <button className='mypage-reservation-payment' onClick={handleCancelReservation}>
-        예약취소
-      </button>
+      <div className="mypage-container">
+        {/*<div className='reservation-container'>*/}
+        {/*  <div className='reservation-components'>*/}
+        {/*    {data1.reservations_status === 'Y' ? (*/}
+        {/*      <>*/}
+        {/*        <label className='checked-width-1'>*/}
+        {/*          <input*/}
+        {/*            className='reservepet-checkbox'*/}
+        {/*            type='checkbox'*/}
+        {/*            checked={checkedReservations[0]}*/}
+        {/*            onChange={() => handleCheckboxClick(0)}*/}
+        {/*          />*/}
+        {/*          <ReservePetsitterCard*/}
+        {/*            reservePetImgSrc='/imgs/pet_img_1.png'*/}
+        {/*            petInfo='똑바로 / 2024.02.16 ~ 2024.02.16 / 16,500원'*/}
+        {/*            state={reservationStates[0]}*/}
+        {/*            onClick={() => handleConfirmReservation(0)}*/}
+        {/*          />*/}
+        {/*        </label>*/}
+        {/*        <label className='checked-width-2'>*/}
+        {/*          <input*/}
+        {/*            className='reservepet-checkbox'*/}
+        {/*            type='checkbox'*/}
+        {/*            checked={checkedReservations[1]}*/}
+        {/*            onChange={() => handleCheckboxClick(1)}*/}
+        {/*          />*/}
+        {/*          <ReservePetsitterCard*/}
+        {/*            reservePetImgSrc='/imgs/dog3.jpeg'*/}
+        {/*            petInfo='뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원'*/}
+        {/*            state={reservationStates[1]}*/}
+        {/*            onClick={() => handleConfirmReservation(1)}*/}
+        {/*          />*/}
+        {/*        </label>*/}
+        {/*      </>*/}
+        {/*    ) : (*/}
+        {/*      <NoContents text='예약 내역이 없습니다.' />*/}
+        {/*    )}*/}
 
-      {/*<div className='reservation-container'>*/}
-      {/*  <div className='reservation-components'>*/}
-      {/*    {data1.reservations_status === 'Y' ? (*/}
-      {/*      <>*/}
-      {/*        <label className='checked-width-1'>*/}
-      {/*          <input*/}
-      {/*            className='reservepet-checkbox'*/}
-      {/*            type='checkbox'*/}
-      {/*            checked={checkedReservations[0]}*/}
-      {/*            onChange={() => handleCheckboxClick(0)}*/}
-      {/*          />*/}
-      {/*          <ReservePetsitterCard*/}
-      {/*            reservePetImgSrc='/imgs/pet_img_1.png'*/}
-      {/*            petInfo='똑바로 / 2024.02.16 ~ 2024.02.16 / 16,500원'*/}
-      {/*            state={reservationStates[0]}*/}
-      {/*            onClick={() => handleConfirmReservation(0)}*/}
-      {/*          />*/}
-      {/*        </label>*/}
-      {/*        <label className='checked-width-2'>*/}
-      {/*          <input*/}
-      {/*            className='reservepet-checkbox'*/}
-      {/*            type='checkbox'*/}
-      {/*            checked={checkedReservations[1]}*/}
-      {/*            onChange={() => handleCheckboxClick(1)}*/}
-      {/*          />*/}
-      {/*          <ReservePetsitterCard*/}
-      {/*            reservePetImgSrc='/imgs/dog3.jpeg'*/}
-      {/*            petInfo='뭉치 / 2024.01.11 16시 ~ 19시 / 20,000원'*/}
-      {/*            state={reservationStates[1]}*/}
-      {/*            onClick={() => handleConfirmReservation(1)}*/}
-      {/*          />*/}
-      {/*        </label>*/}
-      {/*      </>*/}
-      {/*    ) : (*/}
-      {/*      <NoContents text='예약 내역이 없습니다.' />*/}
-      {/*    )}*/}
+        <button className='mypage-reservation-payment' onClick={handleCancelReservation}>
+          예약취소
+        </button>
 
-      <div className='reservation-container'>
-        <div className='reservation-components'>
-          {reservationCard.length > 0 ? (
-            reservationCard.map((card, index) => (
-              <label key={index} className={`checked-width-${index + 1}`}>
-                <input
-                  className='reservepet-checkbox'
-                  type='checkbox'
-                  checked={checkedReservations[index]}
-                  onChange={() => handleCheckboxClick(index)}
-                />
-                <ReservePetsitterCard
-                  reservePetImgSrc={card.reservePetImgSrc}
-                  petInfo={card.petInfo}
-                  state={card.state}
-                  onClick={() => handleConfirmReservation(index)}
-                />
-              </label>
-            ))
-          ) : (
-            <NoContents text='예약 내역이 없습니다.' />
-          )}
+        <div className='reservation-container'>
+          <div className='reservation-components'>
+            {reservationCard.length > 0 ? (
+              reservationCard.map((card, index) => (
+                <label key={index} className={`checked-width-${index + 1}`}>
+                  <input
+                    className='reservepet-checkbox'
+                    type='checkbox'
+                    checked={checkedReservations[index]}
+                    onChange={() => handleCheckboxClick(index)}
+                  />
+                  <ReservePetsitterCard
+                    reservePetImgSrc={card.reservePetImgSrc}
+                    petInfo={card.petInfo}
+                    state={card.state}
+                    onClick={() => handleConfirmReservation(index)}
+                  />
+                </label>
+              ))
+            ) : (
+              <NoContents text='예약 내역이 없습니다.' />
+            )}
+          </div>
         </div>
       </div>
 

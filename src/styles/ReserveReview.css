@@ -50,16 +50,21 @@
     justify-content: space-evenly;
     align-items: center
 }
+.mypage-review-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 41px;
+}
 .review-container{
     width: 950px;
-    height: 500px;
+    height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 250px;
-    margin-top: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 41px;
     border: 1px solid #d9d9d9;
     border-radius: 30px;
 }
