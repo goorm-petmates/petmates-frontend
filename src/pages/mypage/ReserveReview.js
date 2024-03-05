@@ -24,7 +24,7 @@ const ReserveReview = () => {
   const [reviewCard, setReviewCard] = useState([]);
 
   useEffect(() => {
-    fetch(`/api/petsitter/reviews`)
+    fetch(`https://petmates.co.kr/api/petsitter/reviews`)
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);
