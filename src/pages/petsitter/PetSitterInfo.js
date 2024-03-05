@@ -29,6 +29,7 @@ const PetSitterInfo = () => {
   // const [petSitterInfo, setPetSitterInfo] = useState({});
   // 한페이지에 2개의 api들고올때 - 그룹화해서 들고오기
   const [petSitterInfo, setPetSitterInfo] = useState({ info: {}, reviews: [] });
+  const [isLoading, setIsLoading] = useState(false);
 
   let { id } = useParams(); // URL에서 id 값을 추출
   const navigate = useNavigate();
@@ -75,20 +76,37 @@ const PetSitterInfo = () => {
   ///////////////////////////////////////
 
   //(한페이지에 두개 api 들고올때) 펫시터 목서버 리뷰댓글 데이터 불러오기
+  // useEffect(() => {
+  //   const fetchPetSitterReviews = async () => {
+  //     try {
+  //       const response = await axios.get(`${BASE_URL}/api/petsitter/reviews`, {
+  //         params: { petsitterId: id },
+  //       });
+
+  //       if (response.data && response.data.data) {
+  //         //(한페이지에 한개의 api만들고올때) 이부분의 코드만 변경됨
+  //         setPetSitterInfo((prevState) => ({ ...prevState, reviews: response.data.data }));
+  //         // setPetSitterInfo({
+  //         //   ...petSitterInfo,
+  //         //   reviews: response.data.data,
+  //         // });
+  //       }
+  //     } catch (error) {
+  //       console.error('Failed to fetch pet sitter reviews:', error);
+  //     }
+  //   };
+
+  //   if (id) {
+  //     fetchPetSitterReviews();
+  //   }
+  // }, [id]);
+
   useEffect(() => {
     const fetchPetSitterReviews = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/petsitter/reviews`, {
-          params: { petsitterId: id },
-        });
-
+        const response = await axios.get(`${BASE_URL}/api/petsitter/reviews/${id}`);
         if (response.data && response.data.data) {
-          //(한페이지에 한개의 api만들고올때) 이부분의 코드만 변경됨
           setPetSitterInfo((prevState) => ({ ...prevState, reviews: response.data.data }));
-          // setPetSitterInfo({
-          //   ...petSitterInfo,
-          //   reviews: response.data.data,
-          // });
         }
       } catch (error) {
         console.error('Failed to fetch pet sitter reviews:', error);
@@ -381,10 +399,24 @@ const PetSitterInfo = () => {
             petSitterInfo.reviews.map((review, index) => (
               <PetSitterInfoReview key={index} {...review} />
             ))} */}
-          {/* 2개의 api불러올떄 */}
-          {petSitterInfo.reviews.map((review, index) => (
+
+          {/* 1. 2개의 api불러올떄 (**키값을 배열에서 인덱스값으로 불러올때)*/}
+          {/* {petSitterInfo.reviews.map((review, index) => (
             <PetSitterInfoReview key={index} {...review} />
-          ))}
+          ))} */}
+          {/* 2. 리뷰 데이터배열에서 키값을 reviewId값으로 각 컴포넌트의 key prop으로 사용하고싶을때 */}
+          {/* {petSitterInfo.reviews.map((review) => (
+            <PetSitterInfoReview key={review.reviewId} {...review} />
+          ))} */}
+          {/* 3. 리뷰 데이터배열에서 reviewId값을 숫자 올림차순으로 컴포넌트 렌더링 */}
+          {petSitterInfo.reviews
+            .slice() // 원본 배열을 변경하지 않기 위해 slice()로 복사본을 만듦
+            .sort((a, b) => a.reviewId - b.reviewId) // reviewId 기준 오름차순 정렬
+            .map((review) => (
+              <PetSitterInfoReview key={review.reviewId} {...review} />
+            ))}
+
+          {/* //////////////////////////////////////////// */}
           {/* 하드코딩 - 리뷰 개수만큼 컴포넌트 생성 */}
           {/* {petSitterInfo.reviews &&
             petSitterInfo.reviews.map((review) => (

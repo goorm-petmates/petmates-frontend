@@ -6,8 +6,30 @@ import { RiImageAddFill } from 'react-icons/ri';
 import { MdDeleteForever } from 'react-icons/md';
 import axios from 'axios';
 import '../../styles/StylePetSitterForm.css';
+import { useLocation } from 'react-router-dom';
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const PetSitterForm = () => {
+  const location = useLocation();
+  const [applicationData, setApplicationData] = useState(null);
+
+  // PetSitterRightBtns 컴포넌트에서 전달한 상태를 받기
+  useEffect(() => {
+    // location state를 확인하여 상태 업데이트
+    if (location.state && location.state.status === 'success') {
+      setApplicationData(location.state.data);
+      setFormData({
+        title: location.state.data.title,
+        content: location.state.data.contents,
+        daycarePrice: location.state.data.standardPrice,
+        extraPrice: location.state.data.addPrice,
+        overnightPrice: location.state.data.nightPrice,
+      });
+      // 이미지 상태도 업데이트 필요하면 여기에 로직 추가
+    }
+  }, [location]);
+
   /****************form input 상태 관리 (이미지, 텍스트) *********************/
   const [images, setImages] = useState({}); // 이미지 상태 관리
   const [formData, setFormData] = useState({
@@ -157,23 +179,44 @@ const PetSitterForm = () => {
   // };
 
   /********* form 유효성 로직함수 **********/
+  // const checkFormValidity = () => {
+  //   const imageCount = Object.keys(images).length;
+  //   const { title, content, daycarePrice, extraPrice, overnightPrice } = formData;
+
+  //   // form 유효성 함수사용시 필요한 조건
+  //   const isValid =
+  //     imageCount >= 2 &&
+  //     title.trim() !== '' &&
+  //     content.trim() !== '' &&
+  //     ((daycarePrice.trim() !== '' && extraPrice.trim() !== '') || overnightPrice.trim() !== '') &&
+  //     !(
+  //       (daycarePrice.trim() === '' && extraPrice.trim() !== '' && overnightPrice.trim() !== '') ||
+  //       (extraPrice.trim() === '' && daycarePrice.trim() !== '' && overnightPrice.trim() !== '')
+  //     );
+
+  //   setIsFormValid(isValid);
+
+  //   console.log('checkFormValidity called, isValid:', isValid);
+  // };
+
   const checkFormValidity = () => {
     const imageCount = Object.keys(images).length;
     const { title, content, daycarePrice, extraPrice, overnightPrice } = formData;
 
-    // form 유효성 함수사용시 필요한 조건
     const isValid =
       imageCount >= 2 &&
+      title &&
       title.trim() !== '' &&
+      content &&
       content.trim() !== '' &&
-      ((daycarePrice.trim() !== '' && extraPrice.trim() !== '') || overnightPrice.trim() !== '') &&
-      !(
-        (daycarePrice.trim() === '' && extraPrice.trim() !== '' && overnightPrice.trim() !== '') ||
-        (extraPrice.trim() === '' && daycarePrice.trim() !== '' && overnightPrice.trim() !== '')
-      );
+      daycarePrice &&
+      daycarePrice.trim() !== '' &&
+      extraPrice &&
+      extraPrice.trim() !== '' &&
+      overnightPrice &&
+      overnightPrice.trim() !== '';
 
     setIsFormValid(isValid);
-
     console.log('checkFormValidity called, isValid:', isValid);
   };
 
@@ -187,7 +230,7 @@ const PetSitterForm = () => {
     }
 
     checkFormValidity();
-  }, [formData, images]);
+  }, [formData, images]); // formData 또는 images가 변경될 때마다 실행
 
   //////////////////////////////////////////////
 
@@ -210,10 +253,9 @@ const PetSitterForm = () => {
         data.append(key, formData[key]);
       }
       Object.keys(images).forEach((key) => {
+        // Assuming images[key] is a file object or similar
         data.append('images', images[key]);
       });
-
-      const BASE_URL = process.env.REACT_APP_BASE_URL;
 
       try {
         const response = await axios.post(`${BASE_URL}/api/petsitter/apply`, data);
