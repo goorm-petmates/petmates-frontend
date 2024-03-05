@@ -89,19 +89,21 @@ const ReservationCancle = () => {
 
       <div className='mypage-navunderLine'></div>
 
-      <div className='cancle-container'>
-        {petCards.length > 0 ? (
-          petCards.map((petCard) => (
-            <ReservePetsitterCard
-              key={petCard.id}
-              reservePetImgSrc={petCard.reservePetImgSrc}
-              petInfo={petCard.petName + " " + petCard.breed + " " + (new Date().getFullYear() - new Date(petCard.birth).getFullYear())+ "살" + " " + petCard.weight+"kg"}
-              state={petCard.state}
-            />
-          ))
-        ) : (
-          <NoContents text="반려동물 정보" />
-        )}
+      <div className="mypage-cancle-container">
+        <div className='cancle-container'>
+          {petCards.length > 0 ? (
+            petCards.map((petCard) => (
+              <ReservePetsitterCard
+                key={petCard.id}
+                reservePetImgSrc={petCard.reservePetImgSrc}
+                petInfo={petCard.petName + " " + petCard.breed + " " + (new Date().getFullYear() - new Date(petCard.birth).getFullYear()) + "살" + " " + petCard.weight + "kg"}
+                state={petCard.state}
+              />
+            ))
+          ) : (
+            <NoContents text="반려동물 정보" />
+          )}
+        </div>
       </div>
 
       <Footer />

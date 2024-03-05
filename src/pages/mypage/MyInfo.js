@@ -214,57 +214,62 @@ const MyInfo = () => {
 
       <div className="mypage-navunderLine"></div>
 
-      <div className="myinfo">
-        <div>
-          <img className="myinfo-picture"
-               src={previewImg || memberInfo.profileImage} alt="" />
-          <input
-            className="myinfo-add-img-input"
-            type="file"
-            onChange={uploadFile}
-            accept="image/*"
-            style={{ display: 'none' }}
-            id="fileInput"
-          />
-          <label className="myinfo-add-picture-button"
-                 htmlFor="fileInput">사진 추가</label>
-        </div>
+      <div className="myinfo-container">
+        <div className="myinfo">
+          <div className="myinfo-row">
+            <div className="myinfo-picture-container">
+              <img className="myinfo-picture"
+                   src={previewImg || memberInfo.profileImage} alt="" />
+              <input
+                className="myinfo-add-img-input"
+                type="file"
+                onChange={uploadFile}
+                accept="image/*"
+                style={{ display: 'none' }}
+                id="fileInput"
+              />
+              <label className="myinfo-add-picture-button"
+                     htmlFor="fileInput">사진 추가</label>
+            </div>
 
-        <div className="myinfo-inputs">
-          <label className="myinfo-label">닉네임</label>
-          <input className="myinfo-nameInput" value={memberInfo.nickname}>
-          </input>
+            <div className="myinfo-inputs">
+              <label className="myinfo-label">닉네임</label>
+              <input className="myinfo-nameInput" value={memberInfo.nickname}>
+              </input>
 
-          <label className="myinfo-label">이메일</label>
-          <input className="myinfo-emailInput" value={memberInfo.email} readOnly required={true}>
-          </input>
+              <label className="myinfo-label">이메일</label>
+              <input className="myinfo-emailInput" value={memberInfo.email} readOnly required={true}>
+              </input>
 
-          <label className="myinfo-label">휴대폰번호</label>
-          <input className="myinfo-phoneInput"
-                 value={memberInfo.phone}
-                 onChange={handleInputChange}
-                 onInput={handlePhone}
-                 onKeyDown={handleKeyDown}>
-          </input>
+              <label className="myinfo-label">휴대폰번호</label>
+              <input className="myinfo-phoneInput"
+                     value={memberInfo.phone}
+                     onChange={handleInputChange}
+                     onInput={handlePhone}
+                     onKeyDown={handleKeyDown}>
+              </input>
 
-          <div className="myinfo-address-container">
-            <label className="myinfo-label">주소</label>
-            <button className="myinfo-address-button"
-                    onClick={togglePopup}>
-              우편번호 찾기</button>
-            {popup && <Post setCompany={setCompany}></Post>}
+              <div className="myinfo-address-container">
+                <label className="myinfo-label">주소</label>
+                <button className="myinfo-address-button"
+                        onClick={togglePopup}>
+                  우편번호 찾기
+                </button>
+                {popup && <Post setCompany={setCompany}></Post>}
 
-            <input className="myinfo-addressInput"
-                   required={true}
-                   name="address"
-                   onChange={handleInput}
-                   value={memberInfo.fullAddr}></input>
+                <input className="myinfo-addressInput"
+                       required={true}
+                       name="address"
+                       onChange={handleInput}
+                       value={memberInfo.fullAddr}></input>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div className="myinfo-buttons">
-          <button className="myinfo-quit" onClick={openModal}>탈퇴하기</button>
-          <button className="myinfo-edit" onClick={handleEdit}>수정하기</button>
+          <div className="myinfo-buttons">
+            <button className="myinfo-quit" onClick={openModal}>탈퇴하기</button>
+            <button className="myinfo-edit" onClick={handleEdit}>수정하기</button>
+          </div>
         </div>
       </div>
       {showModal && (

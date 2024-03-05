@@ -10,13 +10,16 @@ function MemberFormModal({ title, text, onClose }) {
   };
 
   return (
-    <div className="modalContainer">
-      <div className="signup-modal-header">
-        <h2>{title}</h2>
-        <button onClick={handleClose}>X</button>
+    <div className="member-form-modal">
+      <div className="modal-container">
+        <div className="signup-modal-header">
+          <h2>{title}</h2>
+          <button onClick={handleClose}>X</button>
+        </div>
+        <div className="modal-bar"></div>
+        <div className="signup-modal-text">{text}</div>
+        <button className="signup-modal-button" onClick={handleClose}>확인</button>
       </div>
-      <div className="signup-modal-text">{text}</div>
-      <button className="signup-modal-button" onClick={handleClose}>확인</button>
     </div>
   );
 }

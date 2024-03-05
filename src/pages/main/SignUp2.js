@@ -199,7 +199,14 @@ function SignUp2() {
 
 
   return (
-    <div>
+    <div className="signup-container">
+      {showModal && (
+        <MemberFormModal
+          title="중복확인"
+          text={nicknameModalMessage}
+          onClose={closeModal}
+        />
+      )}
       <div className="MemberInput">
         <div className="Signup-title"> 추 가 정 보 입 력</div>
         <div className="Signup-text">
@@ -208,85 +215,86 @@ function SignUp2() {
         </div>
 
         <div className='MemberInputAline'>
-          <label className="aline-input-label">닉네임(*)</label>
-          <input id="nickName" type="text"
-                 className="aline-input"
-                 placeholder="2~10자의 한글, 영문, 숫자 조합"
-                 value={memberInfo.userNickName}
-                 readOnly={!isNicknameChanged}
-                 onChange={handleNickName}
-                 onKeyDown={handleKeyDown}
-                 required={true}
-          />
+          <div className="MemberInputAline-left">
+            <label className="aline-input-label">닉네임(*)</label>
+            <input id="nickName" type="text"
+                   className="aline-input"
+                   placeholder="2~10자의 한글, 영문, 숫자 조합"
+                   value={memberInfo.userNickName}
+                   readOnly={!isNicknameChanged}
+                   onChange={handleNickName}
+                   onKeyDown={handleKeyDown}
+                   required={true}
+            />
+          </div>
           {isNicknameChanged && (
-            <button onClick={handleDoubleCheck}>중복 확인</button>
+            <button className="input-aline-button" onClick={handleDoubleCheck}>중복 확인</button>
           )}
           {errorNickName && (
-            <div style={{ color: 'red',
-              marginTop:"5px",
-              fontSize: '10px' }}>
+            <div style={{
+              color: 'red',
+              marginTop: '5px',
+              fontSize: '10px',
+            }}>
               {errorNickName}</div>
           )}
         </div>
 
-        <div className="input-email">
-          <label>이메일(*)</label>
-          <input id="email" type="text"
-                 className="signup-member-input"
-                 placeholder="2~10자의 한글, 영문, 숫자 조합"
-                 value={memberInfo.userEmail}
-                 readOnly
-                 required={true}
-                 onKeyDown={handleKeyDown} />
-        </div>
+        <div className="signup-input-container">
+          <div className="input-email">
+            <label>이메일(*)</label>
+            <input id="email" type="text"
+                   className="signup-member-input"
+                   placeholder="2~10자의 한글, 영문, 숫자 조합"
+                   value={memberInfo.userEmail}
+                   readOnly
+                   required={true}
+                   onKeyDown={handleKeyDown} />
+          </div>
 
-        <div className="input-phone">
-          <label>휴대폰번호(*)</label>
-          <input id="phone" type="text"
-                 className="signup-member-input"
-                 placeholder="ex) 01012345678"
-                 value={memberInfo.userPhone}
-                 onInput={handlePhone}
-                 onKeyDown={handleKeyDown} />
-          {errorPhone && (
-            <div style={{ color: 'red', marginTop: '-7px', fontSize: '10px' }}>
-              {errorPhone}</div>
-          )}
-        </div>
+          <div className="input-phone">
+            <label>휴대폰번호(*)</label>
+            <input id="phone" type="text"
+                   className="signup-member-input"
+                   placeholder="ex) 01012345678"
+                   value={memberInfo.userPhone}
+                   onInput={handlePhone}
+                   onKeyDown={handleKeyDown} />
+            {errorPhone && (
+              <div style={{ color: 'red', marginTop: '-7px', fontSize: '10px' }}>
+                {errorPhone}</div>
+            )}
+          </div>
 
-        <div className="input-address">
-          <label>주소(*)</label>
-          <button className="address-button"
-                  onClick={togglePopup}>
-            우편번호 찾기</button>
-          {popup && <Post setCompany={setCompany}></Post>}
-          <input id="address" type="text"
-                 className="signup-member-input signup-address-input"
-                 placeholder="주소"
-                 readOnly
-                 value={memberInfo.fullAddr}
-                 required={true}
-                 name="address"
-                 onChange={handleInput}
-          />
+          <div className="input-address">
+            <div className="input-address-row">
+              <label>주소(*)</label>
+              <button className="address-button"
+                      onClick={togglePopup}>
+                우편번호 찾기
+              </button>
+              {popup && <Post setCompany={setCompany}></Post>}
+
+            </div>
+            <input id="address" type="text"
+                   className="signup-member-input signup-address-input"
+                   placeholder="주소"
+                   readOnly
+                   value={memberInfo.fullAddr}
+                   required={true}
+                   name="address"
+                   onChange={handleInput}
+            />
+          </div>
         </div>
 
         <button className="MemberJoinButton" onClick={handleSubmit}>
           가입하기
         </button>
-
-        {showModal && (
-          <MemberFormModal
-            title="중복확인"
-            text={nicknameModalMessage}
-            onClose={closeModal}
-          />
-        )}
-
       </div>
       <div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

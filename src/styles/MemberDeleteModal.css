@@ -1,19 +1,16 @@
 .modalContainer{
-    width: 600px;
-    height: 300px;
-    margin-left: 300px;
-    margin-top: -550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .delete-modal-header{
-    margin-left: 220px;
 }
 .delete-modal-text{
-    margin-left: 30px;
 }
 .myinfo-modal-button{
     cursor: pointer;
 }
 .myinfo-modal-close-button{
     cursor: pointer;
-    margin-left: 30px;
 }

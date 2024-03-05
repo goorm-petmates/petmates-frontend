@@ -76,21 +76,22 @@ function PetInfo() {
         <button className="mypage-petinfo-add" onClick={handleAddPetCard}>
           등록하기
         </button>
-
-        <div className="pet-card-components">
-          {petCards.length > 0 ? (
-            petCards.map((petCard) => (
-              <PetCard
-                key={petCard.id}
-                petImgSrc={petCard.petImgSrc}
-                petInfo={petCard.petInfo + " " + petCard.startDate + "~" + petCard.endDate + " " + petCard.price}
-                onEdit={() => handleEdit(petCard.id)}
-                onDelete={() => handleDelete(petCard.id)}
-              />
-            ))
-          ) : (
-            <NoContents text="반려동물 정보" />
-          )}
+        <div className="petinfo-in">
+          <div className="pet-card-components">
+            {petCards.length > 0 ? (
+              petCards.map((petCard) => (
+                <PetCard
+                  key={petCard.id}
+                  petImgSrc={petCard.petImgSrc}
+                  petInfo={petCard.petInfo + " " + petCard.startDate + "~" + petCard.endDate + " " + petCard.price}
+                  onEdit={() => handleEdit(petCard.id)}
+                  onDelete={() => handleDelete(petCard.id)}
+                />
+              ))
+            ) : (
+              <NoContents text="반려동물 정보" />
+            )}
+          </div>
         </div>
       </div>
 
