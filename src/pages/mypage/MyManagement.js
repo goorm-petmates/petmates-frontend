@@ -20,7 +20,7 @@ const MyManagement = () => {
     checkedRefuse.forEach((isChecked, index) => {
       if (isChecked) {
         const bookingId = reservationCard[index].id;
-        fetch(`/api/my-page/petsitter/refuse/${bookingId}`, {
+        fetch(`https://petmates.co.kr/api/my-page/petsitter/refuse/${bookingId}`, {
           method: 'POST',
           body: JSON.stringify({
             id: bookingId,
@@ -103,7 +103,7 @@ const MyManagement = () => {
   const petsitterId = 1;
 
   useEffect(() => {
-    fetch(`/api/my-page/petsitter/existence/${memberId}`)
+    fetch(`https://petmates.co.kr/api/my-page/petsitter/existence/${memberId}`)
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);
@@ -122,7 +122,7 @@ const MyManagement = () => {
         }
       });
 
-    fetch(`/api/my-page/petsitter/reserve/${petsitterId}`)
+    fetch(`https://petmates.co.kr/api/my-page/petsitter/reserve/${petsitterId}`)
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);

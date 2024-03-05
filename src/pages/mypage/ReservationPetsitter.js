@@ -25,7 +25,7 @@ function ReservationPet() {
     checkedReservations.forEach((isChecked, index) => {
       const bookId = reservationCard[index].id;
       if (isChecked) {
-        fetch(`/api/reserve/cancel`, {
+        fetch(`https://petmates.co.kr/api/reserve/cancel`, {
           method: 'PUT',
           body : JSON.stringify({
             id: bookId,
@@ -71,7 +71,7 @@ function ReservationPet() {
   const memberId = 1;
 
   useEffect(() => {
-    fetch(`/api/reserve/${memberId}`)
+    fetch(`https://petmates.co.kr/api/reserve/${memberId}`)
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);
