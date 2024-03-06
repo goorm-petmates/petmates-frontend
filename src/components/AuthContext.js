@@ -8,6 +8,7 @@ export function useAuth() {
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isValidateToken, setIsValidateToken] = useState(false);
 
   useEffect(() => {
     // 로그인 상태 확인 API 호출
@@ -17,13 +18,18 @@ export const AuthProvider = ({ children }) => {
       credentials: 'include',
     })
       .then(response => response.json())
-      .then(data => setIsLoggedIn(data.isLoggedIn))
+      .then(data => {
+        setIsLoggedIn(data.isLoggedIn);
+        setIsValidateToken(data.isValidateToken);
+      }
       .catch(error => console.error('Error:', error));
   }, []);
 
   const value = {
     isLoggedIn,
-    setIsLoggedIn
+    setIsLoggedIn,
+    isValidateToken,
+    setIsValidateToken
   };
   console.log("반환값: ", value);
 
