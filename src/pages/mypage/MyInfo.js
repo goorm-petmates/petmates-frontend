@@ -7,6 +7,7 @@ import Post from '../../components/Post';
 import MemberDeleteModal from '../../components/MemberDeleteModal';
 import {data1} from '../Data';
 import { useNavigate } from 'react-router-dom';
+import MemberFormModal from '../../components/MemberFormModal';
 // import { handlers } from '../../mocks/handlers';
 
 const MyInfo = () => {
@@ -164,9 +165,15 @@ const MyInfo = () => {
     // 확장자가 허용된 확장자인지 확인합니다.
     if (!allowedExtensions.includes(fileExtension)) {
       // 허용되지 않은 확장자면 알림을 띄우고 파일 선택을 취소합니다.
-      alert("파일은 'png', 'jpg', or 'jpeg'만 업로드 할 수 있습니다.");
+      const modalMessage= "파일은 'png', 'jpg', or 'jpeg'만 업로드 할 수 있습니다."
       setPostImg(null);
-      return;
+      return (showModal && (
+        <MemberFormModal
+          title="파일 업로드 실패"
+          text={modalMessage}
+          onClose={closeModal}
+        />
+      ));
     }
 
     // 파일 크기를 가져와 1MB로 제한합니다.
@@ -174,9 +181,15 @@ const MyInfo = () => {
 
     if (file.size > maxSize) {
       // 파일 크기가 1MB를 초과하면 알림을 띄우고 파일 선택을 취소합니다.
-      alert(" 파일 크기가 1MB를 초과했습니다.");
+      const modalMessage = " 파일 크기가 1MB를 초과했습니다.";
       setPostImg(null);
-      return;
+      return (showModal && (
+        <MemberFormModal
+          title="파일 업로드 실패"
+          text={modalMessage}
+          onClose={closeModal}
+        />
+      ));;
     }
     // 파일 정보 저장
     setPostImg(file);
