@@ -16,8 +16,8 @@ function Login() {
         <button
           className='kakao-button'
           onClick={() => {
-            window.location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=06255b2f3a6bd19ffa9bad111b8d01cd&redirect_uri=https://petmates.co.kr/oauth/redirect/kakao&response_type=code&scope=profile_nickname,profile_image,account_email';
-           // window.location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=06255b2f3a6bd19ffa9bad111b8d01cd&redirect_uri=http://localhost:3000/oauth/redirect/kakao&response_type=code&scope=profile_nickname,profile_image,account_email';
+//            window.location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=06255b2f3a6bd19ffa9bad111b8d01cd&redirect_uri=https://petmates.co.kr/oauth/redirect/kakao&response_type=code&scope=profile_nickname,profile_image,account_email';
+            window.location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=06255b2f3a6bd19ffa9bad111b8d01cd&redirect_uri=http://localhost:3000/oauth/redirect/kakao&response_type=code&scope=profile_nickname,profile_image,account_email';
           }}>
           <img className='kakao-button-img' src='/imgs/kakaoLogin.png' alt='kakao icon' />
         </button>

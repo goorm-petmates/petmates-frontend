@@ -16,8 +16,8 @@ function MemberDeleteModal({onClose}) {
   const navigate = useNavigate();
   const navigateToPage = async () => {
     try {
-      const response = await fetch('https://petmates.co.kr/api/members/delete', {
-//        const response = await fetch('http://localhost:8080/api/members/delete', {
+//      const response = await fetch('https://petmates.co.kr/api/members/delete', {
+        const response = await fetch('http://localhost:8080/api/members/delete', {
         method: 'POST',
         credentials: 'include',
         headers: {
