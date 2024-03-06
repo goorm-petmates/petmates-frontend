@@ -54,7 +54,7 @@ function SignUp2() {
       userNickName: isNicknameChanged ? memberInfo.userNickName : null,
     };
     try {
-      const response = await fetch('https://api.petmates.co.kr/api/members/test/api/members/join/save', {
+      const response = await fetch('https://api.petmates.co.kr/api/members/join/save', {
         method: 'POST',
         credentials: 'include',
         headers: {

@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import HeaderWithNav from '../../components/HeaderWithNav';
 import Footer from '../../components/Footer';
 import { data1 } from '../Data';
+import MemberFormModal from '../../components/MemberFormModal';
 // import axios from 'axios';
 // import { handlers } from '../../mocks/handlers';
 function PetInfoAdd() {
@@ -69,9 +70,21 @@ function PetInfoAdd() {
 
   const navigate = useNavigate();
   const [petCards, setPetCards] = useState([]);
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   const handleSubmit = async () => {
     if (!petName || !breedOfDog || !birth || !weight || !gender || !neutering || !allergy || !trouble || !moreInfo) {
-      alert("모든 필수 입력 항목을 채워주세요.");
+
+      setModalMessage("모든 필수 입력 항목을 채워주세요.");
+      openModal();
      } else {
       // const newPetCard = {
       //   id: petCards.length + 1, // 기존 펫 카드의 개수에 1을 더한 값을 새로운 id로 사용
@@ -164,10 +177,13 @@ function PetInfoAdd() {
       setPetCards([...petCards, newPetCard]);
 
       navigate('/petinfo', { state: { newPetCard } });
-      alert('반려동물 정보가 등록되었습니다.');
+
+      setModalMessage('반려동물 정보가 등록되었습니다.');
+      openModal();
     } catch (error) {
       console.log(error);
-      alert('펫 추가 및 사진 업로드 중 오류가 발생했습니다.');
+      setModalMessage('펫 추가 및 사진 업로드 중 오류가 발생했습니다.');
+      openModal();
     }
 
   };
@@ -220,6 +236,13 @@ function PetInfoAdd() {
 
       <div className="pet-info-add-container">
         <div className="pet-info-add">
+          {showModal && (
+            <MemberFormModal
+              title="펫 정보 등록"
+              text={modalMessage}
+              onClose={closeModal}
+            />
+          )}
           <div className="pet-info-add-fileupload">
             {/* 사진 미리보기 */}
             {previewImg && (
