@@ -4,6 +4,7 @@ import NoContents from "../../components/NoContents";
 import "../../styles/StylePetInfo.css";
 import PetCard from "../../components/PetCard";
 import Footer from '../../components/Footer';
+import MemberFormModal from '../../components/MemberFormModal';
 
 function PetInfo() {
   const location = useLocation();
@@ -39,9 +40,25 @@ function PetInfo() {
 
 
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
   const handleAddPetCard = () => {
     if (petCards.length >= 3) {
-      alert("최대 3마리까지 등록할 수 있습니다.");
+      const modalMessage = "최대 3마리까지 등록할 수 있습니다.";
+
+      return ( showModal && (
+        <MemberFormModal
+          title="펫 정보 등록"
+          text={modalMessage}
+          onClose={closeModal}
+        />
+      ))
     } else {
       navigate('/petinfoadd');
     }
