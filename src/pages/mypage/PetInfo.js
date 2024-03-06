@@ -15,7 +15,7 @@ function PetInfo() {
 
    useEffect(() => {
       // memberId를 사용하여 MSW 핸들러에서 반환된 응답을 사용
-      fetch(`https://petmates.co.kr/api/petinfo/${memberId}`)
+      fetch(`/api/petinfo/${memberId}`)
         .then((res) => res.json())
         .then((res) => {
           console.log(res.data);
@@ -48,17 +48,10 @@ function PetInfo() {
   const closeModal = () => {
     setShowModal(false);
   };
+  const modalMessage = "최대 3마리까지 등록할 수 있습니다.";
   const handleAddPetCard = () => {
     if (petCards.length >= 3) {
-      const modalMessage = "최대 3마리까지 등록할 수 있습니다.";
-
-      return ( showModal && (
-        <MemberFormModal
-          title="펫 정보 등록"
-          text={modalMessage}
-          onClose={closeModal}
-        />
-      ))
+      openModal();
     } else {
       navigate('/petinfoadd');
     }
@@ -94,6 +87,13 @@ function PetInfo() {
           등록하기
         </button>
         <div className="petinfo-in">
+          {showModal && (
+            <MemberFormModal
+              title="펫 정보 등록"
+              text={modalMessage}
+              onClose={closeModal}
+            />
+          )}
           <div className="pet-card-components">
             {petCards.length > 0 ? (
               petCards.map((petCard) => (
