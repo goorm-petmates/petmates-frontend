@@ -4,6 +4,7 @@ import NoContents from '../../components/NoContents';
 import { Link } from 'react-router-dom';
 import ReservePetsitterCard from '../../components/ReservePetsitterCard';
 import Footer from '../../components/Footer';
+import MemberFormModal from '../../components/MemberFormModal';
 
 function ReservationPet() {
   const [checkedReservations, setCheckedReservations] = useState([false, false]);
@@ -71,7 +72,7 @@ function ReservationPet() {
   const memberId = 1;
 
   useEffect(() => {
-    fetch(`https://petmates.co.kr/api/reserve/${memberId}`)
+    fetch(`/api/reserve/${memberId}`)
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);
@@ -80,7 +81,8 @@ function ReservationPet() {
           id: info.id,
           reservePetImgSrc: info.reservePetImgSrc,
           petInfo: `${info.name} / ${info.startDate} ~ ${info.endDate} / ${info.totalPrice}원`,
-          status: info. status,
+          status: info.state,
+          membersId: info.membersId,
         }));
 
         setReservationCard(formData);
@@ -91,6 +93,110 @@ function ReservationPet() {
         console.error(error);
       })
   }, []);
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const handleSupplyInfo = (index) => {
+    const bookingId = reservationCard[index].id;
+
+    // fetch(`/api/reserve/check/${bookingId}`)
+    //   .then((res) => {
+    //     if (!res.ok) {
+    //       throw new Error('Network response was not ok');
+    //     }
+    //     return res.json();
+    //   })
+    //   .then((data) => {
+    //     if (!Array.isArray(data)) {
+    //       console.log(data);
+    //
+    //       throw new Error('Data is not in the expected format');
+    //
+    //     }
+    //
+    //     const formData = data.map((info) => ({
+    //     id : info.bookingId,
+    //     createDate : info.createDate,
+    //     startDate : info.startDate,
+    //     endDate : info.endDate,
+    //     startTime : info.startTime,
+    //     endTime : info.endTime,
+    //     totalPrice : info.totalPrice,
+    //       membersId: info.membersId,
+    //     }));
+    //     setModalMessage(formData);
+    //     // 모달 열기 및 데이터 전달
+    //     openModal();
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error:', error);
+    //     // 오류 처리
+    //   });
+    // 첫 번째 요청: 현재 멤버의 예약 목록 가져오기
+    fetch(`/api/reserve/${memberId}`)
+      .then((res) => res.json())
+      .then((res) => {
+        // 두 번째 요청: 해당 예약의 상세 정보 가져오기
+        fetch(`/api/reserve/check/${bookingId}`)
+          .then((res2) => {
+            if (!res2.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return res2.json();
+          })
+          .then((data) => {
+            if (!Array.isArray(data)) {
+              // 만약 데이터가 배열이 아니라면, 단일 객체로 처리
+              const formData = {
+                id: data.bookingId,
+                createDate: data.createDate,
+                startDate: data.startDate,
+                endDate: data.endDate,
+                startTime: data.startTime,
+                endTime: data.endTime,
+                totalPrice: data.totalPrice,
+                membersId: data.membersId,
+              };
+
+              setModalMessage(formData);
+              // 모달 열기 및 데이터 전달
+              openModal();
+            } else {
+              // 만약 데이터가 배열이라면, 첫 번째 항목만 사용
+              const info = data[0];
+              const formData = {
+                id: info.bookingId,
+                createDate: info.createDate,
+                startDate: info.startDate,
+                endDate: info.endDate,
+                startTime: info.startTime,
+                endTime: info.endTime,
+                totalPrice: info.totalPrice,
+                membersId: info.membersId,
+              };
+
+              setModalMessage(formData);
+              // 모달 열기 및 데이터 전달
+              openModal();
+            }
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+            // 오류 처리
+          });
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        // 오류 처리
+      });
+  }
 
   return (
     <div>
@@ -156,10 +262,19 @@ function ReservationPet() {
         </button>
 
         <div className='reservation-container'>
+          {showModal && (
+            <MemberFormModal
+              title="예약 정보"
+              text={modalMessage}
+              onClose={closeModal}
+            />
+          )}
+
           <div className='reservation-components'>
             {reservationCard.length > 0 ? (
               reservationCard.map((card, index) => (
-                <label key={index} className={`checked-width-${index + 1}`}>
+                <label key={index} className={`checked-width-${index + 1}`}
+                       onDoubleClick={() => handleSupplyInfo(index)}>
                   <input
                     className='reservepet-checkbox'
                     type='checkbox'
@@ -171,6 +286,7 @@ function ReservationPet() {
                     petInfo={card.petInfo}
                     state={card.status}
                     onClick={() => handleConfirmReservation(index)}
+                    onDoubleClick={() => handleSupplyInfo(index)}
                   />
                 </label>
               ))
