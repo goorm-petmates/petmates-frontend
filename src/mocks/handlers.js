@@ -715,4 +715,39 @@ export const handlers = [
       { status: 200 },
     );
   }),
+  http.get('/api/reserve/check/:bookingId', async ({ params }) => {
+    const { bookingId } = params;
+
+    return HttpResponse.json({
+      data: [
+        {
+          id: 1,
+          createDate: '2024.2.01',
+          startTime: '17:34',
+          endTime: '10:00',
+          startDate: '2024.2.02',
+          endDate: '2024.2.04',
+          totalPrice: '100,000',
+        },
+        {
+          id: 2,
+          createDate: '2024.2.01',
+          startTime: '17:34',
+          endTime: '10:00',
+          startDate: '2024.2.02',
+          endDate: '2024.2.04',
+          totalPrice: '100,000',
+        },
+        {
+          id: 3,
+          createDate: '2024.2.01',
+          startTime: '17:34',
+          endTime: '10:00',
+          startDate: '2024.2.02',
+          endDate: '2024.2.04',
+          totalPrice: '100,000',
+        },
+      ],
+    });
+  }),
 ];
