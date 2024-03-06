@@ -17,7 +17,7 @@ function MemberDeleteModal({onClose}) {
   const navigateToPage = async () => {
     try {
       const response = await fetch('https://petmates.co.kr/api/members/delete', {
-//        const response = await fetch('http://localhost:8080/api/members/delete', {
+//      const response = await fetch('http://localhost:8080/api/members/delete', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -37,7 +37,6 @@ function MemberDeleteModal({onClose}) {
       console.error('회원탈퇴 처리 중 오류가 발생했습니다.', error);
     }
   };
-
 
   return (
     <div className="member-delete-model">
