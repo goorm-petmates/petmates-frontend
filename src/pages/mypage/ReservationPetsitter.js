@@ -80,7 +80,7 @@ function ReservationPet() {
           id: info.id,
           reservePetImgSrc: info.reservePetImgSrc,
           petInfo: `${info.name} / ${info.startDate} ~ ${info.endDate} / ${info.totalPrice}원`,
-            state: info.state,
+          status: info. status,
         }));
 
         setReservationCard(formData);
@@ -169,7 +169,7 @@ function ReservationPet() {
                   <ReservePetsitterCard
                     reservePetImgSrc={card.reservePetImgSrc}
                     petInfo={card.petInfo}
-                    state={card.state}
+                    state={card.status}
                     onClick={() => handleConfirmReservation(index)}
                   />
                 </label>
