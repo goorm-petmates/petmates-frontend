@@ -22,6 +22,7 @@ const MyManagement = () => {
         const bookingId = reservationCard[index].id;
         fetch(`https://petmates.co.kr/api/my-page/petsitter/refuse/${bookingId}`, {
           method: 'POST',
+          credentials: 'include',
           body: JSON.stringify({
             id: bookingId,
           }),
@@ -67,6 +68,7 @@ const MyManagement = () => {
     const bookingId = reservationCard[index].id;
     fetch(`https://petmates.co.kr/api/my-page/petsitter/approve/${bookingId}`, {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify({
         id: bookingId,
       }),
@@ -103,7 +105,9 @@ const MyManagement = () => {
   const petsitterId = 1;
 
   useEffect(() => {
-    fetch(`https://petmates.co.kr/api/my-page/petsitter/existence/${memberId}`)
+    fetch(`https://petmates.co.kr/api/my-page/petsitter/existence/${memberId}`,{
+      credentials: 'include',
+    })
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);
@@ -122,7 +126,9 @@ const MyManagement = () => {
         }
       });
 
-    fetch(`https://petmates.co.kr/api/my-page/petsitter/reserve/${petsitterId}`)
+    fetch(`https://petmates.co.kr/api/my-page/petsitter/reserve/${petsitterId}`,{
+      credentials: 'include',
+    })
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);

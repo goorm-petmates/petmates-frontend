@@ -10,7 +10,9 @@ const MyMamagementCancle = () => {
   const petsitterId = 1;
 
   useEffect(()=>{
-    fetch(`https://petmates.co.kr/api/my-page/petsitter/cancel/${petsitterId}`)
+    fetch(`https://petmates.co.kr/api/my-page/petsitter/cancel/${petsitterId}`,{
+      credentials: 'include',
+    })
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);
