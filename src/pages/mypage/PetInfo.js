@@ -15,7 +15,9 @@ function PetInfo() {
   const [modalMessage, setModalMessage] = useState("");
 
    useEffect(() => {
-     fetch(`https://petmates.co.kr/api/oauth/jwt/check`)
+     fetch(`https://petmates.co.kr/api/kakao/login/status`,{
+       credentials: 'include',
+     })
        .then((res) => {
          if (!res.ok) {
            throw new Error('Network response was not ok');
@@ -24,13 +26,15 @@ function PetInfo() {
        })
        .then((data) => {
          console.log(data);
-         if (data.result === "failed") {
+         if (data.result === false) {
            navigate('/');
            openModal();
            setModalMessage("로그인 되어 있지 않아 메인 화면으로 이동합니다.");
          }else {
            // memberId를 사용하여 MSW 핸들러에서 반환된 응답을 사용
-           fetch(`https://petmates.co.kr/api/petinfo/${memberId}`)
+           fetch(`https://petmates.co.kr/api/petinfo/${memberId}`,{
+             credentials: 'include',
+           })
              .then((res) => res.json())
              .then((res) => {
                console.log(res.data);
