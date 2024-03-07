@@ -42,7 +42,9 @@ const PetSitterInfo = () => {
   useEffect(() => {
     const fetchPetSitterInfo = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/petsitter/posting/${id}`);
+        const response = await axios.get(`${BASE_URL}/api/petsitter/posting/${id}`, {
+          withCredentials: true,
+        });
         if (response.data && response.data.data && response.data.data.length > 0) {
           const info = response.data.data.find(
             (item) => parseInt(item.id, 10) === parseInt(id, 10),
@@ -109,7 +111,9 @@ const PetSitterInfo = () => {
   useEffect(() => {
     const fetchPetSitterReviews = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/petsitter/reviews/${id}`);
+        const response = await axios.get(`${BASE_URL}/api/petsitter/reviews/${id}`, {
+          withCredentials: true,
+        });
         if (response.data && response.data.data) {
           setPetSitterInfo((prevState) => ({ ...prevState, reviews: response.data.data }));
         }
@@ -298,6 +302,7 @@ const PetSitterInfo = () => {
           'Content-Type': 'application/json',
           // Add any necessary headers, like authorization tokens
         },
+        credentials: 'include', // Include credentials with the request
         body: JSON.stringify(reservationData),
       });
 
@@ -339,6 +344,7 @@ const PetSitterInfo = () => {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
+          credentials: 'include',
         });
 
         const data = await response.json();
