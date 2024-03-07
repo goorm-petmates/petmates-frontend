@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     // Define a function to fetch the login status
     const fetchLoginStatus = () => {
-      fetch('http://localhost:8080/api/kakao/login/status', {
+      fetch('https://petmates.co.kr/api/kakao/login/status', {
         method: 'GET',
         credentials: 'include',
       })
