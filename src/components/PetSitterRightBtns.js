@@ -55,7 +55,8 @@ export const PetSitterRightBtns = () => {
 
     try {
       const response = await fetch(`${BASE_URL}/api/petsitter/apply`, {
-        method: 'GET', // Method is explicitly defined
+        method: 'GET', // Method is explicitly defined,
+        credentials: 'include',
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -136,6 +137,7 @@ export const PetSitterRightBtns = () => {
 
 export default PetSitterRightBtns;
 
+// api연결전 코드
 // import React from 'react';
 // import { Link } from 'react-router-dom';
 // import { FaRegPenToSquare } from 'react-icons/fa6';

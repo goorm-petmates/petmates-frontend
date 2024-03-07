@@ -132,7 +132,9 @@ const PetSitter = () => {
     const url = `${BASE_URL}/api/petsitter/list`;
 
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        credentials: 'include', // Include credentials in the request
+      });
       if (response.ok) {
         const jsonResponse = await response.json();
         if (jsonResponse.data) {
@@ -191,7 +193,9 @@ const PetSitter = () => {
 
     // 2. fetch사용 api연결
     try {
-      const response = await fetch(url.toString());
+      const response = await fetch(url.toString(), {
+        credentials: 'include', // Include credentials in the request
+      });
       if (response.ok) {
         const jsonResponse = await response.json();
         if (jsonResponse && jsonResponse.data) {
