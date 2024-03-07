@@ -7,6 +7,7 @@ import { MdDeleteForever } from 'react-icons/md';
 import axios from 'axios';
 import '../../styles/StylePetSitterForm.css';
 import { useLocation } from 'react-router-dom';
+import { useAuth } from '../../components/AuthContext.js';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -32,6 +33,28 @@ const PetSitterForm = () => {
 
   /****************form input 상태 관리 (이미지, 텍스트) *********************/
   const [images, setImages] = useState({}); // 이미지 상태 관리
+
+  useEffect(() => {
+    if (location.state && location.state.status === 'success') {
+      const appData = location.state.data;
+      setFormData({
+        title: appData.title,
+        content: appData.content,
+        daycarePrice: appData.standardPrice,
+        extraPrice: appData.addPrice,
+        overnightPrice: appData.nightPrice,
+      });
+      // Set images if they exist
+      const newImages = {};
+      if (appData.photo1) newImages['user-img1'] = appData.photo1;
+      if (appData.photo2) newImages['user-img2'] = appData.photo2;
+      if (appData.photo3) newImages['user-img3'] = appData.photo3;
+      if (appData.photo4) newImages['user-img4'] = appData.photo4;
+      if (appData.photo5) newImages['user-img5'] = appData.photo5;
+      setImages(newImages);
+    }
+  }, [location]);
+
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -42,21 +65,22 @@ const PetSitterForm = () => {
   const [isFormValid, setIsFormValid] = useState(false); //form validation 상태관리
   const [isContentDefaultSet, setIsContentDefaultSet] = useState(false);
 
-  //jwt토큰 확인
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // form데이터 서버에서 다 받아왔는지 확인 (끌어올리기 버튼)
+  const isFormDataFilled =
+    formData.title &&
+    formData.content &&
+    //formData.title and formData.content have true (non-empty and non-null or false) values
+    (formData.daycarePrice === '' || formData.daycarePrice) &&
+    (formData.extraPrice === '' || formData.extraPrice) &&
+    (formData.overnightPrice === '' || formData.overnightPrice) &&
+    //formData.daycarePrice, formData.extraPrice, and formData.overnightPrice are allowed to be either true values or empty strings
+    Object.keys(images).length >= 2; // Ensure at least two images are present.
+
+  // 로그인되었는지 확인 (끌어올리기버튼)
+  const { isLoggedIn } = useAuth(); // Use the useAuth hook to get the login status
 
   //펫시터지원하기 완료후 버튼클릭시 펫시터관리페이지로 이동
   const navigate = useNavigate();
-
-  //jwt토큰 localstorage에서 확인후 끌어올리기버튼의 렌더링을 조건부로 처리
-  useEffect(() => {
-    const token = localStorage.getItem('jwtToken'); //'jwtToken'부분을 실제 토큰키로 변경해야함
-    if (token) {
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
-    }
-  }, []); // 의존성 배열을 빈 배열로 설정하여 컴포넌트가 마운트될 때 한 번만 실행되도록 함
 
   // prettier-ignore
   const handleFocus = () => {
@@ -280,7 +304,7 @@ const PetSitterForm = () => {
         <div className='petsitter-foam-container'>
           <form onSubmit={handleSubmit}>
             {/*펫시터 지원하기 글이 이미 저장되있을때 버튼 활성화*/}
-            {isAuthenticated && (
+            {isLoggedIn && isFormDataFilled && (
               <div className='raise-post'>
                 <button className='raise-post-btn'>끌어올리기</button>
               </div>
