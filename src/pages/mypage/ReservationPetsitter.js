@@ -159,9 +159,10 @@ function ReservationPet() {
             return res2.json();
           })
           .then((data) => {
+            let dataArray = [];
             if (!Array.isArray(data)) {
               // 만약 데이터가 배열이 아니라면, 단일 객체로 처리
-              const formData = {
+              dataArray.push({
                 id: data.bookingId,
                 createDate: data.createDate,
                 startDate: data.startDate,
@@ -170,11 +171,13 @@ function ReservationPet() {
                 endTime: data.endTime,
                 totalPrice: data.totalPrice,
                 membersId: data.membersId,
-              };
+              });
 
-              setModalMessage(formData);
+              setModalMessage(dataArray);
               // 모달 열기 및 데이터 전달
               openModal();
+
+              console.log("modalMessage: ", modalMessage);
             } else {
               // 만약 데이터가 배열이라면, 첫 번째 항목만 사용
               const info = data[0];
@@ -189,7 +192,7 @@ function ReservationPet() {
                 membersId: info.membersId,
               };
 
-              setModalMessage(formData);
+              setModalMessage(JSON.stringify(formData));
               // 모달 열기 및 데이터 전달
               openModal();
             }
@@ -272,7 +275,20 @@ function ReservationPet() {
           {showModal && (
             <MemberFormModal
               title="예약 정보"
-              text={modalMessage}
+              text={
+                <div>
+                  {Array.isArray(modalMessage) && modalMessage.length > 0 ? (
+                    modalMessage.map((info, index) => (
+                      <div key={index}>
+                        <div>
+                          {info.startDate}<br />
+                          {info.totalPrice}
+                        </div>
+                      </div>
+                    ))
+                  ) : '정보가 없습니다.'}
+                </div>
+              }
               onClose={closeModal}
             />
           )}
