@@ -282,7 +282,16 @@ const PetSitterForm = () => {
       });
 
       try {
-        const response = await axios.post(`${BASE_URL}/api/petsitter/apply`, data);
+        // Using axios with withCredentials option
+        const response = await axios.post(`${BASE_URL}/api/petsitter/apply`, data, {
+          withCredentials: true,
+        });
+        // fetch 사용시 주석해제
+        // const response = await fetch(`${BASE_URL}/api/petsitter/apply`, {
+        //   method: 'POST',
+        //   body: data,
+        //   credentials: 'include',
+        // });
         console.log(response.data);
       } catch (error) {
         console.error('Error submitting form:', error);
