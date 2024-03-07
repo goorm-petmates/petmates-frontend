@@ -8,6 +8,7 @@ import Footer from '../../components/Footer.js';
 import '../../styles/StylePetSitterInfo.css';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 // import PetSittersData from './PetSittersData.js';
+import { useAuth } from '../../components/AuthContext.js'; // Import useAuth
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -29,14 +30,21 @@ const PetSitterInfo = () => {
   // const [petSitterInfo, setPetSitterInfo] = useState({});
   // 한페이지에 2개의 api들고올때 - 그룹화해서 들고오기
   const [petSitterInfo, setPetSitterInfo] = useState({ info: {}, reviews: [] });
+  const [isLoading, setIsLoading] = useState(false);
 
   let { id } = useParams(); // URL에서 id 값을 추출
   const navigate = useNavigate();
 
+  // useauth사용 로그인여부 확인
+  // Call useAuth at the top level of the component to get the token
+  const { isLoggedIn, token } = useAuth();
+
   useEffect(() => {
     const fetchPetSitterInfo = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/petsitter/posting/${id}`);
+        const response = await axios.get(`${BASE_URL}/api/petsitter/posting/${id}`, {
+          withCredentials: true,
+        });
         if (response.data && response.data.data && response.data.data.length > 0) {
           const info = response.data.data.find(
             (item) => parseInt(item.id, 10) === parseInt(id, 10),
@@ -75,20 +83,39 @@ const PetSitterInfo = () => {
   ///////////////////////////////////////
 
   //(한페이지에 두개 api 들고올때) 펫시터 목서버 리뷰댓글 데이터 불러오기
+  // useEffect(() => {
+  //   const fetchPetSitterReviews = async () => {
+  //     try {
+  //       const response = await axios.get(`${BASE_URL}/api/petsitter/reviews`, {
+  //         params: { petsitterId: id },
+  //       });
+
+  //       if (response.data && response.data.data) {
+  //         //(한페이지에 한개의 api만들고올때) 이부분의 코드만 변경됨
+  //         setPetSitterInfo((prevState) => ({ ...prevState, reviews: response.data.data }));
+  //         // setPetSitterInfo({
+  //         //   ...petSitterInfo,
+  //         //   reviews: response.data.data,
+  //         // });
+  //       }
+  //     } catch (error) {
+  //       console.error('Failed to fetch pet sitter reviews:', error);
+  //     }
+  //   };
+
+  //   if (id) {
+  //     fetchPetSitterReviews();
+  //   }
+  // }, [id]);
+
   useEffect(() => {
     const fetchPetSitterReviews = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/petsitter/reviews`, {
-          params: { petsitterId: id },
+        const response = await axios.get(`${BASE_URL}/api/petsitter/reviews/${id}`, {
+          withCredentials: true,
         });
-
         if (response.data && response.data.data) {
-          //(한페이지에 한개의 api만들고올때) 이부분의 코드만 변경됨
           setPetSitterInfo((prevState) => ({ ...prevState, reviews: response.data.data }));
-          // setPetSitterInfo({
-          //   ...petSitterInfo,
-          //   reviews: response.data.data,
-          // });
         }
       } catch (error) {
         console.error('Failed to fetch pet sitter reviews:', error);
@@ -111,16 +138,16 @@ const PetSitterInfo = () => {
     return times;
   };
 
-  //반려동물 정보체크(jwt토큰 여부로 구분)
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // //반려동물 정보체크(jwt토큰 여부로 구분)
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  //jwt토큰사용시 주석해제
-  useEffect(() => {
-    // 여기서 JWT 토큰의 유무를 체크하는 로직을 추가하기
-    // 예시로 localStorage에서 토큰을 확인하는 방법을 사용
-    const token = localStorage.getItem('jwtToken'); //'jwtToken을 실제토큰으로 변경'
-    setIsLoggedIn(!!token);
-  }, []);
+  // //jwt토큰사용시 주석해제
+  // useEffect(() => {
+  //   // 여기서 JWT 토큰의 유무를 체크하는 로직을 추가하기
+  //   // 예시로 localStorage에서 토큰을 확인하는 방법을 사용
+  //   const token = localStorage.getItem('jwtToken'); //'jwtToken을 실제토큰으로 변경'
+  //   setIsLoggedIn(!!token);
+  // }, []);
 
   //반려견 체크박스 관련 로직//
   const [checkedState, setCheckedState] = useState({
@@ -216,27 +243,128 @@ const PetSitterInfo = () => {
   // 날짜와 시간이 모두 선택되었는지 확인
   const isDateTimeSelected = startDate && endDate && startTime !== '' && endTime !== '';
 
-  const handleReservationButtonClick = (event) => {
-    event.preventDefault(); // 폼 제출 방지
+  // 펫시터 지원하기 저장버튼 실행 (api연결전)
+  // const handleReservationButtonClick = (event) => {
+  //   event.preventDefault(); // 폼 제출 방지
 
-    // 조건 검사: 반려견 선택, 날짜 및 시간 선택
+  //   // 조건 검사: 반려견 선택, 날짜 및 시간 선택
+  //   if (!isDogSelected || !isDateTimeSelected) {
+  //     alert('모든 조건(반려견, 날짜, 시간)을 선택해야 예약이 가능합니다.');
+  //   } else {
+  //     // 조건이 충족되면 예약 처리 로직 실행
+  //     alert('예약이 요청되었습니다. 예약 페이지로 이동합니다.');
+
+  //     // 선택된 반려견 식별
+  //     const selectedDogs = Object.entries(checkedState)
+  //       .filter(([key, value]) => value)
+  //       .map(([key]) => key);
+
+  //     // 예약 정보 확인
+  //     console.log('예약정보:', { startDate, endDate, startTime, endTime, selectedDogs });
+
+  //     navigate('/reservepetsitter');
+  //   }
+  // };
+
+  const handleReservationButtonClick = async (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    // Verify that all conditions (dog selection, date, and time) are met
     if (!isDogSelected || !isDateTimeSelected) {
       alert('모든 조건(반려견, 날짜, 시간)을 선택해야 예약이 가능합니다.');
-    } else {
-      // 조건이 충족되면 예약 처리 로직 실행
-      alert('예약이 요청되었습니다. 예약 페이지로 이동합니다.');
+      return;
+    }
 
-      // 선택된 반려견 식별
-      const selectedDogs = Object.entries(checkedState)
-        .filter(([key, value]) => value)
-        .map(([key]) => key);
+    // Extract the IDs of the selected dogs
+    const selectedDogs = Object.entries(checkedState)
+      .filter(([_, value]) => value)
+      .map(([key]) => parseInt(key.replace('dog', ''), 10)); // Assuming keys are like 'dog1', 'dog2', ...
 
-      // 예약 정보 확인
-      console.log('예약정보:', { startDate, endDate, startTime, endTime, selectedDogs });
+    // Construct the request payload
+    const reservationData = {
+      petsitterId: id, // Assuming id from useParams is the petsitter's ID
+      startDate: startDate.toISOString().split('T')[0],
+      startTime: startTime,
+      endDate: endDate.toISOString().split('T')[0],
+      endTime: endTime,
+      standardPrice: costs.daycare.toString(),
+      addPrice: costs.additional.toString(),
+      nightPrice: costs.overnight.toString(),
+      fee: (costs.total * 0.1).toFixed(0).toString(), // Calculated 10% fee
+      totalPrice: (costs.total + Math.round(costs.total * 0.1)).toString(),
+      reservedPets: selectedDogs,
+    };
 
-      navigate('/reservepetsitter');
+    try {
+      const response = await fetch(`${BASE_URL}/api/petsitter/reserve`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any necessary headers, like authorization tokens
+        },
+        credentials: 'include', // Include credentials with the request
+        body: JSON.stringify(reservationData),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        alert('예약이 성공적으로 요청되었습니다.');
+        console.log('Reservation Response:', responseData);
+        // Redirect or handle the response as needed
+        navigate('/reservepetsitter');
+      } else {
+        // Handle HTTP error responses
+        const error = await response.json();
+        console.error('Reservation failed:', error);
+        alert('예약 요청에 실패했습니다.');
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+      alert('네트워크 오류로 예약 요청에 실패했습니다.');
     }
   };
+
+  // 반려동물 정보 체크 api
+  const [pets, setPets] = useState([]);
+  // Add a new state to track whether the pets were successfully fetched
+  const [petsFetched, setPetsFetched] = useState(false);
+
+  useEffect(() => {
+    const fetchPets = async () => {
+      if (!isLoggedIn) {
+        console.log('User is not logged in.');
+        setPetsFetched(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(`${BASE_URL}/api/petsitter/select-pet`, {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        });
+
+        const data = await response.json();
+
+        if (data.result === 'success') {
+          setPets(data.data);
+          setPetsFetched(true);
+        } else {
+          setPets([]);
+          setPetsFetched(false);
+          console.error('Failed to fetch pets:', data.data);
+        }
+      } catch (error) {
+        console.error('Error fetching pets:', error);
+        setPetsFetched(false);
+      }
+    };
+
+    fetchPets();
+  }, [isLoggedIn, token]); // Add token dependency
 
   return (
     <>
@@ -359,7 +487,7 @@ const PetSitterInfo = () => {
                 </span>
               ))}
             </span>
-            {/* 별점에 빈칸으로 구현 */}
+            {/* 별점 + 빈칸으로 구현 */}
             {/* <span className='petsitter-rating'>
               {[...Array(5)].map((_, index) => (
                 <span
@@ -381,10 +509,24 @@ const PetSitterInfo = () => {
             petSitterInfo.reviews.map((review, index) => (
               <PetSitterInfoReview key={index} {...review} />
             ))} */}
-          {/* 2개의 api불러올떄 */}
-          {petSitterInfo.reviews.map((review, index) => (
+
+          {/* 1. 2개의 api불러올떄 (**키값을 배열에서 인덱스값으로 불러올때)*/}
+          {/* {petSitterInfo.reviews.map((review, index) => (
             <PetSitterInfoReview key={index} {...review} />
-          ))}
+          ))} */}
+          {/* 2. 리뷰 데이터배열에서 키값을 reviewId값으로 각 컴포넌트의 key prop으로 사용하고싶을때 */}
+          {/* {petSitterInfo.reviews.map((review) => (
+            <PetSitterInfoReview key={review.reviewId} {...review} />
+          ))} */}
+          {/* 3. 리뷰 데이터배열에서 reviewId값을 숫자 올림차순으로 컴포넌트 렌더링 */}
+          {petSitterInfo.reviews
+            .slice() // 원본 배열을 변경하지 않기 위해 slice()로 복사본을 만듦
+            .sort((a, b) => a.reviewId - b.reviewId) // reviewId 기준 오름차순 정렬
+            .map((review) => (
+              <PetSitterInfoReview key={review.reviewId} {...review} />
+            ))}
+
+          {/* //////////////////////////////////////////// */}
           {/* 하드코딩 - 리뷰 개수만큼 컴포넌트 생성 */}
           {/* {petSitterInfo.reviews &&
             petSitterInfo.reviews.map((review) => (
@@ -436,15 +578,52 @@ const PetSitterInfo = () => {
 
           <div className='petsitter-booking-box'>
             <div className='booking-box-header'>맡길 반려견 선택</div>
-            {/**************반려동물 등록되지않은 유저인경우 활성화************/}
+            {/**************로그인 안된경우 활성화************/}
             {!isLoggedIn && (
-              <button className='register-pet-btn'>
-                <Link to='/petInfo'>반려동물을 먼저 등록하세요.</Link>
+              <button
+                className='register-pet-btn'
+                onClick={() => {
+                  // Directly navigate to /petinfo if there is no JWT token
+                  navigate('/login');
+                }}
+              >
+                로그인이 필요합니다.
               </button>
             )}
 
-            {/**************반려동물 등록된 유저인경우 활성화***********/}
-            {isLoggedIn && (
+            {/************** 로그인후 반려동물 정보체크시 활성화***********/}
+            {/* 로그인후 반려동물 정보가 받아와졌을때 */}
+            {isLoggedIn && petsFetched && (
+              <div className='dog-checkbox'>
+                {pets.map((pet, index) => (
+                  <label key={index} htmlFor={`dog${pet.id}`}>
+                    <img
+                      className={`registered-dog-pic${index + 1}`}
+                      src={pet.photoUrl}
+                      alt={`petowner registered dog pic${index + 1}`}
+                    ></img>
+                    <input
+                      type='checkbox'
+                      name={`dog${pet.id}`}
+                      id={`dog${pet.id}`}
+                      checked={checkedState[`dog${pet.id}`]}
+                      onChange={handleCheckboxChange}
+                    />
+                    {pet.name}
+                  </label>
+                ))}
+              </div>
+            )}
+
+            {/* 로그인이 되어있지만 반려동물정보가 받아오지 않았을때 */}
+            {isLoggedIn && !petsFetched && (
+              <button className='register-pet-btn' onClick={() => navigate('/petinfo')}>
+                반려동물을 먼저 등록하세요.
+              </button>
+            )}
+
+            {/* 반려동물 정보 체크 (하드코딩) */}
+            {/* {isLoggedIn && (
               <div className='dog-checkbox'>
                 <label htmlFor='dog1'>
                   <img
@@ -492,7 +671,7 @@ const PetSitterInfo = () => {
                   3번 반려견
                 </label>
               </div>
-            )}
+            )} */}
 
             <div className='date-picker-header'>예약을 원하는 날짜와 시간을 선택하세요</div>
             <form className='date-picker'>

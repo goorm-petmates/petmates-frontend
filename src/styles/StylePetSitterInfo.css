@@ -276,12 +276,13 @@ thead {
   text-align: center;
   border: transparent;
   margin-bottom: 20px;
+  /* color: white; */
 }
 
 /* 버튼안에 Link컴포넌트<a> 기본값 설정 변경 */
-.register-pet-btn a {
+/* .register-pet-btn a {
   color: white;
-}
+} */
 
 .register-pet-btn:hover {
   transition: transform 0.1s ease, background-color 0.1s ease;
