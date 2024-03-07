@@ -28,6 +28,7 @@ function ReservationPet() {
       if (isChecked) {
         fetch(`https://petmates.co.kr/api/reserve/cancel`, {
           method: 'PUT',
+          credentials: 'include',
           body : JSON.stringify({
             id: bookId,
             code: 1,
@@ -72,7 +73,9 @@ function ReservationPet() {
   const memberId = 1;
 
   useEffect(() => {
-    fetch(`/api/reserve/${memberId}`)
+    fetch(`/api/reserve/${memberId}`,{
+      credentials: 'include',
+    })
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);
@@ -140,11 +143,15 @@ function ReservationPet() {
     //     // 오류 처리
     //   });
     // 첫 번째 요청: 현재 멤버의 예약 목록 가져오기
-    fetch(`/api/reserve/${memberId}`)
+    fetch(`/api/reserve/${memberId}`,{
+      credentials: 'include',
+    })
       .then((res) => res.json())
       .then((res) => {
         // 두 번째 요청: 해당 예약의 상세 정보 가져오기
-        fetch(`/api/reserve/check/${bookingId}`)
+        fetch(`/api/reserve/check/${bookingId}`,{
+          credentials: 'include',
+        })
           .then((res2) => {
             if (!res2.ok) {
               throw new Error('Network response was not ok');

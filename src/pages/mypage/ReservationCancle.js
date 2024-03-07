@@ -43,7 +43,9 @@ const ReservationCancle = () => {
 
   useEffect(() => {
     // memberId를 사용하여 MSW 핸들러에서 반환된 응답을 사용
-    fetch(`https://petmates.co.kr/api/my-page/petsitter/${petId}`)
+    fetch(`https://petmates.co.kr/api/my-page/petsitter/${petId}`,{
+      credentials: 'include',
+    })
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);
