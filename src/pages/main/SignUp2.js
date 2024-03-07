@@ -10,9 +10,10 @@ function SignUp2() {
   const navigate = useNavigate();
 
   const [memberInfo, setMemberInfo] = useState({
-    userNickName: '',
-    userPhone: '',
-    userEmail: '',
+    nickname: '',
+    phone: '',
+    email: '',
+    profileImage: '',
     fullAddr: '',
     roadAddr: '',
     detailAddr: '',
@@ -25,7 +26,7 @@ function SignUp2() {
   const [showNicknameModal, setShowNicknameModal] = useState(false);
   const [nicknameModalMessage, setNicknameModalMessage] = useState('');
 
-  // Post2 컴포넌트에서 전달받은 값을 상태에 저장하는 함수
+  // Post 컴포넌트에서 전달받은 값을 상태에 저장하는 함수
   const setCompany = (fullAddr, roadAddr, detailAddr, latitude, longitude, zipcode) => {
     setMemberInfo(prevState => ({
       ...prevState,
@@ -51,10 +52,11 @@ function SignUp2() {
   const handleSubmit = async () => {
     const payload = {
       ...memberInfo,
-      userNickName: isNicknameChanged ? memberInfo.userNickName : null,
+      nickname: isNicknameChanged ? memberInfo.nickname : null,
     };
     try {
-      const response = await fetch('https://api.petmates.co.kr/api/members/test/api/members/join/save', {
+                  const response = await fetch('https://petmates.co.kr/api/members/join/save', {
+//      const response = await fetch('http://localhost:8080/api/members/join/save', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -81,16 +83,17 @@ function SignUp2() {
     }
   };
 
-// 닉네임 중복확인
+  // 닉네임 중복확인
   const handleDoubleCheck = async () => {
     try {
-      const response = await fetch('https://petmates.co.kr/api/members/join/doublecheck', {
+              const response = await fetch('https://petmates.co.kr/api/members/join/doublecheck', {
+//      const response = await fetch('http://localhost:8080/api/members/join/doublecheck', {
         method: 'POST',
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ userNickName: memberInfo.userNickName }),
+        body: JSON.stringify({ nickname: memberInfo.nickname }),
       });
       const data = await response.json();
       if (data.result === 'success') {
@@ -108,6 +111,7 @@ function SignUp2() {
     }
   };
 
+
   // 닉네임 유효성 체크
   const handleNickName = (e) => {
     const newNickName = e.target.value;
@@ -115,7 +119,7 @@ function SignUp2() {
     // 닉네임 상태 업데이트
     setMemberInfo(prevState => ({
       ...prevState,
-      userNickName: newNickName,
+      nickname: newNickName,
     }));
 
     // 공백 여부 체크
@@ -133,12 +137,12 @@ function SignUp2() {
     }
   }
 
-// 휴대폰번호 유효성 체크
+  // 휴대폰번호 유효성 체크
   const handlePhone = (e) => {
     const phone = e.target.value;
     setMemberInfo(prevState => ({
       ...prevState,
-      userPhone: phone, // 수정: userPhone 상태 업데이트
+      phone: phone, // 수정: phone 상태 업데이트
     }));
 
     // 공백 여부 체크
@@ -169,17 +173,18 @@ function SignUp2() {
     })
   }
 
-// 우편번호 찾기 버튼 클릭 시 팝업 토글
+  // 우편번호 찾기 버튼 클릭 시 팝업 토글
   const togglePopup = () => {
     setPopup(!popup);
   };
-//  const handleComplete = (data) => {
-//    setPopup(!popup);
-//  }
+  //  const handleComplete = (data) => {
+  //    setPopup(!popup);
+  //  }
 
   // 페이지 렌더링 시 회원 정보 가져오기 // 수정
   useEffect(() => {
     fetch('https://petmates.co.kr/api/members/join', {
+//    fetch('http://localhost:8080/api/members/join', {
       method: 'GET',
       credentials: 'include',
     })
@@ -189,8 +194,8 @@ function SignUp2() {
         console.log(data.nickname); // 데이터 확인
         setMemberInfo(prevState => ({
           ...prevState,
-          userNickName: data.nickname !== null ? data.nickname : prevState.userNickName,
-          userEmail: data.email, // 이메일 상태 업데이트
+          nickname: data.nickname !== null ? data.nickname : prevState.nickname,
+          email: data.email, // 이메일 상태 업데이트
         }));
         setIsNicknameChanged(data.nickname === null);
       })

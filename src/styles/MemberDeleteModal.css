@@ -1,8 +1,22 @@
+.member-delete-model{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경색 */
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    z-index: 5;
+}
 .modalContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
+    padding: 20px;
 }
 .delete-modal-header{
 }

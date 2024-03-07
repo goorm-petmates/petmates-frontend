@@ -7,6 +7,7 @@ import Post from '../../components/Post';
 import MemberDeleteModal from '../../components/MemberDeleteModal';
 import {data1} from '../Data';
 import { useNavigate } from 'react-router-dom';
+import MemberFormModal from '../../components/MemberFormModal';
 // import { handlers } from '../../mocks/handlers';
 
 const MyInfo = () => {
@@ -150,7 +151,7 @@ const MyInfo = () => {
 
   const [postImg, setPostImg] = useState(null); // 파일 정보를 담을 state
   const [previewImg, setPreviewImg] = useState(null); // 미리보기 이미지를 담을 state
-
+  const [modalMessage, setModalMessage] = useState("");
 
   const uploadFile = (e) => {
     const file = e.target.files[0];
@@ -164,9 +165,9 @@ const MyInfo = () => {
     // 확장자가 허용된 확장자인지 확인합니다.
     if (!allowedExtensions.includes(fileExtension)) {
       // 허용되지 않은 확장자면 알림을 띄우고 파일 선택을 취소합니다.
-      alert("파일은 'png', 'jpg', or 'jpeg'만 업로드 할 수 있습니다.");
+      setModalMessage("파일은 'png', 'jpg', or 'jpeg'만 업로드 할 수 있습니다.");
       setPostImg(null);
-      return;
+      openModal();
     }
 
     // 파일 크기를 가져와 1MB로 제한합니다.
@@ -174,9 +175,9 @@ const MyInfo = () => {
 
     if (file.size > maxSize) {
       // 파일 크기가 1MB를 초과하면 알림을 띄우고 파일 선택을 취소합니다.
-      alert(" 파일 크기가 1MB를 초과했습니다.");
+      setModalMessage(" 파일 크기가 1MB를 초과했습니다.");
       setPostImg(null);
-      return;
+      openModal();
     }
     // 파일 정보 저장
     setPostImg(file);
@@ -217,6 +218,13 @@ const MyInfo = () => {
       <div className="myinfo-container">
         <div className="myinfo">
           <div className="myinfo-row">
+            {showModal && (
+              <MemberFormModal
+                title="펫 정보 등록"
+                text={modalMessage}
+                onClose={closeModal}
+              />
+            )}
             <div className="myinfo-picture-container">
               <img className="myinfo-picture"
                    src={previewImg || memberInfo.profileImage} alt="" />
