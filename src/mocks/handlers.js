@@ -493,6 +493,20 @@ export const handlers = [
       { status: 200 },
     );
   }),
+  http.post('/api/my-page/pet/:petId/photo', async ({ params }) => {
+    // const requestBody = await request.json();
+    // console.log('req body: ', requestBody);
+    const { petId } = params;
+    return HttpResponse.json(
+      {
+        result: 'success',
+        data: {
+          storedFileName: "저장된 물리 파일명",
+        },
+      },
+      { status: 200 },
+    );
+  }),
   http.get('/api/reserve/:memberId', ({ params }) => {
     const { memberId } = params;
     return HttpResponse.json({
