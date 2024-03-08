@@ -81,7 +81,7 @@ function PetInfoAdd() {
   };
 
   const handleSubmit = async () => {
-    if (!petName || !breedOfDog || !birth || !weight || !gender || !neutering || !allergy || !trouble || !moreInfo) {
+    if (!petName || !breedOfDog || !birth || !weight || gender === undefined || neutering=== undefined || allergy=== undefined || trouble=== undefined || !moreInfo) {
 
       setModalMessage("모든 필수 입력 항목을 채워주세요.");
       openModal();
@@ -107,86 +107,140 @@ function PetInfoAdd() {
       console.log(allergy);
       console.log(trouble);
       console.log(moreInfo);
-    }
 
-   // fetch api/my-page/pet/add
-    const url_add = 'https://petmates.co.kr/api/my-page/pet/add';
-    const data_add = {
-      name: petName,
-      breed: breedOfDog,
-      sex: gender,
-      birthYear: birth,
-      weight: weight,
-      isNeutering: neutering,
-      isAllergy: allergy,
-      isDisease: trouble,
-      etc: moreInfo
-    };
+      const formData = new FormData();
+      formData.append('name', petName);
+      formData.append('breed', breedOfDog);
+      formData.append('sex', gender);
+      formData.append('birthYear', birth);
+      formData.append('weight', weight);
+      formData.append('isNeutering', neutering);
+      formData.append('isAllergy', allergy);
+      formData.append('isDisease', trouble);
+      formData.append('etc', moreInfo);
+      formData.append('photo', postImg);
+      const url_add = 'https://petmates.co.kr/api/my-page/pet/add';
+      try {
+        const response_add = await fetch(url_add, {
+          method: 'POST',
+          credentials: 'include',
+          body: formData,
+        });
 
-    try {
-      // 펫 추가 요청 보내기
-      const response_add = await fetch(url_add, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data_add),
-      });
+        if (!response_add.ok) {
+          throw new Error('펫 정보 추가 실패');
+        }
 
-      // 응답 확인
-      if (!response_add.ok) {
-        throw new Error(response_add.error);
+        console.log('펫 정보 추가 성공');
+        // 성공 시 추가 작업 수행
+
+        const responseData = await response_add.json();
+        const petId = responseData.id;
+
+        const url_photo = `https://petmates.co.kr/api/my-page/pet/${petId}/photo`;
+        const data_photo = new FormData();
+        data_photo.append("photo", postImg);
+        data_photo.append("pet_id", petId);
+
+        const response_photo = await fetch(url_photo, {
+          method: 'POST',
+          credentials: 'include',
+          body: data_photo,
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+
+        if (!response_photo.ok) {
+          console.log(response_photo.error);
+          throw new Error('펫 사진 추가 실패');
+        }
+
+        console.log('펫 및 사진 추가 완료');
+        console.log("photo: ", postImg);
+
+        const newPetCard = {
+          id: petCards.length + 1,
+          petImgSrc: previewImg,
+          petInfo: `${petName}/${breedOfDog}/${gender === '남' ? '남아' : '여아'}/${new Date().getFullYear() - birth}살/${weight}kg`,
+        };
+
+        setPetCards([...petCards, newPetCard]);
+        navigate('/petinfo', { state: { newPetCard } });
+        setModalMessage('반려동물 정보가 등록되었습니다.');
+        openModal();
+      } catch (error) {
+        console.error(error);
+        setModalMessage('펫 추가 및 사진 업로드 중 오류가 발생했습니다.');
+        openModal();
       }
-
-      // // 응답 데이터 파싱
-      // const responseData = await response_add.json();
-      // const petId = responseData.id; // 응답에서 펫 아이디 추출
-      //
-      // // 펫 사진 추가 요청 보내기
-      // const url_photo = `/api/my-page/pet/${petId}/photo`;
-      // const data_photo = {
-      //   photo: postImg,
-      //   pet_id: petId,
-      // };
-      //
-      // const response_photo = await fetch(url_photo, {
-      //   method: 'POST',
-      //   credentials: 'include',
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //   },
-      //   body: JSON.stringify(data_photo),
-      // });
-      //
-      // // photo 응답 확인
-      // if (!response_photo.ok) {
-      //   console.log(response_photo.error);
-      //   throw new Error('펫 사진 추가 실패');
-      // }
-      // 응답 성공 시
-      console.log('펫 및 사진 추가 완료');
-
-      const newPetCard = {
-        id: petCards.length + 1, // 기존 펫 카드의 개수에 1을 더한 값을 새로운 id로 사용
-        petImgSrc: previewImg, // 미리보기 이미지 사용
-        petInfo: `${petName}/${breedOfDog}/${gender === '남' ? '남아' : '여아'}/${new Date().getFullYear() - birth}살/${weight}kg`, // 입력된 정보 사용
-      };
-
-      // 새로운 펫 카드를 기존의 펫 카드 배열에 추가
-      setPetCards([...petCards, newPetCard]);
-
-      navigate('/petinfo', { state: { newPetCard } });
-
-      setModalMessage('반려동물 정보가 등록되었습니다.');
-      openModal();
-    } catch (error) {
-      console.log(error);
-      setModalMessage('펫 추가 및 사진 업로드 중 오류가 발생했습니다.');
-      openModal();
     }
-
   };
+
+  //   try {
+  //     // 펫 추가 요청 보내기
+  //     const response_add = await fetch(url_add, {
+  //       method: 'POST',
+  //       credentials: 'include',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(data_add),
+  //     });
+  //
+  //     // 응답 확인
+  //     if (!response_add.ok) {
+  //       throw new Error(response_add.error);
+  //     }
+  //
+  //     // 응답 데이터 파싱
+  //     const responseData = await response_add.json();
+  //     const petId = responseData.id; // 응답에서 펫 아이디 추출
+  //
+  //     // 펫 사진 추가 요청 보내기
+  //     const url_photo = `/api/my-page/pet/${petId}/photo`;
+  //     const data_photo = {
+  //       photo: postImg,
+  //       pet_id: petId,
+  //     };
+  //
+  //     const response_photo = await fetch(url_photo, {
+  //       method: 'POST',
+  //       credentials: 'include',
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data',
+  //       },
+  //       body: JSON.stringify(data_photo),
+  //     });
+  //
+  //     // photo 응답 확인
+  //     if (!response_photo.ok) {
+  //       console.log(response_photo.error);
+  //       throw new Error('펫 사진 추가 실패');
+  //     }
+  //     // 응답 성공 시
+  //     console.log('펫 및 사진 추가 완료');
+  //
+  //     const newPetCard = {
+  //       id: petCards.length + 1, // 기존 펫 카드의 개수에 1을 더한 값을 새로운 id로 사용
+  //       petImgSrc: previewImg, // 미리보기 이미지 사용
+  //       petInfo: `${petName}/${breedOfDog}/${gender === '남' ? '남아' : '여아'}/${new Date().getFullYear() - birth}살/${weight}kg`, // 입력된 정보 사용
+  //     };
+  //
+  //     // 새로운 펫 카드를 기존의 펫 카드 배열에 추가
+  //     setPetCards([...petCards, newPetCard]);
+  //
+  //     navigate('/petinfo', { state: { newPetCard } });
+  //
+  //     setModalMessage('반려동물 정보가 등록되었습니다.');
+  //     openModal();
+  //   } catch (error) {
+  //     console.log(error);
+  //     setModalMessage('펫 추가 및 사진 업로드 중 오류가 발생했습니다.');
+  //     openModal();
+  //   }
+  //
+  // };
 
   const handlePetAdd = (e) => {
     if(e.target.className === "petName"){
