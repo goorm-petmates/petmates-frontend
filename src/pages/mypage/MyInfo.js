@@ -250,12 +250,13 @@ const MyInfo = () => {
               </input>
 
               <label className="myinfo-label">휴대폰번호</label>
-              <input className="myinfo-phoneInput"
-                     value={memberInfo.phone}
-                     onChange={handleInputChange}
-                     onInput={handlePhone}
-                     onKeyDown={handleKeyDown}>
-              </input>
+                          <input className="myinfo-phoneInput"
+                                name="phone"
+                                value={memberInfo.phone}
+                                onChange={handleInputChange}
+                                 onInput={handlePhone}
+                                onKeyDown={handleKeyDown}>
+                          </input>
 
               <div className="myinfo-address-container">
                 <label className="myinfo-label">주소</label>

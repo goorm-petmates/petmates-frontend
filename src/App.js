@@ -6,7 +6,7 @@ import LoginRedirect from './pages/main/LoginRedirect.js';
 import Logout from './pages/main/Logout.js';
 import LogoutUpdate from './pages/main/LogoutUpdate.js';
 import TokenUpdate from './pages/main/TokenUpdate.js';
-import SignUp2 from './pages/main/SignUp2.js';
+import SignUp from './pages/main/SignUp.js';
 import MyInfo from './pages/mypage/MyInfo.js';
 import PetSitter from './pages/petsitter/PetSitter.js';
 import PetSitterForm from './pages/petsitter/PetSitterForm.js';
@@ -41,7 +41,7 @@ function App() {
           <Route path='/logout-update' element={<LogoutUpdate />}></Route>
           <Route path='/oauth/redirect/kakao' element={<LoginRedirect />}></Route>
           <Route path='/tokenupdate' element={<TokenUpdate />}></Route>
-          <Route path='/signup' element={<SignUp2 />}></Route>
+          <Route path='/signup' element={<SignUp />}></Route>
           <Route path='/petsitter' element={<PetSitter />}></Route>
           <Route path='/petsitterform' element={<PetSitterForm />}></Route>
           <Route path='/petsitterguide' element={<PetSitterGuide />}></Route>
