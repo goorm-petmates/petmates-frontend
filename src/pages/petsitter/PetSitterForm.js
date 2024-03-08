@@ -4,12 +4,57 @@ import Footer from '../../components/Footer.js';
 import PetSitterRightbtns from '../../components/PetSitterRightBtns.js';
 import { RiImageAddFill } from 'react-icons/ri';
 import { MdDeleteForever } from 'react-icons/md';
-// import axios from 'axios';
+import axios from 'axios';
 import '../../styles/StylePetSitterForm.css';
+import { useLocation } from 'react-router-dom';
+import { useAuth } from '../../components/AuthContext.js';
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const PetSitterForm = () => {
+  const location = useLocation();
+  const [applicationData, setApplicationData] = useState(null);
+
+  // PetSitterRightBtns 컴포넌트에서 전달한 상태를 받기
+  useEffect(() => {
+    // location state를 확인하여 상태 업데이트
+    if (location.state && location.state.status === 'success') {
+      setApplicationData(location.state.data);
+      setFormData({
+        title: location.state.data.title,
+        content: location.state.data.contents,
+        daycarePrice: location.state.data.standardPrice,
+        extraPrice: location.state.data.addPrice,
+        overnightPrice: location.state.data.nightPrice,
+      });
+      // 이미지 상태도 업데이트 필요하면 여기에 로직 추가
+    }
+  }, [location]);
+
   /****************form input 상태 관리 (이미지, 텍스트) *********************/
   const [images, setImages] = useState({}); // 이미지 상태 관리
+
+  useEffect(() => {
+    if (location.state && location.state.status === 'success') {
+      const appData = location.state.data;
+      setFormData({
+        title: appData.title,
+        content: appData.content,
+        daycarePrice: appData.standardPrice,
+        extraPrice: appData.addPrice,
+        overnightPrice: appData.nightPrice,
+      });
+      // Set images if they exist
+      const newImages = {};
+      if (appData.photo1) newImages['user-img1'] = appData.photo1;
+      if (appData.photo2) newImages['user-img2'] = appData.photo2;
+      if (appData.photo3) newImages['user-img3'] = appData.photo3;
+      if (appData.photo4) newImages['user-img4'] = appData.photo4;
+      if (appData.photo5) newImages['user-img5'] = appData.photo5;
+      setImages(newImages);
+    }
+  }, [location]);
+
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -20,21 +65,22 @@ const PetSitterForm = () => {
   const [isFormValid, setIsFormValid] = useState(false); //form validation 상태관리
   const [isContentDefaultSet, setIsContentDefaultSet] = useState(false);
 
-  //jwt토큰 확인
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // form데이터 서버에서 다 받아왔는지 확인 (끌어올리기 버튼)
+  const isFormDataFilled =
+    formData.title &&
+    formData.content &&
+    //formData.title and formData.content have true (non-empty and non-null or false) values
+    (formData.daycarePrice === '' || formData.daycarePrice) &&
+    (formData.extraPrice === '' || formData.extraPrice) &&
+    (formData.overnightPrice === '' || formData.overnightPrice) &&
+    //formData.daycarePrice, formData.extraPrice, and formData.overnightPrice are allowed to be either true values or empty strings
+    Object.keys(images).length >= 2; // Ensure at least two images are present.
+
+  // 로그인되었는지 확인 (끌어올리기버튼)
+  const { isLoggedIn } = useAuth(); // Use the useAuth hook to get the login status
 
   //펫시터지원하기 완료후 버튼클릭시 펫시터관리페이지로 이동
   const navigate = useNavigate();
-
-  //jwt토큰 localstorage에서 확인후 끌어올리기버튼의 렌더링을 조건부로 처리
-  useEffect(() => {
-    const token = localStorage.getItem('jwtToken'); //'jwtToken'부분을 실제 토큰키로 변경해야함
-    if (token) {
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
-    }
-  }, []); // 의존성 배열을 빈 배열로 설정하여 컴포넌트가 마운트될 때 한 번만 실행되도록 함
 
   // prettier-ignore
   const handleFocus = () => {
@@ -157,23 +203,44 @@ const PetSitterForm = () => {
   // };
 
   /********* form 유효성 로직함수 **********/
+  // const checkFormValidity = () => {
+  //   const imageCount = Object.keys(images).length;
+  //   const { title, content, daycarePrice, extraPrice, overnightPrice } = formData;
+
+  //   // form 유효성 함수사용시 필요한 조건
+  //   const isValid =
+  //     imageCount >= 2 &&
+  //     title.trim() !== '' &&
+  //     content.trim() !== '' &&
+  //     ((daycarePrice.trim() !== '' && extraPrice.trim() !== '') || overnightPrice.trim() !== '') &&
+  //     !(
+  //       (daycarePrice.trim() === '' && extraPrice.trim() !== '' && overnightPrice.trim() !== '') ||
+  //       (extraPrice.trim() === '' && daycarePrice.trim() !== '' && overnightPrice.trim() !== '')
+  //     );
+
+  //   setIsFormValid(isValid);
+
+  //   console.log('checkFormValidity called, isValid:', isValid);
+  // };
+
   const checkFormValidity = () => {
     const imageCount = Object.keys(images).length;
     const { title, content, daycarePrice, extraPrice, overnightPrice } = formData;
 
-    // form 유효성 함수사용시 필요한 조건
     const isValid =
       imageCount >= 2 &&
+      title &&
       title.trim() !== '' &&
+      content &&
       content.trim() !== '' &&
-      ((daycarePrice.trim() !== '' && extraPrice.trim() !== '') || overnightPrice.trim() !== '') &&
-      !(
-        (daycarePrice.trim() === '' && extraPrice.trim() !== '' && overnightPrice.trim() !== '') ||
-        (extraPrice.trim() === '' && daycarePrice.trim() !== '' && overnightPrice.trim() !== '')
-      );
+      daycarePrice &&
+      daycarePrice.trim() !== '' &&
+      extraPrice &&
+      extraPrice.trim() !== '' &&
+      overnightPrice &&
+      overnightPrice.trim() !== '';
 
     setIsFormValid(isValid);
-
     console.log('checkFormValidity called, isValid:', isValid);
   };
 
@@ -187,7 +254,7 @@ const PetSitterForm = () => {
     }
 
     checkFormValidity();
-  }, [formData, images]);
+  }, [formData, images]); // formData 또는 images가 변경될 때마다 실행
 
   //////////////////////////////////////////////
 
@@ -199,26 +266,37 @@ const PetSitterForm = () => {
     //폼 유효성 검사 통과 시 alert 메시지 띄우기
     if (isFormValid) {
       alert('펫시터 지원하기가 완료되었습니다');
-      navigate('/petsitter');
+      navigate('/mymanagement');
 
       console.log('Form Data: ', formData);
       console.log('Images: ', images);
 
-      // 폼 데이터를 서버로 전송하는 코드
-      // const data = new FormData();
-      // for (const key in formData) {
-      //   data.append(key, formData[key]);
-      // }
-      // Object.keys(images).forEach((key) => {
-      //   data.append('images', images[key]);
-      // });
+      // 폼 데이터를 서버로 전송하는 코드 //
+      const data = new FormData();
+      for (const key in formData) {
+        data.append(key, formData[key]);
+      }
+      Object.keys(images).forEach((key) => {
+        // Assuming images[key] is a file object or similar
+        data.append('images', images[key]);
+      });
 
-      // try {
-      //   const response = await axios.post('your-backend-endpoint(실제 사용할 backend URL넣기', data);
-      //   console.log(response.data);
-      // } catch (error) {
-      //   console.error('Error submitting form:', error);
-      // }
+      try {
+        // Using axios with withCredentials option
+        const response = await axios.post(`${BASE_URL}/api/petsitter/apply`, data, {
+          withCredentials: true,
+        });
+        // fetch 사용시 주석해제
+        // const response = await fetch(`${BASE_URL}/api/petsitter/apply`, {
+        //   method: 'POST',
+        //   body: data,
+        //   credentials: 'include',
+        // });
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+      }
+      // 폼 데이터를 서버로 전송하는 코드 완료 //
     } else {
       console.log('Form is not valid, submission prevented');
     }
@@ -235,7 +313,7 @@ const PetSitterForm = () => {
         <div className='petsitter-foam-container'>
           <form onSubmit={handleSubmit}>
             {/*펫시터 지원하기 글이 이미 저장되있을때 버튼 활성화*/}
-            {isAuthenticated && (
+            {isLoggedIn && isFormDataFilled && (
               <div className='raise-post'>
                 <button className='raise-post-btn'>끌어올리기</button>
               </div>

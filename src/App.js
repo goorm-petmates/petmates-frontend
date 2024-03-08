@@ -2,12 +2,17 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/main/Main.js';
 import Login from './pages/main/Login.js';
+import LoginRedirect from './pages/main/LoginRedirect.js';
+import Logout from './pages/main/Logout.js';
+import LogoutUpdate from './pages/main/LogoutUpdate.js';
+import TokenUpdate from './pages/main/TokenUpdate.js';
 import SignUp2 from './pages/main/SignUp2.js';
 import MyInfo from './pages/mypage/MyInfo.js';
 import PetSitter from './pages/petsitter/PetSitter.js';
 import PetSitterForm from './pages/petsitter/PetSitterForm.js';
 import PetSitterGuide from './pages/petsitter/PetSitterGuide.js';
 import PetSitterInfo from './pages/petsitter/PetSitterInfo.js';
+import PetSitterList from './components/PetSitterList';
 import Community from './pages/community/Community.js';
 import CommunityPost from './pages/community/CommunityPost.js';
 import CommunityResult from './pages/community/CommunityResult.js';
@@ -21,11 +26,9 @@ import ReservationCancle from './pages/mypage/ReservationCancle';
 import ReserveReview from './pages/mypage/ReserveReview';
 import MyManagement from './pages/mypage/MyManagement';
 import MyMamagementCancle from './pages/mypage/MyMamagementCancle';
-import PetSitterList from './components/PetSitterList';
 import AuthProvider from './components/AuthContext.js';
 import HeaderWithNav from './components/HeaderWithNav';
-import TestPetInfoAdd from './pages/mypage/TestPetInfoAdd';
-import TestPetSitterForm from './pages/petsitter/TestPetSitterForm.js';
+
 function App() {
   return (
     <AuthProvider>
@@ -34,10 +37,13 @@ function App() {
         <Routes>
           <Route path='/' element={<Main />}></Route>
           <Route path='/login' element={<Login />}></Route>
-          <Route path='/signup2' element={<SignUp2 />}></Route>
+          <Route path='/logout' element={<Logout />}></Route>
+          <Route path='/logout-update' element={<LogoutUpdate />}></Route>
+          <Route path='/oauth/redirect/kakao' element={<LoginRedirect />}></Route>
+          <Route path='/tokenupdate' element={<TokenUpdate />}></Route>
+          <Route path='/signup' element={<SignUp2 />}></Route>
           <Route path='/petsitter' element={<PetSitter />}></Route>
           <Route path='/petsitterform' element={<PetSitterForm />}></Route>
-          <Route path='/testpetsitterform' element={<TestPetSitterForm />}></Route>
           <Route path='/petsitterguide' element={<PetSitterGuide />}></Route>
           <Route path='/petsitters' element={<PetSitterList />} />
           <Route path='/petsitterinfo/:id' element={<PetSitterInfo />} />
@@ -49,9 +55,7 @@ function App() {
           <Route path='/notfoundpage' element={<NotFoundPage />}></Route>
           <Route path='/petinfo' element={<PetInfo />}></Route>
           <Route path='/petinfoadd' element={<PetInfoAdd />} />
-          <Route path='/testpetinfoadd' element={<TestPetInfoAdd />} />
           <Route path='/usersupport' element={<UserSupport />}></Route>
-          <Route path='/oauth/redirect/kakao' element={<SignUp2 />}></Route>
           <Route path='/reservepetsitter' element={<ReservationPetsitter />}></Route>
           <Route path='/reservecancle' element={<ReservationCancle />}></Route>
           <Route path='/reservereview' element={<ReserveReview />}></Route>

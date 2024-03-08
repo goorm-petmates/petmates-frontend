@@ -5,7 +5,8 @@ const LogoutUpdate = () => {
   const navigate = useNavigate(); // useNavigate 훅 사용
 
   useEffect(() => {
-    fetch('https://api.petmates.co.kr/api/members/test/api/kakao/logout/update', {
+//    fetch('http://localhost:8080/api/kakao/logout/update', {
+    fetch('https://petmates.co.kr/api/kakao/logout/update', {
       method: 'POST',
       credentials: 'include',
       headers: {

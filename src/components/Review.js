@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import "../styles/ReviewCard.css";
-import { data2 } from '../pages/Data';
 
 function Review(props) {
   const { reviewImgSrc, petInfo, onSave, state} = props;
@@ -10,9 +9,25 @@ function Review(props) {
   const [isReviewSaved, setIsReviewSaved] = useState(false);
 
   const handleSaveReview = () => {
-    onSave(rating, reviewText);
-    setIsReviewSaved(true);
-    setIsWritingReview(false);
+    fetch('/api/my-page/review/:petsitterId', {
+      method: 'POST',
+      body: JSON.stringify({
+        rating: rating,
+        contents: reviewText,
+      })
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.data);
+
+        onSave(rating, reviewText);
+        setIsReviewSaved(true);
+        setIsWritingReview(false);
+
+        // 후기가 저장되면서 상태 업데이트
+        setCard(prevCard => [...prevCard, { reviewRating: rating, reviewContents: reviewText }]);
+
+      })
   };
 
   const handleStarClick = (selectedRating) => {
@@ -29,6 +44,29 @@ function Review(props) {
       alert("후기를 입력해주세요.");
     }
   };
+
+  const [card, setCard] = useState([]);
+
+  useEffect(() => {
+    fetch(`/api/petsitter/reviews`,)
+      .then((res) => res.json())
+      .then((res) =>{
+        console.log(res.data);
+
+        const completedReviews = res.data.filter(review => review.state === "작성완료");
+        console.log(completedReviews);
+
+        setCard(completedReviews.map((review) => ({
+          id: review.id,
+          state: review.state,
+          reviewRating: review.reviewRating,
+          reviewContents: review.reviewContents
+        })));
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+  },[]);
 
   return (
     <div className="review-review-container">
@@ -72,15 +110,21 @@ function Review(props) {
         {(isReviewSaved || state === "작성완료") && (
           <>
             <div className="review-pet-info">
-              <div className="write-review">
-                후기: { reviewText || data2.review_content}
-                <br />
-              </div>
-              <div className="write-stars">
-                별점: {[...Array( rating || data2.review_star)].map((_, index) => (
-                <span key={index} className="star filled" style={{ color: "gold" }}>★</span>
+              {card.map((item, index) => (
+                item.state === "작성완료" && (
+                <div key={index}>
+                  <div className="write-review">
+                    후기: { reviewText || item.reviewContents}
+                    <br />
+                  </div>
+                  <div className="write-stars">
+                    별점: {[...Array( rating || item.reviewRating)].map((_, index) => (
+                      <span key={index} className="star filled" style={{ color: "gold" }}>★</span>
+                    ))}
+                  </div>
+                </div>
+                  )
               ))}
-              </div>
             </div>
             <button className="review-saved-button">작성완료</button>
           </>

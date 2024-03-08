@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/ReservePetsitterCard.css";
 function ReservationPetsitterCard(props) {
-  const {reservePetImgSrc, petInfo, state, onClick} = props;
+  const {reservePetImgSrc, petInfo, state, onClick, onDubleClick} = props;
 
   return (
       <div className="reservepet">
@@ -39,7 +39,7 @@ function ReservationPetsitterCard(props) {
                     color: "#ffffff",
                     cursor: "auto",
                   } : {}
-                } onClick={onClick}>
+                } onClick={onClick} onDoubleClick={onDubleClick}>
           {state}
         </button>
       </div>

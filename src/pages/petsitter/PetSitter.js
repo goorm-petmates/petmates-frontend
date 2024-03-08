@@ -1,30 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Footer from '../../components/Footer';
 import PetSitterList from '../../components/PetSitterList.js';
 import PetSitterRightBtns from '../../components/PetSitterRightBtns.js';
 import '../../styles/StylePetSitter.css';
-import PetSittersData from './PetSittersData.js';
 
 const useQuery = () => {
   const { search } = useLocation();
   return React.useMemo(() => new URLSearchParams(search), [search]);
 };
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const PetSitter = () => {
   const navigate = useNavigate();
-
   const [selectedRegion, setSelectedRegion] = useState('');
-  const [selectedService, setSelectedService] = useState('');
+  const [careType, setCareType] = useState('');
   const [districtOptions, setDistrictOptions] = useState([]);
   const [selectedDistrict, setSelectedDistrict] = useState('');
-  const [filteredPetSitters, setFilteredPetSitters] = useState([]); // 펫시터 검색후 상태관리
-  const [isFiltered, setIsFiltered] = useState(false); // handleSubmit이 호출되었는지 추적하는 상태
+
+  //펫시터 리스트 공동컴포넌트 상태관리
+  const [petSittersList, setPetSittersList] = useState([]); // 펫시터 default 리스트
+
+  // 현재 페이지 번호와 페이지 데이터를 상태로 관리
+  const [totalPetSitters, setTotalPetSitters] = useState(0); // 전체 펫시터 수
+  const [petSittersPerPage, setPetSittersPerPage] = useState(0); // 페이지 당 펫시터 수
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 번호
+
+  // 페이지 번호 계산 로직 (전체 펫시터 수(totalPetSitters)와 페이지 당 표시할 펫시터 수(petSittersPerPage)에 기반하여 계산)
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(totalPetSitters / petSittersPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   //페이지네이션 상태관리
   const query = useQuery();
-  const currentPage = parseInt(query.get('page')) || 1;
-  const [itemsPerPage] = useState(4);
+  // const currentPage = parseInt(query.get('page')) || 1;
+
+  useEffect(() => {
+    fetchPetSitters(currentPage, careType, selectedRegion, selectedDistrict);
+  }, [currentPage, careType, selectedRegion, selectedDistrict]);
 
   // 서울시의 구 목록
   // prettier-ignore
@@ -57,44 +73,145 @@ const PetSitter = () => {
     // }
   }, [selectedRegion]);
 
-  // 필터링된 결과인 filteredPetSitters를 사용하여 페이지네이션 계산
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentFilteredItems = filteredPetSitters.slice(indexOfFirstItem, indexOfLastItem);
-  // // 필터링되지 않은 원본 데이터를 기반으로 한 현재 페이지의 아이템 계산
-  const currentItems = isFiltered
-    ? filteredPetSitters.slice(indexOfFirstItem, indexOfLastItem)
-    : PetSittersData.slice(indexOfFirstItem, indexOfLastItem);
+  useEffect(() => {
+    // Initial fetch with no filters
+    fetchPetSitters();
+  }, []); //빈 배열을 사용해서 최초에 한번만 실행되게하기
 
-  // // 페이지네이션을 위한 페이지 번호 계산
-  const pageNumbers = [];
-  for (
-    let i = 1;
-    i <= Math.ceil((isFiltered ? filteredPetSitters : PetSittersData).length / itemsPerPage);
-    i++
-  ) {
-    pageNumbers.push(i);
-  }
+  // 쿼리스트링 null값으로 요청해서 들고오기
+  // const fetchPetSitters = async () => {
+  //   // Construct query parameters
+  //   const params = new URLSearchParams({
+  //     careType: null,
+  //     serviceArea1: null,
+  //     serviceArea2: null,
+  //   });
 
-  const handleSubmit = (event) => {
+  //   // Append the query parameters to the URL
+  //   const url = `${BASE_URL}/api/petsitter/list?${params.toString()}`;
+
+  //   try {
+  //     const response = await axios.get(url);
+  //     if (response.status === 200 && response.data.data) {
+  // 응답이 성공적이고(response.status === 200), 응답 데이터(response.data.data)가 존재할 경우,
+  //       setPetSittersList(response.data.data); // 펫시터 목록 데이터 업데이트
+  //       setTotalPetSitters(response.data.totalContents); // 전체 펫시터 수 업데이트
+  //       setPetSittersPerPage(response.data.pageTotalCnt); // 페이지 당 펫시터 수 업데이트
+  //       setCurrentPage(response.data.pageNum); // 현재 페이지 번호 업데이트
+  //     } else {
+  //       console.error('API 호출 실패:', response);
+  //     }
+  //   } catch (error) {
+  //     console.error('API 호출 중 오류 발생:', error);
+  //   }
+  // };
+
+  // 1.axios사용해서 들고오기
+  // const fetchPetSitters = async () => {
+  //   const url = `${BASE_URL}/api/petsitter/list`; // Endpoint intercepted by MSW
+
+  //   try {
+  //     const response = await axios.get(url);
+  //     if (response.status === 200 && response.data.data) {
+  // 응답이 성공적이고(response.status === 200), 응답 데이터(response.data.data)가 존재할 경우,
+  //       setPetSittersList(response.data.data); // 전체 펫시터 목록 데이터 업데이트하고
+  //       setTotalPetSitters(response.data.totalContents); // 전체 펫시터 수 업데이트
+  //       setPetSittersPerPage(response.data.pageTotalCnt); // 페이지 당 펫시터 수 업데이트
+  //       setCurrentPage(response.data.pageNum); // 현재 페이지 번호 업데이트
+  //     } else {
+  //       console.error('API 호출 실패:', response);
+  //     }
+  //   } catch (error) {
+  //     console.error('API 호출 중 오류 발생:', error);
+  //   }
+  // };
+
+  // 2.fetch사용해서 들고오기
+  const fetchPetSitters = async () => {
+    // Directly use the base URL without appending any query parameters
+    const url = `${BASE_URL}/api/petsitter/list`;
+
+    try {
+      const response = await fetch(url, {
+        credentials: 'include', // Include credentials in the request
+      });
+      if (response.ok) {
+        const jsonResponse = await response.json();
+        if (jsonResponse.data) {
+          setPetSittersList(jsonResponse.data); // 펫시터 목록 데이터 업데이트
+          setTotalPetSitters(jsonResponse.totalContents); // 전체 펫시터 수 업데이트
+          setPetSittersPerPage(jsonResponse.pageTotalCnt); // 페이지 당 펫시터 수 업데이트
+          setCurrentPage(jsonResponse.pageNum); // 현재 페이지 번호 업데이트
+        }
+      } else {
+        console.error('API 호출 실패:', response.statusText);
+      }
+    } catch (error) {
+      console.error('API 호출 중 오류 발생:', error);
+    }
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('선택된 서비스: ', selectedService);
-    console.log('선택된 지역: ', selectedRegion);
-    console.log('선택된 구/시: ', selectedDistrict);
 
-    // 필터링 로직을 실행하여 전체적으로 일치하는 결과를 찾음
-    const filtered = PetSittersData.filter(
-      (petSitter) =>
-        petSitter.address?.includes(selectedRegion) &&
-        petSitter.address?.includes(selectedDistrict) &&
-        petSitter.services?.includes(selectedService),
-    );
-    // 필터링된 결과를 상태에 저장
-    setFilteredPetSitters(filtered);
-    setIsFiltered(true); // 필터링이 실행되었음을 표시
+    console.log('선택된 서비스: ', careType);
+    console.log('선택된 시: ', selectedRegion);
+    console.log('선택된 구: ', selectedDistrict);
 
-    // 검색 후 항상 첫 페이지로 이동
-    navigate('/petsitter?page=1');
+    // URL 객체를 생성하고 쿼리 스트링을 추가합니다.
+    const url = new URL(`${BASE_URL}/api/petsitter/search/`);
+    url.search = new URLSearchParams({
+      // page: 1,
+      careType: careType,
+      serviceArea1: selectedRegion,
+      serviceArea2: selectedDistrict,
+    });
+
+    // try {
+    //   const response = await axios.get(url.toString());
+    //   if (response.status === 200 && response.data) {
+    //     setPetSittersList(response.data);
+    //   } else {
+    //     console.error('Failed to fetch data:', response);
+    //   }
+    // } catch (error) {
+    //   console.error('Error during API call:', error);
+    // }
+
+    // 1. axios사용 api연결
+    // try {
+    //   const response = await axios.get(url.toString());
+    //   if (response.status === 200 && response.data && response.data.data) {
+    //     // 서버 응답에서 data 필드 내부의 데이터를 사용합니다.
+    //     setPetSittersList(response.data.data);
+    //   } else {
+    //     console.error('Failed to fetch data:', response);
+    //   }
+    // } catch (error) {
+    //   console.error('Error during API call:', error);
+    // }
+
+    // 2. fetch사용 api연결
+    try {
+      const response = await fetch(url.toString(), {
+        credentials: 'include', // Include credentials in the request
+      });
+      if (response.ok) {
+        const jsonResponse = await response.json();
+        if (jsonResponse && jsonResponse.data) {
+          // Use the data field from the server response
+          setPetSittersList(jsonResponse.data);
+        } else {
+          console.error('Failed to fetch data:', response.statusText);
+        }
+      } else {
+        console.error('Failed to fetch data:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error during API call:', error);
+    }
+
+    navigate(`/petsitter?page=1`);
   };
 
   return (
@@ -110,8 +227,8 @@ const PetSitter = () => {
               서비스선택
               <select
                 className='service-options'
-                value={selectedService}
-                onChange={(e) => setSelectedService(e.target.value)}
+                value={careType}
+                onChange={(e) => setCareType(e.target.value)}
               >
                 <option value='' disabled hidden></option>
                 <option className='option-style' value='데이케어'>
@@ -164,9 +281,13 @@ const PetSitter = () => {
 
         {/*/!*************** petsitter user list **************!/*/}
         {/* 현재 페이지의 아이템들을 렌더링 */}
-        {currentItems.map((item) => (
+        {/* {currentItems.map((item) => (
           <PetSitterList key={item.id} data={item} />
-        ))}
+        ))} */}
+        {/* {petSitters.map((item) => (
+          <PetSitterList key={item.id} data={item}/>
+        ))} */}
+        <PetSitterList petSitters={petSittersList} />
 
         <nav>
           <ul className='pagination'>

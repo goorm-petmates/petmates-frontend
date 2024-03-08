@@ -2,46 +2,52 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/StylePetSitterList.css';
 
-const PetSitterList = ({ data }) => {
+const PetSitterList = ({ petSitters }) => {
   const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수 생성
 
-  const handleNavigate = () => {
-    navigate(`/petsitterinfo/${data.id}`);
+  const handleNavigate = (id) => {
+    navigate(`/petsitterinfo/${id}`);
   };
 
   return (
-    <div onClick={handleNavigate} style={{ cursor: 'pointer' }}>
-      {/* 포스트목록에서 특정포스트 클릭시 상세페이지로 라우팅시킴
-        <ul>
-          {posts.map((post) => (
-            <li key={post.id}>
-              <Link to={`/post/${post.id}`}>{post.title}</Link>
-            </li>
-          ))}
-        </ul> */}
-      <li className='petsitter-list'>
-        <img
-          className='petsitter profile-pic'
-          src={data.profilePic1} // 이미지 URL을 props에서 받아옴
-          alt='petsitter profile pic'
-        ></img>
+    <ul className='petsitter-lists'>
+      {petSitters.map((sitter) => (
+        <li key={sitter.id} className='petsitter-list' onClick={() => handleNavigate(sitter.id)}>
+          <img
+            className='petsitter profile-pic'
+            src={
+              //카카오프로필 이미지 없는유저는 기본이미지 보여주기
+              sitter.isKakaoProfile
+                ? sitter.profilePath
+                : process.env.PUBLIC_URL + '/imgs/Logo-Icon.png'
+            }
+            alt='petsitter profile pic'
+          ></img>
 
-        <div className='petsitter-list-text'>
-          <span className='petsitter nickname'>{data.nickname}</span>
-          <span className='petsitter title'>{data.title}</span>
-          <div>
-            <span className='petsitter rating'>{data.rating}</span>
-            <span className='petsitter review-count'>(리뷰 {data.reviewCnt}개)</span>
-            <span className='petsitter address'>{data.address}</span>
+          <div className='petsitter-list-text'>
+            <span className='petsitter nickname'>{sitter.nickname}</span>
+            <span className='petsitter title'>{sitter.title}</span>
+            <div>
+              <span className='petsitter rating'>
+                {/* {sitter.rating} */}
+                {[...Array(Math.round(sitter.rating))].map((_, index) => (
+                  <span key={index} className='star filled' style={{ color: 'gold' }}>
+                    ★
+                  </span>
+                ))}
+              </span>
+              <span className='petsitter review-count'> (리뷰 {sitter.reviewCnt}개)</span>
+              <span className='petsitter address'>{sitter.roadAddr}</span>
+            </div>
           </div>
-        </div>
 
-        <div className='petsitter-price-container'>
-          <div className='petsitter standard-price'>데이케어: {data.standardPrice}원</div>
-          <div className='petsitter night-price'>1박케어: {data.nightPrice}원</div>
-        </div>
-      </li>
-    </div>
+          <div className='petsitter-price-container'>
+            <div className='petsitter standard-price'>데이케어: {sitter.standardPrice}원</div>
+            <div className='petsitter night-price'>1박케어: {sitter.nightPrice}원</div>
+          </div>
+        </li>
+      ))}
+    </ul>
   );
 };
 

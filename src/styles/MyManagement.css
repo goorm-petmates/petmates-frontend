@@ -45,29 +45,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 1000px;
     display: flex;
-    height: 700px;
-    margin-top: 10px;
+}
+.management-add-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .management-add-component{
-    /*border: 1px solid #d9d9d9;*/
-    /*border-radius: 40px;*/
-    /*width: 850px;*/
-    /*height: 90px;*/
-    /*position: relative;*/
-    /*justify-content: space-evenly;*/
-    /*align-items: center;*/
-    /*margin-top: 30px;*/
-    /*margin-bottom: 30px;*/
-    /*margin-left: 800px;*/
     border: 1px solid #d9d9d9;
     border-radius: 40px;
     width: 850px;
     height: 100px;
-    margin-top: -100px;
-    margin-bottom: 30px;
-    margin-left: 800px;
 }
 .management-add-text{
     font-size: 15px;
@@ -94,25 +84,39 @@
 .management-add-bar{
     height: 1px;
     border-bottom: 1px solid #FF8000;
-    justify-content: space-evenly;
+    display: flex;
+    justify-content: center;
     align-items: center;
     margin-top: 114px;
 }
 .management-bar{
     height: 1px;
     border-bottom: 1px solid #FF8000;
-    justify-content: space-evenly;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 37px;
+}
+.mypage-management-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.management-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
 }
 .management-edit-component{
     border: 1px solid #d9d9d9;
     border-radius: 40px;
     width: 850px;
-    height: 100px;
-    margin-top: -100px;
-    margin-bottom: 30px;
-    margin-left: 800px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .management-edit-img{
     height: 78px;
@@ -165,12 +169,13 @@
     cursor: pointer;
 }
 .management-refuse-container{
-    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     position: relative;
-    margin-top: 120px;
+    margin-top: 260px;
+    margin-bottom: 102px;
 }
 .management-refuse-button{
     background-color: #ff9900;
@@ -178,7 +183,7 @@
     border: none;
     cursor: pointer;
     border-radius: 7px;
-    margin-left: 900px;
+    margin-left: 880px;
     position: absolute;
     width: 80px;
     height: 25px;
@@ -197,7 +202,14 @@
     width: 850px;
     height: 100px;
     display: flex;
-    margin-top: -170px;
+    margin-top: -175px;
+    position: absolute;
+}
+.checked-width-3{
+    z-index: 2;
+    width: 850px;
+    height: 100px;
+    display: flex;
     position: absolute;
 }
 .refuse-checkbox {
@@ -206,8 +218,6 @@
     border: 1px solid black;
     cursor: pointer;
     display: inline-block;
-    margin-top: 30px;
-    margin-left: 50px;
 }
 .page-buttons{
     width: 100px;
